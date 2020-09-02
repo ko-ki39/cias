@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Crypt;
 
 class User extends Authenticatable
 {
@@ -39,5 +40,15 @@ class User extends Authenticatable
 
     public function secret_question(){
         return $this->hasOne('App\SecretQuestion');
+    }
+
+    public function getPasswordAttribute($value){
+        return Crypt::decrypt($value);
+        // return ucfirst($value);
+    }
+
+    public function setPasswordAttribute($value){
+        return Crypt::encrypt($value);
+        // return ucfirst($value);
     }
 }

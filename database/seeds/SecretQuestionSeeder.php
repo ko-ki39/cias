@@ -38,7 +38,7 @@ class SecretQuestionSeeder extends Seeder
         DB::table('secret_questions')->insert($param);
 
         $param = [
-            'question_contents' => '初めて映画館で見たえいがは？',
+            'question_contents' => '初めて映画館で見た映画は？',
         ];
         DB::table('secret_questions')->insert($param);
     }
