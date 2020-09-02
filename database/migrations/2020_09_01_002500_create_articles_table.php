@@ -18,10 +18,10 @@ class CreateArticlesTable extends Migration
             $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade'); //外部キー
             $table->text('title');
             $table->text('description');
-            $table->string('image');
-            $table->foreignId('hash1_id')->constrained('hashtags')->onDelete('cascade');
-            $table->foreignId('hash2_id')->constrained('hashtags')->onDelete('cascade');
-            $table->foreignId('hash3_id')->constrained('hashtags')->onDelete('cascade');
+            $table->string('image')->nullable();
+            $table->foreignId('hash1_id')->nullable()->constrained('hashtags')->onDelete('cascade');
+            $table->foreignId('hash2_id')->nullable()->constrained('hashtags')->onDelete('cascade');
+            $table->foreignId('hash3_id')->nullable()->constrained('hashtags')->onDelete('cascade');
 
             $table->timestamps();
         });
