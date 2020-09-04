@@ -1,0 +1,15 @@
+html body .top h2 {
+  margin-bottom: 10px;
+  color: #f00;
+  float: right;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-right: 5px;
+  border: dashed #000 2px;
+}
+
+html body .header h2 a {
+  color: #00ff00;
+  float: right;
+}
+/*# sourceMappingURL=style.css.map */

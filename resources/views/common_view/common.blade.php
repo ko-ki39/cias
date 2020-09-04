@@ -5,6 +5,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>タイトル</title>
         {{-- css,js等インポート --}}
+        <link rel="stylesheet" href="/css/style.css" type="text/css">
         <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet">
     </head>
 <body>
