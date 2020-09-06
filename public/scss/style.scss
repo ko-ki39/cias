@@ -1,21 +1,42 @@
 html {
     body {
-        .top {
-            h2 {
-                margin-bottom: 10px;
-                color: #f00;
-                float: right;
-                padding-right: 10px;
-                padding-left: 10px;
-                margin-right: 5px;
-                border: dashed #000 2px;
-            }
-        }
         .header {
-            h2 {
-                a {
-                    color: #00ff00;
+            height: 300px;
+            background-color: aqua;
+            .top {
+                background-color: #000;
+                padding-top: 5px;
+                padding-bottom: 20px;
+                h2 {
+                    color: #f00;
                     float: right;
+                    padding-right: 10px;
+                    padding-left: 10px;
+                    margin-top: 0px;
+                    margin-bottom: 10px;
+                    margin-right: 5px;
+                    border: dashed #fff 2px;
+                }
+            }
+            .header_bot {
+                width: 940px;
+                padding-left: 20px;
+                h2 {
+                    width: 600px;
+                    a {
+                        color: #00ff00;
+                        float: left;
+                        margin-right: 10px;
+                    }
+                }
+                .ad {
+                    width: 300px;
+                    height: 300px;
+                    float: right;
+                    border: #000 dashed 2px;
+                    margin-top: 0px;
+                    margin-right: 50px;
+                    // padding: 150px;
                 }
             }
         }

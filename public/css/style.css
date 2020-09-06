@@ -1,13 +1,39 @@
-html body .top h2 {
-  margin-bottom: 10px;
+html body .header {
+  height: 300px;
+  background-color: aqua;
+}
+html body .header .top {
+  background-color: #000;
+  padding-top: 5px;
+  padding-bottom: 20px;
+}
+html body .header .top h2 {
   color: #f00;
   float: right;
   padding-right: 10px;
   padding-left: 10px;
+  margin-top: 0px;
+  margin-bottom: 10px;
   margin-right: 5px;
-  border: dashed #000 2px;
+  border: dashed #fff 2px;
 }
-html body .header h2 a {
+html body .header .header_bot {
+  width: 940px;
+  padding-left: 20px;
+}
+html body .header .header_bot h2 {
+  width: 600px;
+}
+html body .header .header_bot h2 a {
   color: #0f0;
+  float: left;
+  margin-right: 10px;
+}
+html body .header .header_bot .ad {
+  width: 300px;
+  height: 300px;
   float: right;
+  border: #000 dashed 2px;
+  margin-top: 0px;
+  margin-right: 50px;
 }
