@@ -1,51 +1,51 @@
-html body #header {
-  left: 0;
-  top: 0;
-  width: 100%;
+html body {
+  max-width: 1000px;
+  margin: auto;
 }
-html body #header #top {
-  margin-top: 0;
-  margin-right: 0;
-  height: 50px;
+html body .header {
+  padding-bottom: 10px;
+  background-color: aqua;
+}
+html body .header .top {
   background-color: #000;
   padding-top: 5px;
+  padding-bottom: 20px;
 }
-html body #header #top h2 {
+html body .header .top h2 {
   color: #f00;
   float: right;
   padding-right: 10px;
   padding-left: 10px;
   margin-top: 0px;
+  margin-bottom: 10px;
   margin-right: 5px;
   border: dashed #fff 2px;
 }
-html body #header .header_bot {
-  background-color: aqua;
-  height: 200px;
-  width: 1100px;
+html body .header .header_bot {
+  width: 940px;
   padding-left: 20px;
-  padding-bottom: 100px;
-  margin-left: auto;
-  margin-right: auto;
-  border: solid 1px;
 }
-html body #header .header_bot .intro {
+html body .header .header_bot .tp_intro {
   float: left;
 }
-html body #header .header_bot .intro h2 {
-  width: 620px;
-  padding-right: 0;
-}
-html body #header .header_bot .intro h2 a {
-  border: solid 1px;
-  color: #f00;
+html body .header .header_bot .tp_intro a {
+  color: red;
+  float: left;
   margin-right: 10px;
 }
-html body #header .header_bot .ad {
+html body .header .header_bot .tp_intro h2 {
+  width: 600px;
+}
+html body .header .header_bot .ad {
   width: 300px;
-  height: 250px;
+  height: 300px;
   float: right;
   border: #000 dashed 2px;
   margin-top: 0px;
-  margin-right: 10px;
+  margin-right: auto;
+}
+html body .clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
 }
