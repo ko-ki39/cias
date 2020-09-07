@@ -1,5 +1,9 @@
+html body {
+  max-width: 1000px;
+  margin: auto;
+}
 html body .header {
-  height: 300px;
+  padding-bottom: 10px;
   background-color: aqua;
 }
 html body .header .top {
@@ -21,13 +25,16 @@ html body .header .header_bot {
   width: 940px;
   padding-left: 20px;
 }
-html body .header .header_bot h2 {
-  width: 600px;
+html body .header .header_bot .tp_intro {
+  float: left;
 }
-html body .header .header_bot h2 a {
-  color: #0f0;
+html body .header .header_bot .tp_intro a {
+  color: red;
   float: left;
   margin-right: 10px;
+}
+html body .header .header_bot .tp_intro h2 {
+  width: 600px;
 }
 html body .header .header_bot .ad {
   width: 300px;
@@ -35,5 +42,10 @@ html body .header .header_bot .ad {
   float: right;
   border: #000 dashed 2px;
   margin-top: 0px;
-  margin-right: 50px;
+  margin-right: auto;
+}
+html body .clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
 }
