@@ -49,3 +49,12 @@ html body .clearfix::after {
   display: block;
   clear: both;
 }
+html body .footer {
+  height: 300px;
+}
+html body .footer .foot_left {
+  float: left;
+}
+html body .footer .foot_right {
+  float: right;
+}

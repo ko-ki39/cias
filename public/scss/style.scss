@@ -52,5 +52,14 @@ html {
             display: block;
             clear: both;
         }
+        .footer{
+            height: 300px;
+            .foot_left{
+                float: left;
+            }
+            .foot_right{
+                float: right;
+            }
+        }
     }
 }
