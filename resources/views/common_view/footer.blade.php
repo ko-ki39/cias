@@ -1,7 +1,5 @@
 <div class="footer">
-    <div class="foot_middle">
 
-    </div>
     <div class="foot_left">
         <p>訓練校からプログラマーを目指した<br>男たち（2人）が運営するwebサイトです！</p>
         <ul>
@@ -11,6 +9,9 @@
             <li>プライバシーポリシー</li>
             <li>開発者の紹介</li>
         </ul>
+    </div>
+    <div class="foot_middle">
+
     </div>
     <div class="foot_right">
         <p>お問い合わせ、掲載の依頼など</p>

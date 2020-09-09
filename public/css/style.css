@@ -52,15 +52,16 @@ html body .clearfix::after {
 html body .footer {
   height: 300px;
 }
-html body .footer .foot_middle {
-  padding: 50px;
-  border: dashed 1px #0f0;
-  width: 30%;
-}
 html body .footer .foot_left {
   float: left;
   margin-left: 20px;
   width: 30%;
+}
+html body .footer .foot_middle {
+  padding: 50px;
+  border: dashed 1px #0f0;
+  float: left;
+  width: auto;
 }
 html body .footer .foot_right {
   float: right;
