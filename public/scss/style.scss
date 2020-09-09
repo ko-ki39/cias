@@ -54,15 +54,16 @@ html {
         }
         .footer {
             height: 300px;
-            .foot_middle {
-                padding: 50px;
-                border: dashed 1px #0f0;
-                width: 30%;
-            }
             .foot_left {
                 float: left;
                 margin-left: 20px;
                 width: 30%;
+            }
+            .foot_middle {
+                padding: 50px;
+                border: dashed 1px #0f0;
+                float: left;
+                width: auto;
             }
             .foot_right {
                 float: right;
