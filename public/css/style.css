@@ -52,9 +52,31 @@ html body .clearfix::after {
 html body .footer {
   height: 300px;
 }
+html body .footer .foot_middle {
+  padding: 50px;
+  border: dashed 1px #0f0;
+  width: 30%;
+}
 html body .footer .foot_left {
   float: left;
+  margin-left: 20px;
+  width: 30%;
 }
 html body .footer .foot_right {
   float: right;
+  width: 30%;
+}
+html body .footer .foot_right p {
+  margin-bottom: 0;
+}
+html body .footer .foot_right .foot_twitter {
+  border: dashed 1px #000;
+  padding-bottom: 20px;
+  margin-bottom: 10px;
+}
+html body .footer .foot_right .foot_twitter .foot_image {
+  float: left;
+  padding: 30px;
+  margin-right: 5px;
+  border: dashed 1px red;
 }
