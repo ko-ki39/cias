@@ -6,6 +6,7 @@
         <title>タイトル</title>
         {{-- css,js等インポート --}}
         <link rel="stylesheet" href="/css/style.css" type="text/css">
+        @yield('import')
         <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet">
 
 
