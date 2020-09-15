@@ -1,0 +1,51 @@
+.main {
+  width: 1000px;
+}
+.main .me .me_image {
+  padding: 50px;
+  border: dashed 1px #000;
+}
+.main .content {
+  float: left;
+  width: 600px;
+  margin: 10px 0;
+  border: dashed 1px #000;
+}
+.main .content .article {
+  width: 500px;
+  height: 200px;
+  margin: 10px auto;
+  border: dashed 1px #f00;
+  position: relative;
+}
+.main .content .article .image {
+  float: left;
+  padding: 100px;
+  border: dashed 1px #000;
+}
+.main .content .article .title {
+  text-align: center;
+  font-size: 20px;
+}
+.main .content .article .add {
+  border: #ff0 dashed 1px;
+  float: left;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+}
+.main .content .article .add .comment {
+  float: left;
+  padding: 39px;
+  border: dashed 1px #00f;
+}
+.main .content .article .add .twitter {
+  float: left;
+  padding: 40px;
+  border: dashed 1px #0f0;
+}
+.main .content .article .add .fav {
+  float: left;
+  padding: 40px;
+  border: dashed 1px #0ff;
+}

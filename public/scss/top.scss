@@ -1,43 +1,67 @@
-.content {
-    width: 600px;
-    margin-top: 10px;
-    float: left;
-    border: dashed 1px #000;
-    .article {
-        width: 550px;
-        margin: 10px auto;
+.main {
+    width: 1000px;
+    .content {
+        width: 600px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        float: left;
         border: dashed 1px #000;
-        .article_image {
-            height: 300px;
-            border: dashed 1px #0f0;
-        }
-        .article_title {
-            margin: 15px 0;
+        .search {
+            margin: 10px;
             text-align: center;
-            font-size: 25px;
         }
-        .article_description {}
-        .date {
-            float: left;
-            margin-bottom: 0;
-        }
-        .comment {
-            float: right;
-            border: dashed 1px #f00;
-            width: 50px;
-            height: 50px;
-        }
-        .twitter {
-            float: right;
-            border: dashed 1px #f00;
-            width: 50px;
-            height: 50px;
-        }
-        .fav {
-            float: right;
-            border: dashed 1px #f00;
-            width: 50px;
-            height: 50px;
+        .article {
+            width: 550px;
+            margin: 10px auto;
+            border: dashed 1px #000;
+            position: relative;
+            .article_image {
+                height: 300px;
+                border: dashed 1px #0f0;
+            }
+            .article_title {
+                margin: 15px 0;
+                text-align: center;
+                font-size: 25px;
+            }
+            .article_description {}
+            .date {
+                position: absolute;
+                // float: left;
+                bottom: 0;
+                left: 0;
+                margin-bottom: 0;
+            }
+            .comment {
+                position: absolute;
+                // float: left;
+                bottom: 0;
+                right: 0;
+                // float: right;
+                border: dashed 1px #f00;
+                width: 50px;
+                height: 50px;
+            }
+            .twitter {
+                position: absolute;
+                // float: left;
+                bottom: 0;
+                right: 50px;
+                // float: right;
+                border: dashed 1px #f00;
+                width: 50px;
+                height: 50px;
+            }
+            .fav {
+                position: absolute;
+                // float: left;
+                bottom: 0;
+                right: 100px;
+                // float: right;
+                border: dashed 1px #f00;
+                width: 50px;
+                height: 50px;
+            }
         }
     }
 }

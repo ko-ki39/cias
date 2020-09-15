@@ -1,41 +1,58 @@
-.content {
+.main {
+  width: 1000px;
+}
+.main .content {
   width: 600px;
   margin-top: 10px;
+  margin-bottom: 10px;
   float: left;
   border: dashed 1px #000;
 }
-.content .article {
+.main .content .search {
+  margin: 10px;
+  text-align: center;
+}
+.main .content .article {
   width: 550px;
   margin: 10px auto;
   border: dashed 1px #000;
+  position: relative;
 }
-.content .article .article_image {
+.main .content .article .article_image {
   height: 300px;
   border: dashed 1px #0f0;
 }
-.content .article .article_title {
+.main .content .article .article_title {
   margin: 15px 0;
   text-align: center;
   font-size: 25px;
 }
-.content .article .date {
-  float: left;
+.main .content .article .date {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   margin-bottom: 0;
 }
-.content .article .comment {
-  float: right;
+.main .content .article .comment {
+  position: absolute;
+  bottom: 0;
+  right: 0;
   border: dashed 1px #f00;
   width: 50px;
   height: 50px;
 }
-.content .article .twitter {
-  float: right;
+.main .content .article .twitter {
+  position: absolute;
+  bottom: 0;
+  right: 50px;
   border: dashed 1px #f00;
   width: 50px;
   height: 50px;
 }
-.content .article .fav {
-  float: right;
+.main .content .article .fav {
+  position: absolute;
+  bottom: 0;
+  right: 100px;
   border: dashed 1px #f00;
   width: 50px;
   height: 50px;

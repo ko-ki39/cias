@@ -9,10 +9,14 @@
 @section('content')
 {{-- この下からbodyの中身を書き始める --}}
 <div class="main">
-    @component('components.article')
-    {{-- 記事一覧表示場所 --}}
-    @endcomponent
     <div class="content">
+        <form action="/" method="post">
+            <div class="search">
+                <i class="fas fa-search"></i>
+                <input type="text" name="search">
+                <input type="submit" value="検索">
+            </div>
+        </form>
         <div class="article">
             <div class="article_image">
             </div>
