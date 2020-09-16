@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('individual');
-});
+// Route::get('/', function () {
+//     return view('individual');
+// });
+
+Route::get("/", "SanController@welcomePage");
+Route::get("/top", "SanController@topBlogPage");
