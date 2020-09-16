@@ -1,9 +1,19 @@
 .main {
   width: 1000px;
 }
+.main .me {
+  margin-top: 10px;
+  width: 600px;
+  height: 110px;
+}
 .main .me .me_image {
   padding: 50px;
+  float: left;
   border: dashed 1px #000;
+}
+.main .me p {
+  line-height: 110px;
+  font-size: 25px;
 }
 .main .content {
   float: left;
