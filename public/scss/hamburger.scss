@@ -1,0 +1,91 @@
+/* 静的な要素 */
+header{
+    width: 100%;
+    position: relative;
+    .nav{
+        position: absolute;
+        height: 100vh;
+        width: 100%;
+        left: -100%;
+        background: rgba(99, 99, 99, .95);
+        -webkit-transition: 0.3s;
+        transition: 0.3s;
+        ul{
+            margin: 0;
+            padding: 0;
+            li{
+                height: calc(100vh/5);
+                line-height: 187.39px;
+                list-style-type: none;
+                font-size: 3em;
+                text-align: center;
+                display: block;
+                color: #fff;
+            }
+        }
+    }
+    #hum_target{
+        width: 40px;
+        height: 30px;
+        position: absolute;
+        top: 25px;
+        left: 50px;
+        cursor: pointer;
+        display: block;
+        -webkit-transition: 0.6s;
+        transition: 0.6s;
+        .hum_t_inner{
+            width: 40px;
+            height: 30px;
+            position: relative;
+            .hum_t_i_line{
+                display: block;
+                width: 40px;
+                height: 5px;
+                background: #636363;
+                -webkit-transition: 0.6s;
+                transition: 0.6s;
+                border-radius: 50px;
+                position: absolute;
+            }
+            .hum_t_i_0{
+                top: 0;
+            }
+            .hum_t_i_1{
+                top: 13px;
+            }
+            .hum_t_i_2{
+                top: 26px;
+            }
+        }
+    }
+}
+.hamburger_menu{
+    width: 100%;
+    position: fixed;
+}
+
+
+/* 動的な要素 */
+.fadein{
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+}
+.linea,
+.lineb,
+.linec{
+    background: #ffffff;
+}
+.linea{
+    -webkit-transform: rotate(225deg);
+    transform: rotate(225deg);
+    top: 13px;
+}
+.lineb{
+    opacity: 0;
+}
+.linec{
+    -webkit-transform: rotate(-225deg);
+    transform: rotate(-225deg);
+    top: 13px;
+}

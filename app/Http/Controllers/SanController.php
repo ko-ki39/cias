@@ -8,7 +8,7 @@ class SanController extends Controller
 {
     public function welcomePage(Request $request)
     {
-        return view("components.welcome");
+        return view("welcome");
     }
 
     public function topBlogPage(Request $request)
