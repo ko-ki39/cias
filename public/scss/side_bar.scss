@@ -19,6 +19,7 @@
         margin: 5px auto;
         background-color: #ff0;
         p {
+            // float: left;
             margin-bottom: 5px;
         }
         .detail {
@@ -33,7 +34,9 @@
             float: left;
         }
         .user_name {
+            margin: 0;
             font-size: 10px;
+            float: left;
         }
         .date {
             margin-top: 0;

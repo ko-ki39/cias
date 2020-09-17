@@ -4,7 +4,9 @@
         <div class="side_image"></div>
         <p>タイトル</p>
         <p class="detail">１２３４５６７８９１２３４５６７８９１２３４５６７８９１２３４５６７８９１２３４５６７８９</p>
-        <p class="user_name">作者の名前です</p>
+        <p class="user_name">
+        作者の名前です
+        </p>
         <p class="date">投稿日付 2020/00/00</p>
     </div>
     <div class="latest_article">

@@ -35,7 +35,9 @@
   float: left;
 }
 .side_bar .latest_article .user_name {
+  margin: 0;
   font-size: 10px;
+  float: left;
 }
 .side_bar .latest_article .date {
   margin-top: 0;
