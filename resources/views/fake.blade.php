@@ -18,22 +18,28 @@
     <div class="content">
         <div class="article">
             <div class="image"></div>
-            <h4>タイトル</h4>
-            <p class="detail">詳細です</p>
-            <p class="date">2020/00/00</p>
+            <div class="text">
+                <h3>C#でサイコロを作る方法3選！！！</h3>
+                <p class="detail">みなさん、こんにちは、hogeです！本日はUnityでさいころを実装するにはどうしたらいいか？そういった悩みを解決する方法を3つほど紹介します！まずは...</p>
+                <p class="date">2020/00/00</p>
+            </div>
             <div class="add">
-                <div class="comment">※</div>
-                <div class="twitter">twi</div>
-                <div class="fav">fa</div>
+                <div class="comment"></div>
+                <div class="twitter"></div>
+                <div class="fav"></div>
             </div>
         </div>
         <div class="article">
             <div class="image"></div>
-            <p class="title">タイトル</p>
+            <div class="text">
+                <h3>C#でサイコロを作る方法3選！！！</h3>
+                <p class="detail">みなさん、こんにちは、hogeです！本日はUnityでさいころを実装するにはどうしたらいいか？そういった悩みを解決する方法を3つほど紹介します！まずは...</p>
+                <p class="date">2020/00/00</p>
+            </div>
             <div class="add">
-                <div class="comment">※</div>
-                <div class="twitter">twi</div>
-                <div class="fav">fa</div>
+                <div class="comment"></div>
+                <div class="twitter"></div>
+                <div class="fav"></div>
             </div>
         </div>
     </div>

@@ -32,14 +32,25 @@
                 width: 150px;
                 border: dashed 1px #000;
             }
-            .title {
-                text-align: center;
-                font-size: 20px;
-            }
-            .date {
+            .text {
+                width: 315px;
+                margin: 5px 10px;
                 float: left;
-                // position: absolute;
-                bottom: 0;
+                // position: relative;
+                h3 {
+                    margin: 0 0 5px 0;
+                }
+                .detail {
+                    font-size: 13px;
+                    margin: 0;
+                }
+                .date {
+                    float: left;
+                    font-size: 12px;
+                    position: absolute;
+                    // margin-bottom: 0;
+                    bottom: 0;
+                }
             }
             .add {
                 border: #ff0 dashed 1px;
@@ -49,17 +60,17 @@
                 position: absolute;
                 .comment {
                     float: left;
-                    padding: 10px;
+                    padding: 20px;
                     border: dashed 1px #00f;
                 }
                 .twitter {
                     float: left;
-                    padding: 10px;
+                    padding: 20px;
                     border: dashed 1px #0f0;
                 }
                 .fav {
                     float: left;
-                    padding: 10px;
+                    padding: 20px;
                     border: dashed 1px #0ff;
                 }
             }
