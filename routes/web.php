@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('individual');
-});
-Route::get('/', 'Controller@index');
+Route::get('/', 'Controller@top');
+Route::get('/individual', 'Controller@individual');//マイページ
+Route::get('/article_detail', 'Controller@article_detail'); //記事詳細
+Route::get('/fake', 'Controller@fake'); //偽物ページ後で消す
 
 Auth::routes();
 

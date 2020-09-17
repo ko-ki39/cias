@@ -12,8 +12,22 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function index (){
-        $test = DB::select('select * from users');
-        return view('fake', ['test' => $test]);
+    // public function index (){
+    //     $test = DB::select('select * from users');
+    //     return view('fake');
+    // }
+    public function top(){
+        return view('top');
+    }
+
+    public function individual(){ //マイページ
+        return view('individual');
+    }
+
+    public function article_detail(){ //記事詳細ページ
+        return view('article_detail');
+    }
+    public function fake(){ //偽物ページ 後で消す
+        return view('fake');
     }
 }

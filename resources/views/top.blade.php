@@ -18,8 +18,13 @@
             </div>
         </form>
         <div class="article">
-            <div class="article_image">
-            </div>
+            <a href="article_detail">
+                <div class="article_image">
+                    <a href="fake">
+                        <p>作者名</p>
+                    </a>
+                </div>
+            </a>
             <p class="article_title">タイトル</p>
             <p class="article_description">詳細00000000000000000000000000000000000000</p>
             <p class="date">2020/00/00</p>
