@@ -8,8 +8,6 @@
 
 @section('content')
 {{-- この下からbodyの中身を書き始める --}}
-@component('components.hamburger')
-@endcomponent
 <div class="main">
     <div class="content">
         <form action="/" method="post">

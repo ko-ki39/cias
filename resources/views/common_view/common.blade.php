@@ -13,6 +13,7 @@
 
     </head>
 <body>
+    @include('components.hamburger')
     @include('common_view.header')
     @yield('content')
     @include('common_view.footer')

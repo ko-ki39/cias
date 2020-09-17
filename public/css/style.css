@@ -8,8 +8,7 @@ html body {
   -webkit-flex-flow: column;
       -ms-flex-flow: column;
           flex-flow: column;
-  min-height: 100vh;
-  max-width: 1000px;
+  width: 1000px;
   margin: auto;
 }
 
@@ -20,8 +19,7 @@ html body .header {
 
 html body .header .top {
   background-color: #000;
-  padding-top: 5px;
-  padding-bottom: 20px;
+  height: 77px;
 }
 
 html body .header .top h2 {
@@ -36,8 +34,7 @@ html body .header .top h2 {
 }
 
 html body .header .header_bot {
-  width: 940px;
-  padding-left: 20px;
+  width: 1000px;
 }
 
 html body .header .header_bot .tp_intro {
@@ -59,8 +56,8 @@ html body .header .header_bot .ad {
   height: 250px;
   float: right;
   border: #000 dashed 2px;
-  margin-top: 0px;
-  margin-right: 5px;
+  margin-top: 8px;
+  margin-right: 8px;
 }
 
 html body .clearfix::after {
@@ -107,4 +104,3 @@ html body .footer .foot_right .foot_twitter .foot_image {
   margin-right: 5px;
   border: dashed 1px red;
 }
-/*# sourceMappingURL=style.css.map */

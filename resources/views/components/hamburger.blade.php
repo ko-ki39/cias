@@ -1,5 +1,5 @@
 <header id="hamburger_menu">
-    <nav class="nav" id="nav_f">
+    <nav class="nav fadein" id="nav_f">
         <ul>
             <li class="li_pro_img"></li>
             <li class="li_pro_name">ほげ太郎</li>
