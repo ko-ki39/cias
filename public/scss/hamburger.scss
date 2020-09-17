@@ -1,6 +1,9 @@
 /* 静的な要素 */
+body{
+    margin: 0;
+}
 header{
-    width: 100%;
+    width: 400px;
     position: relative;
     .nav{
         position: absolute;
@@ -11,13 +14,13 @@ header{
         -webkit-transition: 0.3s;
         transition: 0.3s;
         ul{
-            margin: 0;
+            margin: 10px 0 0 0;
             padding: 0;
             li{
                 height: calc(100vh/5);
                 line-height: 187.39px;
                 list-style-type: none;
-                font-size: 3em;
+                // font-size: 3em;
                 text-align: center;
                 display: block;
                 color: #fff;
@@ -29,7 +32,7 @@ header{
         height: 30px;
         position: absolute;
         top: 25px;
-        left: 50px;
+        left: 26px;
         cursor: pointer;
         display: block;
         -webkit-transition: 0.6s;
@@ -61,8 +64,14 @@ header{
     }
 }
 .hamburger_menu{
-    width: 100%;
+    width: 400px;
     position: fixed;
+}
+.li_pro_img{
+    border: dashed 2px yellow;
+}
+.li_pro_name{
+    font-size: 2em;
 }
 
 

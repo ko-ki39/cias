@@ -1,0 +1,116 @@
+@charset "UTF-8";
+/* 静的な要素 */
+body {
+  margin: 0;
+}
+
+header {
+  width: 400px;
+  position: relative;
+}
+
+header .nav {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  left: -100%;
+  background: rgba(99, 99, 99, 0.95);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+header .nav ul {
+  margin: 10px 0 0 0;
+  padding: 0;
+}
+
+header .nav ul li {
+  height: calc(100vh/5);
+  line-height: 187.39px;
+  list-style-type: none;
+  text-align: center;
+  display: block;
+  color: #fff;
+}
+
+header #hum_target {
+  width: 40px;
+  height: 30px;
+  position: absolute;
+  top: 25px;
+  left: 26px;
+  cursor: pointer;
+  display: block;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+header #hum_target .hum_t_inner {
+  width: 40px;
+  height: 30px;
+  position: relative;
+}
+
+header #hum_target .hum_t_inner .hum_t_i_line {
+  display: block;
+  width: 40px;
+  height: 5px;
+  background: #636363;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  border-radius: 50px;
+  position: absolute;
+}
+
+header #hum_target .hum_t_inner .hum_t_i_0 {
+  top: 0;
+}
+
+header #hum_target .hum_t_inner .hum_t_i_1 {
+  top: 13px;
+}
+
+header #hum_target .hum_t_inner .hum_t_i_2 {
+  top: 26px;
+}
+
+.hamburger_menu {
+  width: 400px;
+  position: fixed;
+}
+
+.li_pro_img {
+  border: dashed 2px yellow;
+}
+
+.li_pro_name {
+  font-size: 2em;
+}
+
+/* 動的な要素 */
+.fadein {
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+.linea,
+.lineb,
+.linec {
+  background: #ffffff;
+}
+
+.linea {
+  -webkit-transform: rotate(225deg);
+  transform: rotate(225deg);
+  top: 13px;
+}
+
+.lineb {
+  opacity: 0;
+}
+
+.linec {
+  -webkit-transform: rotate(-225deg);
+  transform: rotate(-225deg);
+  top: 13px;
+}

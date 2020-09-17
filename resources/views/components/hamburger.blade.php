@@ -1,7 +1,8 @@
 <header id="hamburger_menu">
     <nav class="nav" id="nav_f">
         <ul>
-            <li>プロフィール画像が入ります</li>
+            <li class="li_pro_img"></li>
+            <li class="li_pro_name">ほげ太郎</li>
             <hr>
             <li>マイページへのリンクが入ります</li>
             <li><p>記事にコメントが来ています！</p></li>

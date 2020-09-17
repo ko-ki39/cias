@@ -1,19 +1,29 @@
 html body {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  flex-flow: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-flow: column;
+      -ms-flex-flow: column;
+          flex-flow: column;
   min-height: 100vh;
   max-width: 1000px;
   margin: auto;
 }
+
 html body .header {
   padding-bottom: 10px;
   background-color: aqua;
 }
+
 html body .header .top {
   background-color: #000;
   padding-top: 5px;
   padding-bottom: 20px;
 }
+
 html body .header .top h2 {
   color: #f00;
   float: right;
@@ -24,21 +34,26 @@ html body .header .top h2 {
   margin-right: 5px;
   border: dashed #fff 2px;
 }
+
 html body .header .header_bot {
   width: 940px;
   padding-left: 20px;
 }
+
 html body .header .header_bot .tp_intro {
   float: left;
 }
+
 html body .header .header_bot .tp_intro a {
   color: red;
   float: left;
   margin-right: auto;
 }
+
 html body .header .header_bot .tp_intro h2 {
   width: 600px;
 }
+
 html body .header .header_bot .ad {
   width: 300px;
   height: 250px;
@@ -47,40 +62,49 @@ html body .header .header_bot .ad {
   margin-top: 0px;
   margin-right: 5px;
 }
+
 html body .clearfix::after {
   content: "";
   display: block;
   clear: both;
 }
+
 html body .footer {
   height: 300px;
 }
+
 html body .footer .foot_left {
   float: left;
   margin-left: 20px;
   width: 30%;
 }
+
 html body .footer .foot_middle {
   padding: 50px;
   border: dashed 1px #0f0;
   float: left;
   width: auto;
 }
+
 html body .footer .foot_right {
   float: right;
   width: 30%;
 }
+
 html body .footer .foot_right p {
   margin-bottom: 0;
 }
+
 html body .footer .foot_right .foot_twitter {
   border: dashed 1px #000;
   padding-bottom: 20px;
   margin-bottom: 10px;
 }
+
 html body .footer .foot_right .foot_twitter .foot_image {
   float: left;
   padding: 30px;
   margin-right: 5px;
   border: dashed 1px red;
 }
+/*# sourceMappingURL=style.css.map */
