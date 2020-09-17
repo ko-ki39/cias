@@ -29,8 +29,9 @@
   position: relative;
 }
 .main .content .article .image {
+  height: 200px;
+  width: 200px;
   float: left;
-  padding: 100px;
   border: dashed 1px #000;
 }
 .main .content .article .title {

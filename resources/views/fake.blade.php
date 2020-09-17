@@ -13,12 +13,14 @@
 <div class="main">
     <div class="me">
         <div class="me_image"></div>
-        <p>--------さんのマイページ</p>
+        <p>--------さんが投稿した記事</p>
     </div>
     <div class="content">
         <div class="article">
             <div class="image"></div>
-            <p class="title">タイトル</p>
+            <h4>タイトル</h4>
+            <p class="detail">詳細です</p>
+            <p class="date">2020/00/00</p>
             <div class="add">
                 <div class="comment">※</div>
                 <div class="twitter">twi</div>

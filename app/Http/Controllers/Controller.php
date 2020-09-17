@@ -14,6 +14,6 @@ class Controller extends BaseController
 
     public function index (){
         $test = DB::select('select * from users');
-        return view('article_detail', ['test' => $test]);
+        return view('fake', ['test' => $test]);
     }
 }

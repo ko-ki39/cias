@@ -27,8 +27,9 @@
             border: dashed 1px #f00;
             position: relative;
             .image {
+                height: 200px;
+                width: 200px;
                 float: left;
-                padding: 100px;
                 border: dashed 1px #000;
             }
             .title {
