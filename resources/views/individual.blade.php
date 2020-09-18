@@ -11,31 +11,27 @@
     <div class="main">
         <div class="me">
             <div class="me_image"></div>
-            <p>--------さんのマイページ</p>
+            {{-- {{ dd($user) }} --}}
+            <p>{{ $user->user_name }}さんのマイページ</p>
         </div>
         <div class="content">
-            <div class="article">
-                <a href="article_detail">
-                    <div class="image"></div>
-                </a>
-                <a href="article_detail">
-                    <p class="title">タイトル</p>
-                </a>
-                <div class="add">
-                    <div class="comment">※</div>
-                    <div class="twitter">twi</div>
-                    <div class="fav">fa</div>
+            @foreach ($articles as $article)
+
+                <div class="article">
+                    <a href="{{ route('article_detail', ['id' => $user->id]) }}">
+                        <div class="image"></div>
+                    </a>
+                    <a href="{{ route('article_detail', ['id' => $user->id]) }}">
+                        <p class="title">{{ $article->title }}</p>
+                    </a>
+                    <div class="add">
+                        <div class="comment">※</div>
+                        <div class="twitter">twi</div>
+                        <div class="fav">fa</div>
+                    </div>
                 </div>
-            </div>
-            <div class="article">
-                <div class="image"></div>
-                <p class="title">タイトル</p>
-                <div class="add">
-                    <div class="comment">※</div>
-                    <div class="twitter">twi</div>
-                    <div class="fav">fa</div>
-                </div>
-            </div>
+
+            @endforeach
         </div>
         @component('components.comment')
             {{-- ここはサイドバーです --}}

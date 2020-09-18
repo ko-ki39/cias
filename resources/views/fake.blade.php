@@ -13,39 +13,30 @@
     <div class="main">
         <div class="me">
             <div class="me_image"></div>
-            <p>--------さんが投稿した記事</p>
+            <p>{{ $user->user_name }}さんが投稿した記事</p>
         </div>
         <div class="content">
-            <div class="article">
-                <a href="article_detail">
-                    <div class="image"></div>
-                </a>
-                <div class="text">
-                    <a href="article_detail">
-                        <h3>C#でサイコロを作る方法3選！！！</h3>
+            @foreach ($articles as $article)
+
+                <div class="article">
+                    <a href="{{ route('article_detail', ['id' => $article->id]) }}">
+                        <div class="image"></div>
                     </a>
-                    <p class="detail">みなさん、こんにちは、hogeです！本日はUnityでさいころを実装するにはどうしたらいいか？そういった悩みを解決する方法を3つほど紹介します！まずは...</p>
-                    <p class="date">2020/00/00</p>
+                    <div class="text">
+                        <a href="{{ route('article_detail', ['id' => $article->id]) }}">
+                            <h3>{{ $article->title }}</h3>
+                        </a>
+                        <p class="detail">{{ $article->description }}</p>
+                        <p class="date">2020/00/00</p>
+                    </div>
+                    <div class="add">
+                        <div class="comment"></div>
+                        <div class="twitter"></div>
+                        <div class="fav"></div>
+                    </div>
                 </div>
-                <div class="add">
-                    <div class="comment"></div>
-                    <div class="twitter"></div>
-                    <div class="fav"></div>
-                </div>
-            </div>
-            <div class="article">
-                <div class="image"></div>
-                <div class="text">
-                    <h3>C#でサイコロを作る方法3選！！！</h3>
-                    <p class="detail">みなさん、こんにちは、hogeです！本日はUnityでさいころを実装するにはどうしたらいいか？そういった悩みを解決する方法を3つほど紹介します！まずは...</p>
-                    <p class="date">2020/00/00</p>
-                </div>
-                <div class="add">
-                    <div class="comment"></div>
-                    <div class="twitter"></div>
-                    <div class="fav"></div>
-                </div>
-            </div>
+
+            @endforeach
         </div>
         @component('components.side-bar')
             {{-- ここはサイドバーです --}}

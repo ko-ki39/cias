@@ -14,9 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'Controller@top');
-Route::get('/individual', 'Controller@individual');//マイページ
-Route::get('/article_detail', 'Controller@article_detail'); //記事詳細
-Route::get('/fake', 'Controller@fake'); //偽物ページ後で消す
+//routeで送ってきたいからnameをつける
+Route::get('/individual/{id}', 'Controller@individual')->name('individual');//マイページ
+Route::get('/article_detail/{id}', 'Controller@article_detail')->name('article_detail'); //記事詳細
+Route::get('/fake/{id}', 'Controller@fake')->name('fake'); //偽物ページ後で消す
 
 Auth::routes();
 

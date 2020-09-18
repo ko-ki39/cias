@@ -16,18 +16,37 @@ class Controller extends BaseController
     //     $test = DB::select('select * from users');
     //     return view('fake');
     // }
-    public function top(){
-        return view('top');
+    public function top()
+    {
+        $articles = DB::table('articles')->get();
+        return view('top', compact('articles'));
     }
 
-    public function individual(){ //マイページ
-        return view('individual');
+    public function article_detail($id)
+    { //記事詳細ページ
+        $article = DB::table('articles')->where('id', $id)->first();
+
+        $user = DB::table('users')->where('id', $article->user_id)->first();
+
+        return view('article_detail', compact('article', 'user'));
     }
 
-    public function article_detail(){ //記事詳細ページ
-        return view('article_detail');
+    public function individual($id)
+    { //マイページ
+        $user = DB::table('users')->where('id', $id)->first();
+        $articles = DB::table('articles')->where('user_id', $id)->get();
+
+
+        return view('individual', compact('user', 'articles'));
     }
-    public function fake(){ //偽物ページ 後で消す
-        return view('fake');
+
+    public function fake($id)
+    { //偽物ページ 後で消す
+        $user = DB::table('users')->where('id', $id)->first();
+
+        //user_idが同じarticlesをとってくる
+        $articles = DB::table('articles')->where('user_id', $id)->get();
+
+        return view('fake', compact('user', 'articles'));
     }
 }

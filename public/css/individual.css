@@ -8,6 +8,12 @@
     border: dashed 1px #000;
 }
 
+.main .me {
+    margin-top: 10px;
+    width: 600px;
+    height: 110px;
+}
+
 .main .content {
     float: left;
     width: 620px;

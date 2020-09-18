@@ -17,36 +17,31 @@
                     <input type="submit" value="検索">
                 </div>
             </form>
-            <div class="article">
-                <a href="article_detail">
-                    <div class="article_image">
-                        <a href="fake">
-                            <p>作者名</p>
-                        </a>
-                    </div>
-                </a>
-                <a href="article_detail">
-                    <p class="article_title">タイトル</p>
-                </a>
+            @foreach ($articles as $article)
 
-                <p class="article_description">詳細00000000000000000000000000000000000000</p>
-                <p class="date">2020/00/00</p>
-                <div class="comment">
+                <div class="article">
+                    <a href="article_detail">
+                        <div class="article_image">
+                            {{-- route('名前', ['クエリパラメータ' => 渡したい値])  --}}
+                            {{-- ↓/fake?id=1 になる --}}
+                            <a href="{{ route('fake', ['id' => \App\User::find($article->id)->id]) }}">
+                                <p>{{ \App\User::find($article->id)->user_name }}</p>
+                            </a>
+                        </div>
+                    </a>
+                    <a href="{{ route('article_detail', ['id' => $article->id]) }}">
+                        <p class="article_title">{{ $article->title }}</p>
+                    </a>
+
+                    <p class="article_description">{{ $article->description }}</p>
+                    <p class="date">{{ $article->created_at }}</p>
+                    <div class="comment">
+                    </div>
+                    <div class="twitter"></div>
+                    <div class="fav"></div>
                 </div>
-                <div class="twitter"></div>
-                <div class="fav"></div>
-            </div>
-            <div class="article">
-                <div class="article_image">
-                </div>
-                <p class="article_title">タイトル</p>
-                <p class="article_description">詳細</p>
-                <p class="date">2020/00/00</p>
-                <div class="comment">
-                </div>
-                <div class="twitter"></div>
-                <div class="fav"></div>
-            </div>
+
+            @endforeach
         </div>
         @component('components.side-bar')
             {{-- ここはサイドバーです --}}
