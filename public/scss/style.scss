@@ -2,8 +2,8 @@ html {
     body {
         display: flex;
         flex-flow: column;
-        min-height: 100vh;
-        max-width: 1000px;
+        // min-height: 100vh;
+        width: 1000px;
         margin: auto;
         // padding: ;
         .header {
@@ -12,8 +12,9 @@ html {
             background-color: aqua;
             .top {
                 background-color: #000;
-                padding-top: 5px;
-                padding-bottom: 20px;
+                // padding-top: 5px;
+                // padding-bottom: 20px;
+                height: 77px;
                 h2 {
                     color: #f00;
                     float: right;
@@ -26,8 +27,8 @@ html {
                 }
             }
             .header_bot {
-                width: 940px;
-                padding-left: 20px;
+                width: 1000px;
+                // padding-left: 20px;
                 .tp_intro {
                     float: left;
                     a {
@@ -44,8 +45,8 @@ html {
                     height: 250px;
                     float: right;
                     border: #000 dashed 2px;
-                    margin-top: 0px;
-                    margin-right: 5px;
+                    margin-top: 8px;
+                    margin-right: 8px;
                     // padding: 150px;
                 }
             }

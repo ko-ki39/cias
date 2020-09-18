@@ -1,0 +1,112 @@
+@charset "UTF-8";
+/* 静的な要素 */
+header {
+  z-index: 999;
+  width: 400px;
+  position: fixed;
+}
+
+header .nav {
+  position: absolute;
+  width: 100%;
+  top: 200%;
+  overflow: hidden;
+  background: rgba(99, 99, 99, 0.95);
+  -webkit-transition: 0.333s;
+  transition: 0.333s;
+}
+
+header .nav ul {
+  margin: 77px 0 0 0;
+  padding: 0;
+}
+
+header .nav ul li {
+  list-style-type: none;
+  text-align: center;
+  display: block;
+  color: #fff;
+}
+
+header #hum_target {
+  background: black;
+  padding: 25px 25px 22px 26px;
+  position: absolute;
+  cursor: pointer;
+  display: block;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+header #hum_target .hum_t_inner {
+  width: 40px;
+  height: 30px;
+  position: relative;
+}
+
+header #hum_target .hum_t_inner .hum_t_i_line {
+  display: block;
+  width: 40px;
+  height: 5px;
+  background: #ffffff;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  border-radius: 50px;
+  position: absolute;
+}
+
+header #hum_target .hum_t_inner .hum_t_i_0 {
+  top: 0;
+}
+
+header #hum_target .hum_t_inner .hum_t_i_1 {
+  top: 13px;
+}
+
+header #hum_target .hum_t_inner .hum_t_i_2 {
+  top: 26px;
+}
+
+.hamburger_menu {
+  width: 400px;
+  position: fixed;
+}
+
+.li_pro_img {
+  border: dashed 2px yellow;
+  height: 250px;
+  width: 250px;
+  margin: auto;
+}
+
+.li_pro_name {
+  font-size: 2em;
+}
+
+/* 動的な要素 */
+.fadein {
+  -webkit-transform: translateY(100%);
+  transform: translateY(-100%);
+}
+
+.linea,
+.lineb,
+.linec {
+  background: #ffffff;
+}
+
+.linea {
+  -webkit-transform: rotate(225deg);
+  transform: rotate(225deg);
+  top: 13px;
+}
+
+.lineb {
+  opacity: 0;
+}
+
+.linec {
+  -webkit-transform: rotate(-225deg);
+  transform: rotate(-225deg);
+  top: 13px;
+}

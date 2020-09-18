@@ -1,0 +1,109 @@
+/* 静的な要素 */
+// body{
+//     margin: 0;
+// }
+header{
+    z-index: 999;
+    width: 400px;
+    // position: relative;
+    position: fixed;
+    // overflow: hidden;
+    .nav{
+        position: absolute;
+        // height: 100%;
+        width: 100%;
+        top: 200%;
+        overflow: hidden;
+        background: rgba(99, 99, 99, .95);
+        -webkit-transition: 0.333s;
+        transition: 0.333s;
+        ul{
+            margin: 77px 0 0 0;
+            padding: 0;
+            li{
+                // height: calc(100vh/5);
+                // line-height: 187.39px;
+                list-style-type: none;
+                // font-size: 3em;
+                text-align: center;
+                display: block;
+                color: #fff;
+            }
+        }
+    }
+    #hum_target{
+        background: black;
+        padding: 25px 25px 22px 26px;
+        // width: 40px;
+        // height: 30px;
+        position: absolute;
+        // top: 25px;
+        // left: 26px;
+        cursor: pointer;
+        display: block;
+        -webkit-transition: 0.6s;
+        transition: 0.6s;
+        .hum_t_inner{
+            width: 40px;
+            height: 30px;
+            position: relative;
+            .hum_t_i_line{
+                display: block;
+                width: 40px;
+                height: 5px;
+                background: #ffffff;
+                -webkit-transition: 0.6s;
+                transition: 0.6s;
+                border-radius: 50px;
+                position: absolute;
+            }
+            .hum_t_i_0{
+                top: 0;
+            }
+            .hum_t_i_1{
+                top: 13px;
+            }
+            .hum_t_i_2{
+                top: 26px;
+            }
+        }
+    }
+}
+.hamburger_menu{
+    width: 400px;
+    position: fixed;
+}
+.li_pro_img{
+    border: dashed 2px yellow;
+    height: 250px;
+    width: 250px;
+    margin: auto;
+}
+.li_pro_name{
+    font-size: 2em;
+}
+
+
+/* 動的な要素 */
+.fadein{
+    -webkit-transform: translateY(100%);
+    transform: translateY(-100%);
+}
+.linea,
+.lineb,
+.linec{
+    background: #ffffff;
+}
+.linea{
+    -webkit-transform: rotate(225deg);
+    transform: rotate(225deg);
+    top: 13px;
+}
+.lineb{
+    opacity: 0;
+}
+.linec{
+    -webkit-transform: rotate(-225deg);
+    transform: rotate(-225deg);
+    top: 13px;
+}
