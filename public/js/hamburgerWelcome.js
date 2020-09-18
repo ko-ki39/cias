@@ -45,16 +45,6 @@ function isHamburgerMenu(){
     }
 }
 
-// document.body.addEventListener("click", function(event){
-//     if(event.target == document.getElementById("hum_target")){
-//         hamburger();
-//     }else if(event.target != document.getElementById("hum_target") && event.target != document.getElementsByClassName("nav")[0].children){
-//         if(document.getElementById("hum_target").classList.contains("slidex")){
-//             hamburger();
-//         }
-//     }
-// })
-
 
 
 // document.body.addEventListener("click", function(event){
@@ -71,8 +61,7 @@ function isHamburgerMenu(){
 
 document.getElementById("hum_target").addEventListener("click", hamburger, false);
 
-document.getElementsByClassName("header")[0].addEventListener("click", isHamburgerMenu, false);
-document.getElementsByClassName("main")[0].addEventListener("click", isHamburgerMenu, false);
+document.getElementById("welcome_section").addEventListener("click", isHamburgerMenu, false);
 document.getElementsByClassName("footer")[0].addEventListener("click", isHamburgerMenu, false);
 
 // document.body.addEventListener("click", function(event){
