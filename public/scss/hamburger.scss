@@ -5,14 +5,16 @@
 header{
     z-index: 999;
     width: 400px;
-    // position: relative;
-    position: fixed;
+    height: auto;
+    position: relative;
+    // position: fixed;
+    top: 0;
     // overflow: hidden;
     .nav{
         position: absolute;
         // height: 100%;
         width: 100%;
-        top: 200%;
+        top: 0;
         overflow: hidden;
         background: rgba(99, 99, 99, .95);
         -webkit-transition: 0.333s;
@@ -36,7 +38,9 @@ header{
         padding: 25px 25px 22px 26px;
         // width: 40px;
         // height: 30px;
-        position: absolute;
+        // position: absolute;
+        position: fixed;
+        top: 0;
         // top: 25px;
         // left: 26px;
         cursor: pointer;
@@ -75,12 +79,29 @@ header{
 }
 .li_pro_img{
     border: dashed 2px yellow;
+    border-radius: 20%;
     height: 250px;
     width: 250px;
     margin: auto;
 }
 .li_pro_name{
     font-size: 2em;
+}
+.li_pro_mypage{
+    padding: 10px;
+    margin: 0 ;
+    width: 250px;
+    margin: 40px auto 0 auto;
+    border: dashed 2px yellow;
+}
+.li_pro_comment_fav{
+
+}
+.li_pro_ad{
+    border: dashed 2px yellow;
+    height: 250px;
+    width: 300px;
+    margin: 40px auto 40px auto;
 }
 
 

@@ -1,4 +1,58 @@
 body {
-  background-color: green;
+  margin: auto;
+  width: 1000px;
+  background-color: black;
 }
-/*# sourceMappingURL=welcome.css.map */
+
+#Quietflow {
+  margin: 0;
+  height: 100vh;
+  width: 1000px;
+}
+
+.welcome_section {
+  margin: 0;
+}
+
+.header_band {
+  height: 77px;
+  background: black;
+}
+
+.welcome_image {
+  border: dashed 2px yellow;
+  height: 666px;
+  text-align: center;
+  margin: auto;
+}
+
+.welcome_image p {
+  font-size: 3em;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#main {
+  border: dashed 2px yellow;
+  height: 500px;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#main a {
+  display: block;
+  border: dashed 2px yellow;
+  height: 200px;
+  width: 250px;
+}
