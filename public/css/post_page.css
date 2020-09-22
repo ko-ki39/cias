@@ -1,0 +1,22 @@
+.main {
+  width: 1000px;
+  margin-top: 10px;
+  border: aqua 1px dashed;
+}
+
+.main .content {
+  width: 550px;
+  margin: 10px auto;
+}
+
+.main .content .file {
+  width: 550px;
+  height: 400px;
+  margin: 10px auto;
+}
+
+.main .content .text {
+  width: 550px;
+  margin: 10px auto;
+}
+/*# sourceMappingURL=post_page.css.map */

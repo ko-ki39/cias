@@ -22,3 +22,5 @@ Route::get('/fake/{id}', 'Controller@fake')->name('fake'); //偽物ページ後�
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/post', 'PostController@postForm')->name('post');
+
