@@ -10,18 +10,24 @@
     {{-- この下からbodyの中身を書き始める --}}
     <div class="main">
         <div class="content">
-            <input type="file" class="file">
-            <textarea name="text" id="" cols="30" rows="10" class="text"></textarea>
-            <input type="file" class="file">
-            <textarea name="text" id="" cols="30" rows="10" class="text"></textarea>
-            <input type="file" class="file">
-            <textarea name="text" id="" cols="30" rows="10" class="text"></textarea>
-            <input type="file" class="file">
-            <textarea name="text" id="" cols="30" rows="10" class="text"></textarea>
-            <input type="file" class="file">
-            <textarea name="text" id="" cols="30" rows="10" class="text"></textarea>
-            <input type="file" class="file">
-            <textarea name="text" id="" cols="30" rows="10" class="text"></textarea>
+            <form action="{{ route('upload') }}" method="post" enctype='multipart/form-data'>
+                @csrf
+
+                <input type="file" class="file" name="image1">
+                <textarea name="text1" id="" cols="30" rows="10" class="text"></textarea>
+                <input type="file" class="file" name="image1">
+                <textarea name="text2" id="" cols="30" rows="10" class="text"></textarea>
+                <input type="file" class="file" name="image1">
+                <textarea name="text3" id="" cols="30" rows="10" class="text"></textarea>
+                <input type="file" class="file" name="image1">
+                <textarea name="text4" id="" cols="30" rows="10" class="text"></textarea>
+                <input type="file" class="file" name="image1">
+                <textarea name="text5" id="" cols="30" rows="10" class="text"></textarea>
+                <input type="file" class="file" name="image1">
+                <textarea name="text6" id="" cols="30" rows="10" class="text"></textarea>
+
+                <input type="submit" value="投稿する">
+            </form>
         </div>
     </div>
 

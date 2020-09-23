@@ -22,10 +22,10 @@ class PostController extends Controller
 
         // avaterが送信されているかチェック
         // 新サムネイルをstorageに保存
-        $avater = basename($request->avater->store('public'));
+        // $avater = basename($request->avater->store('public'));
         // 新サムネイルをユーザデータに反映
         // User::where('id', Auth::user()->id)->update(['avater' => $avater]);
-        return redirect()->route('dashboard.index')->with('message', 'プロフィール画像を更新しました！');
-        return redirect()->route('dashboard.index')->with('message', '更新失敗です!!');
+        session()->flash('flash_message', '投稿が完了しました');
+        return redirect('/');
     }
 }

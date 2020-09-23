@@ -1,19 +1,18 @@
-.main{
+.main {
     width: 1000px;
     margin-top: 10px;
     border: aqua 1px dashed;
-    .content{
+    .content {
         width: 550px;
         margin: 10px auto;
-        .file{
+        .file {
             width: 550px;
             height: 400px;
             margin: 10px auto;
         }
-        .text{
+        .text {
             width: 550px;
             margin: 10px auto;
-
         }
     }
 }
