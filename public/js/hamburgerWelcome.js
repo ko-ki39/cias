@@ -26,14 +26,14 @@ function hamburger(){
         // document.getElementById("line0").style.background = "#ffffff";
         // document.getElementById("line1").style.background = "#ffffff";
         // document.getElementById("line2").style.background = "#ffffff";
-        document.getElementById("hum_target").style.background = "#636363";
+        // document.getElementById("hum_target").style.background = "rgba(99, 99, 99, .01)";
         document.getElementsByClassName("hum_t_i_0")[0].style.top = "13px";
         document.getElementsByClassName("hum_t_i_2")[0].style.top = "13px";
     }else{
         // document.getElementById("line0").style.background = "#636363";
         // document.getElementById("line1").style.background = "#636363";
         // document.getElementById("line2").style.background = "#636363";
-        document.getElementById("hum_target").style.background = "black";
+        // document.getElementById("hum_target").style.background = "rgba(0, 0, 0, .3)";
         document.getElementsByClassName("hum_t_i_0")[0].style.top = "0px";
         document.getElementsByClassName("hum_t_i_2")[0].style.top = "26px";
     }
