@@ -20,7 +20,6 @@ function hamburger(){
     document.getElementById("line2").classList.toggle("linec");
     document.getElementById("hum_target").classList.toggle("slidex");
     document.getElementById('nav_f').classList.toggle('fadein');
-    // document.getElementById("hamburger_menu").classList.toggle("fadein_head");
     if(document.getElementById("line0").classList.contains("linea")
     || document.getElementById("line0").classList.contains("lineb")
     || document.getElementById("line0").classList.contains("linec")){
@@ -28,7 +27,6 @@ function hamburger(){
         // document.getElementById("line1").style.background = "#ffffff";
         // document.getElementById("line2").style.background = "#ffffff";
         // document.getElementById("hum_target").style.background = "rgba(99, 99, 99, .01)";
-        // document.getElementById("hamburger_menu").style.position = "fixed";
         document.getElementsByClassName("hum_t_i_0")[0].style.top = "13px";
         document.getElementsByClassName("hum_t_i_2")[0].style.top = "13px";
     }else{
@@ -36,7 +34,6 @@ function hamburger(){
         // document.getElementById("line1").style.background = "#636363";
         // document.getElementById("line2").style.background = "#636363";
         // document.getElementById("hum_target").style.background = "rgba(0, 0, 0, .3)";
-        // document.getElementById("hamburger_menu").style.position = "static";
         document.getElementsByClassName("hum_t_i_0")[0].style.top = "0px";
         document.getElementsByClassName("hum_t_i_2")[0].style.top = "26px";
     }
@@ -47,16 +44,6 @@ function isHamburgerMenu(){
         hamburger();
     }
 }
-
-// document.body.addEventListener("click", function(event){
-//     if(event.target == document.getElementById("hum_target")){
-//         hamburger();
-//     }else if(event.target != document.getElementById("hum_target") && event.target != document.getElementsByClassName("nav")[0].children){
-//         if(document.getElementById("hum_target").classList.contains("slidex")){
-//             hamburger();
-//         }
-//     }
-// })
 
 
 
@@ -74,8 +61,7 @@ function isHamburgerMenu(){
 
 document.getElementById("hum_target").addEventListener("click", hamburger, false);
 
-document.getElementsByClassName("header")[0].addEventListener("click", isHamburgerMenu, false);
-document.getElementsByClassName("main")[0].addEventListener("click", isHamburgerMenu, false);
+document.getElementById("welcome_section").addEventListener("click", isHamburgerMenu, false);
 document.getElementsByClassName("footer")[0].addEventListener("click", isHamburgerMenu, false);
 
 // document.body.addEventListener("click", function(event){
