@@ -25,7 +25,7 @@ class PostController extends Controller
             'image5' => 'file|image|mimes:jpeg,jpg,png,gif',
             'image6' => 'file|image|mimes:jpeg,jpg,png,gif',
         ]);
-
+            // dd($request);
         $imagefile = [
             $request->image1,
             $request->image2,
@@ -72,6 +72,6 @@ class PostController extends Controller
         DB::table('posts')->insert($post);
 
         //test1
-        return redirect('/');
+        return redirect('/top');
     }
 }
