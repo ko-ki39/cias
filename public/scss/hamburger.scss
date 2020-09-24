@@ -3,7 +3,7 @@
 //     margin: 0;
 // }
 header{
-    z-index: 10;
+    z-index: -999;
     width: 400px;
     height: 100%;
     position: fixed;
@@ -34,43 +34,44 @@ header{
             }
         }
     }
-    #hum_target{
-        background: rgba(0, 0, 0, .3);
-        padding: 25px 25px 22px 26px;
-        // width: 40px;
-        // height: 30px;
-        // position: absolute;
-        position: fixed;
-        top: 0;
-        // top: 25px;
-        // left: 26px;
-        cursor: pointer;
-        display: block;
-        -webkit-transition: 0.6s;
-        transition: 0.6s;
-        .hum_t_inner{
+}
+#hum_target{
+    z-index: 999;
+    background: rgba(0, 0, 0, .3);
+    padding: 25px 25px 22px 26px;
+    // width: 40px;
+    // height: 30px;
+    // position: absolute;
+    position: fixed;
+    top: 0;
+    // top: 25px;
+    // left: 26px;
+    cursor: pointer;
+    display: block;
+    -webkit-transition: 0.6s;
+    transition: 0.6s;
+    .hum_t_inner{
+        width: 40px;
+        height: 30px;
+        position: relative;
+        .hum_t_i_line{
+            display: block;
             width: 40px;
-            height: 30px;
-            position: relative;
-            .hum_t_i_line{
-                display: block;
-                width: 40px;
-                height: 5px;
-                background: #ffffff;
-                -webkit-transition: 0.6s;
-                transition: 0.6s;
-                border-radius: 50px;
-                position: absolute;
-            }
-            .hum_t_i_0{
-                top: 0;
-            }
-            .hum_t_i_1{
-                top: 13px;
-            }
-            .hum_t_i_2{
-                top: 26px;
-            }
+            height: 5px;
+            background: #ffffff;
+            -webkit-transition: 0.6s;
+            transition: 0.6s;
+            border-radius: 50px;
+            position: absolute;
+        }
+        .hum_t_i_0{
+            top: 0;
+        }
+        .hum_t_i_1{
+            top: 13px;
+        }
+        .hum_t_i_2{
+            top: 26px;
         }
     }
 }
