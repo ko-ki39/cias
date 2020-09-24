@@ -13,6 +13,7 @@
             <div class="sub">
                 <div class="user">
                     <div class="image"></div>
+                    <!-- <a href="{{ route('post', ['id' => $user->id]) }}"> -->
                     <a href="{{ route('individual', ['id' => $user->id]) }}">
                         <p>{{ $user->user_name }}</p>
                     </a>

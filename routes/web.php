@@ -29,3 +29,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/post', 'PostController@postForm')->name('post');
+Route::post('/upload', 'PostController@upload')->name('upload');
+

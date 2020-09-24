@@ -6,6 +6,7 @@
   margin-right: 44px;
   margin-bottom: 10px;
 }
+
 .side_bar h2 {
   margin-top: 0;
   margin-bottom: 0;
@@ -14,9 +15,11 @@
   text-align: center;
   background-color: #0f0;
 }
+
 .side_bar .comment {
   width: 280px;
   height: 110px;
   margin: 5px auto;
   background-color: #ff0;
 }
+/*# sourceMappingURL=comment.css.map */
