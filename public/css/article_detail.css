@@ -1,31 +1,37 @@
 .main {
   width: 1000px;
 }
+
 .main .article {
   width: 620px;
   margin-top: 10px;
   border: dashed 1px #000;
   float: left;
 }
+
 .main .article .sub {
   height: 180px;
   border: dotted 1px #f0f;
 }
+
 .main .article .sub .user {
   height: 100px;
   width: 250px;
   float: left;
   border: solid 1px #0ff;
 }
+
 .main .article .sub .user .image {
   border: dashed 1px #f00;
   padding: 50px;
   float: left;
 }
+
 .main .article .sub .user p {
   line-height: 100px;
   margin: 0;
 }
+
 .main .article .sub .title {
   width: 364px;
   height: 100px;
@@ -35,38 +41,44 @@
   text-align: center;
   border: solid 1px #00f;
 }
+
 .main .article .sub .article_info .date {
   float: left;
 }
+
 .main .article .sub .article_info .add .comment {
   float: right;
   padding: 30px;
   border: dotted 1px #f0f;
 }
+
 .main .article .sub .article_info .add .twitter {
   float: right;
   padding: 30px;
   border: dotted 1px #f0f;
 }
+
 .main .article .sub .article_info .add .fav {
   float: right;
   padding: 30px;
   border: dotted 1px #f0f;
 }
+
 .main .article .sub .article_info .hash {
   float: left;
   margin: 0 0 0 10px;
 }
+
 .main .article .text {
   width: 550px;
   margin-left: auto;
   margin-right: auto;
 }
+
 .main .article .text .big_image {
   width: 550px;
   height: 400px;
   margin-top: 20px;
   margin-bottom: 20px;
   border: dotted 1px #00f;
-  background-color: #00f;
 }

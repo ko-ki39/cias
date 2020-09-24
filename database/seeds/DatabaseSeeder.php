@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CommentSeeder::class);
         $this->call(FavSeeder::class);
         $this->call(HashTagSeeder::class);
+        $this->call(PostSeeder::class);
+
 
     }
 }

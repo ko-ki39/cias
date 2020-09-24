@@ -20,7 +20,7 @@
 
                 <div class="article">
                     <a href="{{ route('article_detail', ['id' => $article->id]) }}">
-                        <div class="image"></div>
+                        <img src="/storage/{{ $article->image }}" class="image">
                     </a>
                     <div class="text">
                         <a href="{{ route('article_detail', ['id' => $article->id]) }}">

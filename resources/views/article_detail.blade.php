@@ -13,6 +13,7 @@
             <div class="sub">
                 <div class="user">
                     <div class="image"></div>
+                    <!-- <a href="{{ route('post', ['id' => $user->id]) }}"> -->
                     <a href="{{ route('individual', ['id' => $user->id]) }}">
                         <p>{{ $user->user_name }}</p>
                     </a>
@@ -31,9 +32,13 @@
                 </div>
             </div>
             <div class="text">
-                <div class="big_image"></div>
-                <p>詳細 ゾウリムシ リサイクル アクセント レインコート 体温計 人魚姫 椅子取りゲーム 留守番電話 エスカレーター 暑中見舞い ゲームデザイナー 海老で鯛を釣る 驚愕の事実 懐中電灯 映画館で昼食
-                    ピーマンも食べなさい</p>
+                @for ($i = 0; $i < 6; $i++)
+                {{-- {{ dd($image) }} --}}
+                    @if ($image[$i] != null)
+                        <img src="/storage/{{ $image[$i] }}" class="big_image">
+                        <p>{{ $text[$i] }}</p>
+                    @endif
+                @endfor
             </div>
         </div>
         @component('components.side-bar')
