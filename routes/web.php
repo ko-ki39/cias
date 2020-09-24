@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'SanController@welcomePage');
-Route::get('/top', 'Controller@top');
+Route::get('/top', 'Controller@top')->name('top');
 //routeで送ってきたいからnameをつける
 Route::get('/top/individual/{id}', 'Controller@individual')->name('individual');//マイページ
 Route::get('/top/article_detail/{id}', 'Controller@article_detail')->name('article_detail'); //記事詳細
@@ -30,5 +30,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/top/post', 'PostController@postForm')->name('post');
-Route::post('/upload', 'PostController@upload')->name('upload');
-
+Route::post('/top/upload', 'PostController@upload')->name('upload');
+Route::get('/top/upload', 'PostController@upload')->name('upload'); //リダイレクトさせるためにget通信も許可させる
