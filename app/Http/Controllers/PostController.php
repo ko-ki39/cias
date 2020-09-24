@@ -71,6 +71,7 @@ class PostController extends Controller
         ];
         DB::table('posts')->insert($post);
 
+        //test
         return redirect('/');
     }
 }
