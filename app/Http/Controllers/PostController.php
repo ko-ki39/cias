@@ -36,9 +36,11 @@ class PostController extends Controller
         ];
 
         for($i=0; $i<6; $i++){
-            if($imagefile[$i]->isValid()){
+            if($imagefile[$i] != null){
                 $path[$i] = $imagefile[$i]->store('public');//シンボリックリンクで画像をstorage内に保存
                 $image_path[$i] = basename($path[$i]); //画像名のみ保存
+            }else{
+                $image_path[$i] = null; //nullを入れないと空になる
             }
         }
         // dd($request);

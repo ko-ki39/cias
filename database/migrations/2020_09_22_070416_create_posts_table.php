@@ -17,18 +17,18 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->foreign('id')->references('id')->on('articles')->onDelete('cascade');
             $table->string('image1',100);
-            $table->string('image2',100);
-            $table->string('image3',100);
-            $table->string('image4',100);
-            $table->string('image5',100);
-            $table->string('image6',100);
+            $table->string('image2',100)->nullable();
+            $table->string('image3',100)->nullable();
+            $table->string('image4',100)->nullable();
+            $table->string('image5',100)->nullable();
+            $table->string('image6',100)->nullable();
 
             $table->text('text1');
-            $table->text('text2');
-            $table->text('text3');
-            $table->text('text4');
-            $table->text('text5');
-            $table->text('text6');
+            $table->text('text2')->nullable();
+            $table->text('text3')->nullable();
+            $table->text('text4')->nullable();
+            $table->text('text5')->nullable();
+            $table->text('text6')->nullable();
         });
     }
 
