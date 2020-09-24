@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,8 +22,8 @@ Route::get('/article_detail/{id}', 'Controller@article_detail')->name('article_d
 Route::get('/fake/{id}', 'Controller@fake')->name('fake'); //偽物ページ後で消す
 
 Auth::routes();
-Route::get("/login", "SanController@loginPage");
-Route::get("/register", "SanController@registerPage");
+// Route::get("/login", "SanController@loginPage");
+// Route::get("/register", "SanController@registerPage");
 
 Route::get('/home', 'HomeController@index')->name('home');
 
