@@ -19,6 +19,8 @@ class Controller extends BaseController
     public function top()
     {
         $articles = DB::table('articles')->get();
+
+
         return view('top', compact('articles'));
     }
 

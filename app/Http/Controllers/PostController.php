@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Article;
+use App\Post;
 
 class PostController extends Controller
 {
@@ -47,16 +49,16 @@ class PostController extends Controller
             }
             // dd($request);
             // if($imagefile->isValid()){ //正常にアップロードできたか
-
-            $article = [
+            $article = new Article();
+            $article->create( [
                 'user_id' => 1,
                 'title' => 'タイトル４',
                 'description' => $request->text1,
                 'image' => $image_path[0],
-            ];
-            DB::table('articles')->insert($article);
+            ]);
 
-            $post = [
+            $post = new Post();
+            $post->create([
                 'image1' => $image_path[0],
                 'image2' => $image_path[1],
                 'image3' => $image_path[2],
@@ -70,10 +72,8 @@ class PostController extends Controller
                 'text4' => $request->text4,
                 'text5' => $request->text5,
                 'text6' => $request->text6,
-            ];
-            DB::table('posts')->insert($post);
-
-            return route('top');
+            ]);
+            return redirect()->route('top');
         }else{
             return redirect()->route('top');
         }
