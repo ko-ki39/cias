@@ -25,8 +25,8 @@
                             {{-- route('名前', ['クエリパラメータ' => 渡したい値])
                             --}}
                             {{-- ↓/fake?id=1 になる --}}
-                            <a href="{{ route('fake', ['id' => \App\User::find($article->id)->id]) }}">
-                                <p>{{ \App\User::find($article->id)->user_name }}</p>
+                            <a href="{{ route('fake', ['id' => \App\User::find($article->user_id)->id]) }}">
+                                <p>{{ \App\User::find($article->user_id)->user_name }}</p>
                             </a>
                         </div>
                     </a>

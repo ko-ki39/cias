@@ -24,30 +24,49 @@ class PostController extends Controller
             'image4' => 'file|image|mimes:jpeg,jpg,png,gif',
             'image5' => 'file|image|mimes:jpeg,jpg,png,gif',
             'image6' => 'file|image|mimes:jpeg,jpg,png,gif',
-
         ]);
 
-        dd($request->image1);
-        $imagefile = $request->image1;
-        if($imagefile->isValid()){ //正常にアップロードできたか
-            $path = $imagefile->store('public');
-            $image_path = basename($path); //画像名のみ保存
+        $imagefile = [
+            $request->image1,
+            $request->image2,
+            $request->image3,
+            $request->image4,
+            $request->image5,
+            $request->image6,
+        ];
 
-            $param = [
-                'user_id' => 1,
-                'title' => 'タイトル４',
-                'description' => $request->text1,
-                'image' => $image_path,
-
-            ];
-            DB::table('articles')->insert($param);
+        for($i=0; $i<6; $i++){
+            $path[$i] = $imagefile[$i]->store('public');//シンボリックリンクで画像をstorage内に保存
+            $image_path[$i] = basename($path[$i]); //画像名のみ保存
         }
-        // avaterが送信されているかチェック
-        // 新サムネイルをstorageに保存
-        // $avater = basename($request->avater->store('public'));
-        // 新サムネイルをユーザデータに反映
-        // User::where('id', Auth::user()->id)->update(['avater' => $avater]);
-        // session()->flash('flash_message', '投稿が完了しました');
+        // dd($request);
+        // if($imagefile->isValid()){ //正常にアップロードできたか
+
+        $article = [
+            'user_id' => 1,
+            'title' => 'タイトル４',
+            'description' => $request->text1,
+            'image' => $image_path[0],
+        ];
+        DB::table('articles')->insert($article);
+
+        $post = [
+            'image1' => $image_path[0],
+            'image2' => $image_path[1],
+            'image3' => $image_path[2],
+            'image4' => $image_path[3],
+            'image5' => $image_path[4],
+            'image6' => $image_path[5],
+
+            'text1' => $request->text1,
+            'text2' => $request->text2,
+            'text3' => $request->text3,
+            'text4' => $request->text4,
+            'text5' => $request->text5,
+            'text6' => $request->text6,
+        ];
+        DB::table('posts')->insert($post);
+
         return redirect('/');
     }
 }
