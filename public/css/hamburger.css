@@ -1,16 +1,19 @@
 @charset "UTF-8";
 /* 静的な要素 */
 header {
-  z-index: 999;
+  z-index: 10;
   width: 400px;
+  height: 100%;
   position: fixed;
+  top: 0;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 header .nav {
   position: absolute;
   width: 100%;
-  top: 200%;
-  overflow: hidden;
+  top: 0;
   background: rgba(99, 99, 99, 0.95);
   -webkit-transition: 0.333s;
   transition: 0.333s;
@@ -29,9 +32,10 @@ header .nav ul li {
 }
 
 header #hum_target {
-  background: black;
+  background: rgba(0, 0, 0, 0.3);
   padding: 25px 25px 22px 26px;
-  position: absolute;
+  position: fixed;
+  top: 0;
   cursor: pointer;
   display: block;
   -webkit-transition: 0.6s;
@@ -74,6 +78,7 @@ header #hum_target .hum_t_inner .hum_t_i_2 {
 
 .li_pro_img {
   border: dashed 2px yellow;
+  border-radius: 20%;
   height: 250px;
   width: 250px;
   margin: auto;
@@ -83,10 +88,29 @@ header #hum_target .hum_t_inner .hum_t_i_2 {
   font-size: 2em;
 }
 
+.li_pro_mypage {
+  padding: 10px;
+  margin: 0;
+  width: 250px;
+  margin: 40px auto 0 auto;
+  border: dashed 2px yellow;
+}
+
+.li_pro_ad {
+  border: dashed 2px yellow;
+  height: 2500px;
+  width: 300px;
+  margin: 40px auto 40px auto;
+}
+
 /* 動的な要素 */
 .fadein {
   -webkit-transform: translateY(100%);
   transform: translateY(-100%);
+}
+
+header::-webkit-scrollbar {
+  display: none;
 }
 
 .linea,

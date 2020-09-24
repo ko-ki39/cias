@@ -4,10 +4,12 @@
             <li class="li_pro_img"></li>
             <li class="li_pro_name">ほげ太郎</li>
             <hr>
-            <li>マイページへのリンクが入ります</li>
-            <li><p>記事にコメントが来ています！</p></li>
-            <li><p>記事がイイネされました！</p></li>
-            <li>ADが入ります</li>
+            <li class="li_pro_mypage">マイページへのリンクが入ります</li>
+            <ul class="li_pro_comment_fav">
+                <p>記事にコメントが来ています！</p>
+                <li><a href="#">記事のタイトル</a></li>
+            </ul>
+            <li class="li_pro_ad">ADが入ります</li>
         </ul>
     </nav>
     <div id="hum_target">
