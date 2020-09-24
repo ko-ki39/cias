@@ -15,4 +15,14 @@ class SanController extends Controller
     {
         return view("top");
     }
+
+    public function loginPage(Request $request)
+    {
+        return view("auth.login");
+    }
+
+    public function registerPage(Request $request)
+    {
+        return view("auth.register");
+    }
 }
