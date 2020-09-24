@@ -33,6 +33,7 @@
             </div>
             <div class="text">
                 @for ($i = 0; $i < 6; $i++)
+                {{-- {{ dd($image) }} --}}
                     @if ($image[$i] != null)
                         <img src="/storage/{{ $image[$i] }}" class="big_image">
                         <p>{{ $text[$i] }}</p>

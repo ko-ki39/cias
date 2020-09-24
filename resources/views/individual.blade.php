@@ -18,10 +18,10 @@
             @foreach ($articles as $article)
 
                 <div class="article">
-                    <a href="{{ route('article_detail', ['id' => $user->id]) }}">
+                    <a href="{{ route('article_detail', ['id' => $article->id]) }}">
                         <div class="image"></div>
                     </a>
-                    <a href="{{ route('article_detail', ['id' => $user->id]) }}">
+                    <a href="{{ route('article_detail', ['id' => $article->id]) }}">
                         <p class="title">{{ $article->title }}</p>
                     </a>
                     <div class="add">
