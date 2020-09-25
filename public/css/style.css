@@ -77,10 +77,8 @@ html body .footer .foot_left {
 }
 
 html body .footer .foot_middle {
-  padding: 50px;
-  border: dashed 1px #0f0;
+  padding: 0;
   float: left;
-  width: auto;
 }
 
 html body .footer .foot_right {
@@ -104,4 +102,3 @@ html body .footer .foot_right .foot_twitter .foot_image {
   margin-right: 5px;
   border: dashed 1px red;
 }
-/*# sourceMappingURL=style.css.map */

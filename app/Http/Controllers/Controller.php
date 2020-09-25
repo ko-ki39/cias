@@ -16,6 +16,13 @@ class Controller extends BaseController
     //     $test = DB::select('select * from users');
     //     return view('fake');
     // }
+    public function test()
+    {
+        // $articles = DB::table('articles')->get();
+
+
+        return view('test');
+    }
     public function top()
     {
         $articles = DB::table('articles')->get();
