@@ -22,6 +22,7 @@
                 <div class="article">
                     <a href="article_detail">
                         <div class="article_image">
+                            {{-- <img src="/storage/{{ $article->image }}"> --}}
                             {{-- route('名前', ['クエリパラメータ' => 渡したい値])
                             --}}
                             {{-- ↓/fake?id=1 になる --}}

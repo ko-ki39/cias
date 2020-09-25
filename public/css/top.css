@@ -24,6 +24,7 @@
 
 .main .content .article .article_image {
   height: 300px;
+  width: 550px;
   border: dashed 1px #0f0;
 }
 
