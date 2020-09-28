@@ -74,7 +74,7 @@ class ArticleController extends Controller
             }
 
             $hash1_id =  DB::table('hashtags')->where('hashtag_contents', $request->hash1)->value('id');
-            $has2_id =  DB::table('hashtags')->where('hashtag_contents', $request->hash2)->value('id');
+            $hash2_id =  DB::table('hashtags')->where('hashtag_contents', $request->hash2)->value('id');
             $hash3_id =  DB::table('hashtags')->where('hashtag_contents', $request->hash3)->value('id');
 
             // dd($hash1_id);
@@ -85,9 +85,9 @@ class ArticleController extends Controller
             $article->create([
                 'user_id' => 1,
                 'title' => $request->title,
-                'hash1_id' => $request->hash1,
-                'hash2_id' => $request->hash2,
-                'hash3_id' => $request->hash3,
+                'hash1_id' => $hash1_id,
+                'hash2_id' => $hash2_id,
+                'hash3_id' => $hash3_id,
                 'description' => $request->text1,
                 'image' => $image_path[0],
             ]);

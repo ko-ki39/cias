@@ -39,10 +39,6 @@ Route::get('/top/update/{id}', 'ArticleController@update')->name('update');
 // ↓記事削除用ルート
 Route::get('/top/delete/{id}', 'ArticleController@delete')->name('delete');
 
-Route::get('/top/post', 'PostController@postForm')->name('post');
-Route::post('/top/upload', 'PostController@upload')->name('upload');
-Route::get('/top/upload', 'PostController@upload')->name('upload'); //リダイレクトさせるためにget通信も許可させる
-
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 // Auth::routes([
