@@ -37,4 +37,29 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    // 
+
+    public function username()
+    {
+        return 'user_id';
+    }
+
+    protected function validateLogin(\Illuminate\Http\Request $request)
+    {
+        $this->validate($request, [
+            $this->username() => 'required|string',
+            'password' => 'required|string'
+        ]);
+    }
+
+    // public function authenticate(Request $request)
+    // {
+    //     $credentials = $request->only('user_id', 'password');
+
+    //     if (Auth::attempt($credentials)) {
+    //         // 認証に成功した
+    //         return redirect()->intended('dashboard');
+    //     }
+    // }
 }

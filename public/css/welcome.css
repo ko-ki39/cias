@@ -20,8 +20,9 @@ body {
 }
 
 .welcome_image p {
+  margin-top: 200px;
   font-size: 3em;
-  color: white;
+  color: #505050;
   text-align: center;
   vertical-align: middle;
 }
@@ -48,6 +49,14 @@ body {
   border: dashed 2px yellow;
   height: 200px;
   width: 250px;
+}
+
+.footer {
+  color: palegoldenrod;
+}
+
+html body .footer .foot_right .foot_twitter {
+  border: dashed 1px yellow;
 }
 
 .welcome_image {

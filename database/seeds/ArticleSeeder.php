@@ -18,6 +18,7 @@ class ArticleSeeder extends Seeder
             'user_id' => 1,
             'title' => 'タイトル1',
             'description' => '説明1',
+            'image' => 'rhetw46j',
         ];
         DB::table('articles')->insert($param);
 
@@ -25,6 +26,7 @@ class ArticleSeeder extends Seeder
             'user_id' => 2,
             'title' => 'タイトル2',
             'description' => '説明2',
+            'image' => 'rhetw46j',
         ];
         DB::table('articles')->insert($param);
 
@@ -32,6 +34,7 @@ class ArticleSeeder extends Seeder
             'user_id' => 3,
             'title' => 'タイトル3',
             'description' => '説明3',
+            'image' => 'rhetw46j',
         ];
         DB::table('articles')->insert($param);
     }
