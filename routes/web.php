@@ -21,15 +21,14 @@ Route::get('/top/individual/{id}', 'Controller@individual')->name('individual');
 Route::get('/top/article_detail/{id}', 'Controller@article_detail')->name('article_detail'); //記事詳細
 Route::get('/top/fake/{id}', 'Controller@fake')->name('fake'); //偽物ページ後で消す
 
-Auth::routes();
 // Route::get("/login", "SanController@loginPage");
 // Route::get("/register", "SanController@registerPage");
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/top/post', 'PostController@postForm')->name('post');
 Route::post('/top/upload', 'PostController@upload')->name('upload');
 Route::get('/top/upload', 'PostController@upload')->name('upload'); //リダイレクトさせるためにget通信も許可させる
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
