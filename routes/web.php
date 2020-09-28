@@ -41,9 +41,3 @@ Route::get('/top/delete/{id}', 'ArticleController@delete')->name('delete');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-// Auth::routes([
-//     'register' => false
-// ]);
-// Route::get("/register", "Auth\RegisterController@getRegister")->name("register");
-// Route::post("/register", "Auth\RegisterController@postRegister")->name("register");
-
