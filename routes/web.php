@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,13 +22,8 @@ Route::get('/top/individual/{id}', 'Controller@individual')->name('individual');
 Route::get('/top/article_detail/{id}', 'Controller@article_detail')->name('article_detail'); //記事詳細
 Route::get('/top/fake/{id}', 'Controller@fake')->name('fake'); //偽物ページ後で消す
 
-Auth::routes();
-Route::get("/login", "SanController@loginPage");
-Route::get("/register", "SanController@registerPage");
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
+// Route::get("/login", "SanController@loginPage");
+// Route::get("/register", "SanController@registerPage");
 
 // ↓記事作成用のルート
 Route::get('/home', 'HomeController@index')->name('home');
@@ -43,4 +39,15 @@ Route::get('/top/update/{id}', 'ArticleController@update')->name('update');
 // ↓記事削除用ルート
 Route::get('/top/delete/{id}', 'ArticleController@delete')->name('delete');
 
+Route::get('/top/post', 'PostController@postForm')->name('post');
+Route::post('/top/upload', 'PostController@upload')->name('upload');
+Route::get('/top/upload', 'PostController@upload')->name('upload'); //リダイレクトさせるためにget通信も許可させる
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+// Auth::routes([
+//     'register' => false
+// ]);
+// Route::get("/register", "Auth\RegisterController@getRegister")->name("register");
+// Route::post("/register", "Auth\RegisterController@postRegister")->name("register");
 

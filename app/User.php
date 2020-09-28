@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'user_id', 'password', 'user_name', 'email', 'secret_question_id', 'secret_answer',
     ];
 
     /**
@@ -42,13 +42,13 @@ class User extends Authenticatable
         return $this->hasOne('App\SecretQuestion');
     }
 
-    public function getPasswordAttribute($value){
-        return Crypt::decrypt($value);
-        // return ucfirst($value);
-    }
+    // public function getPasswordAttribute($value){
+    //     return Crypt::decrypt($value);
+    //     // return ucfirst($value);
+    // }
 
-    public function setPasswordAttribute($value){
-        return Crypt::encrypt($value);
-        // return ucfirst($value);
-    }
+    // public function setPasswordAttribute($value){
+    //     return Crypt::encrypt($value);
+    //     // return ucfirst($value);
+    // }
 }

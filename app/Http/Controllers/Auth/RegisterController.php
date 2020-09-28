@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -50,9 +51,12 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'user_id' => ['required', 'string', 'alpha_dash', 'max:25'],
+            'password' => ['required', 'string', 'alpha_num', 'min:8', 'confirmed'],
+            'user_name' => ['required', 'string', 'max:10', 'unique:users'],
+            'email' => ['string', 'email', 'max:255', 'unique:users'],
+            'secret_question_id' => ['required'],
+            'secret_answer' => ['required', 'string', 'max:50'],
         ]);
     }
 
@@ -64,10 +68,33 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // dd($data);   
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+            'user_id' => $data['user_id'],
             'password' => Hash::make($data['password']),
+            'user_name' => $data['user_name'],
+            'email' => $data['email'],
+            'secret_question_id' => $data['secret_question_id'],
+            'secret_answer' => $data['secret_answer'],
         ]);
+    }
+
+    public function getRegister()
+    {
+        return view("auth.register");
+    }
+
+    public function postRegister(Request $data)
+    {
+        User::create([
+            'user_id' => $data['user_id'],
+            'password' => Hash::make($data['password']),
+            'user_name' => $data['user_name'],
+            'email' => $data['email'],
+            'secret_question_id' => $data['secret_question_id'],
+            'secret_answer' => $data['secret_answer'],
+        ]);
+
+        return redirect("/home");
     }
 }
