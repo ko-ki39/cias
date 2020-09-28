@@ -29,6 +29,12 @@
                         <div class="twitter">twi</div>
                         <div class="fav">fa</div>
                     </div>
+                    <a href="{{ route('edit', ['id' => $article->id]) }}">
+                        編集
+                    </a>
+                    <a href="{{ route('delete', ['id' => $article->id]) }}">
+                        削除
+                    </a>
                 </div>
 
             @endforeach
