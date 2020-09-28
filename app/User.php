@@ -42,13 +42,13 @@ class User extends Authenticatable
         return $this->hasOne('App\SecretQuestion');
     }
 
-    public function getPasswordAttribute($value){
-        return Crypt::decrypt($value);
-        // return ucfirst($value);
-    }
+    // public function getPasswordAttribute($value){
+    //     return Crypt::decrypt($value);
+    //     // return ucfirst($value);
+    // }
 
-    public function setPasswordAttribute($value){
-        return Crypt::encrypt($value);
-        // return ucfirst($value);
-    }
+    // public function setPasswordAttribute($value){
+    //     return Crypt::encrypt($value);
+    //     // return ucfirst($value);
+    // }
 }

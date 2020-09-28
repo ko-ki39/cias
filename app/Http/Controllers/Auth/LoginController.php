@@ -52,4 +52,14 @@ class LoginController extends Controller
             'password' => 'required|string'
         ]);
     }
+
+    // public function authenticate(Request $request)
+    // {
+    //     $credentials = $request->only('user_id', 'password');
+
+    //     if (Auth::attempt($credentials)) {
+    //         // 認証に成功した
+    //         return redirect()->intended('dashboard');
+    //     }
+    // }
 }

@@ -30,5 +30,10 @@ Route::post('/top/upload', 'PostController@upload')->name('upload');
 Route::get('/top/upload', 'PostController@upload')->name('upload'); //リダイレクトさせるためにget通信も許可させる
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+// Auth::routes([
+//     'register' => false
+// ]);
+// Route::get("/register", "Auth\RegisterController@getRegister")->name("register");
+// Route::post("/register", "Auth\RegisterController@postRegister")->name("register");
+
