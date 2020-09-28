@@ -148,4 +148,10 @@ class ArticleController extends Controller
         }
         return redirect()->route('top');
     }
+
+    public function delete($id){
+        Article::find($id)->delete();
+
+        return redirect()->route('top');
+    }
 }

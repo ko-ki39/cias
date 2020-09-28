@@ -40,4 +40,7 @@ Route::get('/top/edit/{id}', 'ArticleController@edit')->name('edit');
 Route::post('/top/update/{id}', 'ArticleController@update')->name('update');
 Route::get('/top/update/{id}', 'ArticleController@update')->name('update');
 
+// ↓記事削除用ルート
+Route::get('/top/delete/{id}', 'ArticleController@delete')->name('delete');
+
 
