@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Article;
 use App\Post;
+use App\Hashtag;
 
 class ArticleController extends Controller
 {
@@ -47,12 +48,41 @@ class ArticleController extends Controller
                     $image_path[$i] = null; //nullを入れないと空になる
                 }
             }
+
+            $hash1 = DB::table('hashtags')->where('hashtag_contents', $request->hash1)->exists(); //データが存在しているか
+            $hash2 = DB::table('hashtags')->where('hashtag_contents', $request->hash2)->exists();
+            $hash3 = DB::table('hashtags')->where('hashtag_contents', $request->hash3)->exists();
+
+            //  dd($request);
+            if($hash1){
+                $hashtag = new Hashtag();
+                $hashtag->create([
+                    'hashtag_contents' => $request->hash1
+                ]);
+            }
+            if($hash2){
+                $hashtag = new Hashtag();
+                $hashtag->create([
+                    'hashtag_contents' => $request->hash2
+                ]);
+            }
+            if($hash3){
+                $hashtag = new Hashtag();
+                $hashtag->create([
+                    'hashtag_contents' => $request->hash3
+                ]);
+            }
+            dd($request);
             // dd($request);
             // if($imagefile->isValid()){ //正常にアップロードできたか
             $article = new Article();
             $article->create([
                 'user_id' => 1,
-                'title' => 'タイトル４',
+                'title' => $request->title,
+                'hash1_id' => $request->hash1,
+                'hash2_id' => $request->hash2,
+                'hash3_id' => $request->hash3,
+
                 'description' => $request->text1,
                 'image' => $image_path[0],
             ]);
@@ -73,6 +103,7 @@ class ArticleController extends Controller
                 'text5' => $request->text5,
                 'text6' => $request->text6,
             ]);
+
             return redirect()->route('top');
         } else {
             return redirect()->route('top');
@@ -149,7 +180,8 @@ class ArticleController extends Controller
         return redirect()->route('top');
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         Article::find($id)->delete();
 
         return redirect()->route('top');
