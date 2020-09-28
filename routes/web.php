@@ -29,7 +29,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
+// ↓記事作成用のルート
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/top/post', 'PostController@postForm')->name('post');
-Route::post('/top/upload', 'PostController@upload')->name('upload');
-Route::get('/top/upload', 'PostController@upload')->name('upload'); //リダイレクトさせるためにget通信も許可させる
+Route::get('/top/post', 'ArticleController@postForm')->name('post');
+Route::post('/top/upload', 'ArticleController@upload')->name('upload');
+Route::get('/top/upload', 'ArticleController@upload')->name('upload'); //リダイレクトさせるためにget通信も許可させる
+
+//↓記事の編集用ルート
+Route::get('/top/edit/{id}', 'ArticleController@edit')->name('edit');
+Route::post('/top/update/{id}', 'ArticleController@update')->name('update');
+Route::get('/top/update/{id}', 'ArticleController@update')->name('update');
+
+
