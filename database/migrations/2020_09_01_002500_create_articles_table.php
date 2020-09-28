@@ -19,9 +19,11 @@ class CreateArticlesTable extends Migration
             $table->text('title');
             $table->text('description');
             $table->string('image');
-            $table->foreignId('hash1_id')->nullable()->constrained('hashtags')->onDelete('cascade');
-            $table->foreignId('hash2_id')->nullable()->constrained('hashtags')->onDelete('cascade');
-            $table->foreignId('hash3_id')->nullable()->constrained('hashtags')->onDelete('cascade');
+            $table->string('hash1_id')->nullable();
+            $table->string('hash2_id')->nullable();
+
+            $table->string('hash3_id')->nullable();
+
 
             $table->timestamps();
         });
