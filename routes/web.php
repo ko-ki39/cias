@@ -20,7 +20,7 @@ Route::get('/top', 'Controller@top')->name('top');
 //routeで送ってきたいからnameをつける
 Route::get('/top/individual/{id}', 'Controller@individual')->name('individual');//マイページ
 Route::get('/top/article_detail/{id}', 'Controller@article_detail')->name('article_detail'); //記事詳細
-Route::get('/top/fake/{id}', 'Controller@fake')->name('fake'); //偽物ページ後で消す
+// Route::get('/top/fake/{id}', 'Controller@fake')->name('fake'); //偽物ページ後で消す
 
 // Route::get("/login", "SanController@loginPage");
 // Route::get("/register", "SanController@registerPage");
