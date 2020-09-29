@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Article;
 use App\Post;
 use App\Hashtag;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
@@ -126,15 +127,24 @@ class ArticleController extends Controller
     {
         $article = DB::table('articles')->where('id', $id)->first();
 
-        $post = DB::table('posts')->where('id', $id)->first();
-
-
-        return view('edit', compact('article', 'post'));
+        if($article->user_id == Auth::id()){
+            //編集する人が本人か
+            $post = DB::table('posts')->where('id', $id)->first();
+            return view('edit', compact('article', 'post'));
+        }else{
+            return redirect()->route('top');
+        }
     }
 
     public function update(Request $request, $id)
     {
         if ($request->isMethod('post')) {
+            $article = DB::table('articles')->where('id', $id)->first();
+
+            if($article->user_id != Auth::id()){
+                return redirect()->route('top');
+            }
+
             // バリデーション
             $request->validate([
                 // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
@@ -198,7 +208,12 @@ class ArticleController extends Controller
 
     public function delete($id)
     {
-        Article::find($id)->delete();
+        $article = DB::table('articles')->where('id', $id)->first();
+
+
+        if($article->user_id == Auth::id()){//本人か確認
+            Article::find($id)->delete();
+        }
 
         return redirect()->route('top');
     }
