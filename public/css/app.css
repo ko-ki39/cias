@@ -10904,3 +10904,29 @@ a.text-dark:focus {
   }
 }
 
+.user_image_area p{
+  margin: auto auto 15px auto;
+  font-size: large;
+  font-weight: bold;
+}
+
+.user_image_display_area{
+  margin: auto auto 15px auto;
+}
+
+#user_image{
+  position: absolute;
+  /* position: relative; */
+  width: 250px;
+  height: 250px;
+  z-index: 99;
+  border: solid 1px indigo;
+}
+
+#user_image_preview{
+  position: relative;
+  z-index: 90;
+  width: auto;
+  height: auto;
+  /* margin-bottom: 250px; */
+}
