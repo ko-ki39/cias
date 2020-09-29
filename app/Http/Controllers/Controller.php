@@ -51,6 +51,11 @@ class Controller extends BaseController
         $user = DB::table('users')->where('id', $id)->first();
         $articles = DB::table('articles')->where('user_id', $id)->get();
 
+        // $comments = DB::table('comments')->where('user_id', $id)->latest()->get();
+        // foreach($comments as $key => $comment ){
+        //     $articles[$key] = DB::table('article')->where('id', $comment->article_id)->first();
+        // }
+
 
         return view('individual', compact('user', 'articles'));
     }

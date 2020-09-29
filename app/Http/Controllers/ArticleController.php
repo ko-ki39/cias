@@ -181,8 +181,12 @@ class ArticleController extends Controller
             ];
 
             $update_article = [
-                'image' => $image_path[0],
                 'description' => $request->text1,
+                'image' => $image_path[0],
+                'hash1_id' => $request->hash1,
+                'hash2_id' => $request->hash2,
+                'hash3_id' => $request->hash3,
+
             ];
             Article::where('id', $id)->update($update_article);
             Post::where('id', $id)->update($update_post);
