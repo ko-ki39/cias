@@ -41,3 +41,9 @@ Route::get('/top/delete/{id}', 'ArticleController@delete')->name('delete');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
+//パスワードを忘れた場合の秘密の質問ページ
+Route::get('/secret_question', 'Auth\ForgotPasswordController@secretQuestion')->name('secret_question');
+Route::post('/secret_question_answer', 'Auth\ForgotPasswordController@secretQuestionAnswer')->name('secret_question_answer');
+
+
