@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Article;
 use App\Post;
+use App\Hashtag;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
@@ -47,12 +49,53 @@ class ArticleController extends Controller
                     $image_path[$i] = null; //nullを入れないと空になる
                 }
             }
+
+            $hash1 = DB::table('hashtags')->where('hashtag_contents', $request->hash1)->exists(); //データが存在しているか
+            $hash2 = DB::table('hashtags')->where('hashtag_contents', $request->hash2)->exists();
+            $hash3 = DB::table('hashtags')->where('hashtag_contents', $request->hash3)->exists();
+
+            //  dd($request);
+            if($hash1 == false){
+                if(isset($request->hash1)){
+                    $hashtag = new Hashtag();
+                    $hashtag->create([
+                        'hashtag_contents' => $request->hash1
+                    ]);
+                }
+            }
+            if($hash2 == false){
+                if(isset($request->hash2)){
+                    $hashtag = new Hashtag();
+                    $hashtag->create([
+                        'hashtag_contents' => $request->hash2
+                    ]);
+                }
+
+            }
+            if($hash3 == false){
+                if(isset($request->hash3)){
+                    $hashtag = new Hashtag();
+                    $hashtag->create([
+                        'hashtag_contents' => $request->hash3
+                    ]);
+                }
+            }
+
+            // $hash1_id =  DB::table('hashtags')->where('hashtag_contents', $request->hash1)->value('id');
+            // $has2_id =  DB::table('hashtags')->where('hashtag_contents', $request->hash2)->value('id');
+            // $hash3_id =  DB::table('hashtags')->where('hashtag_contents', $request->hash3)->value('id');
+
+            // dd($hash1_id);
             // dd($request);
             // if($imagefile->isValid()){ //正常にアップロードできたか
+
             $article = new Article();
             $article->create([
                 'user_id' => 1,
-                'title' => 'タイトル４',
+                'title' => $request->title,
+                'hash1_id' => $request->hash1,
+                'hash2_id' => $request->hash2,
+                'hash3_id' => $request->hash3,
                 'description' => $request->text1,
                 'image' => $image_path[0],
             ]);
@@ -83,15 +126,24 @@ class ArticleController extends Controller
     {
         $article = DB::table('articles')->where('id', $id)->first();
 
-        $post = DB::table('posts')->where('id', $id)->first();
-
-
-        return view('edit', compact('article', 'post'));
+        if($article->user_id == Auth::id()){
+            //編集する人が本人か
+            $post = DB::table('posts')->where('id', $id)->first();
+            return view('edit', compact('article', 'post'));
+        }else{
+            return redirect()->route('top');
+        }
     }
 
     public function update(Request $request, $id)
     {
         if ($request->isMethod('post')) {
+            $article = DB::table('articles')->where('id', $id)->first();
+
+            if($article->user_id != Auth::id()){
+                return redirect()->route('top');
+            }
+
             // バリデーション
             $request->validate([
                 // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
@@ -138,8 +190,12 @@ class ArticleController extends Controller
             ];
 
             $update_article = [
-                'image' => $image_path[0],
                 'description' => $request->text1,
+                'image' => $image_path[0],
+                'hash1_id' => $request->hash1,
+                'hash2_id' => $request->hash2,
+                'hash3_id' => $request->hash3,
+
             ];
             Article::where('id', $id)->update($update_article);
             Post::where('id', $id)->update($update_post);
@@ -149,9 +205,14 @@ class ArticleController extends Controller
         return redirect()->route('top');
     }
 
-    public function delete($id){
-        Article::find($id)->delete();
+    public function delete($id)
+    {
+        $article = DB::table('articles')->where('id', $id)->first();
 
+
+        if($article->user_id == Auth::id()){//本人か確認
+            Article::find($id)->delete();
+        }
         return redirect()->route('top');
     }
 }

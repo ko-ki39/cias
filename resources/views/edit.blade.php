@@ -12,6 +12,11 @@
         <div class="content">
             <form action="{{ route('update', ['id' => $post->id]) }}" method="POST" enctype='multipart/form-data'>
                 @csrf
+                <input type="text" name="title" value="{{ $article->title }}">
+
+                <input type="text" name="hash1" value="{{ $article->hash1_id }}">
+                <input type="text" name="hash2" value="{{ $article->hash2_id }}">
+                <input type="text" name="hash3" value="{{ $article->hash3_id }}">
 
                 <input type="file" class="file" name="image1">
                 <textarea name="text1" id="" cols="30" rows="10" class="text">{{ $post->text1 }}</textarea>

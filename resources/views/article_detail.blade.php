@@ -27,8 +27,8 @@
                         <div class="fav"></div>
                     </div>
                     <p class="hash">{{ $article->hash1_id }}</p>
-                    <p class="hash">{{ $article->hash1_id }}</p>
-                    <p class="hash">{{ $article->hash1_id }}</p>
+                    <p class="hash">{{ $article->hash2_id }}</p>
+                    <p class="hash">{{ $article->hash3_id }}</p>
                 </div>
             </div>
             <div class="text">

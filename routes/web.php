@@ -20,7 +20,7 @@ Route::get('/top', 'Controller@top')->name('top');
 //routeで送ってきたいからnameをつける
 Route::get('/top/individual/{id}', 'Controller@individual')->name('individual');//マイページ
 Route::get('/top/article_detail/{id}', 'Controller@article_detail')->name('article_detail'); //記事詳細
-Route::get('/top/fake/{id}', 'Controller@fake')->name('fake'); //偽物ページ後で消す
+// Route::get('/top/fake/{id}', 'Controller@fake')->name('fake'); //偽物ページ後で消す
 
 // Route::get("/login", "SanController@loginPage");
 // Route::get("/register", "SanController@registerPage");
@@ -35,6 +35,18 @@ Route::get('/top/upload', 'ArticleController@upload')->name('upload'); //リダ�
 Route::get('/top/edit/{id}', 'ArticleController@edit')->name('edit');
 Route::post('/top/update/{id}', 'ArticleController@update')->name('update');
 Route::get('/top/update/{id}', 'ArticleController@update')->name('update');
+
+// ↓記事削除用ルート
+Route::get('/top/delete/{id}', 'ArticleController@delete')->name('delete');
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
+//パスワードを忘れた場合の秘密の質問ページ
+Route::get('/secret_question', 'Auth\ForgotPasswordController@secretQuestion')->name('secret_question');
+Route::post('/secret_question_answer', 'Auth\ForgotPasswordController@secretQuestionAnswer')->name('secret_question_answer');
+
+
 
 // ↓記事削除用ルート
 Route::get('/top/delete/{id}', 'ArticleController@delete')->name('delete');

@@ -70,7 +70,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
         if (request()->hasFile('u_i_input')) {
             $image = request()->file('u_i_input');
             $fileName = time() . $image->getClientOriginalName();

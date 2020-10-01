@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Illuminate\Support\Facades\DB;
+
 
 class ForgotPasswordController extends Controller
 {
@@ -19,4 +22,14 @@ class ForgotPasswordController extends Controller
     */
 
     use SendsPasswordResetEmails;
+
+    public function secretQuestion(){
+        return view('auth/passwords/secret_question');
+    }
+
+    public function secretQuestionAnswer(Request $request){
+        dd($request);
+        $user = DB::table('users')->where('user_id', $request->user_id)->first();
+
+    }
 }
