@@ -52,3 +52,9 @@ Route::post('/secret_question_answer', 'Auth\ForgotPasswordController@secretQues
 
 
 
+
+// ↓記事削除用ルート
+Route::get('/top/delete/{id}', 'ArticleController@delete')->name('delete');
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');

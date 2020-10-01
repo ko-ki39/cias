@@ -10904,3 +10904,45 @@ a.text-dark:focus {
   }
 }
 
+.u_i_parent{
+  margin: auto auto 15px auto;
+}
+
+.u_i_parent p{
+  margin-bottom: 12px;
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
+}
+
+.u_i_display_area{
+  margin: auto auto 15px auto;
+  width: 250px;
+  height: 250px;
+  border: solid 1px indigo;
+}
+
+.u_i_input{
+  position: absolute;
+  /* position: relative; */
+  width: 250px;
+  height: 250px;
+  z-index: 99;
+  border: solid 1px indigo;
+}
+
+.u_i_img{
+  /* position: relative; */
+  display: none;
+  /* z-index: 90;
+  width: 250px;
+  height: 250px; */
+}
+
+#u_i_canvas{
+  position: relative;
+  z-index: 90;
+  width: 250px;
+  height: 250px;
+  /* margin-bottom: 250px; */
+}
