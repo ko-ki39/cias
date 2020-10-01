@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/test', 'Controller@test');
+// Route::get('/test', 'Controller@test');
 
 Route::get('/', 'SanController@welcomePage');
 Route::get('/top', 'Controller@top')->name('top');
@@ -45,5 +45,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 //パスワードを忘れた場合の秘密の質問ページ
 Route::get('/secret_question', 'Auth\ForgotPasswordController@secretQuestion')->name('secret_question');
 Route::post('/secret_question_answer', 'Auth\ForgotPasswordController@secretQuestionAnswer')->name('secret_question_answer');
+// Route::get('/secret_question', function(){
+//     // dd();
+//     return view('auth/passwords/secret_question');
+// })->name('secret_question');
+
 
 
