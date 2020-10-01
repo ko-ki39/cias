@@ -61,6 +61,8 @@ class Controller extends BaseController
         }
     }
 
+
+
     // public function fake($id)
     // { //偽物ページ 後で消す
     //     $user = DB::table('users')->where('id', $id)->first();
