@@ -50,9 +50,6 @@ Route::post('/secret_question_answer', 'Auth\ForgotPasswordController@secretQues
 //     return view('auth/passwords/secret_question');
 // })->name('secret_question');
 
-
-
-
 // ↓記事削除用ルート
 Route::get('/top/delete/{id}', 'ArticleController@delete')->name('delete');
 

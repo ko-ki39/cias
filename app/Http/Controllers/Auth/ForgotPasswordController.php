@@ -33,9 +33,7 @@ class ForgotPasswordController extends Controller
         if($user){
             if($request->secret_question_id == $user->secret_question_id && $request->secret_answer == $user->secret_answer){
                 //対象のユーザーのsecret_question_idとsecret_answerが一致した場合
-                // token_name()
-                // return redirect()
-
+                return view('auth/passwords/change');
             }else {
                 return redirect('login');
             }
