@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use \InterventionImage;
 
 class RegisterController extends Controller
 {
@@ -51,6 +52,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'u_i_input' => ['file', 'image'],
             'user_id' => ['required', 'string', 'alpha_dash', 'max:25'],
             'password' => ['required', 'string', 'alpha_num', 'min:8', 'confirmed'],
             'user_name' => ['required', 'string', 'max:10', 'unique:users'],
@@ -68,8 +70,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // dd($data);   
-        return User::create([
+
+        if (request()->hasFile('u_i_input')) {
+            $image = request()->file('u_i_input');
+            $fileName = time() . $image->getClientOriginalName();
+            // $image = request()->file('u_i_input')->store('public'); //シンボリックリンクで画像をstorage内に保存
+            $stst = InterventionImage::make($image)
+                ->resize(250, 250, function($constraint){
+                    $constraint->aspectRatio();
+            })->save(storage_path('/app/public/' . $fileName));
+            $image_path = basename($fileName); //画像名のみ保存
+        } else {
+            $image_path = null; //nullを入れないと空になる
+        }
+
+        $user = User::create([
+            'image' => $image_path,
             'user_id' => $data['user_id'],
             'password' => Hash::make($data['password']),
             'user_name' => $data['user_name'],
@@ -77,24 +93,26 @@ class RegisterController extends Controller
             'secret_question_id' => $data['secret_question_id'],
             'secret_answer' => $data['secret_answer'],
         ]);
+
+        return $user;
     }
 
-    public function getRegister()
-    {
-        return view("auth.register");
-    }
+    // public function getRegister()
+    // {
+    //     return view("auth.register");
+    // }
 
-    public function postRegister(Request $data)
-    {
-        User::create([
-            'user_id' => $data['user_id'],
-            'password' => Hash::make($data['password']),
-            'user_name' => $data['user_name'],
-            'email' => $data['email'],
-            'secret_question_id' => $data['secret_question_id'],
-            'secret_answer' => $data['secret_answer'],
-        ]);
+    // public function postRegister(Request $data)
+    // {
+    //     User::create([
+    //         'user_id' => $data['user_id'],
+    //         'password' => Hash::make($data['password']),
+    //         'user_name' => $data['user_name'],
+    //         'email' => $data['email'],
+    //         'secret_question_id' => $data['secret_question_id'],
+    //         'secret_answer' => $data['secret_answer'],
+    //     ]);
 
-        return redirect("/home");
-    }
+    //     return redirect("/home");
+    // }
 }
