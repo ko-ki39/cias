@@ -8,14 +8,15 @@
                 <div class="card-header">{{ __('新ッ規ッ登ッ録ッ') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data" multiple>
                         @csrf
 
-                        <div class="form-group row user_image_area">
+                        <div class="form-group u_i_parent">
                             <p>ユーザー画像を入れ給えッッッ</p>
-                            <div class="user_image_display_area">
-                                <input type="file" name="user_image" id="user_image">
-                                <img alt="" id="user_image_preview">
+                            <div class="u_i_display_area">
+                                <input type="file" name="u_i_input" class="u_i_input">
+                                <img alt="" class="u_i_img">
+                                <canvas id="u_i_canvas" width="250" height="250"></canvas>
                             </div>
                         </div>
                         

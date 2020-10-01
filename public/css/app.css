@@ -10904,17 +10904,25 @@ a.text-dark:focus {
   }
 }
 
-.user_image_area p{
+.u_i_parent{
   margin: auto auto 15px auto;
+}
+
+.u_i_parent p{
+  margin-bottom: 12px;
+  text-align: center;
   font-size: large;
   font-weight: bold;
 }
 
-.user_image_display_area{
+.u_i_display_area{
   margin: auto auto 15px auto;
+  width: 250px;
+  height: 250px;
+  border: solid 1px indigo;
 }
 
-#user_image{
+.u_i_input{
   position: absolute;
   /* position: relative; */
   width: 250px;
@@ -10923,10 +10931,18 @@ a.text-dark:focus {
   border: solid 1px indigo;
 }
 
-#user_image_preview{
+.u_i_img{
+  /* position: relative; */
+  display: none;
+  /* z-index: 90;
+  width: 250px;
+  height: 250px; */
+}
+
+#u_i_canvas{
   position: relative;
   z-index: 90;
-  width: auto;
-  height: auto;
+  width: 250px;
+  height: 250px;
   /* margin-bottom: 250px; */
 }
