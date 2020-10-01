@@ -6,6 +6,7 @@
   width: 620px;
   margin-top: 10px;
   margin-bottom: 10px;
+  margin-left: 10px;
   float: left;
   border: dashed 1px #000;
 }
@@ -42,28 +43,35 @@
 }
 
 .main .content .article .comment {
-  position: absolute;
-  bottom: 0;
-  right: 0;
   border: dashed 1px #f00;
   width: 50px;
   height: 50px;
 }
 
 .main .content .article .twitter {
-  position: absolute;
-  bottom: 0;
-  right: 50px;
   border: dashed 1px #f00;
   width: 50px;
   height: 50px;
 }
 
 .main .content .article .fav {
-  position: absolute;
-  bottom: 0;
-  right: 100px;
   border: dashed 1px #f00;
   width: 50px;
   height: 50px;
+}
+
+.ctf_container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }

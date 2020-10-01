@@ -37,10 +37,11 @@
 
                     <p class="article_description">{{ $article->description }}</p>
                     <p class="date">{{ $article->created_at }}</p>
-                    <div class="comment">
+                    <div class="ctf_container">
+                        <div class="comment"></div>
+                        <div><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-hashtags="{{ $article->hash1_id }}" data-lang="ja" data-show-count="false" data-url="{{ route('article_detail', ['id' => $article->id]) }}" data-text="{{ $article->title }}">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+                        <div class="fav"></div>
                     </div>
-                    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-hashtags="{{ $article->hash1_id }}" data-lang="ja" data-show-count="false" data-url="{{ route('article_detail', ['id' => $article->id]) }}" data-text="{{ $article->title }}">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                    <div class="fav"></div>
                 </div>
 
             @endforeach
