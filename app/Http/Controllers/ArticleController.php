@@ -116,7 +116,6 @@ class ArticleController extends Controller
                 'text5' => $request->text5,
                 'text6' => $request->text6,
             ]);
-
             return redirect()->route('top');
         } else {
             return redirect()->route('top');
@@ -214,7 +213,6 @@ class ArticleController extends Controller
         if($article->user_id == Auth::id()){//本人か確認
             Article::find($id)->delete();
         }
-
         return redirect()->route('top');
     }
 }
