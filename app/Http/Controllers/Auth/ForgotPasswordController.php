@@ -25,15 +25,20 @@ class ForgotPasswordController extends Controller
     use SendsPasswordResetEmails;
 
     public function secretQuestion(){
+
         return view('auth/passwords/secret_question');
     }
 
     public function secretQuestionAnswer(Request $request){
+        if ($request->isMethod('post') == false) {
+            return redirect()->route('top');
+        }
         $user = DB::table('users')->where('user_id', $request->user_id)->first();
         if($user){
             if($request->secret_question_id == $user->secret_question_id && $request->secret_answer == $user->secret_answer){
                 //対象のユーザーのsecret_question_idとsecret_answerが一致した場合
-                return view('auth/passwords/change');
+                $id = $user->id;
+                return view('auth/passwords/change', compact('id'));
             }else {
                 return redirect('login');
             }
