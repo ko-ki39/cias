@@ -13,6 +13,12 @@
             <form action="{{ route('upload') }}" method="POST" enctype='multipart/form-data'>
                 @csrf
 
+                <input type="text" name="title">
+
+                <input type="text" name="hash1">
+                <input type="text" name="hash2">
+                <input type="text" name="hash3">
+
                 <input type="file" class="file" name="image1">
                 <textarea name="text1" id="" cols="30" rows="10" class="text"></textarea>
                 <input type="file" class="file" name="image2">

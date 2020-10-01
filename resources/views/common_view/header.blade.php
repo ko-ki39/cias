@@ -1,9 +1,12 @@
 <div class="header clearfix">
     <div class="top">
         <i class="far fa-bars"></i>
-        <h2>Sign up</h2>
-        <h2>Login</h2>
-        <h2>Logout</h2>
+        @guest
+            <h2>Sign up</h2>
+            <h2>Login</h2>
+        @else
+            <h2>Logout</h2>
+        @endguest
     </div>
     <div class="header_bot">
         <div class="tp_intro">

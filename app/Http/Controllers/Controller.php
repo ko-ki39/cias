@@ -6,6 +6,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class Controller extends BaseController
@@ -51,17 +52,22 @@ class Controller extends BaseController
         $user = DB::table('users')->where('id', $id)->first();
         $articles = DB::table('articles')->where('user_id', $id)->get();
 
-
-        return view('individual', compact('user', 'articles'));
+        if (Auth::id() == $id) {
+            //本人だった場合
+            return view('individual', compact('user', 'articles'));
+        } else {
+            // 他人の場合
+            return view('fake', compact('user', 'articles'));
+        }
     }
 
-    public function fake($id)
-    { //偽物ページ 後で消す
-        $user = DB::table('users')->where('id', $id)->first();
+    // public function fake($id)
+    // { //偽物ページ 後で消す
+    //     $user = DB::table('users')->where('id', $id)->first();
 
-        //user_idが同じarticlesをとってくる
-        $articles = DB::table('articles')->where('user_id', $id)->get();
+    //     //user_idが同じarticlesをとってくる
+    //     $articles = DB::table('articles')->where('user_id', $id)->get();
 
-        return view('fake', compact('user', 'articles'));
-    }
+    //     return view('fake', compact('user', 'articles'));
+    // }
 }
