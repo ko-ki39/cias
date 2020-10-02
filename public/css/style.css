@@ -38,6 +38,7 @@ html body .header .header_bot {
 }
 
 html body .header .header_bot .tp_intro {
+  margin: 10px 0 0 10px;
   float: left;
 }
 

@@ -4,6 +4,7 @@
         width: 620px;
         margin-top: 10px;
         margin-bottom: 10px;
+        margin-left: 10px;
         float: left;
         border: dashed 1px #000;
         .search {
@@ -14,54 +15,71 @@
             width: 550px;
             margin: 10px auto;
             border: dashed 1px #000;
-            position: relative;
+            // position: relative;
+            display: flex;
+            flex-direction: column;
             .article_image {
-                height: 300px;
+                height: 360px;
                 width: 550px;
                 border: dashed 1px #0f0;
             }
             .article_title {
-                margin: 15px 0;
+                margin: 0.6em;
                 text-align: center;
-                font-size: 25px;
+                font-size: 18px;
             }
-            .article_description {}
+            .article_description {
+                margin: 0.6em;
+                font-size: 0.9em;
+            }
             .date {
-                position: absolute;
+                margin: 0.2em;
+                font-size: 0.6em;
+                // position: absolute;
                 // float: left;
-                bottom: 0;
-                left: 0;
-                margin-bottom: 0;
+                // bottom: 0;
+                // left: 0;
+                // margin-bottom: 0;
             }
-            .comment {
-                position: absolute;
-                // float: left;
-                bottom: 0;
-                right: 0;
-                // float: right;
-                border: dashed 1px #f00;
-                width: 50px;
-                height: 50px;
-            }
-            .twitter {
-                position: absolute;
-                // float: left;
-                bottom: 0;
-                right: 50px;
-                // float: right;
-                border: dashed 1px #f00;
-                width: 50px;
-                height: 50px;
-            }
-            .fav {
-                position: absolute;
-                // float: left;
-                bottom: 0;
-                right: 100px;
-                // float: right;
-                border: dashed 1px #f00;
-                width: 50px;
-                height: 50px;
+            .ctf_container{
+                display: flex;
+                flex-direction: row;
+                align-items: flex-end;
+                justify-content: flex-end;
+                .comment {
+                    // position: absolute;
+                    // float: left;
+                    // bottom: 0;
+                    // right: 0;
+                    // float: right;
+                    // border: dashed 1px #f00;
+                    // width: 50px;
+                    // height: 50px;
+                    margin-right: 0.5em;
+                }
+                .twitter {
+                    // position: absolute;
+                    // float: left;
+                    // bottom: 0;
+                    // right: 50px;
+                    // float: right;
+                    // border: dashed 1px #f00;
+                    // width: 50px;
+                    // height: 50px;
+                    margin-right: 0.5em;
+                }
+                .fav {
+                    // position: absolute;
+                    // float: left;
+                    // bottom: 0;
+                    // right: 100px;
+                    // float: right;
+                    // border: dashed 1px #f00;
+                    // width: 50px;
+                    // height: 50px;
+                    margin-right: 0.5em;
+                    color:#135f13;
+                }
             }
         }
     }

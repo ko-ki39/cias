@@ -16,8 +16,8 @@ class ArticleSeeder extends Seeder
     {
         $param = [
             'user_id' => 1,
-            'title' => 'タイトル1',
-            'description' => '説明1',
+            'title' => '衝撃！！あの有名人もやっている、〇〇なクスリ５選！',
+            'description' => 'こんにちは、皆さん！　元気ですか！？<br>ストレス社会が加速するこのご時世、なかなか気力を保つことは難しいと思います。そんな皆さんに、お医者さんから処方してもらえる、元気が出るお薬を紹介します。(合法)',
             'image' => 'rhetw46j',
         ];
         DB::table('articles')->insert($param);
