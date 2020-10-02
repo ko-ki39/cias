@@ -48,4 +48,18 @@ class ForgotPasswordController extends Controller
         }
 
     }
+
+    public function changePassword(Request $request){
+        if ($request->isMethod('post') == false) {
+            return redirect()->route('top');
+        }
+// dd($request);
+        $request->validate([
+            'id' => 'required',
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required',
+        ]);
+        dd('ok');
+
+    }
 }

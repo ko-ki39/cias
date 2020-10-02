@@ -44,8 +44,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //パスワードを忘れた場合の秘密の質問ページ
 Route::get('/secret_question', 'Auth\ForgotPasswordController@secretQuestion')->name('secret_question');
+Route::post('/secret_question', 'Auth\ForgotPasswordController@secretQuestion')->name('secret_question');//リダイレクトさせるためにpost通信も許可させる
+
 Route::post('/secret_question_answer', 'Auth\ForgotPasswordController@secretQuestionAnswer')->name('secret_question_answer');
 Route::get('/secret_question_answer', 'Auth\ForgotPasswordController@secretQuestionAnswer')->name('secret_question_answer');//リダイレクトさせるためにget通信も許可させる
+
+//パスワード変更用のルート
+Route::post('/change_password', 'Auth\ForgotPasswordController@changePassword')->name('change_password');
+Route::get('/change_password', 'Auth\ForgotPasswordController@changePassword')->name('change_password');//リダイレクトさせるためにget通信も許可させる
+
 
 // Route::get('/secret_question', function(){
 //     // dd();
