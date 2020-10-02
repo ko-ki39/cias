@@ -7,9 +7,10 @@ use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use \InterventionImage;
+use InterventionImage;
 
 class RegisterController extends Controller
 {
@@ -65,19 +66,33 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
-     * @return \App\User
+     * @param   array   $data
+     * @return  \App\User
      */
     protected function create(array $data)
     {
+        $quality = 90;
+        $storagePath = '/app/public/';
         if (request()->hasFile('u_i_input')) {
             $image = request()->file('u_i_input');
-            $fileName = time() . $image->getClientOriginalName();
-            // $image = request()->file('u_i_input')->store('public'); //シンボリックリンクで画像をstorage内に保存
-            $stst = InterventionImage::make($image)
-                ->resize(250, 250, function($constraint){
+            $fileName = time() . "_" . $image->getClientOriginalName();
+            $resizeImage = InterventionImage::make($image)
+                ->resize(200, 200, function($constraint){
                     $constraint->aspectRatio();
-            })->save(storage_path('/app/public/' . $fileName));
+            });
+
+            // 20KB未満まで圧縮する。
+            // if($resizeImage->filesize() > 20000){
+            //     do{
+            //         if($quality < 15){
+            //             // dd($quality);
+            //             break;
+            //         }
+            //         $quality = $quality - 5;
+            //         $resizeImage->save(storage_path($storagePath . $fileName), $quality);
+            //     }while($resizeImage->filesize() > 20000);
+            // }
+            $resizeImage->save(storage_path($storagePath . $fileName), $quality);
             $image_path = basename($fileName); //画像名のみ保存
         } else {
             $image_path = null; //nullを入れないと空になる
