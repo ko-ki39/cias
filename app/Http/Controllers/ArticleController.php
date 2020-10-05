@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Article;
+use App\Fav;
 use App\Post;
 use App\Hashtag;
 use Illuminate\Support\Facades\Auth;
@@ -216,7 +217,24 @@ class ArticleController extends Controller
         return redirect()->route('top');
     }
 
-    public function fuaUpdate(){
-        
+    public function favAdd($article_id){
+        // ログインしてなかったらnull
+        // dd(Auth::id());
+
+        $fav = new Fav();
+        $fav->create([
+            "article_id" => $article_id,
+            "user_id" => Auth::id(),
+        ]);
+    }
+
+    public function favRemove($article_id){
+        $user_id = Auth::id();
+        $query = DB::table("favs")->where("article_id", "=", $article_id)->where("user_id", "=", $user_id);
+        if($query){
+            $query->delete();
+        }else{
+            dd("壊れた！！");
+        }
     }
 }
