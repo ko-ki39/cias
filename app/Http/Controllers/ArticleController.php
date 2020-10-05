@@ -215,4 +215,8 @@ class ArticleController extends Controller
         }
         return redirect()->route('top');
     }
+
+    public function fuaUpdate(){
+        
+    }
 }

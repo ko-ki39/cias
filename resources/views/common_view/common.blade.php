@@ -9,8 +9,8 @@
         {{-- <link href="{{ asset('/css/hamburger.css') }}" rel="stylesheet"> --}}
         <link rel="stylesheet" href="/css/hamburger.css" type="text/css">
         @yield('import')
-        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-        <script src="https://kit.fontawesome.com/0853445863.js" crossorigin="anonymous"></script>
+        <link href="/css/fontawesome_v561.css" rel="stylesheet">
+        <script src="/js/fontawesome0853445863.js" crossorigin="anonymous"></script>
     </head>
     <body>
         @include('components.hamburger')
@@ -18,5 +18,6 @@
         @yield('content')
         @include('common_view.footer')
         <script src="/js/hamburger.js"></script>
+        <script src="/js/fav.js"></script>
     </body>
 </html>
