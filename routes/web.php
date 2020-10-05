@@ -37,7 +37,17 @@ Route::group(['middleware' => ['auth', 'can:authorized-higher']], function () { 
 });
 
 Route::group(['middleware' => ['auth', 'can:admin-only']], function () { // 管理者のみ
-    Route::get('/admin', 'AdminController@index');
+    Route::get('/admin', 'AdminController@index')->name('admin'); //ページ閲覧
+
+    // ユーザーの権限変更
+    Route::get('/admin/admin_change/{id}', 'AdminController@adminChange')->name('admin_change');
+
+
+    //記事やユーザーの削除
+    Route::get('/admin/user_delete/{id}', 'AdminController@userDelete')->name('user_delete');
+    Route::get('/admin/article_delete/{id}', 'AdminController@articleDelete')->name('article_delete');
+    Route::get('/admin/comment_delete/{id}', 'AdminController@commentDelete')->name('comment_delete');
+
 });
 Route::get('/home', 'HomeController@index')->name('home');
 

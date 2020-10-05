@@ -31,6 +31,7 @@ class UserSeeder extends Seeder
             'user_name' => 'ユーザー2',
             'user_id' => '12345678',
             'password' => bcrypt('password'),
+            'role' => 2,
             'secret_question_id' => 2,
             'secret_answer' => '小学校',
         ];
