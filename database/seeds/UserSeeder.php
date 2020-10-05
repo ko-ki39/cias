@@ -17,9 +17,10 @@ class UserSeeder extends Seeder
 
         $param = [
             'id' => 1,
-            'user_name' => 'ユーザー１',
+            'user_name' => 'root',
             'user_id' => '123456789',
             'password' => bcrypt('password'),
+            'role' => 1,
             'secret_question_id' => 1,
             'secret_answer' => '小学校',
         ];

@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('user_name')->unique();
             $table->string('image')->nullable();
             $table->string('email')->unique()->nullable();
+            $table->tinyInteger('role')->default(3);
             $table->foreignId('secret_question_id')->constrained('secret_questions')->onDelete('cascade'); //外部キー
 
             $table->text('secret_answer');
