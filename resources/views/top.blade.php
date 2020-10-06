@@ -21,7 +21,7 @@
             @foreach ($articles as $article)
 
                 <div class="article">
-                    <input type="hidden" name="article-id" value="{{ $article->id }}">
+                    <input type="hidden" name="article-id" value="{{ $article->id }}" class="article_ajax_id">
                     <a href="article_detail">
                         <div class="article_image">
                             {{-- <img src="/storage/{{ $article->image }}"> --}}
@@ -49,7 +49,7 @@
                             </div>
                             {{-- <input type="hidden" name="user-id" value="{{ Auth::id() }}"> --}}
                         @else
-                            <div class="fav"><i id="" class="heart-button fa-heart fa-2x far" style="color:#ff0000;"></i></div>
+                            <div class="fav"><i id="" class="heart-button-l fa-heart fa-2x far" style="color:#ff0000;"></i></div>
                         @endif
                     </div>
                 </div>

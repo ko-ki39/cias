@@ -14,103 +14,82 @@ for(let i=0; i<article.length; i++){
     
         // 塗り潰しされてない(favされてない、またはログインしていない)
         if(buttons[i].classList[3] == "far"){
-            favAdd();
+            fav(i, "create");
             // requestTest();
         // 塗り潰しされてる(過去にお気に入りした)
         }else if(buttons[i].classList[3] == "fas"){
-            favRemove();
+            fav(i, "delete");
         }
     }, false);
 }
 
-function requestTest(){
-    $(function(){
-        $.ajaxSetup({
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
-        })
-        let article_id = $('input[name="article-id"]').val();
-        $.ajax({
-            // headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            type: "GET",
-            url: "/top/fav/test/" + article_id,
-            data: {
-                article_id: article_id,
-                _method: "POST"
-            }
-        })
-        .done(function(){
-            buttons[article_id-1].classList.remove("far");
-            buttons[article_id-1].classList.add("fas");
-        })
-        .fail(function(){
-            alert("通信エラー");
-        })
-    })
-}
+// function requestTest(){
+//     $(function(){
+//         $.ajaxSetup({
+//             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
+//         })
+//         let article_id = $('input[name="article-id"]').val();
+//         $.ajax({
+//             // headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+//             type: "GET",
+//             url: "/top/fav/test/" + article_id,
+//             data: {
+//                 article_id: article_id,
+//                 _method: "POST"
+//             }
+//         })
+//         .done(function(){
+//             buttons[article_id-1].classList.remove("far");
+//             buttons[article_id-1].classList.add("fas");
+//         })
+//         .fail(function(){
+//             alert("通信エラー");
+//         })
+//     })
+// }
 
-function favAdd(){
-    let article_id = $('input[name="article-id"]').val();
-    let method = "create";
+function fav(select, m_sting){
+    let article_id = document.getElementsByClassName("article_ajax_id")[select].value;
+    let _method = m_sting;
+
+    let formData = new FormData();
+    formData.append("p_article_id", article_id);
+    formData.append("p_method", _method)
+
     $.ajaxSetup({
-        type: "POST",
-        dataType: "json",
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
     })
-    let req_json = {
-        _article_id: article_id,
-        _method: method,
-    };
     $.ajax({
-        data: JSON.stringify(req_json),
         url: "/top/fav/" + article_id,
+        method: "post",
+        data: formData,
+        processData: false,
+        contentType: false,
     })
     .done(function(resData, jqXHR){
-        console.log(jqXHR.status);
-        console.log(resData);
-        buttons[article_id-1].classList.remove("far");
-        buttons[article_id-1].classList.add("fas");
+        if(resData.success_flag == "ok"){
+            switch(resData.p_method){
+                case "create":
+                    buttons[select].classList.remove("far");
+                    buttons[select].classList.add("fas");
+                    break;
+                case "delete":
+                    buttons[select].classList.remove("fas");
+                    buttons[select].classList.add("far");
+                    break;
+                case "exists":
+                    break;
+            }
+            console.log(resData.message);
+            console.log("method is: " + resData.p_method);
+            console.log("article_id id: " + resData.p_article_id);
+        }else if(resData.success_flag == "plz_login"){
+            console.log(resData.message);
+        }else if(resData.success_flag == "omg"){
+            console.log(resData.message);
+        }
     })
     .fail(function(error){
         console.log("通信エラー", error);
     })
 }
-
-function favRemove(){
-    let article_id = $('input[name="article-id"]').val();
-    let method = "delete";
-    $.ajaxSetup({
-        type: "POST",
-        dataType: "json",
-        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
-    })
-    let req_json = {
-        _article_id: article_id,
-        _method: method,
-    };
-    $.ajax({
-        data: JSON.stringify(req_json),
-        url: "/top/fav/" + article_id,
-    })
-    .done(function(resData, jqXHR){
-        console.log(jqXHR.status);
-        console.log(resData);
-        buttons[article_id-1].classList.remove("fas");
-        buttons[article_id-1].classList.add("far");
-    })
-    .fail(function(){
-        alert("通信エラー");
-    })
-}
-
-// $(function(){
-    //     $("#heart-button").click(
-        //         function(){
-            //             $.ajax({
-//                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-//                 url:,
-//                 type: "POST",
-//                 dataType: "JSON",
-//             })
-//         }
-//     )
-// })

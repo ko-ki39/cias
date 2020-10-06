@@ -249,43 +249,46 @@ class ArticleController extends Controller
     }
 
     public function favOperation(Request $request){
-        // $requestData = $request->all();
-        // $_article_id = $requestData["article_id"];
-        // $_method = $requestData["_method"];
-
-        // $_article_id = $request->input("_article_id");
-        // $_method = $request->input("_method");
-
-        $_article_id = $request->input("_article_id");
-        $_method = $request->input("_method");
-
-        $method = "判定できてないよ！";
-        $message = "ok.";
-        if($_method == "create"){
-            $method = "create";
-            $fav = new Fav();
-            $fav->create([
-                "article_id" => $_article_id,
-                "user_id" => Auth::id(),
+        if(Auth::id() == null){
+            return response()->json([
+                "message" => "ログインしてないゾ(脅迫)",
+                "success_flag" => "plz_login",
             ]);
-        }else if($_method == "delete"){
-            $method = "delete";
-            $query = DB::table("favs")->where("article_id", "=", $_article_id)->where("user_id", "=", Auth::id());
-            if($query){
+        }else if(Auth::id() != null){
+            $p_article_id = $request->input("p_article_id");
+            $p_method = $request->input("p_method");
+            $a_d_message = "";
+            $query = DB::table("favs")->where("article_id", "=", $p_article_id)->where("user_id", "=", Auth::id());
+
+            if($p_method == "create" && $query->exists() != null){
+                $a_d_message = "お気に入りを削除ゾ";
+                $p_method = "exists";
+                $query->delete();
+            }else if($p_method == "create" && $query->exists() == null){
+                $a_d_message = "お気に入りに追加ゾ";
+                $fav = new Fav();
+                $fav->create([
+                    "article_id" => $p_article_id,
+                    "user_id" => Auth::id(),
+                ]);
+            }else if($p_method == "delete"){
+                $a_d_message = "お気に入りを削除ゾ";
                 $query->delete();
             }else{
-                $message = "一致するものが無ゾ";
+                $p_method = "不正！";
             }
+            return response()->json([
+                "user_id" => Auth::id(),
+                "p_article_id" => $p_article_id,
+                "p_method" => $p_method,
+                "message" => $a_d_message,
+                "success_flag" => "ok",
+            ]);
         }else{
-            $message = "不正！";
+            return response()->json([
+                "message" => "不正ゾ！！！",
+                "success_flag" => "omg",
+            ]);
         }
-        return response()->json([
-            "user_id" => Auth::id(),
-            "method" => $method,
-            "message" => $message,
-            "_article_id" => $_article_id,
-            "_method" => $_method,
-            // "request" => $request,
-        ]);
     }
 }
