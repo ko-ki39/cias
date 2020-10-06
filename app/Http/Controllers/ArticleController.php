@@ -217,24 +217,75 @@ class ArticleController extends Controller
         return redirect()->route('top');
     }
 
-    public function favAdd($article_id){
+    public function favTest(Request $request, $id){
+        $requestData = $request->all();
+        $_article_id = $requestData["article_id"];
+        $_method = $requestData["_method"];
+        return response()->json([
+            "method" => $_method,
+            "message" => $_article_id
+        ]);
+    }
+
+    public function favAdd(Request $request, $id){
         // ログインしてなかったらnull
         // dd(Auth::id());
 
         $fav = new Fav();
         $fav->create([
-            "article_id" => $article_id,
+            "article_id" => $id,
             "user_id" => Auth::id(),
         ]);
     }
 
-    public function favRemove($article_id){
+    public function favRemove(Request $request, $id){
         $user_id = Auth::id();
-        $query = DB::table("favs")->where("article_id", "=", $article_id)->where("user_id", "=", $user_id);
+        $query = DB::table("favs")->where("article_id", "=", $id)->where("user_id", "=", $user_id);
         if($query){
             $query->delete();
         }else{
             dd("壊れた！！");
         }
+    }
+
+    public function favOperation(Request $request){
+        // $requestData = $request->all();
+        // $_article_id = $requestData["article_id"];
+        // $_method = $requestData["_method"];
+
+        // $_article_id = $request->input("_article_id");
+        // $_method = $request->input("_method");
+
+        $_article_id = $request->input("_article_id");
+        $_method = $request->input("_method");
+
+        $method = "判定できてないよ！";
+        $message = "ok.";
+        if($_method == "create"){
+            $method = "create";
+            $fav = new Fav();
+            $fav->create([
+                "article_id" => $_article_id,
+                "user_id" => Auth::id(),
+            ]);
+        }else if($_method == "delete"){
+            $method = "delete";
+            $query = DB::table("favs")->where("article_id", "=", $_article_id)->where("user_id", "=", Auth::id());
+            if($query){
+                $query->delete();
+            }else{
+                $message = "一致するものが無ゾ";
+            }
+        }else{
+            $message = "不正！";
+        }
+        return response()->json([
+            "user_id" => Auth::id(),
+            "method" => $method,
+            "message" => $message,
+            "_article_id" => $_article_id,
+            "_method" => $_method,
+            // "request" => $request,
+        ]);
     }
 }

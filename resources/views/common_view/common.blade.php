@@ -9,8 +9,9 @@
         {{-- <link href="{{ asset('/css/hamburger.css') }}" rel="stylesheet"> --}}
         <link rel="stylesheet" href="/css/hamburger.css" type="text/css">
         @yield('import')
-        <link href="/css/fontawesome_v561.css" rel="stylesheet">
+        {{-- <link href="/css/fontawesome_v561.css" rel="stylesheet"> --}}
         <script src="/js/fontawesome0853445863.js" crossorigin="anonymous"></script>
+        <script src="/js/jquery-3.5.1.min.js"></script>
     </head>
     <body>
         @include('components.hamburger')
