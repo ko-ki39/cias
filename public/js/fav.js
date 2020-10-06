@@ -23,35 +23,15 @@ for(let i=0; i<article.length; i++){
     }, false);
 }
 
-// function requestTest(){
-//     $(function(){
-//         $.ajaxSetup({
-//             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
-//         })
-//         let article_id = $('input[name="article-id"]').val();
-//         $.ajax({
-//             // headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-//             type: "GET",
-//             url: "/top/fav/test/" + article_id,
-//             data: {
-//                 article_id: article_id,
-//                 _method: "POST"
-//             }
-//         })
-//         .done(function(){
-//             buttons[article_id-1].classList.remove("far");
-//             buttons[article_id-1].classList.add("fas");
-//         })
-//         .fail(function(){
-//             alert("通信エラー");
-//         })
-//     })
-// }
 
+
+// select   :   選択した記事のID(整数)
+// m_string :   イベントリスナーのクロージャーから受け取ったメソッド名(文字列)
 function fav(select, m_sting){
     let article_id = document.getElementsByClassName("article_ajax_id")[select].value;
     let _method = m_sting;
 
+    // JSONでリクエストしても、Controller側でnullになってしまうので、FormData使ってます
     let formData = new FormData();
     formData.append("p_article_id", article_id);
     formData.append("p_method", _method)
@@ -66,6 +46,8 @@ function fav(select, m_sting){
         processData: false,
         contentType: false,
     })
+    // resData: ControllerからresponseしたJSONデータ
+    //          中身はControllerを参照してください
     .done(function(resData, jqXHR){
         if(resData.success_flag == "ok"){
             switch(resData.p_method){

@@ -217,53 +217,26 @@ class ArticleController extends Controller
         return redirect()->route('top');
     }
 
-    public function favTest(Request $request, $id){
-        $requestData = $request->all();
-        $_article_id = $requestData["article_id"];
-        $_method = $requestData["_method"];
-        return response()->json([
-            "method" => $_method,
-            "message" => $_article_id
-        ]);
-    }
-
-    public function favAdd(Request $request, $id){
-        // ログインしてなかったらnull
-        // dd(Auth::id());
-
-        $fav = new Fav();
-        $fav->create([
-            "article_id" => $id,
-            "user_id" => Auth::id(),
-        ]);
-    }
-
-    public function favRemove(Request $request, $id){
-        $user_id = Auth::id();
-        $query = DB::table("favs")->where("article_id", "=", $id)->where("user_id", "=", $user_id);
-        if($query){
-            $query->delete();
-        }else{
-            dd("壊れた！！");
-        }
-    }
-
     public function favOperation(Request $request){
+        // ログインしてなかったら
         if(Auth::id() == null){
             return response()->json([
                 "message" => "ログインしてないゾ(脅迫)",
                 "success_flag" => "plz_login",
             ]);
+        // ログインしていたら
         }else if(Auth::id() != null){
             $p_article_id = $request->input("p_article_id");
             $p_method = $request->input("p_method");
             $a_d_message = "";
             $query = DB::table("favs")->where("article_id", "=", $p_article_id)->where("user_id", "=", Auth::id());
 
+            // 過去にお気に入りしていたら、テーブルから削除する
             if($p_method == "create" && $query->exists() != null){
                 $a_d_message = "お気に入りを削除ゾ";
                 $p_method = "exists";
                 $query->delete();
+            // responsがcreateで、favsテーブル上でexistsだったら、追加する
             }else if($p_method == "create" && $query->exists() == null){
                 $a_d_message = "お気に入りに追加ゾ";
                 $fav = new Fav();
@@ -271,9 +244,11 @@ class ArticleController extends Controller
                     "article_id" => $p_article_id,
                     "user_id" => Auth::id(),
                 ]);
+            // responseがdeleteだったら、削除する
             }else if($p_method == "delete"){
                 $a_d_message = "お気に入りを削除ゾ";
                 $query->delete();
+            // curlなどで直接侵入してきたら、弾く
             }else{
                 $p_method = "不正！";
             }
