@@ -43,6 +43,7 @@ function fav(select, m_sting){
         url: "/top/fav/" + article_id,
         method: "post",
         data: formData,
+        // data: {"p_article_id": article_id, "p_method": _method},
         processData: false,
         contentType: false,
     })

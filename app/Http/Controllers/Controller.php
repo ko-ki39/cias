@@ -27,9 +27,14 @@ class Controller extends BaseController
     public function top()
     {
         $articles = DB::table('articles')->get();
+        $favs = DB::table("favs")->get();
+        $query = DB::table("favs")->where("user_id", "=", Auth::id());
 
+        // foreach($articles as $article){
+            
+        // }
 
-        return view('top', compact('articles'));
+        return view('top', compact('articles', 'favs'));
     }
 
     public function article_detail($id)
