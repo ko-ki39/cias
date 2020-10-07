@@ -11,6 +11,7 @@
         </ul>
     </div>
     <div class="foot_middle">
+        <p id="ztext">具志川<br>訓練校</p>
     </div>
     <div class="foot_right">
         <p>お問い合わせ、掲載の依頼など</p>
@@ -27,5 +28,5 @@
         </div>
         <small>サイト開設日 2020/00/00</small>
     </div>
-    <iframe width="1000" height="500" frameborder="0" src="https://maps.google.co.jp/maps?output=embed&q=沖縄県立具志川職業能力開発校&t=m&hl=ja"></iframe>
 </div>
+<iframe width="1000" height="500" frameborder="0" src="https://maps.google.co.jp/maps?output=embed&q=沖縄県立具志川職業能力開発校&t=m&hl=ja"></iframe>

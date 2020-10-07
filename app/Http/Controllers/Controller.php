@@ -28,11 +28,6 @@ class Controller extends BaseController
     {
         $articles = DB::table('articles')->get();
         $favs = DB::table("favs")->get();
-        $query = DB::table("favs")->where("user_id", "=", Auth::id());
-
-        // foreach($articles as $article){
-            
-        // }
 
         return view('top', compact('articles', 'favs'));
     }

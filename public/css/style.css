@@ -88,23 +88,52 @@ html body .clearfix::after {
 }
 
 html body .footer {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   height: 300px;
+  padding: 10px;
 }
 
 html body .footer .foot_left {
-  float: left;
-  margin-left: 20px;
   width: 30%;
+  border: dashed 1px #0f0;
 }
 
 html body .footer .foot_middle {
-  padding: 0;
-  float: left;
+  height: 300px;
+  width: 40%;
+  border: dashed 1px #0f0;
+  text-align: center;
+  -webkit-align-self: center;
+      -ms-flex-item-align: center;
+              -ms-grid-row-align: center;
+          align-self: center;
+}
+
+html body .footer .foot_middle p {
+  color: gray;
+  font-size: 6rem;
+  line-height: 1;
+}
+
+html body .footer .foot_middle .z-layer:not(:first-child) {
+  color: yellowgreen;
 }
 
 html body .footer .foot_right {
-  float: right;
   width: 30%;
+  border: dashed 1px #0f0;
 }
 
 html body .footer .foot_right p {

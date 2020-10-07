@@ -64,20 +64,38 @@ html {
             clear: both;
         }
         .footer {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
             height: 300px;
+            padding: 10px;
             .foot_left {
-                float: left;
-                margin-left: 20px;
+                // float: left;
+                // margin-left: 20px;
                 width: 30%;
+                border: dashed 1px #0f0;
             }
             .foot_middle {
-                padding: 0;
-                // border: dashed 1px #0f0;
-                float: left;
+                height: 300px;
+                width: 40%;
+                // padding: 0;
+                border: dashed 1px #0f0;
+                // float: left;
+                text-align: center;
+                align-self: center;
+                p{
+                    color: gray;
+                    font-size: 6rem;
+                    line-height: 1;
+                }
+                .z-layer:not(:first-child){
+                    color: yellowgreen;
+                }
             }
             .foot_right {
-                float: right;
+                // float: right;
                 width: 30%;
+                border: dashed 1px #0f0;
                 p {
                     margin-bottom: 0;
                 }

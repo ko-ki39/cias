@@ -4,6 +4,7 @@
 
 .main .me {
   margin-top: 10px;
+  margin-left: 10px;
   width: 600px;
   height: 110px;
 }
@@ -20,72 +21,103 @@
 }
 
 .main .content {
-  float: left;
   width: 620px;
-  margin: 10px 0;
+  margin: 10px 0 0 10px;
   border: dashed 1px #000;
 }
 
 .main .content .article {
-  width: 500px;
+  width: 555px;
   height: 150px;
   margin: 10px auto;
   border: dashed 1px #f00;
-  position: relative;
 }
 
-.main .content .article .image {
+.main .content .article #fake_left {
   float: left;
   height: 150px;
   width: 150px;
   border: dashed 1px #000;
 }
 
-.main .content .article .text {
-  width: 315px;
-  margin: 5px 10px;
-  float: left;
+.main .content .article #fake_left a {
+  height: 150px;
+  width: 150px;
 }
 
-.main .content .article .text h3 {
-  margin: 0 0 5px 0;
+.main .content .article #fake_left a img {
+  height: 150px;
+  width: 150px;
 }
 
-.main .content .article .text .detail {
-  font-size: 13px;
+.main .content .article #fake_right {
+  padding: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.main .content .article #fake_right .title_text a {
+  display: inline-block;
+}
+
+.main .content .article #fake_right .title_text a h3 {
+  font-size: 1.1rem;
   margin: 0;
 }
 
-.main .content .article .text .date {
-  float: left;
-  font-size: 12px;
-  position: absolute;
-  bottom: 0;
+.main .content .article #fake_right .desc_text {
+  height: 76px;
 }
 
-.main .content .article .add {
-  border: #ff0 dashed 1px;
-  float: left;
-  right: 0;
-  bottom: 0;
-  position: absolute;
+.main .content .article #fake_right .desc_text p {
+  font-size: 0.9rem;
+  margin: 5px 0;
+  line-height: 1;
 }
 
-.main .content .article .add .comment {
-  float: left;
-  padding: 20px;
-  border: dashed 1px #00f;
+.main .content .article #fake_right .ctf_container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
-.main .content .article .add .twitter {
-  float: left;
-  padding: 20px;
-  border: dashed 1px #0f0;
+.main .content .article #fake_right .ctf_container .date {
+  margin: 0 0 5px 0;
+  margin-right: auto;
+  font-size: 0.75rem;
 }
 
-.main .content .article .add .fav {
-  float: left;
-  padding: 20px;
-  border: dashed 1px #0ff;
+.main .content .article #fake_right .ctf_container .comment {
+  margin-right: 0.5em;
 }
-/*# sourceMappingURL=fake.css.map */
+
+.main .content .article #fake_right .ctf_container .twitter {
+  margin-right: 0.5em;
+}
+
+.main .content .article #fake_right .ctf_container .fav {
+  margin-right: 0;
+  color: #135f13;
+  cursor: pointer;
+}
