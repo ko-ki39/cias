@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Article;
+use App\Fav;
 use App\Post;
 use App\Hashtag;
 use Illuminate\Support\Facades\Auth;
@@ -214,5 +215,55 @@ class ArticleController extends Controller
             Article::find($id)->delete();
         }
         return redirect()->route('top');
+    }
+
+    public function favOperation(Request $request){
+        // ログインしてなかったら
+        if(Auth::id() == null){
+            return response()->json([
+                "message" => "ログインしてないゾ(脅迫)",
+                "success_flag" => "plz_login",
+            ]);
+        // ログインしていたら
+        }else if(Auth::id() != null){
+            $p_article_id = $request->input("p_article_id");
+            $p_method = $request->input("p_method");
+            $a_d_message = "";
+            $query = DB::table("favs")->where("article_id", "=", $p_article_id)->where("user_id", "=", Auth::id());
+
+            // 過去にお気に入りしていたら、テーブルから削除する
+            if($p_method == "create" && $query->exists() != null){
+                $a_d_message = "お気に入りを削除ゾ";
+                $p_method = "exists";
+                $query->delete();
+            // responsがcreateで、favsテーブル上でexistsだったら、追加する
+            }else if($p_method == "create" && $query->exists() == null){
+                $a_d_message = "お気に入りに追加ゾ";
+                $fav = new Fav();
+                $fav->create([
+                    "article_id" => $p_article_id,
+                    "user_id" => Auth::id(),
+                ]);
+            // responseがdeleteだったら、削除する
+            }else if($p_method == "delete"){
+                $a_d_message = "お気に入りを削除ゾ";
+                $query->delete();
+            // curlなどで直接侵入してきたら、弾く
+            }else{
+                $p_method = "不正！";
+            }
+            return response()->json([
+                "user_id" => Auth::id(),
+                "p_article_id" => $p_article_id,
+                "p_method" => $p_method,
+                "message" => $a_d_message,
+                "success_flag" => "ok",
+            ]);
+        }else{
+            return response()->json([
+                "message" => "不正ゾ！！！",
+                "success_flag" => "omg",
+            ]);
+        }
     }
 }

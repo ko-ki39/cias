@@ -99,7 +99,7 @@ header .nav ul li {
 
 .li_pro_ad {
   border: dashed 2px yellow;
-  height: 2500px;
+  height: 300px;
   width: 300px;
   margin: 40px auto 40px auto;
 }
@@ -135,4 +135,3 @@ header::-webkit-scrollbar {
   transform: rotate(-225deg);
   top: 13px;
 }
-/*# sourceMappingURL=hamburger.css.map */

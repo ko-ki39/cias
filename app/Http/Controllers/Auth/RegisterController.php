@@ -77,7 +77,7 @@ class RegisterController extends Controller
             $image = request()->file('u_i_input');
             $fileName = time() . "_" . $image->getClientOriginalName();
             $resizeImage = InterventionImage::make($image)
-                ->resize(200, 200, function($constraint){
+                ->resize(350, 350, function($constraint){
                     $constraint->aspectRatio();
             });
 

@@ -57,3 +57,8 @@ Route::get('/top/delete/{id}', 'ArticleController@delete')->name('delete');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Route::post("/top/fav/add/{id}", "ArticleController@favAdd");
+// Route::post("/top/fav/rem/{id}", "ArticleController@favRemove");
+Route::post("/top/fav/{id}", "ArticleController@favOperation");
+// Route::get("/top/fav/test/{id}", "ArticleController@favTest");

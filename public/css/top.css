@@ -84,4 +84,5 @@
 .main .content .article .ctf_container .fav {
   margin-right: 0.5em;
   color: #135f13;
+  cursor: pointer;
 }
