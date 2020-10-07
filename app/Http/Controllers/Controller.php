@@ -27,9 +27,9 @@ class Controller extends BaseController
     public function top()
     {
         $articles = DB::table('articles')->get();
+        $favs = DB::table("favs")->get();
 
-
-        return view('top', compact('articles'));
+        return view('top', compact('articles', 'favs'));
     }
 
     public function article_detail($id)

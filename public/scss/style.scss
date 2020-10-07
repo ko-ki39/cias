@@ -11,18 +11,24 @@ html {
             padding-bottom: 10px;
             background-color: aqua;
             .top {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+                align-items: center;
                 background-color: #000;
                 // padding-top: 5px;
                 // padding-bottom: 20px;
                 height: 77px;
-                h2 {
+                .arrow{
+                    margin-right: 550px;
+                    color: whitesmoke;
+                }
+                a {
+                    margin-right: 10px;
+                    font-size: 1.5em;
                     color: #f00;
-                    float: right;
                     padding-right: 10px;
                     padding-left: 10px;
-                    margin-top: 0px;
-                    margin-bottom: 10px;
-                    margin-right: 5px;
                     border: dashed #fff 2px;
                 }
             }
@@ -58,20 +64,38 @@ html {
             clear: both;
         }
         .footer {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
             height: 300px;
+            padding: 10px;
             .foot_left {
-                float: left;
-                margin-left: 20px;
+                // float: left;
+                // margin-left: 20px;
                 width: 30%;
+                border: dashed 1px #0f0;
             }
             .foot_middle {
-                padding: 0;
-                // border: dashed 1px #0f0;
-                float: left;
+                height: 300px;
+                width: 40%;
+                // padding: 0;
+                border: dashed 1px #0f0;
+                // float: left;
+                text-align: center;
+                align-self: center;
+                p{
+                    color: gray;
+                    font-size: 6rem;
+                    line-height: 1;
+                }
+                .z-layer:not(:first-child){
+                    color: yellowgreen;
+                }
             }
             .foot_right {
-                float: right;
+                // float: right;
                 width: 30%;
+                border: dashed 1px #0f0;
                 p {
                     margin-bottom: 0;
                 }
@@ -91,3 +115,48 @@ html {
         }
     }
 }
+
+.arrow p {
+    margin: 0;
+    padding-left: 18px;
+    font-weight: bold;
+  }
+  .arrow span {
+    display: block;
+    width: 220px;
+    height: 2px;
+    background-color: whitesmoke;
+    position: relative;
+    transform: scale(0, 1);
+      transform-origin: top right;
+      animation: arrow01 3.8s ease-in-out infinite forwards;
+  }
+  @keyframes arrow01 {
+      0% { transform: scale(0, 1); }
+      30% { transform: scale(0, 1); }
+      40% { transform: scale(1, 1); }
+      85% { transform: scale(1, 1); opacity: 1;}
+      90% { transform: scale(1, 1); opacity: 0; }
+      100% { transform: scale(1, 1); opacity: 0; }
+  }
+  .arrow span::after {
+      content: "";
+      display: block;
+      width: 8px;
+      height: 15px;
+      border-right: 2px solid whitesmoke;
+      transform: rotate(45deg) scale(1, 0);
+      transform-origin: right bottom;
+      position: absolute;
+      bottom: 1px;
+      left: -9px;
+      animation: arrow02 3.8s ease-in-out infinite forwards;
+  }
+  @keyframes arrow02 {
+      0% { transform: rotate(45deg) scale(1, 0); }
+          45% { transform: rotate(45deg) scale(1, 0); }
+          55% { transform: rotate(45deg) scale(1, 1); }
+      85% { transform: rotate(45deg) scale(1, 1); opacity: 1;}
+      90% { transform: rotate(45deg) scale(1, 1); opacity: 0; }
+      100% { transform: rotate(45deg) scale(1, 1); opacity: 0; }
+  }
