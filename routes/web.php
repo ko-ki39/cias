@@ -16,8 +16,10 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/test', 'Controller@test');
 Auth::routes();
 
-Route::group(['middleware' => ['auth', 'can:user_higher']], function () { // 全ユーザー
-
+Route::group(['middleware' => ['auth', 'can:user-higher']], function () { // 全ユーザー
+    Route::get('/top/user_edit', 'Controller@user_edit')->name('user_edit'); //ユーザー情報編集画面
+    Route::post('/top/user_update', 'Controller@user_update')->name('user_update'); //ユーザー情報変更処理
+    Route::get('/top/user_update', 'Controller@user_update')->name('user_update'); //ユーザー情報変更処理
 });
 
 Route::group(['middleware' => ['auth', 'can:authorized-higher']], function () { //許可されたものと管理者のみ
@@ -54,8 +56,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'SanController@welcomePage');
 Route::get('/top', 'Controller@top')->name('top');
 
-//routeで送ってきたいからnameをつける
+
+ //マイページ
 Route::get('/top/individual/{id}', 'Controller@individual')->name('individual'); //マイページ
+
+
+
+//routeで送ってきたいからnameをつける
 Route::get('/top/article_detail/{id}', 'Controller@article_detail')->name('article_detail'); //記事詳細
 
 //パスワードを忘れた場合の秘密の質問ページ

@@ -37,7 +37,7 @@
                         <p class="article_title">{{ $article->title }}</p>
                     </a>
 
-                    <p class="article_description">{{ $article->description }}</p>
+                    <pre class="article_description">{{ $article->description }}</pre>
                     <p class="date">{{ $article->created_at }}</p>
                     <div class="ctf_container">
                         <div class="comment"><i class="far fa-comment fa-2x" style="color:#135f13;"></i></div>
