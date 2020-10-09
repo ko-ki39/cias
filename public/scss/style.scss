@@ -5,6 +5,7 @@ html {
         // min-height: 100vh;
         width: 1000px;
         margin: auto;
+        background-color: rgb(242, 242, 242);
         // padding: ;
         .header {
             // height: 300px;
@@ -19,10 +20,6 @@ html {
                 // padding-top: 5px;
                 // padding-bottom: 20px;
                 height: 77px;
-                .arrow{
-                    margin-right: 550px;
-                    color: whitesmoke;
-                }
                 a {
                     margin-right: 10px;
                     font-size: 1.5em;
@@ -30,6 +27,21 @@ html {
                     padding-right: 10px;
                     padding-left: 10px;
                     border: dashed #fff 2px;
+                }
+                a:first-child{
+                    color: whitesmoke;
+                    text-decoration: none;
+                    font-size: 1.2em;
+                }
+                .ztext{
+                    color: whitesmoke;
+                    border: none;
+                    line-height: 1;
+                    width: 72px;
+                    margin-right: 260px;
+                }
+                .z-layer:not(:first-child){
+                    color: red;
                 }
             }
             .header_bot {
@@ -58,6 +70,9 @@ html {
                 }
             }
         }
+        .main{
+            background-color: rgb(76, 174, 196);
+        }
         .clearfix::after {
             content: "";
             display: block;
@@ -84,8 +99,8 @@ html {
                 text-align: center;
                 align-self: center;
                 p{
-                    color: gray;
-                    font-size: 6rem;
+                    color: rgb(240, 240, 240);
+                    font-size: 5rem;
                     line-height: 1;
                 }
                 .z-layer:not(:first-child){
@@ -115,48 +130,3 @@ html {
         }
     }
 }
-
-.arrow p {
-    margin: 0;
-    padding-left: 18px;
-    font-weight: bold;
-  }
-  .arrow span {
-    display: block;
-    width: 220px;
-    height: 2px;
-    background-color: whitesmoke;
-    position: relative;
-    transform: scale(0, 1);
-      transform-origin: top right;
-      animation: arrow01 3.8s ease-in-out infinite forwards;
-  }
-  @keyframes arrow01 {
-      0% { transform: scale(0, 1); }
-      30% { transform: scale(0, 1); }
-      40% { transform: scale(1, 1); }
-      85% { transform: scale(1, 1); opacity: 1;}
-      90% { transform: scale(1, 1); opacity: 0; }
-      100% { transform: scale(1, 1); opacity: 0; }
-  }
-  .arrow span::after {
-      content: "";
-      display: block;
-      width: 8px;
-      height: 15px;
-      border-right: 2px solid whitesmoke;
-      transform: rotate(45deg) scale(1, 0);
-      transform-origin: right bottom;
-      position: absolute;
-      bottom: 1px;
-      left: -9px;
-      animation: arrow02 3.8s ease-in-out infinite forwards;
-  }
-  @keyframes arrow02 {
-      0% { transform: rotate(45deg) scale(1, 0); }
-          45% { transform: rotate(45deg) scale(1, 0); }
-          55% { transform: rotate(45deg) scale(1, 1); }
-      85% { transform: rotate(45deg) scale(1, 1); opacity: 1;}
-      90% { transform: rotate(45deg) scale(1, 1); opacity: 0; }
-      100% { transform: rotate(45deg) scale(1, 1); opacity: 0; }
-  }
