@@ -154,14 +154,30 @@ class Controller extends BaseController
         $validator = $request->getValidator();
         if ($request->isMethod('post') == false) {
             return redirect()->route('top');
-        } else if($validator->failed()){
+        } else if ($validator->failed()) {
             return redirect('/top/password_edit')->withErrors($validator)->withInput(); //失敗した時の通常の処理
-        }else{
+        } else {
             $change_password = [
                 'password' => Hash::make($request->password),
             ];
             User::where('id', Auth::id())->update($change_password);
             return redirect()->route('user_edit');
+        }
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+
+        if (isset($search)) {
+            //検索
+            $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%'.$search.'%')->get();
+
+            $favs = DB::table("favs")->get();
+
+            return view('top', compact('articles', 'favs'));
+        } else {
+            return redirect()->route('top');
         }
     }
 }

@@ -92,3 +92,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::post("/top/fav/rem/{id}", "ArticleController@favRemove");
 Route::post("/top/fav/{id}", "ArticleController@favOperation");
 // Route::get("/top/fav/test/{id}", "ArticleController@favTest");
+
+//検索機能↓
+Route::get("/top/search", "Controller@search")->name('search');
+
+

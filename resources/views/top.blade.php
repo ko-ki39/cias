@@ -11,7 +11,7 @@
     {{-- この下からbodyの中身を書き始める --}}
     <div class="main">
         <div class="content">
-            <form action="/" method="post">
+            <form action="{{ route('search') }}" method="get">
                 <div class="search">
                     <i class="fas fa-search"></i>
                     <input type="text" name="search">
