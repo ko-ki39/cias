@@ -54,10 +54,10 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'u_i_input' => ['file', 'image'],
-            'user_id' => ['required', 'string', 'alpha_dash', 'max:25'],
-            'password' => ['required', 'string', 'alpha_num', 'min:8', 'confirmed'],
+            'user_id' => ['required', 'alpha_num', 'max:25'],
+            'password' => ['required', 'alpha_dash', 'min:8', 'confirmed'],
             'user_name' => ['required', 'string', 'max:10', 'unique:users'],
-            'email' => ['nullable', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['nullable', 'email', 'max:255', 'unique:users'],
             'secret_question_id' => ['required', 'regex:/1|2|3|4|5|6/'],
             'secret_answer' => ['required', 'string', 'max:50'],
         ]);
@@ -77,7 +77,7 @@ class RegisterController extends Controller
             $image = request()->file('u_i_input');
             $fileName = time() . "_" . $image->getClientOriginalName();
             $resizeImage = InterventionImage::make($image)
-                ->resize(350, 350, function($constraint){
+                ->resize(333, 333, function($constraint){
                     $constraint->aspectRatio();
             });
 
@@ -92,8 +92,8 @@ class RegisterController extends Controller
             //         $resizeImage->save(storage_path($storagePath . $fileName), $quality);
             //     }while($resizeImage->filesize() > 20000);
             // }
-            $resizeImage->save(storage_path($storagePath . $fileName), $quality);
-            $image_path = basename($fileName); //画像名のみ保存
+            $resizeImage->save(storage_path($storagePath . $fileName));
+            $image_path = basename($fileName);
         } else {
             $image_path = null; //nullを入れないと空になる
         }
