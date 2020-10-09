@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class Controller extends BaseController
 {
@@ -61,8 +64,81 @@ class Controller extends BaseController
         }
     }
 
+    public function user_edit()
+    {
+        $user = DB::table('users')->where('id', Auth::id())->first();
+
+        return view('auth/user_edit', compact('user'));
+    }
+
+    public function user_update(Request $request)
+    {
+        if ($request->isMethod('post')) {
+            $user = DB::table('users')->where('id', Auth::id())->first();
+            if($request->user_name == $user->user_name && $request->email == $user->email){
+                // バリデーション
+                $request->validate([
+                    // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
+                    'u_i_input' => 'file|image',
+                    'user_name' => 'required|string|max:10',
+                    'email' => 'nullable|string|email|max:255',
+                    // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
+                    'secret_answer' => 'required|string|max:50',
+                ]);
+            }else if($request->user_name == $user->user_name) {
+                $request->validate([
+                    // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
+                    'u_i_input' => 'file|image',
+                    'user_name' => 'required|string|max:10',
+                    'email' => 'nullable|string|email|max:255|unique:users',
+                    // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
+                    'secret_answer' => 'required|string|max:50',
+                ]);
+            }else if($request->email == $user->email){
+                $request->validate([
+                    // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
+                    'u_i_input' => 'file|image',
+                    'user_name' => 'required|string|max:10',
+                    'email' => 'nullable|string|email|max:255|unique:users',
+                    // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
+                    'secret_answer' => 'required|string|max:50',
+                ]);
+            }else {
+                $request->validate([
+                    // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
+                    'u_i_input' => 'file|image',
+                    'user_name' => 'required|string|max:10',
+                    'email' => 'nullable|string|email|max:255|unique:users',
+                    // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
+                    'secret_answer' => 'required|string|max:50|unique:users',
+                ]);
+            }
+
+            if($request->u_i_input != null){
+                $path = $request->u_i_input->store('public'); //シンボリックリンクで画像をstorage内に保存
+                $image_path = basename($path); //画像名のみ保存
+            }else{
+                $image_path = null;
+            }
+
+            $update_user = [
+                'user_name' => $request->user_name,
+                'image' => $image_path,
+                'email' => $request->email,
+                'secret_question_id' => $request->secret_question_id,
+                'secret_answer' => $request->secret_answer,
+            ];
+
+            $old_path = "/public/". $user->image; //画像削除処理
+            Storage::delete($old_path);//画像削除処理
+
+            User::where('id', Auth::id())->update($update_user);
 
 
+            return redirect()->route('top');
+        }
+        return redirect()->route('top');
+    }
     // public function fake($id)
     // { //偽物ページ 後で消す
     //     $user = DB::table('users')->where('id', $id)->first();

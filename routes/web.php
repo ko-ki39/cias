@@ -14,47 +14,66 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // Route::get('/test', 'Controller@test');
+Auth::routes();
+
+Route::group(['middleware' => ['auth', 'can:user-higher']], function () { // 全ユーザー
+    Route::get('/top/user_edit', 'Controller@user_edit')->name('user_edit'); //ユーザー情報編集画面
+    Route::post('/top/user_update', 'Controller@user_update')->name('user_update'); //ユーザー情報変更処理
+    Route::get('/top/user_update', 'Controller@user_update')->name('user_update'); //ユーザー情報変更処理
+});
+
+Route::group(['middleware' => ['auth', 'can:authorized-higher']], function () { //許可されたものと管理者のみ
+    // ↓記事作成用のルート
+
+    Route::get('/top/post', 'ArticleController@postForm')->name('post');
+    Route::post('/top/upload', 'ArticleController@upload')->name('upload');
+    Route::get('/top/upload', 'ArticleController@upload')->name('upload'); //リダイレクトさせるためにget通信も許可させる
+
+    //↓記事の編集用ルート
+    Route::get('/top/edit/{id}', 'ArticleController@edit')->name('edit');
+    Route::post('/top/update/{id}', 'ArticleController@update')->name('update');
+    Route::get('/top/update/{id}', 'ArticleController@update')->name('update');
+
+    // ↓記事削除用ルート
+    Route::get('/top/delete/{id}', 'ArticleController@delete')->name('delete');
+});
+
+Route::group(['middleware' => ['auth', 'can:admin-only']], function () { // 管理者のみ
+    Route::get('/admin', 'AdminController@index')->name('admin'); //ページ閲覧
+
+    // ユーザーの権限変更
+    Route::get('/admin/admin_change/{id}', 'AdminController@adminChange')->name('admin_change');
+
+
+    //記事やユーザーの削除
+    Route::get('/admin/user_delete/{id}', 'AdminController@userDelete')->name('user_delete');
+    Route::get('/admin/article_delete/{id}', 'AdminController@articleDelete')->name('article_delete');
+    Route::get('/admin/comment_delete/{id}', 'AdminController@commentDelete')->name('comment_delete');
+
+});
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'SanController@welcomePage');
 Route::get('/top', 'Controller@top')->name('top');
+
+
+ //マイページ
+Route::get('/top/individual/{id}', 'Controller@individual')->name('individual'); //マイページ
+
+
+
 //routeで送ってきたいからnameをつける
-Route::get('/top/individual/{id}', 'Controller@individual')->name('individual');//マイページ
 Route::get('/top/article_detail/{id}', 'Controller@article_detail')->name('article_detail'); //記事詳細
-// Route::get('/top/fake/{id}', 'Controller@fake')->name('fake'); //偽物ページ後で消す
-
-// Route::get("/login", "SanController@loginPage");
-// Route::get("/register", "SanController@registerPage");
-
-// ↓記事作成用のルート
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/top/post', 'ArticleController@postForm')->name('post');
-Route::post('/top/upload', 'ArticleController@upload')->name('upload');
-Route::get('/top/upload', 'ArticleController@upload')->name('upload'); //リダイレクトさせるためにget通信も許可させる
-
-//↓記事の編集用ルート
-Route::get('/top/edit/{id}', 'ArticleController@edit')->name('edit');
-Route::post('/top/update/{id}', 'ArticleController@update')->name('update');
-Route::get('/top/update/{id}', 'ArticleController@update')->name('update');
-
-// ↓記事削除用ルート
-Route::get('/top/delete/{id}', 'ArticleController@delete')->name('delete');
-
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
 
 //パスワードを忘れた場合の秘密の質問ページ
 Route::get('/secret_question', 'Auth\ForgotPasswordController@secretQuestion')->name('secret_question');
+Route::post('/secret_question', 'Auth\ForgotPasswordController@secretQuestion')->name('secret_question'); //リダイレクトさせるためにpost通信も許可させる
 Route::post('/secret_question_answer', 'Auth\ForgotPasswordController@secretQuestionAnswer')->name('secret_question_answer');
-Route::get('/secret_question_answer', 'Auth\ForgotPasswordController@secretQuestionAnswer')->name('secret_question_answer');//リダイレクトさせるためにget通信も許可させる
+Route::get('/secret_question_answer', 'Auth\ForgotPasswordController@secretQuestionAnswer')->name('secret_question_answer'); //リダイレクトさせるためにget通信も許可させる
 
-// Route::get('/secret_question', function(){
-//     // dd();
-//     return view('auth/passwords/secret_question');
-// })->name('secret_question');
-
-// ↓記事削除用ルート
-Route::get('/top/delete/{id}', 'ArticleController@delete')->name('delete');
-
+//パスワード変更用のルート
+Route::post('/change_password', 'Auth\ForgotPasswordController@changePassword')->name('change_password');
+Route::get('/change_password', 'Auth\ForgotPasswordController@changePassword')->name('change_password'); //リダイレクトさせるためにget通信も許可させる
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
