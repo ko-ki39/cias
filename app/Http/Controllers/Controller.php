@@ -103,12 +103,23 @@ class Controller extends BaseController
                     // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
                     'secret_answer' => 'required|string|max:50',
                 ]);
-
+            }else {
+                $request->validate([
+                    // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
+                    'u_i_input' => 'file|image',
+                    'user_name' => 'required|string|max:10',
+                    'email' => 'nullable|string|email|max:255|unique:users',
+                    // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
+                    'secret_answer' => 'required|string|max:50|unique:users',
+                ]);
             }
 
-
-            $path = $request->u_i_input->store('public'); //シンボリックリンクで画像をstorage内に保存
-            $image_path = basename($path); //画像名のみ保存
+            if($request->u_i_input != null){
+                $path = $request->u_i_input->store('public'); //シンボリックリンクで画像をstorage内に保存
+                $image_path = basename($path); //画像名のみ保存
+            }else{
+                $image_path = null;
+            }
 
             $update_user = [
                 'user_name' => $request->user_name,
@@ -118,8 +129,9 @@ class Controller extends BaseController
                 'secret_answer' => $request->secret_answer,
             ];
 
-            $old_path = "/storage/". $user->image;
-            Storage::delete($old_path);
+            $old_path = "/public/". $user->image; //画像削除処理
+            Storage::delete($old_path);//画像削除処理
+
             User::where('id', Auth::id())->update($update_user);
 
 
