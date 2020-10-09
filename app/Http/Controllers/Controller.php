@@ -171,7 +171,9 @@ class Controller extends BaseController
 
         if (isset($search)) {
             //検索
-            $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%'.$search.'%')->get();
+            $user = DB::table('users')->where('user_name', 'like', '%' . $search . '%')->first();
+            $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->orWhere('user_id', $user->id)->get();
+
 
             $favs = DB::table("favs")->get();
 
