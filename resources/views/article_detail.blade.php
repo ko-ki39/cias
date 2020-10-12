@@ -39,20 +39,6 @@
                         <p>{{ $text[$i] }}</p>
                     @endif
                 @endfor
-                @guest
-                <div id="comment_area">
-                    <img src="/storage/images/図1.png" alt="">
-                </div>
-                @else
-                <div id="comment_area">
-                    <form action="" method="post">
-                        <div class="c_a_u_info">
-                            <img class="c_u_img" src="/storage/{{ Auth::user()->image }}" alt="">
-                        </div>
-                        <div class="c_a_u_comment"></div>
-                    </form>
-                </div>
-                @endguest
             </div>
         </div>
         @component('components.side-bar')

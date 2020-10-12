@@ -39,9 +39,8 @@ class Controller extends BaseController
         return view('top', compact('articles', 'favs'));
     }
 
-    public function article_detail($id, Request $request)
+    public function article_detail($id)
     { //記事詳細ページ
-        // dd(url()->previous());
         $article = DB::table('articles')->where('id', $id)->first();
 
         $user = DB::table('users')->where('id', $article->user_id)->first();
