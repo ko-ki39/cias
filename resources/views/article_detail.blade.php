@@ -39,6 +39,11 @@
                         <p>{{ $text[$i] }}</p>
                     @endif
                 @endfor
+                @guest
+                <div id="comment_area">
+                    <img src="/storage/images/図1.png" alt="" style="width:550px;">
+                </div>
+                @endguest
             </div>
         </div>
         @component('components.side-bar')
