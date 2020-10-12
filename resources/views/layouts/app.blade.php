@@ -50,8 +50,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    ようこそ、&nbsp;<strong>{{ Auth::user()->user_name }}</strong>&nbsp;&nbsp;さん&nbsp;&nbsp;
-                                    <img src="/storage/{{ Auth::user()->image }}" alt="{{ Auth::user()->image }}" style="height:56px;border-radius:100%;">
+                                    ようこそ、&nbsp;<strong>{{ Auth::user()->user_name }}</strong>&nbsp;&nbsp;さん
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

@@ -60,11 +60,11 @@
             ->where('user_id', '=', Auth::id())
             ->exists() != null)
                             <div class="fav">
-                                <i id="" class="heart-button-l fa-heart fa-2x tippyLogin fas" style="color:#ff0000;"></i>
+                                <i id="" class="heart-button-l fa-heart fa-2x fas" style="color:#ff0000;"></i>
                             </div>
                         @else
                             <div class="fav">
-                                <i id="" class="heart-button-l fa-heart fa-2x tippyGuest far" style="color:#ff0000;"></i>
+                                <i id="" class="heart-button-l fa-heart fa-2x far" style="color:#ff0000;"></i>
                             </div>
                         @endif
                     </div>
@@ -103,13 +103,4 @@
         }
 
     </script>
-    @guest
-    <div class="tippy_template" style="display:none;">
-        この記事を、マイページに<br>保存することが出来ます！<br>(ログインが必要です)
-    </div>
-    @else
-    <div class="tippy_template" style="display:none;">
-        この記事を、マイページに保存する！
-    </div>
-    @endguest
 @endsection
