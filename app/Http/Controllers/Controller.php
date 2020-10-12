@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use InterventionImage;
 
 
 class Controller extends BaseController
@@ -121,12 +122,31 @@ class Controller extends BaseController
                     'secret_answer' => 'required|string|max:50',
                 ]);
             }
-
+            $quality = 90;
+            $storagePath = '/app/public/';
             if ($request->u_i_input != null) {
-                $path = $request->u_i_input->store('public'); //シンボリックリンクで画像をstorage内に保存
-                $image_path = basename($path); //画像名のみ保存
+                $image = request()->file('u_i_input');
+            $fileName = time() . "_" . $image->getClientOriginalName();
+            $resizeImage = InterventionImage::make($image)
+                ->resize(350, 350, function($constraint){
+                    $constraint->aspectRatio();
+            });
+
+            // 20KB未満まで圧縮する。
+            // if($resizeImage->filesize() > 20000){
+            //     do{
+            //         if($quality < 15){
+            //             // dd($quality);
+            //             break;
+            //         }
+            //         $quality = $quality - 5;
+            //         $resizeImage->save(storage_path($storagePath . $fileName), $quality);
+            //     }while($resizeImage->filesize() > 20000);
+            // }
+            $resizeImage->save(storage_path($storagePath . $fileName), $quality);
+            $image_path = basename($fileName); //画像名のみ保存
             } else {
-                $image_path = null;
+                $image_path = $request->current_image;
             }
 
             $update_user = [

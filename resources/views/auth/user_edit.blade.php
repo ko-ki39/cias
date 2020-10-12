@@ -15,6 +15,7 @@
                                 <p>ユーザー画像を入れ給えッッッ</p>
                                 <div class="u_i_display_area">
                                     <input type="file" name="u_i_input" class="u_i_input">
+                                    <input type="hidden" name="current_image" value="{{ $user->image }}">
                                     <img src="/storage/{{ $user->image }}" class="u_i_img">
                                     <canvas id="u_i_canvas" width="250" height="250"></canvas>
                                 </div>
