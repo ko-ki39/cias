@@ -10,11 +10,9 @@
                 <div class="card-body">
                     {{ __('パスワード再設定用のページです') }}
 
-                    <form method="post" action="{{ route('change_password') }}">
+                    <form method="POST" action="{{ route('change_password') }}">
                         @csrf
                         <input type="hidden" name="id" value="{{ $id }}">
-                        <input type="hidden" name="secret_answer" value="{{ $secret_answer }}">
-                        <input type="hidden" name="secret_question_id" value="{{ $secret_question_id }}">
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('パスワード') }}</label>
 

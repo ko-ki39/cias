@@ -1,30 +1,48 @@
 
 
 
+let yajuu = document.getElementsByClassName("tippy_template")[0].innerHTML;
 let buttons = document.getElementsByClassName("heart-button-l");
 let article = document.getElementsByClassName("article");
 // console.log(buttons);
 // buttons[0].classList.remove("far");
 // buttons[0].classList.add("fas");
 
+
+/**
+ * イベントリスナー
+ */
 for(let i=0; i<article.length; i++){
     buttons[i].addEventListener("click", function(e){
         // console.log(e.target.classList);
         // console.log(buttons[i].classList);
-    
+        
         // 塗り潰しされてない(favされてない、またはログインしていない)
-        if(buttons[i].classList[3] == "far"){
+        if(buttons[i].classList[4] == "far"){
             fav(i, "create");
             // requestTest();
-        // 塗り潰しされてる(過去にお気に入りした)
-        }else if(buttons[i].classList[3] == "fas"){
+            // 塗り潰しされてる(過去にお気に入りした)
+        }else if(buttons[i].classList[4] == "fas"){
             fav(i, "delete");
         }
     }, false);
 }
 
+for(let j=0; j<article.length; j++){
+    buttons[j].addEventListener("mouseover", function(e){
+        if(buttons[j].classList[3] == "tippyLogin"){
+            tippy_L();
+        }else if(buttons[j].classList[3] == "tippyGuest"){
+            tippy_G();
+        }
+    });
+}
 
 
+
+/**
+ * Play Ground (^^)
+ */
 // select   :   選択した記事のID(整数)
 // m_string :   イベントリスナーのクロージャーから受け取ったメソッド名(文字列)
 function fav(select, m_sting){
@@ -76,3 +94,22 @@ function fav(select, m_sting){
         console.log("通信エラー", error);
     })
 }
+
+function tippy_L(){
+    tippy('.tippyLogin', {
+        content: yajuu,
+        allowHTML: true,
+        animation: "shift-toward-extreme",
+        delay: [0,300],
+    });
+}
+
+function tippy_G(){
+    tippy('.tippyGuest', {
+        content: yajuu,
+        allowHTML: true,
+        animation: "shift-toward-extreme",
+        delay: [0,300],
+    });
+}
+

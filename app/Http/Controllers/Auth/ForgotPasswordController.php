@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ChangePasswordRequest;
 // use Dotenv\Validator;
 // use GuzzleHttp\Psr7\Request;
 use Illuminate\Http\Request;
@@ -28,54 +27,69 @@ class ForgotPasswordController extends Controller
 
     use SendsPasswordResetEmails;
 
-    public function secretQuestion()
-    {
+    public function secretQuestion(){
 
         return view('auth/passwords/secret_question');
     }
 
-    public function secretQuestionAnswer(Request $request)
-    {
+    public function secretQuestionAnswer(Request $request){
+        if ($request->isMethod('post') == false) {
+            return redirect()->route('top');
+        }
         $user = DB::table('users')->where('user_id', $request->user_id)->first();
-        if ($user) {
-            if ($request->secret_question_id == $user->secret_question_id && $request->secret_answer == $user->secret_answer) {
+        if($user){
+            if($request->secret_question_id == $user->secret_question_id && $request->secret_answer == $user->secret_answer){
                 //対象のユーザーのsecret_question_idとsecret_answerが一致した場合
                 $id = $user->id;
-                $secret_answer = $request->secret_answer;
-                $secret_question_id = $request->secret_question_id;
-                return view('auth/passwords/change', compact('id', 'secret_answer', 'secret_question_id'));
-            } else {
+                return view('auth/passwords/change', compact('id'));
+            }else {
                 return redirect('login');
             }
-        } else {
+        }else{
             //ログインIDが存在しない場合
             return redirect('login');
         }
+
     }
-    /**
+ /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
 
-    public function changePassword(ChangePasswordRequest $request)
-    {
-        $validator = $request->getValidator();
-
-        if($validator->fails()){
-            return redirect('login');
-        }
+    public function changePassword(Request $request){
         if ($request->isMethod('post') == false) {
             return redirect()->route('top');
-        } else {
+        }else{
+            $validator = Validator::make($request->all(), [
+                'id' => 'required',
+                'password' => 'required', 'string', 'alpha_num', 'min:8', 'confirmed',
+                'password_confirmation' => 'required',
+            ]);
             $id = $request->id;
-            $change_password = [
-                'password' => Hash::make($request->password),
-            ];
-            User::where('id', $id)->update($change_password);
-            redirect('login');
-            return redirect()->route('top');
+            if($validator->fails()){ //エラーが出た場合の処理
+                return view('auth/passwords/change', compact('id'));
+            }else{
+                $change_password =[
+                    'password' => Hash::make($request->password),
+                ];
+                User::where('id', $id)->update($change_password);
+                redirect('login');
+            }
         }
+// dd($request);
+        // $validator = Validator::make($request->all(),[
+        //     'id' => 'required',
+        //     'password' => 'required|confirmed',
+        //     'password_confirmation' => 'required',
+        // ]);
+        // $request->validate([
+        //     'id' => 'required',
+        //     'password' => 'required|confirmed',
+        //     'password_confirmation' => 'required',
+        // ]);
+        // dd('ok');
+
     }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ChangePasswordRequest;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -12,9 +11,6 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Hash;
-
 
 class Controller extends BaseController
 {
@@ -80,7 +76,7 @@ class Controller extends BaseController
     {
         if ($request->isMethod('post')) {
             $user = DB::table('users')->where('id', Auth::id())->first();
-            if ($request->user_name == $user->user_name && $request->email == $user->email) {
+            if($request->user_name == $user->user_name && $request->email == $user->email){
                 // バリデーション
                 $request->validate([
                     // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
@@ -90,7 +86,7 @@ class Controller extends BaseController
                     // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
                     'secret_answer' => 'required|string|max:50',
                 ]);
-            } else if ($request->user_name == $user->user_name) {
+            }else if($request->user_name == $user->user_name) {
                 $request->validate([
                     // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
                     'u_i_input' => 'file|image',
@@ -99,7 +95,7 @@ class Controller extends BaseController
                     // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
                     'secret_answer' => 'required|string|max:50',
                 ]);
-            } else if ($request->email == $user->email) {
+            }else if($request->email == $user->email){
                 $request->validate([
                     // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
                     'u_i_input' => 'file|image',
@@ -108,7 +104,7 @@ class Controller extends BaseController
                     // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
                     'secret_answer' => 'required|string|max:50',
                 ]);
-            } else {
+            }else {
                 $request->validate([
                     // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
                     'u_i_input' => 'file|image',
@@ -119,10 +115,10 @@ class Controller extends BaseController
                 ]);
             }
 
-            if ($request->u_i_input != null) {
+            if($request->u_i_input != null){
                 $path = $request->u_i_input->store('public'); //シンボリックリンクで画像をstorage内に保存
                 $image_path = basename($path); //画像名のみ保存
-            } else {
+            }else{
                 $image_path = null;
             }
 
@@ -134,8 +130,8 @@ class Controller extends BaseController
                 'secret_answer' => $request->secret_answer,
             ];
 
-            $old_path = "/public/" . $user->image; //画像削除処理
-            Storage::delete($old_path); //画像削除処理
+            $old_path = "/public/". $user->image; //画像削除処理
+            Storage::delete($old_path);//画像削除処理
 
             User::where('id', Auth::id())->update($update_user);
 
@@ -144,47 +140,13 @@ class Controller extends BaseController
         }
         return redirect()->route('top');
     }
+    // public function fake($id)
+    // { //偽物ページ 後で消す
+    //     $user = DB::table('users')->where('id', $id)->first();
 
-    public function password_edit()
-    {
-        return view('auth/passwords/password_edit');
-    }
+    //     //user_idが同じarticlesをとってくる
+    //     $articles = DB::table('articles')->where('user_id', $id)->get();
 
-    public function login_password_change(ChangePasswordRequest $request)
-    {
-        $validator = $request->getValidator();
-        if ($request->isMethod('post') == false) {
-            return redirect()->route('top');
-        } else if ($validator->failed()) {
-            return redirect('/top/password_edit')->withErrors($validator)->withInput(); //失敗した時の通常の処理
-        } else {
-            $change_password = [
-                'password' => Hash::make($request->password),
-            ];
-            User::where('id', Auth::id())->update($change_password);
-            return redirect()->route('user_edit');
-        }
-    }
-
-    public function search(Request $request)
-    {
-        $search = $request->input('search');
-
-        if (isset($search)) {
-            //検索
-            $user = DB::table('users')->where('user_name', 'like', '%' . $search . '%')->first();
-            if ($user != null) {// ユーザー名があった場合
-                $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->orWhere('user_id', $user->id)->get();
-            } else {
-                dd('null');
-                $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->get();
-            }
-
-            $favs = DB::table("favs")->get();
-
-            return view('top', compact('articles', 'favs', 'search'));
-        } else {
-            return redirect()->route('top');
-        }
-    }
+    //     return view('fake', compact('user', 'articles'));
+    // }
 }
