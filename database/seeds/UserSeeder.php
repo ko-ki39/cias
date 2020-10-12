@@ -46,38 +46,5 @@ class UserSeeder extends Seeder
             'secret_answer' => '小学校',
         ];
         DB::table('users')->insert($param);
-
-        $param = [
-            'id' => 4,
-            'user_id' => 'tamori1',
-            'user_name' => 'tamori1',
-            'password' => bcrypt('1234567890'),
-            'secret_question_id' => 1,
-            'secret_answer' => 'tamori1',
-        ];
-        DB::table('users')->insert($param);
-
-        $param = [
-            'id' => 5,
-            'user_id' => 'tamori2',
-            'user_name' => 'tamori2',
-            'password' => bcrypt('1234567890'),
-            'secret_question_id' => 1,
-            'secret_answer' => 'tamori2',
-        ];
-        DB::table('users')->insert($param);
-
-        $param = [
-            'id' => 6,
-            'user_id' => 'tamori3',
-            'user_name' => 'tamori3',
-            'image' => '1602239353_azarashi_aitubutu.jpg',
-            'email' => 'hoge@hoge.hoge3',
-            'role' => 1,
-            'secret_question_id' => 1,
-            'secret_answer' => 'tamori3',
-            'password' => bcrypt('1234567890'),
-        ];
-        DB::table('users')->insert($param);
     }
 }
