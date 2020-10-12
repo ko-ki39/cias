@@ -124,6 +124,7 @@
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('変更する') }}
                                     </button>
+                                    <a href="{{ route('password_edit') }}">パスワードを変更する</a>
                                 </div>
                             </div>
                         </form>
