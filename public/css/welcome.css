@@ -3,16 +3,6 @@ body {
   background-color: black;
 }
 
-.ztext-head {
-  line-height: 1.2rem;
-  color: whitesmoke;
-  margin: 25px auto 10px auto;
-}
-
-.z-layer:not(:first-child) {
-  color: red;
-}
-
 .welcome_section {
   margin: 0;
 }

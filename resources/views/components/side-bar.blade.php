@@ -1,5 +1,5 @@
 <div class="side_bar">
-    <h2>人気の記事</h2>
+    <h2>最新の記事</h2>
     <div class="latest_article">
         <div class="side_image"></div>
         <a href="article_detail">

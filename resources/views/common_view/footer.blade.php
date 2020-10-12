@@ -11,7 +11,7 @@
         </ul>
     </div>
     <div class="foot_middle">
-        <p class="ztext">具志川<br>訓練校</p>
+        <p id="ztext">具志川<br>訓練校</p>
     </div>
     <div class="foot_right">
         <p>お問い合わせ、掲載の依頼など</p>
