@@ -46,20 +46,28 @@ html body .header .top a {
   color: #f00;
   padding-right: 10px;
   padding-left: 10px;
-  border: dashed #fff 2px;
 }
 
-html body .header .top a:nth-child(2) {
+html body .header .top a:nth-child(2),
+html body .header .top a:nth-child(3),
+html body .header .top a:nth-child(4) {
   color: whitesmoke;
   text-decoration: none;
   font-size: 1.25em;
   border: none;
 }
 
-html body .header .top a:nth-child(3) {
+html body .header .top .h_u_img {
+  padding-left: 0;
+}
+
+html body .header .top .h_u_img img {
+  height: 56px;
+  border-radius: 100%;
+  margin-right: 30px;
   text-decoration: none;
   border: none;
-  padding: 10px 0 0 0;
+  margin: 10px 0 0 0;
 }
 
 html body .header .top .ztext {
@@ -128,7 +136,7 @@ html body .footer {
           justify-content: space-between;
   height: 300px;
   padding: 10px;
-  margin-top: 125px;
+  margin-top: 25px;
 }
 
 html body .footer .foot_left {

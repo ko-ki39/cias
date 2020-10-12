@@ -41,7 +41,15 @@
                 @endfor
                 @guest
                 <div id="comment_area">
-                    <img src="/storage/images/図1.png" alt="" style="width:550px;">
+                    <img src="/storage/images/図1.png" alt="">
+                </div>
+                @else
+                <div id="comment_area">
+                    <form action="" method="post">
+                        <input type="hidden" name="c_a_u_id" value="{{ Auth::id() }}">
+                        <div class="c_a_u_info"></div>
+                        <div class="c_a_u_comment"></div>
+                    </form>
                 </div>
                 @endguest
             </div>

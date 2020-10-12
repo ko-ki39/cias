@@ -6,9 +6,9 @@
         <a href="{{ url('/register') }}">Sign up</a>
         <a href="{{ url('/login') }}">Login</a>
         @else
-        <a href="{{ url('top') }}" class="ztext" style="margin-right:170px">具志川<br>訓練校</a>
+        <a href="{{ url('top') }}" class="ztext" style="margin-right:210px">具志川<br>訓練校</a>
         <a href="{{ route('individual', ['id' => Auth::id()]) }}" style="margin-right:0;">{{ Auth::user()->user_name }}</a>
-        <a href="{{ route('individual', ['id' => Auth::id()]) }}"><img src="/storage/{{ Auth::user()->image }}" alt="{{ Auth::user()->image }}" style="height:56px;border-radius:100%;margin-right:30px;"></a>
+        <a href="{{ route('individual', ['id' => Auth::id()]) }}" class="h_u_img"><img src="/storage/{{ Auth::user()->image }}" alt=""></a>
         <a href="{{ route('logout') }}"
             onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">

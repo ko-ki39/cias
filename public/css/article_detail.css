@@ -1,5 +1,6 @@
 .main {
   width: 1000px;
+  padding: 50px 0 50px 10px;
 }
 
 .main .article {
@@ -81,4 +82,9 @@
   margin-top: 20px;
   margin-bottom: 20px;
   border: dotted 1px #00f;
+}
+
+.main .article .text #comment_area {
+  width: 550px;
+  margin: 50px auto;
 }
