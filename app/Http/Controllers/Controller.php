@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use InterventionImage;
 
 
 class Controller extends BaseController
@@ -83,6 +84,7 @@ class Controller extends BaseController
                 // バリデーション
                 $request->validate([
                     // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
+                    'now_password' => 'now_password',
                     'u_i_input' => 'file|image',
                     'user_name' => 'required|string|max:10',
                     'email' => 'nullable|string|email|max:255',
@@ -92,6 +94,7 @@ class Controller extends BaseController
             } else if ($request->user_name == $user->user_name) {
                 $request->validate([
                     // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
+                    'now_password' => 'now_password',
                     'u_i_input' => 'file|image',
                     'user_name' => 'required|string|max:10',
                     'email' => 'nullable|string|email|max:255|unique:users',
@@ -101,8 +104,9 @@ class Controller extends BaseController
             } else if ($request->email == $user->email) {
                 $request->validate([
                     // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
+                    'now_password' => 'now_password',
                     'u_i_input' => 'file|image',
-                    'user_name' => 'required|string|max:10',
+                    'user_name' => 'required|string|max:10|unique:users',
                     'email' => 'nullable|string|email|max:255|unique:users',
                     // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
                     'secret_answer' => 'required|string|max:50',
@@ -110,19 +114,39 @@ class Controller extends BaseController
             } else {
                 $request->validate([
                     // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
+                    'now_password' => 'now_password',
                     'u_i_input' => 'file|image',
-                    'user_name' => 'required|string|max:10',
+                    'user_name' => 'required|string|max:10|unique:users',
                     'email' => 'nullable|string|email|max:255|unique:users',
                     // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
-                    'secret_answer' => 'required|string|max:50|unique:users',
+                    'secret_answer' => 'required|string|max:50',
                 ]);
             }
-
+            $quality = 90;
+            $storagePath = '/app/public/';
             if ($request->u_i_input != null) {
-                $path = $request->u_i_input->store('public'); //シンボリックリンクで画像をstorage内に保存
-                $image_path = basename($path); //画像名のみ保存
+                $image = request()->file('u_i_input');
+            $fileName = time() . "_" . $image->getClientOriginalName();
+            $resizeImage = InterventionImage::make($image)
+                ->resize(350, 350, function($constraint){
+                    $constraint->aspectRatio();
+            });
+
+            // 20KB未満まで圧縮する。
+            // if($resizeImage->filesize() > 20000){
+            //     do{
+            //         if($quality < 15){
+            //             // dd($quality);
+            //             break;
+            //         }
+            //         $quality = $quality - 5;
+            //         $resizeImage->save(storage_path($storagePath . $fileName), $quality);
+            //     }while($resizeImage->filesize() > 20000);
+            // }
+            $resizeImage->save(storage_path($storagePath . $fileName), $quality);
+            $image_path = basename($fileName); //画像名のみ保存
             } else {
-                $image_path = null;
+                $image_path = $request->current_image;
             }
 
             $update_user = [
@@ -155,6 +179,7 @@ class Controller extends BaseController
         if ($request->isMethod('post') == false) {
             return redirect()->route('top');
         } else if ($validator->failed()) {
+            // dd($validator);
             return redirect('/top/password_edit')->withErrors($validator)->withInput(); //失敗した時の通常の処理
         } else {
             $change_password = [
@@ -172,10 +197,9 @@ class Controller extends BaseController
         if (isset($search)) {
             //検索
             $user = DB::table('users')->where('user_name', 'like', '%' . $search . '%')->first();
-            if ($user != null) {// ユーザー名があった場合
+            if ($user != null) { // ユーザー名があった場合
                 $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->orWhere('user_id', $user->id)->get();
             } else {
-                dd('null');
                 $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->get();
             }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\NowPassword;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -25,6 +26,7 @@ class ChangePasswordRequest extends FormRequest
     public function rules()
     {
         return [
+            'now_password' => 'now_password',
             'password' => 'required|string|alpha_num|min:8|confirmed',
             'password_confirmation' => 'required',
         ];
@@ -32,6 +34,7 @@ class ChangePasswordRequest extends FormRequest
 
     public function messages(){
         return [
+            'now_password.now_password' => 'パスワードが違います',
             'password.min' => '8文字以上入力してください',
             'password.confirmed' => 'パスワードが一致しません',
             'password.string' => '使えない文字列が入っています',

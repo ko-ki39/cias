@@ -176,6 +176,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
 
+        App\Providers\NowPasswordProvider::class,
+
     ],
 
     /*
