@@ -46,8 +46,9 @@
                 @else
                 <div id="comment_area">
                     <form action="" method="post">
-                        <input type="hidden" name="c_a_u_id" value="{{ Auth::id() }}">
-                        <div class="c_a_u_info"></div>
+                        <div class="c_a_u_info">
+                            <img class="c_u_img" src="/storage/{{ Auth::user()->image }}" alt="">
+                        </div>
                         <div class="c_a_u_comment"></div>
                     </form>
                 </div>

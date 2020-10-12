@@ -88,3 +88,7 @@
   width: 550px;
   margin: 50px auto;
 }
+
+.main .article .text #comment_area img {
+  width: 550px;
+}
