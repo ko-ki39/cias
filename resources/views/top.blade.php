@@ -11,7 +11,7 @@
     {{-- この下からbodyの中身を書き始める --}}
     <div class="main">
         <div class="content">
-            <form action="/" method="post">
+            <form action="{{ route('search') }}" method="get">
                 <div class="search">
                     <i class="fas fa-search"></i>
                     <input type="text" name="search">
@@ -24,20 +24,21 @@
                     <input type="hidden" name="article-id" value="{{ $article->id }}" class="article_ajax_id">
                     <a href="article_detail">
                         <div class="article_image">
-                            {{-- <img src="/storage/{{ $article->image }}"> --}}
+                            {{-- <img src="/storage/{{ $article->image }}">
+                            --}}
                             {{-- route('名前', ['クエリパラメータ' => 渡したい値])
                             --}}
                             {{-- ↓/fake?id=1 になる --}}
                             <a href="{{ route('individual', ['id' => \App\User::find($article->user_id)->id]) }}">
-                                <p>{{ \App\User::find($article->user_id)->user_name }}</p>
+                                <p class="text">{{ \App\User::find($article->user_id)->user_name }}</p>
                             </a>
                         </div>
                     </a>
                     <a href="{{ route('article_detail', ['id' => $article->id]) }}">
-                        <p class="article_title">{{ $article->title }}</p>
+                        <p class="text">{{ $article->title }}</p>
                     </a>
 
-                    <pre class="article_description">{{ $article->description }}</pre>
+                    <pre class="text">{{ $article->description }}</pre>
                     <p class="date">{{ $article->created_at }}</p>
                     <div class="ctf_container">
                         <div class="comment"><a href="{{ route('article_detail', ['id' => $article->id]) }}"><i class="far fa-comment fa-2x" style="color:#135f13;"></i></a></div>
@@ -64,13 +65,31 @@
             {{-- ここはサイドバーです --}}
         @endcomponent
     </div>
-    @guest
-    <div class="tippy_template" style="display:none;">
-        この記事を、マイページに<br>保存することが出来ます！<br>(ログインが必要です)
-    </div>
-    @else
-    <div class="tippy_template" style="display:none;">
-        この記事を、マイページに保存する！
-    </div>
-    @endguest
+    <script>
+        'use strict';
+
+        const sourceClass = document.getElementsByClassName("text");
+        var searchText = getParam('search'); //クエリパラメータ取得する関数
+        var regExp = new RegExp(searchText, "g"); //検索したい文字を変換するためお関数
+
+
+        for (var i = 0; i < sourceClass.length; i++) {
+            const sourceText = sourceClass[i].innerHTML;
+            var text = `<span style='background:yellow'> ${searchText}</span>`; //変換後の文字列
+            var changeText = sourceText.replace(regExp, text ); //特定の文字列のみ変換
+
+            document.getElementsByClassName("text")[i].innerHTML = changeText; //入れ替える
+        }
+
+        function getParam(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+    </script>
 @endsection

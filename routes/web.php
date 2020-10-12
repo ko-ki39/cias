@@ -17,6 +17,13 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::group(['middleware' => ['auth', 'can:user-higher']], function () { // 全ユーザー
+
+    Route::get('/top/password_edit', 'Controller@password_edit')->name('password_edit'); //パスワード編集画面
+
+    Route::get('/top/login_password_change', 'Controller@login_password_change')->name('login_password_change'); //パスワード変更処理
+    Route::post('/top/login_password_change', 'Controller@login_password_change')->name('login_password_change'); //パスワード変更処理
+
+
     Route::get('/top/user_edit', 'Controller@user_edit')->name('user_edit'); //ユーザー情報編集画面
     Route::post('/top/user_update', 'Controller@user_update')->name('user_update'); //ユーザー情報変更処理
     Route::get('/top/user_update', 'Controller@user_update')->name('user_update'); //ユーザー情報変更処理
@@ -73,6 +80,10 @@ Route::get('/secret_question_answer', 'Auth\ForgotPasswordController@secretQuest
 
 //パスワード変更用のルート
 Route::post('/change_password', 'Auth\ForgotPasswordController@changePassword')->name('change_password');
+// Route::post('/change_password', function(){
+//     dd('test');
+// })->name('change_password');
+
 Route::get('/change_password', 'Auth\ForgotPasswordController@changePassword')->name('change_password'); //リダイレクトさせるためにget通信も許可させる
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
@@ -81,3 +92,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::post("/top/fav/rem/{id}", "ArticleController@favRemove");
 Route::post("/top/fav/{id}", "ArticleController@favOperation");
 // Route::get("/top/fav/test/{id}", "ArticleController@favTest");
+
+//検索機能↓
+Route::get("/top/search", "Controller@search")->name('search');
+
+

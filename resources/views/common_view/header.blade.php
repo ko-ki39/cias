@@ -2,7 +2,10 @@
     <div class="top">
         {{-- <i class="far fa-bars"></i> --}}
         @guest
-        <a href="{{ url('top') }}" class="ztext">具志川<br>訓練校</a>
+        <div class="arrow" style="margin-right:460px;">
+            <p>click to open My Menu</p>
+            <span></span>
+        </div>
         <a href="{{ url('/register') }}">Sign up</a>
         <a href="{{ url('/login') }}">Login</a>
         @else

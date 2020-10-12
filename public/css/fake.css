@@ -70,10 +70,6 @@
 .main .content .article #fake_right .title_text a h3 {
   font-size: 1.1rem;
   margin: 0;
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .main .content .article #fake_right .desc_text {
@@ -83,12 +79,7 @@
 .main .content .article #fake_right .desc_text p {
   font-size: 0.9rem;
   margin: 5px 0;
-  line-height: 1.2;
-  max-width: 100%;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  overflow: hidden;
+  line-height: 1;
 }
 
 .main .content .article #fake_right .ctf_container {

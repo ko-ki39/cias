@@ -56,10 +56,6 @@
                         h3{
                             font-size: 1.1rem;
                             margin: 0;
-                            max-width: 100%;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                            white-space: nowrap;
                         }
                     }
                 }
@@ -68,12 +64,7 @@
                     p{
                         font-size: 0.9rem;
                         margin: 5px 0;
-                        line-height: 1.2;
-                        max-width: 100%;
-                        display: -webkit-box;
-                        -webkit-box-orient: vertical;
-                        -webkit-line-clamp: 3;
-                        overflow: hidden;
+                        line-height: 1;
                     }
                 }
                 .ctf_container{
