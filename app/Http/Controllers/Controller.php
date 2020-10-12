@@ -172,12 +172,16 @@ class Controller extends BaseController
         if (isset($search)) {
             //検索
             $user = DB::table('users')->where('user_name', 'like', '%' . $search . '%')->first();
-            $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->orWhere('user_id', $user->id)->get();
 
+            if ($user) {// ユーザー名があった場合
+                $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->orWhereNull('user_id', $user->id)->get();
+            } else {
+                $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->get();
+            }
 
             $favs = DB::table("favs")->get();
 
-            return view('top', compact('articles', 'favs'));
+            return view('top', compact('articles', 'favs', 'search'));
         } else {
             return redirect()->route('top');
         }
