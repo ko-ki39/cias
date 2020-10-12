@@ -83,6 +83,7 @@ class Controller extends BaseController
                 // バリデーション
                 $request->validate([
                     // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
+                    'now_password' => 'now_password',
                     'u_i_input' => 'file|image',
                     'user_name' => 'required|string|max:10',
                     'email' => 'nullable|string|email|max:255',
@@ -92,6 +93,7 @@ class Controller extends BaseController
             } else if ($request->user_name == $user->user_name) {
                 $request->validate([
                     // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
+                    'now_password' => 'now_password',
                     'u_i_input' => 'file|image',
                     'user_name' => 'required|string|max:10',
                     'email' => 'nullable|string|email|max:255|unique:users',
@@ -101,8 +103,9 @@ class Controller extends BaseController
             } else if ($request->email == $user->email) {
                 $request->validate([
                     // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
+                    'now_password' => 'now_password',
                     'u_i_input' => 'file|image',
-                    'user_name' => 'required|string|max:10',
+                    'user_name' => 'required|string|max:10|unique:users',
                     'email' => 'nullable|string|email|max:255|unique:users',
                     // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
                     'secret_answer' => 'required|string|max:50',
@@ -110,11 +113,12 @@ class Controller extends BaseController
             } else {
                 $request->validate([
                     // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
+                    'now_password' => 'now_password',
                     'u_i_input' => 'file|image',
-                    'user_name' => 'required|string|max:10',
+                    'user_name' => 'required|string|max:10|unique:users',
                     'email' => 'nullable|string|email|max:255|unique:users',
                     // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
-                    'secret_answer' => 'required|string|max:50|unique:users',
+                    'secret_answer' => 'required|string|max:50',
                 ]);
             }
 
@@ -155,6 +159,7 @@ class Controller extends BaseController
         if ($request->isMethod('post') == false) {
             return redirect()->route('top');
         } else if ($validator->failed()) {
+            // dd($validator);
             return redirect('/top/password_edit')->withErrors($validator)->withInput(); //失敗した時の通常の処理
         } else {
             $change_password = [
@@ -172,10 +177,9 @@ class Controller extends BaseController
         if (isset($search)) {
             //検索
             $user = DB::table('users')->where('user_name', 'like', '%' . $search . '%')->first();
-            if ($user != null) {// ユーザー名があった場合
+            if ($user != null) { // ユーザー名があった場合
                 $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->orWhere('user_id', $user->id)->get();
             } else {
-                dd('null');
                 $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->get();
             }
 
