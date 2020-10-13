@@ -126,25 +126,25 @@ class Controller extends BaseController
             $storagePath = '/app/public/';
             if ($request->u_i_input != null) {
                 $image = request()->file('u_i_input');
-            $fileName = time() . "_" . $image->getClientOriginalName();
-            $resizeImage = InterventionImage::make($image)
-                ->resize(350, 350, function($constraint){
-                    $constraint->aspectRatio();
-            });
+                $fileName = time() . "_" . $image->getClientOriginalName();
+                $resizeImage = InterventionImage::make($image)
+                    ->resize(350, 350, function ($constraint) {
+                        $constraint->aspectRatio();
+                    });
 
-            // 20KB未満まで圧縮する。
-            // if($resizeImage->filesize() > 20000){
-            //     do{
-            //         if($quality < 15){
-            //             // dd($quality);
-            //             break;
-            //         }
-            //         $quality = $quality - 5;
-            //         $resizeImage->save(storage_path($storagePath . $fileName), $quality);
-            //     }while($resizeImage->filesize() > 20000);
-            // }
-            $resizeImage->save(storage_path($storagePath . $fileName), $quality);
-            $image_path = basename($fileName); //画像名のみ保存
+                // 20KB未満まで圧縮する。
+                // if($resizeImage->filesize() > 20000){
+                //     do{
+                //         if($quality < 15){
+                //             // dd($quality);
+                //             break;
+                //         }
+                //         $quality = $quality - 5;
+                //         $resizeImage->save(storage_path($storagePath . $fileName), $quality);
+                //     }while($resizeImage->filesize() > 20000);
+                // }
+                $resizeImage->save(storage_path($storagePath . $fileName), $quality);
+                $image_path = basename($fileName); //画像名のみ保存
             } else {
                 $image_path = $request->current_image;
             }
@@ -196,7 +196,6 @@ class Controller extends BaseController
     public function search(Request $request)
     {
         $search = $request->input('search');
-
         if (isset($search)) {
             //検索
             $user = DB::table('users')->where('user_name', 'like', '%' . $search . '%')->first();
@@ -212,5 +211,19 @@ class Controller extends BaseController
         } else {
             return redirect()->route('top');
         }
+    }
+
+    public function hashtag()
+    {//hashtagのajax受け取りと受け渡し処理
+        $hashtag = $_GET['hashtag'];
+        $hash = DB::table('hashtags')->where('hashtag_contents','like', '%'. $hashtag.'%')->get();
+        return response()->json($hash);
+    }
+
+    public function hashtagResult($hash){ //hashtagをクリックした時のでの遷移先
+        $articles = DB::table('articles')->where('hash1_id',$hash)->orWhere('hash2_id', $hash)->orWhere('hash3_id', $hash)->get();
+        $favs = DB::table("favs")->get();
+
+        return view('top', compact('articles', 'favs'));
     }
 }

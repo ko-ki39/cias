@@ -14,8 +14,13 @@
             <form action="{{ route('search') }}" method="get">
                 <div class="search">
                     <i class="fas fa-search"></i>
-                    <input type="text" name="search">
+                    <input type="text" name="search" id="search" placeholder="検索">
                     <input type="submit" value="検索">
+                    <div id="search_list">
+                        <ul id="search_result">
+
+                        </ul>
+                    </div>
                 </div>
             </form>
             @foreach ($articles as $article)
@@ -85,7 +90,7 @@
             const sourceText = sourceClass[i].innerHTML;
             var text = `<span style='background:yellow'> ${searchText}</span>`; //変換後の文字列
             var changeText = sourceText.replace(regExp, text ); //特定の文字列のみ変換
-            
+
             document.getElementsByClassName("text")[i].innerHTML = changeText; //入れ替える
         }
 
@@ -100,4 +105,6 @@
         }
 
     </script>
+    <script src="/js/hash.js"></script>
+
 @endsection

@@ -8,8 +8,27 @@
         float: left;
         border: dashed 1px #000;
         .search {
-            margin: 10px;
+            margin-top: 10px;
             text-align: center;
+            #search_list {
+                margin-left: 208px;
+                width: 177px;
+                background-color: #eee;
+                ul {
+                    padding-left: 5px;
+                    margin-top: 0;
+                    list-style: none;
+                    text-align: left;
+                    text-decoration-line: none;
+                    a {
+                        text-decoration: none;
+                         :hover {
+                            background-color: #cccccc;
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
         }
         .article {
             width: 550px;

@@ -12,8 +12,32 @@
 }
 
 .main .content .search {
-  margin: 10px;
+  margin-top: 10px;
   text-align: center;
+}
+
+.main .content .search #search_list {
+  margin-left: 208px;
+  width: 177px;
+  background-color: #eee;
+}
+
+.main .content .search #search_list ul {
+  padding-left: 5px;
+  margin-top: 0;
+  list-style: none;
+  text-align: left;
+  -webkit-text-decoration-line: none;
+          text-decoration-line: none;
+}
+
+.main .content .search #search_list ul a {
+  text-decoration: none;
+}
+
+.main .content .search #search_list ul a :hover {
+  background-color: #cccccc;
+  text-decoration: underline;
 }
 
 .main .content .article {
