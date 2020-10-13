@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ChangePasswordRequest;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use InterventionImage;
+
 
 class Controller extends BaseController
 {
@@ -155,8 +157,8 @@ class Controller extends BaseController
                 'secret_answer' => $request->secret_answer,
             ];
 
-            $old_path = "/public/". $user->image; //画像削除処理
-            Storage::delete($old_path);//画像削除処理
+            $old_path = "/public/" . $user->image; //画像削除処理
+            Storage::delete($old_path); //画像削除処理
 
             User::where('id', Auth::id())->update($update_user);
 

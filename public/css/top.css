@@ -37,10 +37,21 @@
   border: dashed 1px #0f0;
 }
 
+.main .content .article a .text {
+  margin: 0.6em;
+  text-align: center;
+  font-size: 18px;
+}
+
 .main .content .article .article_title {
   margin: 0.6em;
   text-align: center;
   font-size: 18px;
+}
+
+.main .content .article .text {
+  margin: 0.6em;
+  font-size: 0.9em;
 }
 
 .main .content .article .article_description {
