@@ -211,9 +211,16 @@ class Controller extends BaseController
     }
 
     public function hashtag()
-    {
+    {//hashtagのajax受け取りと受け渡し処理
         $hashtag = $_GET['hashtag'];
         $hash = DB::table('hashtags')->where('hashtag_contents','like', '%'. $hashtag.'%')->get();
         return response()->json($hash);
+    }
+
+    public function hashtagResult($hash){ //hashtagをクリックした時のでの遷移先
+        $articles = DB::table('articles')->where('hash1_id',$hash)->orWhere('hash2_id', $hash)->orWhere('hash3_id', $hash)->get();
+        $favs = DB::table("favs")->get();
+
+        return view('top', compact('articles', 'favs'));
     }
 }

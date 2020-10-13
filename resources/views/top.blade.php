@@ -16,6 +16,11 @@
                     <i class="fas fa-search"></i>
                     <input type="text" name="search" id="search">
                     <input type="submit" value="検索">
+                    <div id="search_list">
+                        <ul id="search_result">
+
+                        </ul>
+                    </div>
                 </div>
             </form>
             @foreach ($articles as $article)
