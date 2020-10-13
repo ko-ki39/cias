@@ -4,6 +4,7 @@
     .article {
         width: 620px;
         margin-top: 10px;
+        padding-bottom: 66px;
         border: dashed 1px #000;
         float: left;
         .sub {
@@ -73,7 +74,7 @@
             }
             #comment_area{
                 width: 550px;
-                margin: 75px auto 35px auto;
+                margin: 75px auto 66px auto;
                 h2{
                     margin: 10px auto 10px auto;
                 }
@@ -98,6 +99,44 @@
                     width: 550px;
                     textarea{
                         width: 100%;
+                    }
+                }
+            }
+            #comment_list{
+                width: 550px;
+                .c_l_contents{
+                    border: 1px solid gray;
+                    border-radius: 8px;
+                    padding: 5px 10px;
+                    .c_l_c_info{
+                        display: flex;
+                        flex-direction: row;
+                        flex-flow: wrap;
+                        align-items: center;
+                        .c_l_c_img{
+                            width: 45px;
+                            height: 45px;
+                            border-radius: 100%;
+                        }
+                        .c_l_c_name{
+                            margin-left: 10px;
+                            font-size: 1.05em;
+                            font-weight: bold;
+                        }
+                    }
+                }
+                .c_l_c_detail{
+                    width: 500px;
+                    pre{
+                        width: 100%;
+                        margin: 5px auto 5px 10px;
+                        white-space: pre-wrap;
+                    }
+                }
+                .c_l_c_other{
+                    time{
+                        margin-left: 333px;
+                        font-size: 0.75em;
                     }
                 }
             }

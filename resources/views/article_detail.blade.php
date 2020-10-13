@@ -45,7 +45,7 @@
                 </div>
                 @else
                 <div id="comment_area">
-                    <h2>コメントを書く</h2>
+                    <h2>コメント書いて、どうぞ(迫真)</h2>
                     <form action="/top/article_detail/post_comment" method="post">
                         @csrf
                         <div class="c_a_u_info">
@@ -61,9 +61,26 @@
                     </form>
                 </div>
                 @endguest
-                <hr>
                 <div id="comment_list">
-                    コメント一覧が入ります
+                    <h2>コメント一覧ゾ</h2>
+                    @foreach ($comments as $item)
+                        @if (!$loop->first)
+                            <hr>
+                        @endif
+                        <div class="c_l_contents">
+                            <div class="c_l_c_info">
+                                <img class="c_l_c_img" src="/storage/{{ Illuminate\Support\Facades\DB::table('users')->where("id", "=", $item->user_id)->first()->image }}" alt="">
+                                <p class="c_l_c_name">{{ Illuminate\Support\Facades\DB::table('users')->where("id", "=", $item->user_id)->first()->user_name }}</p>
+                            </div>
+                            <div class="c_l_c_detail">
+                                <pre>{{ $item->detail }}</pre>
+                            </div>
+                            <div class="c_l_c_other">
+                                <i class="far fa-thumbs-up"></i> | <i class="far fa-thumbs-down"></i>
+                                <time datetime="{{ $item->created_at }}">{{ $item->created_at }}</time>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
