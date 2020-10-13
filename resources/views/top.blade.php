@@ -14,7 +14,7 @@
             <form action="{{ route('search') }}" method="get">
                 <div class="search">
                     <i class="fas fa-search"></i>
-                    <input type="text" name="search" id="search">
+                    <input type="text" name="search" id="search" placeholder="検索">
                     <input type="submit" value="検索">
                     <div id="search_list">
                         <ul id="search_result">
