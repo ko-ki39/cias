@@ -11,10 +11,9 @@ search.addEventListener('keyup', function() {
         }).done(function(data) { //成功した時の処理
             search_id.innerHTML = null; //処理が複数回走った場合のリセット
             for (var i = 0; i < data.length; i++) {
-                html = `<a href="/top/hashtag/${data[i].hashtag_contents}"><li>${data[i].hashtag_contents}</li></a>`; //html生成
+                html = `<li><a href="/top/hashtag/${data[i].hashtag_contents}">#${data[i].hashtag_contents}</a></li>`; //html生成
                 search_id.insertAdjacentHTML("beforeend", html); //すでにある要素の下に入れる
             }
-            console.log(data);
         }).fail(function() {
 
         })
