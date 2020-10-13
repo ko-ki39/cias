@@ -236,7 +236,7 @@ class ArticleController extends Controller
                 $a_d_message = "お気に入りを削除ゾ";
                 $p_method = "exists";
                 $query->delete();
-            // responsがcreateで、favsテーブル上でexistsだったら、追加する
+            // responsがcreateで、favsテーブル上でexistsじゃなかったら、追加する
             }else if($p_method == "create" && $query->exists() == null){
                 $a_d_message = "お気に入りに追加ゾ";
                 $fav = new Fav();

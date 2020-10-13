@@ -80,7 +80,7 @@ class Controller extends BaseController
     {
         if ($request->isMethod('post')) {
             $user = DB::table('users')->where('id', Auth::id())->first();
-            if ($request->user_name == $user->user_name && $request->email == $user->email) {
+            if($request->user_name == $user->user_name && $request->email == $user->email){
                 // バリデーション
                 $request->validate([
                     // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
@@ -91,7 +91,7 @@ class Controller extends BaseController
                     // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
                     'secret_answer' => 'required|string|max:50',
                 ]);
-            } else if ($request->user_name == $user->user_name) {
+            }else if($request->user_name == $user->user_name) {
                 $request->validate([
                     // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
                     'now_password' => 'now_password',
@@ -101,7 +101,7 @@ class Controller extends BaseController
                     // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
                     'secret_answer' => 'required|string|max:50',
                 ]);
-            } else if ($request->email == $user->email) {
+            }else if($request->email == $user->email){
                 $request->validate([
                     // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
                     'now_password' => 'now_password',
@@ -111,7 +111,7 @@ class Controller extends BaseController
                     // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
                     'secret_answer' => 'required|string|max:50',
                 ]);
-            } else {
+            }else {
                 $request->validate([
                     // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
                     'now_password' => 'now_password',
@@ -167,6 +167,9 @@ class Controller extends BaseController
         }
         return redirect()->route('top');
     }
+    // public function fake($id)
+    // { //偽物ページ 後で消す
+    //     $user = DB::table('users')->where('id', $id)->first();
 
     public function password_edit()
     {

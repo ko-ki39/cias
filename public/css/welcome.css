@@ -3,6 +3,55 @@ body {
   background-color: black;
 }
 
+body .welcome_header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 77px;
+}
+
+body .welcome_header a:nth-child(2) {
+  color: whitesmoke;
+  text-decoration: none;
+  font-size: 1.25em;
+  border: none;
+  margin-right: 10px;
+}
+
+body .welcome_header img {
+  text-decoration: none;
+  border: none;
+  height: 56px;
+  border-radius: 100%;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.ztext-head {
+  font-size: 1.5em;
+  line-height: 1.5rem;
+  color: whitesmoke;
+  margin: 25px auto 10px auto;
+}
+
+.z-layer:not(:first-child) {
+  color: red;
+}
+
 .welcome_section {
   margin: 0;
 }
@@ -65,21 +114,21 @@ html body .footer .foot_right .foot_twitter {
   background-color: #61acd1;
   background-image: url("https://78.media.tumblr.com/cae86e76225a25b17332dfc9cf8b1121/tumblr_p7n8kqHMuD1uy4lhuo1_540.png"), url("https://78.media.tumblr.com/66445d34fe560351d474af69ef3f2fb0/tumblr_p7n908E1Jb1uy4lhuo1_1280.png"), url("https://78.media.tumblr.com/8cd0a12b7d9d5ba2c7d26f42c25de99f/tumblr_p7n8kqHMuD1uy4lhuo2_1280.png"), url("https://78.media.tumblr.com/5ecb41b654f4e8878f59445b948ede50/tumblr_p7n8on19cV1uy4lhuo1_1280.png"), url("https://78.media.tumblr.com/28bd9a2522fbf8981d680317ccbf4282/tumblr_p7n8kqHMuD1uy4lhuo3_1280.png");
   background-repeat: repeat-x;
-  background-position: 0 20%, 0 100%, 0 50%, 0 100%, 0 0;
-  background-size: 2500px, 800px, 500px 200px, 1000px, 400px 260px;
+  background-position: 0 20%, 0 100%, 0 50%, 0 100%, 0 0;
+  background-size: 2500px, 800px, 500px 200px, 1000px, 400px 260px;
   -webkit-animation: 50s para infinite linear;
           animation: 50s para infinite linear;
 }
 
 @-webkit-keyframes para {
   100% {
-    background-position: -5000px 20%, -800px 95%, 500px 50%, 1000px 100%, 400px 0;
+    background-position: -5000px 20%, -800px 95%, 500px 50%, 1000px 100%, 400px 0;
   }
 }
 
 @keyframes para {
   100% {
-    background-position: -5000px 20%, -800px 95%, 500px 50%, 1000px 100%, 400px 0;
+    background-position: -5000px 20%, -800px 95%, 500px 50%, 1000px 100%, 400px 0;
   }
 }
 

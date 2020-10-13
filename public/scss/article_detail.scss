@@ -1,5 +1,6 @@
 .main {
     width: 1000px;
+    padding: 50px 0 50px 10px;
     .article {
         width: 620px;
         margin-top: 10px;
@@ -69,6 +70,18 @@
                 margin-top: 20px;
                 margin-bottom: 20px;
                 border: dotted 1px #00f;
+            }
+            #comment_area{
+                width: 550px;
+                margin: 50px auto;
+                img{
+                    width: 550px;
+                }
+                .c_a_u_info{
+                    .c_u_img{
+                        
+                    }
+                }
             }
         }
     }
