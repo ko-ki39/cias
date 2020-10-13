@@ -11,6 +11,9 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+use InterventionImage;
 
 class Controller extends BaseController
 {
@@ -35,9 +38,8 @@ class Controller extends BaseController
         return view('top', compact('articles', 'favs'));
     }
 
-    public function article_detail($id, Request $request)
+    public function article_detail($id)
     { //記事詳細ページ
-        // dd(url()->previous());
         $article = DB::table('articles')->where('id', $id)->first();
 
         $user = DB::table('users')->where('id', $article->user_id)->first();
@@ -80,6 +82,7 @@ class Controller extends BaseController
                 // バリデーション
                 $request->validate([
                     // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
+                    'now_password' => 'now_password',
                     'u_i_input' => 'file|image',
                     'user_name' => 'required|string|max:10',
                     'email' => 'nullable|string|email|max:255',
@@ -89,6 +92,7 @@ class Controller extends BaseController
             }else if($request->user_name == $user->user_name) {
                 $request->validate([
                     // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
+                    'now_password' => 'now_password',
                     'u_i_input' => 'file|image',
                     'user_name' => 'required|string|max:10',
                     'email' => 'nullable|string|email|max:255|unique:users',
@@ -98,8 +102,9 @@ class Controller extends BaseController
             }else if($request->email == $user->email){
                 $request->validate([
                     // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
+                    'now_password' => 'now_password',
                     'u_i_input' => 'file|image',
-                    'user_name' => 'required|string|max:10',
+                    'user_name' => 'required|string|max:10|unique:users',
                     'email' => 'nullable|string|email|max:255|unique:users',
                     // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
                     'secret_answer' => 'required|string|max:50',
@@ -107,19 +112,39 @@ class Controller extends BaseController
             }else {
                 $request->validate([
                     // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
+                    'now_password' => 'now_password',
                     'u_i_input' => 'file|image',
-                    'user_name' => 'required|string|max:10',
+                    'user_name' => 'required|string|max:10|unique:users',
                     'email' => 'nullable|string|email|max:255|unique:users',
                     // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
-                    'secret_answer' => 'required|string|max:50|unique:users',
+                    'secret_answer' => 'required|string|max:50',
                 ]);
             }
+            $quality = 90;
+            $storagePath = '/app/public/';
+            if ($request->u_i_input != null) {
+                $image = request()->file('u_i_input');
+            $fileName = time() . "_" . $image->getClientOriginalName();
+            $resizeImage = InterventionImage::make($image)
+                ->resize(350, 350, function($constraint){
+                    $constraint->aspectRatio();
+            });
 
-            if($request->u_i_input != null){
-                $path = $request->u_i_input->store('public'); //シンボリックリンクで画像をstorage内に保存
-                $image_path = basename($path); //画像名のみ保存
-            }else{
-                $image_path = null;
+            // 20KB未満まで圧縮する。
+            // if($resizeImage->filesize() > 20000){
+            //     do{
+            //         if($quality < 15){
+            //             // dd($quality);
+            //             break;
+            //         }
+            //         $quality = $quality - 5;
+            //         $resizeImage->save(storage_path($storagePath . $fileName), $quality);
+            //     }while($resizeImage->filesize() > 20000);
+            // }
+            $resizeImage->save(storage_path($storagePath . $fileName), $quality);
+            $image_path = basename($fileName); //画像名のみ保存
+            } else {
+                $image_path = $request->current_image;
             }
 
             $update_user = [
@@ -144,9 +169,46 @@ class Controller extends BaseController
     // { //偽物ページ 後で消す
     //     $user = DB::table('users')->where('id', $id)->first();
 
-    //     //user_idが同じarticlesをとってくる
-    //     $articles = DB::table('articles')->where('user_id', $id)->get();
+    public function password_edit()
+    {
+        return view('auth/passwords/password_edit');
+    }
 
-    //     return view('fake', compact('user', 'articles'));
-    // }
+    public function login_password_change(ChangePasswordRequest $request)
+    {
+        $validator = $request->getValidator();
+        if ($request->isMethod('post') == false) {
+            return redirect()->route('top');
+        } else if ($validator->failed()) {
+            // dd($validator);
+            return redirect('/top/password_edit')->withErrors($validator)->withInput(); //失敗した時の通常の処理
+        } else {
+            $change_password = [
+                'password' => Hash::make($request->password),
+            ];
+            User::where('id', Auth::id())->update($change_password);
+            return redirect()->route('user_edit');
+        }
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+
+        if (isset($search)) {
+            //検索
+            $user = DB::table('users')->where('user_name', 'like', '%' . $search . '%')->first();
+            if ($user != null) { // ユーザー名があった場合
+                $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->orWhere('user_id', $user->id)->get();
+            } else {
+                $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->get();
+            }
+
+            $favs = DB::table("favs")->get();
+
+            return view('top', compact('articles', 'favs', 'search'));
+        } else {
+            return redirect()->route('top');
+        }
+    }
 }

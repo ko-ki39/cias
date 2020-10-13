@@ -15,6 +15,7 @@
                                 <p>ユーザー画像を入れ給えッッッ</p>
                                 <div class="u_i_display_area">
                                     <input type="file" name="u_i_input" class="u_i_input">
+                                    <input type="hidden" name="current_image" value="{{ $user->image }}">
                                     <img src="/storage/{{ $user->image }}" class="u_i_img">
                                     <canvas id="u_i_canvas" width="250" height="250"></canvas>
                                 </div>
@@ -119,6 +120,20 @@
                                 </div>
                             </div>
 
+                            <div class="form-group row">
+                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('現在のパスワード') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="now_password" type="password" class="form-control @error('now_password') is-invalid @enderror" name="now_password" required autocomplete="new-password">
+
+                                    @error('now_password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
@@ -126,6 +141,7 @@
                                     </button>
                                 </div>
                             </div>
+
                         </form>
                     </div>
                 </div>

@@ -145,7 +145,9 @@ return [
     | of "email". This simply helps us make our message more expressive.
     |
     */
-
-    'attributes' => [],
+    'now_password' => 'パスワードが違います',
+    'attributes' => [
+        'now_password' => '現在のパスワード',
+    ],
 
 ];
