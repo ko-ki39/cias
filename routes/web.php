@@ -27,6 +27,8 @@ Route::group(['middleware' => ['auth', 'can:user-higher']], function () { // 全
     Route::get('/top/user_edit', 'Controller@user_edit')->name('user_edit'); //ユーザー情報編集画面
     Route::post('/top/user_update', 'Controller@user_update')->name('user_update'); //ユーザー情報変更処理
     Route::get('/top/user_update', 'Controller@user_update')->name('user_update'); //ユーザー情報変更処理
+
+    Route::post("/top/article_detail/post_comment", "ArticleController@commnetAdd"); //コメントを投稿する
 });
 
 Route::group(['middleware' => ['auth', 'can:authorized-higher']], function () { //許可されたものと管理者のみ

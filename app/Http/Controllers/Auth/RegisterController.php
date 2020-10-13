@@ -54,7 +54,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'u_i_input' => ['file', 'image'],
-            'user_id' => ['required', 'alpha_num', 'max:25'],
+            'user_id' => ['required', 'alpha_num', 'min:8', 'max:25'],
             'password' => ['required', 'alpha_dash', 'min:8', 'confirmed'],
             'user_name' => ['required', 'string', 'max:10', 'unique:users'],
             'email' => ['nullable', 'email', 'max:255', 'unique:users'],
@@ -95,7 +95,7 @@ class RegisterController extends Controller
             $resizeImage->save(storage_path($storagePath . $fileName));
             $image_path = basename($fileName);
         } else {
-            $image_path = null; //nullを入れないと空になる
+            $image_path = null;
         }
 
         $user = User::create([
@@ -110,23 +110,4 @@ class RegisterController extends Controller
 
         return $user;
     }
-
-    // public function getRegister()
-    // {
-    //     return view("auth.register");
-    // }
-
-    // public function postRegister(Request $data)
-    // {
-    //     User::create([
-    //         'user_id' => $data['user_id'],
-    //         'password' => Hash::make($data['password']),
-    //         'user_name' => $data['user_name'],
-    //         'email' => $data['email'],
-    //         'secret_question_id' => $data['secret_question_id'],
-    //         'secret_answer' => $data['secret_answer'],
-    //     ]);
-
-    //     return redirect("/home");
-    // }
 }
