@@ -86,9 +86,50 @@
 
 .main .article .text #comment_area {
   width: 550px;
-  margin: 50px auto;
+  margin: 75px auto 35px auto;
+}
+
+.main .article .text #comment_area h2 {
+  margin: 10px auto 10px auto;
 }
 
 .main .article .text #comment_area img {
   width: 550px;
+}
+
+.main .article .text #comment_area .c_a_u_info {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-flex-flow: wrap;
+      -ms-flex-flow: wrap;
+          flex-flow: wrap;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main .article .text #comment_area .c_a_u_info .c_u_img {
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+}
+
+.main .article .text #comment_area .c_a_u_info .c_u_name {
+  margin-left: 10px;
+}
+
+.main .article .text #comment_area .c_a_u_comment {
+  width: 550px;
+}
+
+.main .article .text #comment_area .c_a_u_comment textarea {
+  width: 100%;
 }

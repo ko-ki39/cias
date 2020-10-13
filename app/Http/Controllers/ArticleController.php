@@ -266,4 +266,11 @@ class ArticleController extends Controller
             ]);
         }
     }
+
+    public function commnetAdd(Request $request){
+        $user_id = Auth::id();
+        $article_id = substr(url()->previous(), -1);
+        $detail = $request->c_a_u_comment;
+        dd($user_id, $article_id, $detail);
+    }
 }

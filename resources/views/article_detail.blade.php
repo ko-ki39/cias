@@ -45,14 +45,26 @@
                 </div>
                 @else
                 <div id="comment_area">
-                    <form action="" method="post">
+                    <h2>コメントを書く</h2>
+                    <form action="/top/article_detail/post_comment" method="post">
+                        @csrf
                         <div class="c_a_u_info">
                             <img class="c_u_img" src="/storage/{{ Auth::user()->image }}" alt="">
+                            <p class="c_u_name">{{ Auth::user()->user_name }}</p>
                         </div>
-                        <div class="c_a_u_comment"></div>
+                        <div class="c_a_u_comment">
+                            <textarea name="c_a_u_comment" id="" cols="" rows="10"></textarea>
+                        </div>
+                        <div class="c_a_u_submit">
+                            <input type="submit" value="投稿する！">
+                        </div>
                     </form>
                 </div>
                 @endguest
+                <hr>
+                <div id="comment_list">
+                    コメント一覧が入ります
+                </div>
             </div>
         </div>
         @component('components.side-bar')
