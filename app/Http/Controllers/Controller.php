@@ -46,12 +46,14 @@ class Controller extends BaseController
         $user = DB::table('users')->where('id', $article->user_id)->first();
 
         $post = DB::table('posts')->where('id', $id)->first();
-        // dd($post);
+
+        $comments = DB::table("comments")->where("article_id", $id)->get();
+        // dd($comments);
 
         $image = [$post->image1, $post->image2, $post->image3, $post->image4, $post->image5, $post->image6]; //bladeで変数宣言するのはよくない？
         $text = [$post->text1, $post->text2, $post->text3, $post->text4, $post->text5, $post->text6,];
 
-        return view('article_detail', compact('article', 'user', 'post', 'image', 'text'));
+        return view('article_detail', compact('article', 'user', 'post', 'image', 'text', 'comments'));
     }
 
     public function individual($id)

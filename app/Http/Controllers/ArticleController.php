@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Article;
+use App\Comment;
 use App\Fav;
 use App\Post;
 use App\Hashtag;
@@ -296,5 +297,20 @@ class ArticleController extends Controller
                 "success_flag" => "omg",
             ]);
         }
+    }
+
+    public function commnetAdd(Request $request){
+        $user_id = Auth::id();
+        $article_id = substr(url()->previous(), -1);
+        $detail = $request->c_a_u_comment;
+
+        $comment = new Comment;
+        $comment->create([
+            "user_id" => $user_id,
+            "article_id" => $article_id,
+            "detail" => $detail,
+        ]);
+
+        return redirect()->route('article_detail', ['id' => $article_id]);
     }
 }
