@@ -125,3 +125,7 @@
   color: #135f13;
   cursor: pointer;
 }
+
+.main .content #message {
+  margin-left: 150px;
+}

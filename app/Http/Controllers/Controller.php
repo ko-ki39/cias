@@ -205,8 +205,6 @@ class Controller extends BaseController
                 $hash_search = substr($request->search, 1);
 
                 $articles = DB::table('articles')->where('hash1_id', $hash_search)->orWhere('hash2_id', $hash_search)->orWhere('hash3_id', $hash_search)->get();
-
-                return view('top', compact('articles'));
             } else {
 
                 //検索
@@ -216,9 +214,13 @@ class Controller extends BaseController
                 } else {
                     $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->get();
                 }
-
-                return view('top', compact('articles', 'search'));
             }
+            $message = null;
+            if (empty($articles[0])) {
+                $message = '検索結果が見つかりませんでした。 「' . $request->search . '」';
+            }
+
+            return view('top', compact('articles', 'message'));
         } else {
             return redirect()->route('top');
         }
@@ -234,9 +236,7 @@ class Controller extends BaseController
     public function hashtagResult($hash)
     { //hashtagをクリックした時のでの遷移先
         $articles = DB::table('articles')->where('hash1_id', $hash)->orWhere('hash2_id', $hash)->orWhere('hash3_id', $hash)->get();
-        if(empty($articles)){
-            dd("null");
-        }
+
 
         return view('top', compact('articles'));
     }

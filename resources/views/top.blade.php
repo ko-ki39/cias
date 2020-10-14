@@ -78,12 +78,12 @@
                 </div>
 
             @endforeach
+            @if (!empty($message))
+            {{-- 検索結果がなかった場合のメッセージ --}}
+                <p id="message">{{ $message }}</p>
+            @endif
         </div>
-        @if($articles == null)
-            検索結果が見つかりませんでした。
-        @else
-        検索あり
-        @endif
+
         @component('components.side-bar')
             {{-- ここはサイドバーです --}}
         @endcomponent
