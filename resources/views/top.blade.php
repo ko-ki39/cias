@@ -80,8 +80,9 @@
             @endforeach
             @if (!empty($message))
             {{-- 検索結果がなかった場合のメッセージ --}}
-                <p id="message">{{ $message }}</p>
+                <p id="message">{!! $message !!}</p>
             @endif
+            {{ $articles->links() }}
         </div>
 
         @component('components.side-bar')
