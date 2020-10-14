@@ -34,10 +34,9 @@ class Controller extends BaseController
     }
     public function top()
     {
-        $articles = DB::table('articles')->get();
-        $favs = DB::table("favs")->get();
+        $articles = DB::table('articles')->paginate(5);
 
-        return view('top', compact('articles', 'favs'));
+        return view('top', compact('articles'));
     }
 
     public function article_detail($id)
@@ -48,7 +47,7 @@ class Controller extends BaseController
 
         $post = DB::table('posts')->where('id', $id)->first();
 
-        $comments = DB::table("comments")->where("article_id", $id)->get();
+        $comments = DB::table("comments")->where("article_id", $id)->latest()->get();
         // dd($comments);
 
         $image = [$post->image1, $post->image2, $post->image3, $post->image4, $post->image5, $post->image6]; //bladeで変数宣言するのはよくない？
@@ -82,7 +81,7 @@ class Controller extends BaseController
     {
         if ($request->isMethod('post')) {
             $user = DB::table('users')->where('id', Auth::id())->first();
-            if($request->user_name == $user->user_name && $request->email == $user->email){
+            if ($request->user_name == $user->user_name && $request->email == $user->email) {
                 // バリデーション
                 $request->validate([
                     // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
@@ -93,7 +92,7 @@ class Controller extends BaseController
                     // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
                     'secret_answer' => 'required|string|max:50',
                 ]);
-            }else if($request->user_name == $user->user_name) {
+            } else if ($request->user_name == $user->user_name) {
                 $request->validate([
                     // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
                     'now_password' => 'now_password',
@@ -103,7 +102,7 @@ class Controller extends BaseController
                     // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
                     'secret_answer' => 'required|string|max:50',
                 ]);
-            }else if($request->email == $user->email){
+            } else if ($request->email == $user->email) {
                 $request->validate([
                     // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
                     'now_password' => 'now_password',
@@ -113,7 +112,7 @@ class Controller extends BaseController
                     // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
                     'secret_answer' => 'required|string|max:50',
                 ]);
-            }else {
+            } else {
                 $request->validate([
                     // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
                     'now_password' => 'now_password',
@@ -197,35 +196,48 @@ class Controller extends BaseController
 
     public function search(Request $request)
     {
+
         $search = $request->input('search');
         if (isset($search)) {
-            //検索
-            $user = DB::table('users')->where('user_name', 'like', '%' . $search . '%')->first();
-            if ($user != null) { // ユーザー名があった場合
-                $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->orWhere('user_id', $user->id)->get();
+            $hash = substr($request->search, 0, 1);
+            if ($hash == '#') {
+                //ハッシュタグをつけて検索した場合
+                $hash_search = substr($request->search, 1);
+
+                $articles = DB::table('articles')->where('hash1_id', $hash_search)->orWhere('hash2_id', $hash_search)->orWhere('hash3_id', $hash_search)->paginate(5);
             } else {
-                $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->get();
+
+                //検索
+                $user = DB::table('users')->where('user_name', 'like', '%' . $search . '%')->first();
+                if ($user != null) { // ユーザー名があった場合
+                    $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->orWhere('user_id', $user->id)->paginate(5);
+                } else {
+                    $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->paginate(5);
+                }
+            }
+            $message = null;
+            if (empty($articles[0])) {
+                $message = '「' . $request->search . '」<br>の検索結果が見つかりませんでした。';
             }
 
-            $favs = DB::table("favs")->get();
-
-            return view('top', compact('articles', 'favs', 'search'));
+            return view('top', compact('articles', 'message'));
         } else {
             return redirect()->route('top');
         }
     }
 
     public function hashtag()
-    {//hashtagのajax受け取りと受け渡し処理
+    { //hashtagのajax受け取りと受け渡し処理
         $hashtag = $_GET['hashtag'];
-        $hash = DB::table('hashtags')->where('hashtag_contents','like', '%'. $hashtag.'%')->get();
+        $hash = DB::table('hashtags')->where('hashtag_contents', 'like', '%' . $hashtag . '%')->get();
         return response()->json($hash);
     }
 
-    public function hashtagResult($hash){ //hashtagをクリックした時のでの遷移先
-        $articles = DB::table('articles')->where('hash1_id',$hash)->orWhere('hash2_id', $hash)->orWhere('hash3_id', $hash)->get();
-        $favs = DB::table("favs")->get();
+    public function hashtagResult($hash)
+    { //hashtagをクリックした時のでの遷移先
+        $articles = DB::table('articles')->where('hash1_id', $hash)->orWhere('hash2_id', $hash)->orWhere('hash3_id', $hash)->get();
 
-        return view('top', compact('articles', 'favs'));
+
+        return view('top', compact('articles'));
     }
 }

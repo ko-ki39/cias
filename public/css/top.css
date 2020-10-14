@@ -13,25 +13,29 @@
 
 .main .content .search {
   margin-top: 10px;
+  height: 30px;
   text-align: center;
+}
+
+.main .content .search #search {
+  height: 24px;
 }
 
 .main .content .search #search_list {
   margin-left: 208px;
   width: 177px;
-  background-color: #eee;
+  background-color: #fff;
 }
 
 .main .content .search #search_list ul {
-  padding-left: 5px;
+  padding-left: 0;
   margin-top: 0;
   list-style: none;
   text-align: left;
-  -webkit-text-decoration-line: none;
-          text-decoration-line: none;
 }
 
 .main .content .search #search_list ul a {
+  color: #00aaf8;
   text-decoration: none;
 }
 
@@ -120,4 +124,8 @@
   margin-right: 0.5em;
   color: #135f13;
   cursor: pointer;
+}
+
+.main .content #message {
+  margin-left: 150px;
 }
