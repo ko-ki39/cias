@@ -45,16 +45,26 @@
                 </div>
                 @else
                 <div id="comment_area">
-                    <h2>コメント書いて、どうぞ(迫真)</h2>
+                    <h2>コメントを書く(400文字まで)</h2>
                     <form action="/top/article_detail/post_comment" method="post">
                         @csrf
+                        <input type="hidden" name="comment_forcus_id" value="#comment_area">
                         <div class="c_a_u_info">
                             <img class="c_u_img" src="/storage/{{ Auth::user()->image }}" alt="">
                             <p class="c_u_name">{{ Auth::user()->user_name }}</p>
                         </div>
                         <div class="c_a_u_comment">
-                            <textarea name="c_a_u_comment" id="" cols="" rows="10"></textarea>
+                            <textarea name="c_a_u_comment" id="" cols="" rows="10">{{ old('c_a_u_comment') }}</textarea>
                         </div>
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
                         <div class="c_a_u_submit">
                             <input type="submit" value="投稿する！">
                         </div>
@@ -62,15 +72,15 @@
                 </div>
                 @endguest
                 <div id="comment_list">
-                    <h2>コメント一覧ゾ</h2>
+                    <h2>コメント一覧</h2>
                     @foreach ($comments as $item)
                         @if (!$loop->first)
                             <hr>
                         @endif
                         <div class="c_l_contents">
                             <div class="c_l_c_info">
-                                <img class="c_l_c_img" src="/storage/{{ Illuminate\Support\Facades\DB::table('users')->where("id", "=", $item->user_id)->first()->image }}" alt="">
-                                <p class="c_l_c_name">{{ Illuminate\Support\Facades\DB::table('users')->where("id", "=", $item->user_id)->first()->user_name }}</p>
+                                <a href="{{ route('individual', ['id' => $item->user_id]) }}"><img class="c_l_c_img" src="/storage/{{ Illuminate\Support\Facades\DB::table('users')->where("id", "=", $item->user_id)->first()->image }}" alt=""></a>
+                                <a href="{{ route('individual', ['id' => $item->user_id]) }}" class="c_l_c_name">{{ Illuminate\Support\Facades\DB::table('users')->where("id", "=", $item->user_id)->first()->user_name }}</a>
                             </div>
                             <div class="c_l_c_detail">
                                 <pre>{{ $item->detail }}</pre>
