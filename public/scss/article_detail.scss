@@ -117,11 +117,14 @@
                             width: 45px;
                             height: 45px;
                             border-radius: 100%;
+                            border: 1px solid gray;
                         }
                         .c_l_c_name{
                             margin-left: 10px;
                             font-size: 1.05em;
                             font-weight: bold;
+                            text-decoration: none;
+                            color: rgb(36, 35, 35);
                         }
                     }
                 }

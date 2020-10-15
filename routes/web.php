@@ -73,6 +73,7 @@ Route::get('/top/individual/{id}', 'Controller@individual')->name('individual');
 
 //routeで送ってきたいからnameをつける
 Route::get('/top/article_detail/{id}', 'Controller@article_detail')->name('article_detail'); //記事詳細
+Route::get('/top/article_detail/{id?}', 'ArticleController@articleDetailForcus')->name("articleDetailForcus"); //コメントにフォーカス
 
 //パスワードを忘れた場合の秘密の質問ページ
 Route::get('/secret_question', 'Auth\ForgotPasswordController@secretQuestion')->name('secret_question');
@@ -90,10 +91,8 @@ Route::get('/change_password', 'Auth\ForgotPasswordController@changePassword')->
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-// Route::post("/top/fav/add/{id}", "ArticleController@favAdd");
-// Route::post("/top/fav/rem/{id}", "ArticleController@favRemove");
+// お気に入り
 Route::post("/top/fav/{id}", "ArticleController@favOperation");
-// Route::get("/top/fav/test/{id}", "ArticleController@favTest");
 
 //検索機能↓
 Route::get("/top/search", "Controller@search")->name('search');

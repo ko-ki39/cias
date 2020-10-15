@@ -10,6 +10,7 @@ use App\Fav;
 use App\Post;
 use App\Hashtag;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ArticleController extends Controller
 {
@@ -300,8 +301,23 @@ class ArticleController extends Controller
     }
 
     public function commnetAdd(Request $request){
+        $comment_forcus_id = $request->comment_forcus_id;
         $user_id = Auth::id();
         $article_id = substr(url()->previous(), -1);
+        $detailValidate = Validator::make($request->all(), [
+            "c_a_u_comment" => ["required", "max:400"],
+        ],
+        [
+            "c_a_u_comment.required" => "コメントが空です！",
+            "c_a_u_comment.max" => "コメントが400文字を超えています！",
+        ]);
+
+        $forcus = $article_id . $comment_forcus_id;
+        if($detailValidate->fails()){
+            return redirect()
+                    ->route('articleDetailForcus', ['id' => $forcus])
+                    ->withErrors($detailValidate);
+        }
         $detail = $request->c_a_u_comment;
 
         $comment = new Comment;
@@ -311,6 +327,20 @@ class ArticleController extends Controller
             "detail" => $detail,
         ]);
 
-        return redirect()->route('article_detail', ['id' => $article_id]);
+        return redirect()->route('articleDetailForcus', ['id' => $forcus]);
+    }
+
+    public function articleDetailForcus($id){
+        $id = substr($id, -14, 1);
+        $article = DB::table('articles')->where('id', $id)->first();
+        $user = DB::table('users')->where('id', $article->user_id)->first();
+        $post = DB::table('posts')->where('id', $id)->first();
+        $comments = DB::table("comments")->where("article_id", $id)->latest()->get();
+        // dd($comments);
+
+        $image = [$post->image1, $post->image2, $post->image3, $post->image4, $post->image5, $post->image6]; //bladeで変数宣言するのはよくない？
+        $text = [$post->text1, $post->text2, $post->text3, $post->text4, $post->text5, $post->text6,];
+
+        return view('article_detail', compact('article', 'user', 'post', 'image', 'text', 'comments'));
     }
 }
