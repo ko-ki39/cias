@@ -1,4 +1,5 @@
 <header id="hamburger_menu">
+    @guest
     <nav class="nav fadein" id="nav_f">
         <ul>
             <li class="li_pro_img"></li>
@@ -12,6 +13,26 @@
             <li class="li_pro_ad">ADが入ります</li>
         </ul>
     </nav>
+    @else
+    <nav class="nav fadein" id="nav_f">
+        <ul>
+            <li class="li_pro_img">
+                <a href="{{ route('individual', ['id' => Auth::id()]) }}"><img src="/storage/{{ Auth::user()->image }}" alt=""></a>
+            </li>
+            <li class="li_pro_name">
+                <a href="{{ route('individual', ['id' => Auth::id()]) }}">
+                    {{ Auth::user()->user_name }}
+                </a>
+            </li>
+            <hr>
+            <ul class="li_pro_comment_fav">
+                <p>記事にコメントが来ています！</p>
+                <li><a href="#">記事のタイトル</a></li>
+            </ul>
+            <li class="li_pro_ad">ADが入ります</li>
+        </ul>
+    </nav>
+    @endguest
 </header>
 <div id="hum_target">
     <div class="hum_t_inner">

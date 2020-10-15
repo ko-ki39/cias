@@ -48,7 +48,15 @@ class Controller extends BaseController
         $post = DB::table('posts')->where('id', $id)->first();
 
         $comments = DB::table("comments")->where("article_id", $id)->latest()->get();
-        // dd($comments);
+
+        // $ai = DB::table("articles")->where("user_id", 1)->get();
+        // $coms = DB::table("comments")->where("user_id", Auth::id())->get();
+        // $favs = DB::table("favs")->where("user_id", Auth::id())->get();
+        // $temp = [];
+        // foreach($ai as $item){
+        //     array_push($temp, $item->id);
+        // }
+        // dd($temp, $coms, $favs);
 
         $image = [$post->image1, $post->image2, $post->image3, $post->image4, $post->image5, $post->image6]; //bladeで変数宣言するのはよくない？
         $text = [$post->text1, $post->text2, $post->text3, $post->text4, $post->text5, $post->text6,];
