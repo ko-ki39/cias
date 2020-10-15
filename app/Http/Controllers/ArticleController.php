@@ -158,6 +158,37 @@ class ArticleController extends Controller
                 'image6' => 'file|image|mimes:jpeg,jpg,png,gif',
             ]);
 
+            $hash1 = DB::table('hashtags')->where('hashtag_contents', $request->hash1)->exists(); //データが存在しているか
+            $hash2 = DB::table('hashtags')->where('hashtag_contents', $request->hash2)->exists();
+            $hash3 = DB::table('hashtags')->where('hashtag_contents', $request->hash3)->exists();
+
+            //  dd($request);
+            if($hash1 == false){
+                if(isset($request->hash1)){
+                    $hashtag = new Hashtag();
+                    $hashtag->create([
+                        'hashtag_contents' => $request->hash1
+                    ]);
+                }
+            }
+            if($hash2 == false){
+                if(isset($request->hash2)){
+                    $hashtag = new Hashtag();
+                    $hashtag->create([
+                        'hashtag_contents' => $request->hash2
+                    ]);
+                }
+
+            }
+            if($hash3 == false){
+                if(isset($request->hash3)){
+                    $hashtag = new Hashtag();
+                    $hashtag->create([
+                        'hashtag_contents' => $request->hash3
+                    ]);
+                }
+            }
+
             $image_file = [
                 $request->image1,
                 $request->image2,

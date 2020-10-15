@@ -14,17 +14,24 @@
             <form action="{{ route('search') }}" method="get">
                 <div class="search">
                     <i class="fas fa-search"></i>
-                    <input type="text" name="search">
+                    <input type="text" name="search" id="search" placeholder="検索" autocomplete="off">
                     <input type="submit" value="検索">
+                    <div id="search_list">
+                        <ul id="search_result">
+
+                        </ul>
+                    </div>
                 </div>
             </form>
+
             @foreach ($articles as $article)
 
                 <div class="article">
                     <input type="hidden" name="article-id" value="{{ $article->id }}" class="article_ajax_id">
                     <a href="article_detail">
                         <div class="article_image">
-                            {{-- <img src="/storage/{{ $article->image }}"> --}}
+                            {{-- <img src="/storage/{{ $article->image }}">
+                            --}}
                             {{-- route('名前', ['クエリパラメータ' => 渡したい値])
                             --}}
                             {{-- ↓/fake?id=1 になる --}}
@@ -49,27 +56,33 @@
                             <i id="" class="heart-button-l fa-heart fa-2x tippyLogin fas" style="color:#ff0000;"></i>
                         </div>
                         @else
-                        <div class="fav">
-                            <i id="" class="heart-button-l fa-heart fa-2x tippyGuest far" style="color:#ff0000;"></i>
-                        </div>
+                            <div class="fav">
+                                <i id="" class="heart-button-l fa-heart fa-2x tippyGuest far" style="color:#ff0000;"></i>
+                            </div>
                         @endif
                     </div>
                 </div>
 
             @endforeach
+            @if (!empty($message))
+            {{-- 検索結果がなかった場合のメッセージ --}}
+                <p id="message">{!! $message !!}</p>
+            @endif
+            {{ $articles->links() }}
         </div>
+
         @component('components.side-bar')
             {{-- ここはサイドバーです --}}
         @endcomponent
     </div>
     @guest
-    <div class="tippy_template" style="display:none;">
-        この記事を、マイページに<br>保存することが出来ます！<br>(ログインが必要です)
-    </div>
+        <div class="tippy_template" style="display:none;">
+            この記事を、マイページに<br>保存することが出来ます！<br>(ログインが必要です)
+        </div>
     @else
-    <div class="tippy_template" style="display:none;">
-        この記事を、マイページに保存する！
-    </div>
+        <div class="tippy_template" style="display:none;">
+            この記事を、マイページに保存する！
+        </div>
     @endguest
     <script>
         'use strict';
@@ -82,8 +95,8 @@
         for (var i = 0; i < sourceClass.length; i++) {
             const sourceText = sourceClass[i].innerHTML;
             var text = `<span style='background:yellow'> ${searchText}</span>`; //変換後の文字列
-            var changeText = sourceText.replace(regExp, text ); //特定の文字列のみ変換
-            
+            var changeText = sourceText.replace(regExp, text); //特定の文字列のみ変換
+
             document.getElementsByClassName("text")[i].innerHTML = changeText; //入れ替える
         }
 
@@ -98,4 +111,6 @@
         }
 
     </script>
+    <script src="/js/hash.js"></script>
+
 @endsection
