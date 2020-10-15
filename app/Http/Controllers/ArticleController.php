@@ -311,13 +311,6 @@ class ArticleController extends Controller
             "c_a_u_comment.required" => "コメントが空です！",
             "c_a_u_comment.max" => "コメントが400文字を超えています！",
         ]);
-        // $detailValidate = $request->validate([
-        //     "c_a_u_comment" => ["required", "max:400"],
-        // ],
-        // [
-        //     "c_a_u_comment.required" => "コメントが空です！",
-        //     "c_a_u_comment.max" => "コメントが400文字を超えています！",
-        // ]);
 
         $forcus = $article_id . $comment_forcus_id;
         if($detailValidate->fails()){
