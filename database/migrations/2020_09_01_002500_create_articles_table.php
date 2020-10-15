@@ -21,10 +21,10 @@ class CreateArticlesTable extends Migration
             $table->string('image');
             $table->string('hash1_id')->nullable();
             $table->string('hash2_id')->nullable();
-
             $table->string('hash3_id')->nullable();
 
-
+            $table->integer('fav_count')->default(0);
+            $table->integer('comment_count')->default(0);
             $table->timestamps();
         });
     }

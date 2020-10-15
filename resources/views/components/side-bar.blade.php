@@ -13,10 +13,4 @@
         </a>
         <p class="date">投稿日付 2020/00/00</p>
     </div>
-    <div class="latest_article">
-        <div class="side_image"></div>
-
-        <p class="detail">詳細</p>
-        <p class="date">投稿日付 2020/00/00</p>
-    </div>
 </div>
