@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use InterventionImage;
+use App\Library\HamburgerNotice;
 
 
 class Controller extends BaseController
@@ -49,33 +50,13 @@ class Controller extends BaseController
 
         $comments = DB::table("comments")->where("article_id", $id)->latest()->get();
 
-        $user_id = Auth::id();
-        $a_u_id = DB::raw('(SELECT id FROM articles WHERE user_id = ?)', array($user_id));
-        
-        $favs_first = DB::table('favs')
-            ->select('article_id', 'user_id', DB::raw('null as type'), 'created_at')
-            ->where($a_u_id);
-
-        $comments_union = DB::table('comments')
-            ->select('article_id', 'user_id', 'detail', 'created_at')
-            ->where($a_u_id)
-            ->union($favs_first)
-            ->orderByDesc('created_at')
-            ->get();
-        dd($comments_union);
-        // $ai = DB::table("articles")->where("user_id", 1)->get();
-        // $coms = DB::table("comments")->where("user_id", Auth::id())->get();
-        // $favs = DB::table("favs")->where("user_id", Auth::id())->get();
-        // $temp = [];
-        // foreach($ai as $item){
-        //     array_push($temp, $item->id);
-        // }
-        // dd($temp, $coms, $favs);
+        $hamburgerNotice = HamburgerNotice::callDB();
+        // dd($hamburgerNotice);
 
         $image = [$post->image1, $post->image2, $post->image3, $post->image4, $post->image5, $post->image6]; //bladeで変数宣言するのはよくない？
         $text = [$post->text1, $post->text2, $post->text3, $post->text4, $post->text5, $post->text6,];
 
-        return view('article_detail', compact('article', 'user', 'post', 'image', 'text', 'comments'));
+        return view('article_detail', compact('article', 'user', 'post', 'image', 'text', 'comments', 'hamburgerNotice'));
     }
 
     public function individual($id)

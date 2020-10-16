@@ -27,13 +27,20 @@
             <hr>
             @guest
             <ul class="li_pro_comment_fav">
-                <li><a href="#">ログイン</a></li>
-                <li><a href="#">サインアップ</a></li>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Sign Up</a></li>
             </ul>
             @else
             <ul class="li_pro_comment_fav">
-                <p>記事にコメントが来ています！</p>
-                <li><a href="#">記事のタイトル</a></li>
+                <p style="color:whitesmoke;">通知ですよー<span style="font-size:3em; color:whitesmoke;">✌</span>^o^<span style="font-size:3em; color:whitesmoke;">✌</span></p>
+                @foreach ($hamburgerNotice as $hamburger)
+                @if ($loop->index < 6)
+                <ul>
+                    {{-- <li>{{ Illuminate\Support\Facades\DB::table('users')->where('id') }}</li> --}}
+                    <li><a href="#">{{ Illuminate\Support\Facades\DB::table('articles')->where('id', '=', $hamburger->article_id)->first()->title }}</a></li>
+                </ul>
+                @endif
+                @endforeach
             </ul>
             @endguest
             <li class="li_pro_ad">ADが入ります</li>
