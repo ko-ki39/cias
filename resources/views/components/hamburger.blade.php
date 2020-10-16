@@ -25,10 +25,17 @@
                 </a>
             </li>
             <hr>
+            @guest
+            <ul class="li_pro_comment_fav">
+                <li><a href="#">ログイン</a></li>
+                <li><a href="#">サインアップ</a></li>
+            </ul>
+            @else
             <ul class="li_pro_comment_fav">
                 <p>記事にコメントが来ています！</p>
                 <li><a href="#">記事のタイトル</a></li>
             </ul>
+            @endguest
             <li class="li_pro_ad">ADが入ります</li>
         </ul>
     </nav>

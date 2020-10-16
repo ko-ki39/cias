@@ -49,6 +49,20 @@ class Controller extends BaseController
 
         $comments = DB::table("comments")->where("article_id", $id)->latest()->get();
 
+        $user_id = Auth::id();
+        $a_u_id = DB::raw('(SELECT id FROM articles WHERE user_id = ?)', array($user_id));
+        
+        $favs_first = DB::table('favs')
+            ->select('article_id', 'user_id', DB::raw('null as type'), 'created_at')
+            ->where($a_u_id);
+
+        $comments_union = DB::table('comments')
+            ->select('article_id', 'user_id', 'detail', 'created_at')
+            ->where($a_u_id)
+            ->union($favs_first)
+            ->orderByDesc('created_at')
+            ->get();
+        dd($comments_union);
         // $ai = DB::table("articles")->where("user_id", 1)->get();
         // $coms = DB::table("comments")->where("user_id", Auth::id())->get();
         // $favs = DB::table("favs")->where("user_id", Auth::id())->get();
