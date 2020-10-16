@@ -12,6 +12,7 @@ use App\Hashtag;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
+use InterventionImage;
 
 class ArticleController extends Controller
 {
@@ -44,11 +45,29 @@ class ArticleController extends Controller
                 $request->image5,
                 $request->image6,
             ];
-
+            $quality = 90;
+            $storagePath = '/app/public/';
             for ($i = 0; $i < 6; $i++) {
                 if ($image_file[$i] != null) {
-                    $path[$i] = $image_file[$i]->store('public'); //シンボリックリンクで画像をstorage内に保存
-                    $image_path[$i] = basename($path[$i]); //画像名のみ保存
+                $fileName = time() . "_" . $image_file[$i]->getClientOriginalName();
+                $resizeImage = InterventionImage::make($image_file[$i])
+                ->resize(350, 350, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+
+                // 20KB未満まで圧縮する。
+                // if($resizeImage->filesize() > 20000){
+                //     do{
+                //         if($quality < 15){
+                //             // dd($quality);
+                //             break;
+                //         }
+                //         $quality = $quality - 5;
+                //         $resizeImage->save(storage_path($storagePath . $fileName), $quality);
+                //     }while($resizeImage->filesize() > 20000);
+                // }
+                $resizeImage->save(storage_path($storagePath . $fileName), $quality);
+                $image_path[$i] = basename($fileName); //画像名のみ保存
                 } else {
                     $image_path[$i] = null; //nullを入れないと空になる
                 }
@@ -196,11 +215,33 @@ class ArticleController extends Controller
                 $request->image5,
                 $request->image6,
             ];
-
+            $quality = 90;
+            $storagePath = '/app/public/';
             for ($i = 0; $i < 6; $i++) {
                 if ($image_file[$i] != null) {
-                    $path[$i] = $image_file[$i]->store('public'); //シンボリックリンクで画像をstorage内に保存
-                    $image_path[$i] = basename($path[$i]); //画像名のみ保存
+                    if ($image_file[$i] != null) {
+                        $fileName = time() . "_" . $image_file[$i]->getClientOriginalName();
+                        $resizeImage = InterventionImage::make($image_file[$i])
+                        ->resize(350, 350, function ($constraint) {
+                            $constraint->aspectRatio();
+                        });
+
+                        // 20KB未満まで圧縮する。
+                        // if($resizeImage->filesize() > 20000){
+                        //     do{
+                        //         if($quality < 15){
+                        //             // dd($quality);
+                        //             break;
+                        //         }
+                        //         $quality = $quality - 5;
+                        //         $resizeImage->save(storage_path($storagePath . $fileName), $quality);
+                        //     }while($resizeImage->filesize() > 20000);
+                        // }
+                        $resizeImage->save(storage_path($storagePath . $fileName), $quality);
+                        $image_path[$i] = basename($fileName); //画像名のみ保存
+                        } else {
+                            $image_path[$i] = null; //nullを入れないと空になる
+                        }
                 } else {
                     $image_path[$i] = null; //nullを入れないと空になる
                 }

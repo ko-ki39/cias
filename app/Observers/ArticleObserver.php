@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Article;
+use App\Post;
 
 class ArticleObserver
 {
@@ -23,9 +24,10 @@ class ArticleObserver
      * @param  \App\Article  $article
      * @return void
      */
+
+
     public function updated(Article $article)
     {
-        dd("更新");
     }
 
     /**
@@ -34,9 +36,10 @@ class ArticleObserver
      * @param  \App\Article  $article
      * @return void
      */
+    public function deleting(Article $article){
+    }
     public function deleted(Article $article)
     {
-        dd('test');
     }
 
     /**

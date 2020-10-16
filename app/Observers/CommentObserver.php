@@ -14,7 +14,7 @@ class CommentObserver
      */
     public function created(Comment $comment)
     {
-        //
+        dd('作成');
     }
 
     /**
@@ -36,7 +36,7 @@ class CommentObserver
      */
     public function deleted(Comment $comment)
     {
-        //
+
     }
 
     /**
