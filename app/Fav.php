@@ -4,8 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-use App\Article;
-
+use App\Events\FavDelete;
 
 class Fav extends Model
 {
@@ -13,15 +12,7 @@ class Fav extends Model
         "article_id", "user_id",
     ];
 
-    public function setArticleIdAttribute($value){
-        $article = DB::table('articles')->where('id', $value)->first();
-        $fav_count = $article->fav_count + 1;
-
-        $update_count = [
-            'fav_count' => $fav_count,
-        ];
-
-        Article::where('id', $value)->update($update_count);
-
-    }
+    protected $dispatchesEvents = [
+        'deleted' => FavDelete::class
+    ];
 }

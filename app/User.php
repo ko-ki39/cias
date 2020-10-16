@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Crypt;
+// use App\Events\ImageFileDelete;
 
 class User extends Authenticatable
 {
@@ -16,6 +17,11 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+    // protected $dispatchesEvents = [
+    //     'deleted' => ImageFileDelete::class,
+    //     'updating' => ImageFileDelete::class
+    // ];
     protected $fillable = [
         'image', 'user_id', 'password', 'user_name', 'email', 'secret_question_id', 'secret_answer',
     ];
