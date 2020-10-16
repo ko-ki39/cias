@@ -23,9 +23,9 @@ class ImageFileDelete
      */
     public function __construct( )
     {
-        dd('test');
-        $old_path = "/public/" . $user->image; //画像削除処理
-        Storage::delete($old_path); //画像削除処理
+        // dd('test');
+        // $old_path = "/public/" . $user->image; //画像削除処理
+        // Storage::delete($old_path); //画像削除処理
     }
 
     /**

@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Article;
+use App\Comment;
+use App\Fav;
+use App\Library\CommonClass;
 use App\Observers\UserObserver;
 use App\User;
 use Illuminate\Support\ServiceProvider;
@@ -26,5 +30,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         User::observe(UserObserver::class);
+        Article::observe(Article::class);
+        Comment::observe(Comment::class);
+        Fav::observe(Fav::class);
     }
 }

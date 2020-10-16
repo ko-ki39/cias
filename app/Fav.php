@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-use App\Events\FavDelete;
+// use App\Events\FavDelete;
 
 class Fav extends Model
 {
@@ -12,7 +12,7 @@ class Fav extends Model
         "article_id", "user_id",
     ];
 
-    protected $dispatchesEvents = [
-        'deleted' => FavDelete::class
-    ];
+    // protected $dispatchesEvents = [
+    //     'deleted' => FavDelete::class
+    // ];
 }

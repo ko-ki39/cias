@@ -3,6 +3,8 @@
 namespace App\Observers;
 
 use App\User;
+use Illuminate\Support\Facades\Storage;
+
 
 class UserObserver
 {
@@ -12,19 +14,23 @@ class UserObserver
      * @param  \App\User  $user
      * @return void
      */
-    public function updating(User $user)
+    public function updating(User $user) //更新前に削除処理
     {
+       $user_old = User::find($user->id);
+       if($user_old->image != $user->image){//変更があったら
+           $old_path = "/public/" . $user_old->image; //画像削除処理
+           // dd($old_path);
+           Storage::delete($old_path); //画像削除処理
+       }
     }
     public function updated(User $user)
     {
-        dd('更新後');
     }
     public function creating(User $user)
     {
     }
     public function created(User $user)
     {
-        dd('作成後');
     }
 
     /**
@@ -43,7 +49,12 @@ class UserObserver
      */
     public function deleted(User $user)
     {
-        //
+        $user_old = User::find($user->id);
+       if($user_old->image != $user->image){//変更があったら
+           $old_path = "/public/" . $user_old->image; //画像削除処理
+           // dd($old_path);
+           Storage::delete($old_path); //画像削除処理
+       }
     }
 
     /**

@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Events\FavDelete;
+// use App\Events\FavDelete;
 
 class Article extends Model
 {
@@ -13,7 +13,7 @@ class Article extends Model
         'image', 'hash1_id', 'hash2_id', 'hash3_id'
     ];
 
-    protected $dispatchesEvents = [
-        'deleted' => FavDelete::class
-    ];
+    // protected $dispatchesEvents = [
+    //     'deleted' => FavDelete::class
+    // ];
 }

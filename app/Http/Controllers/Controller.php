@@ -128,9 +128,9 @@ class Controller extends BaseController
                 $image = request()->file('u_i_input');
                 $fileName = time() . "_" . $image->getClientOriginalName();
                 $resizeImage = InterventionImage::make($image)
-                    ->resize(350, 350, function ($constraint) {
-                        $constraint->aspectRatio();
-                    });
+                ->resize(350, 350, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
 
                 // 20KB未満まで圧縮する。
                 // if($resizeImage->filesize() > 20000){

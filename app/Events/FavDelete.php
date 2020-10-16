@@ -23,25 +23,25 @@ class FavDelete
      *
      * @return void
      */
-    public function __construct( )
-    {
-        Log::debug('成功');
-        $article = DB::table('articles')->where('id', $fav->article_id);
-        $fav_count = $article->fav_count - 1;
-        $update_count = [
-            'fav_count' => $fav_count,
-        ];
+    // public function __construct( )
+    // {
+    //     Log::debug('成功');
+    //     $article = DB::table('articles')->where('id', $fav->article_id);
+    //     $fav_count = $article->fav_count - 1;
+    //     $update_count = [
+    //         'fav_count' => $fav_count,
+    //     ];
 
-        Article::where('id', $article->id)->update($update_count);
-    }
+    //     Article::where('id', $article->id)->update($update_count);
+    // }
 
-    /**
-     * Get the channels the event should broadcast on.
-     *
-     * @return \Illuminate\Broadcasting\Channel|array
-     */
-    public function broadcastOn()
-    {
-        return new PrivateChannel('channel-name');
-    }
+    // /**
+    //  * Get the channels the event should broadcast on.
+    //  *
+    //  * @return \Illuminate\Broadcasting\Channel|array
+    //  */
+    // public function broadcastOn()
+    // {
+    //     return new PrivateChannel('channel-name');
+    // }
 }

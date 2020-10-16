@@ -96,6 +96,9 @@ class ArticleController extends Controller
             $article->create([
                 'user_id' => 1,
                 'title' => $request->title,
+                'hash1_id' => $request->hash1,
+                'hash2_id' => $request->hash2,
+                'hash3_id' => $request->hash3,
                 'description' => $request->text1,
                 'image' => $image_path[0],
             ]);
@@ -203,21 +206,21 @@ class ArticleController extends Controller
                 }
             }
 
-            $update_post = [
-                'image1' => $image_path[0],
-                'image2' => $image_path[1],
-                'image3' => $image_path[2],
-                'image4' => $image_path[3],
-                'image5' => $image_path[4],
-                'image6' => $image_path[5],
+            // $update_post = [
+            //     'image1' => $image_path[0],
+            //     'image2' => $image_path[1],
+            //     'image3' => $image_path[2],
+            //     'image4' => $image_path[3],
+            //     'image5' => $image_path[4],
+            //     'image6' => $image_path[5],
 
-                'text1' => $request->text1,
-                'text2' => $request->text2,
-                'text3' => $request->text3,
-                'text4' => $request->text4,
-                'text5' => $request->text5,
-                'text6' => $request->text6,
-            ];
+            //     'text1' => $request->text1,
+            //     'text2' => $request->text2,
+            //     'text3' => $request->text3,
+            //     'text4' => $request->text4,
+            //     'text5' => $request->text5,
+            //     'text6' => $request->text6,
+            // ];
             // Post::where('id', $id)->update($update_post);
 
             $post = Post::find($id);
