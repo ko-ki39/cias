@@ -47,17 +47,17 @@
                     <pre class="article_description text">{{ $article->description }}</pre>
                     <p class="date">{{ $article->created_at }}</p>
                     <div class="ctf_container">
-                        <div class="comment"><a href="{{ route('articleDetailForcus', ['id' => $article->id . '#comment_list']) }}"><i class="far fa-comment fa-2x" style="color:#135f13;"></i></a></div>
-                        <div class="twitter"><a href="http://twitter.com/share?text={{ $article->title }}&url={{ route('article_detail', ['id' => $article->id]) }}&hashtags={{ $article->hash1_id }}" rel="nofollow" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter-square fa-2x" style="color:#1da1f2;"></i></a></div>
+                        <div class="comment"><a href="{{ route('articleDetailForcus', ['id' => $article->id . '#comment_list']) }}"><i class="far fa-comment fa-2x comment-button-l" style="color:#259b25;"></i></a></div>
+                        <div class="twitter"><a href="http://twitter.com/share?text={{ $article->title }}&url={{ route('article_detail', ['id' => $article->id]) }}&hashtags={{ $article->hash1_id }}" rel="nofollow" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter-square fa-2x twitter-button-l" style="color:#1da1f2;"></i></a></div>
                         @if (Illuminate\Support\Facades\DB::table("favs")
                                 ->where("article_id", "=", $article->id)
                                 ->where("user_id", "=", Auth::id())->exists() != null)
                         <div class="fav">
-                            <i id="" class="heart-button-l fa-heart fa-2x tippyLogin fas" style="color:#ff0000;"></i>
+                            <i id="" class="heart-button-l fa-heart fa-2x tippyLoginFav fas" style="color:#ff0000;"></i>
                         </div>
                         @else
                             <div class="fav">
-                                <i id="" class="heart-button-l fa-heart fa-2x tippyGuest far" style="color:#ff0000;"></i>
+                                <i id="" class="heart-button-l fa-heart fa-2x tippyGuestFav far" style="color:#ff0000;"></i>
                             </div>
                         @endif
                     </div>
@@ -79,9 +79,21 @@
         <div class="tippy_template" style="display:none;">
             この記事を、マイページに<br>保存することが出来ます！<br>(ログインが必要です)
         </div>
+        <div class="tippy_template" style="display:none;">
+            この記事を、Twitterに<br>晒すことが出来ます！<br>(ログインが必要です)
+        </div>
+        <div class="tippy_template" style="display:none;">
+            この記事に、コメントを<br>書くことが出来ます！<br>(ログインが必要です)
+        </div>
     @else
         <div class="tippy_template" style="display:none;">
             この記事を、マイページに保存する！
+        </div>
+        <div class="tippy_template" style="display:none;">
+            この記事を、Twitterに晒す！
+        </div>
+        <div class="tippy_template" style="display:none;">
+            この記事に、コメントを書く！
         </div>
     @endguest
     <script>

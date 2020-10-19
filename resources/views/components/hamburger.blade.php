@@ -5,6 +5,10 @@
             <li class="li_pro_img"></li>
             <li class="li_pro_name">ほげ太郎</li>
             <hr>
+            <ul class="li_pro_comment_fav">
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Sign Up</a></li>
+            </ul>
             <li class="li_pro_mypage">マイページへのリンクが入ります</li>
             <ul class="li_pro_comment_fav">
                 <p>記事にコメントが来ています！</p>
@@ -25,24 +29,44 @@
                 </a>
             </li>
             <hr>
-            @guest
-            <ul class="li_pro_comment_fav">
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Sign Up</a></li>
-            </ul>
-            @else
             <ul class="li_pro_comment_fav">
                 <p style="color:whitesmoke;">通知ですよー<span style="font-size:3em; color:whitesmoke;">✌</span>^o^<span style="font-size:3em; color:whitesmoke;">✌</span></p>
                 @foreach ($hamburgerNotice as $hamburger)
-                @if ($loop->index < 6)
-                <ul>
-                    {{-- <li>{{ Illuminate\Support\Facades\DB::table('users')->where('id') }}</li> --}}
-                    <li><a href="#">{{ Illuminate\Support\Facades\DB::table('articles')->where('id', '=', $hamburger->article_id)->first()->title }}</a></li>
-                </ul>
+                @if ($loop->index < 10)
+                    @if($hamburger->detail == null)
+                    <ul>
+                        <li>
+                            {{ Illuminate\Support\Facades\DB::table('users')->where('id', '=', $hamburger->user_id)->first()->user_name }}&nbsp;が、
+                            お気に入り
+                            <i id="" class="fa-heart fas" style="color:#ff0000;"></i>
+                            しました！
+                        </li>
+                        <li>
+                            <a href="#">{{ Illuminate\Support\Facades\DB::table('articles')->where('id', '=', $hamburger->article_id)->first()->title }}</a>
+                        </li>
+                        <li>
+                            {{ $hamburger->created_at }}
+                        </li>
+                    </ul>
+                    @else
+                    <ul>
+                        <li>
+                            {{ Illuminate\Support\Facades\DB::table('users')->where('id', '=', $hamburger->user_id)->first()->user_name }}&nbsp;から、
+                            コメント
+                            <i class="fas fa-comment" style="color:#71f371;"></i>
+                            が来ています！
+                        </li>
+                        <li>
+                            <a href="#">{{ Illuminate\Support\Facades\DB::table('articles')->where('id', '=', $hamburger->article_id)->first()->title }}</a>
+                        </li>
+                        <li>
+                            {{ $hamburger->created_at }}
+                        </li>
+                    </ul>
+                    @endif
                 @endif
                 @endforeach
             </ul>
-            @endguest
             <li class="li_pro_ad">ADが入ります</li>
         </ul>
     </nav>

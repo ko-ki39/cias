@@ -21,18 +21,18 @@ header{
         -webkit-transition: 0.333s;
         transition: 0.333s;
         ul:first-child{
-            margin: 66px 0 0 0;
+            margin: 77px 0 0 0;
             padding: 0;
         }
         ul{
-            margin: 20px 0 0 0;
-            padding: 0;
+            margin: 10px auto 0 auto;
+            padding: 10px;
             li{
                 // height: calc(100vh/5);
                 // line-height: 187.39px;
                 list-style-type: none;
                 // font-size: 3em;
-                text-align: center;
+                // text-align: center;
                 display: block;
                 color: #fff;
             }
@@ -84,6 +84,7 @@ header{
     position: fixed;
 }
 .li_pro_img{
+    text-align: center;
     img{
         border: solid 1px white;
         border-radius: 100%;
@@ -95,12 +96,28 @@ header{
 .li_pro_name{
     margin-bottom: 10px;
     font-size: 1.6em;
+    text-align: center;
     a{
         color: whitesmoke;
         text-decoration: none;
     }
 }
 .li_pro_comment_fav{
+    p{
+        margin-left: 25px;
+    }
+    ul{
+        width: 90%;
+        border: solid 1px yellowgreen;
+        margin: 10px auto 0 auto;
+        padding: 10px;
+        li{
+            // text-align: left;
+            a{
+                color: yellowgreen;
+            }
+        }
+    }
 
 }
 .li_pro_ad{

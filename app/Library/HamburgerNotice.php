@@ -22,7 +22,8 @@ class HamburgerNotice
             ->where($a_u_id)
             ->union($favs_first)
             ->orderByDesc('created_at')
-            ->get();
+            ->get()
+            ->whereNotIn('user_id', [$user_id]);
 
         return $comments_union;
     }

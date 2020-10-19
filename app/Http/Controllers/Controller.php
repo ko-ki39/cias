@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use InterventionImage;
-use App\Library\HamburgerNotice;
 
 
 class Controller extends BaseController
@@ -50,13 +49,10 @@ class Controller extends BaseController
 
         $comments = DB::table("comments")->where("article_id", $id)->latest()->get();
 
-        $hamburgerNotice = HamburgerNotice::callDB();
-        // dd($hamburgerNotice);
-
         $image = [$post->image1, $post->image2, $post->image3, $post->image4, $post->image5, $post->image6]; //bladeで変数宣言するのはよくない？
         $text = [$post->text1, $post->text2, $post->text3, $post->text4, $post->text5, $post->text6,];
 
-        return view('article_detail', compact('article', 'user', 'post', 'image', 'text', 'comments', 'hamburgerNotice'));
+        return view('article_detail', compact('article', 'user', 'post', 'image', 'text', 'comments'));
     }
 
     public function individual($id)

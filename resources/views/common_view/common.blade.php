@@ -19,7 +19,7 @@
         {{-- <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script> --}}
     </head>
     <body>
-        @include('components.hamburger')
+        <x-hamburger />
         @include('common_view.header')
         @yield('content')
         @include('common_view.footer')
