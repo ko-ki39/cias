@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Fav;
+use App\Article;
 
 class FavObserver
 {
@@ -14,7 +15,11 @@ class FavObserver
      */
     public function created(Fav $fav)
     {
-        //
+        $update_article = Article::find($fav->article_id);
+
+        $update_article->fav_count += 1;
+
+        $update_article->save();
     }
 
     /**
@@ -36,7 +41,11 @@ class FavObserver
      */
     public function deleted(Fav $fav)
     {
-        //
+        $update_article = Article::find($fav->article_id);
+
+        $update_article->fav_count -= 1;
+
+        $update_article->save();
     }
 
     /**

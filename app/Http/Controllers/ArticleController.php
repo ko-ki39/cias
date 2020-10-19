@@ -327,15 +327,15 @@ class ArticleController extends Controller
             $p_article_id = $request->input("p_article_id");
             $p_method = $request->input("p_method");
             $a_d_message = "";
-            $query = DB::table("favs")->where("article_id", "=", $p_article_id)->where("user_id", "=", Auth::id());
-
+            $query = DB::table("favs")->where("article_id", "=", $p_article_id)->where("user_id", "=", Auth::id())->first();
             // 過去にお気に入りしていたら、テーブルから削除する
-            if ($p_method == "create" && $query->exists() != null) {
+            if ($p_method == "create" && $query != null) {
                 $a_d_message = "お気に入りを削除ゾ";
                 $p_method = "exists";
-                $query->delete();
+                $article = Fav::find($query->id);
+                $article->delete();
                 // responsがcreateで、favsテーブル上でexistsじゃなかったら、追加する
-            } else if ($p_method == "create" && $query->exists() == null) {
+            } else if ($p_method == "create" && $query == null) {
                 // Log::debug('エラー');
 
                 $a_d_message = "お気に入りに追加ゾ";
@@ -347,11 +347,16 @@ class ArticleController extends Controller
                 // responseがdeleteだったら、削除する
             } else if ($p_method == "delete") {
                 $a_d_message = "お気に入りを削除ゾ";
-                $query->delete();
+
+                // $a_d_message = $query->article_id;
+                $article = Fav::find($query->id);
+                $article->delete();
+
                 // curlなどで直接侵入してきたら、弾く
             } else {
                 $p_method = "不正！";
             }
+
             return response()->json([
                 "user_id" => Auth::id(),
                 "p_article_id" => $p_article_id,

@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Comment;
+use App\Article;
 
 class CommentObserver
 {
@@ -14,7 +15,12 @@ class CommentObserver
      */
     public function created(Comment $comment)
     {
-        dd('作成');
+        // dd("作成");
+        $update_article = Article::find($comment->article_id);
+
+        $update_article->comment_count += 1;
+
+        $update_article->save();
     }
 
     /**
@@ -36,7 +42,11 @@ class CommentObserver
      */
     public function deleted(Comment $comment)
     {
+        $update_article = Article::find($comment->article_id);
 
+        $update_article->comment_count -= 1;
+
+        $update_article->save();
     }
 
     /**
