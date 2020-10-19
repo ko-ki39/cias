@@ -34,6 +34,7 @@
                             --}}
                             {{-- route('名前', ['クエリパラメータ' => 渡したい値])
                             --}}
+
                             {{-- ↓/fake?id=1 になる --}}
                             <a href="{{ route('individual', ['id' => \App\User::find($article->user_id)->id]) }}">
                                 <p class="text">{{ \App\User::find($article->user_id)->user_name }}</p>
@@ -71,9 +72,10 @@
             {{ $articles->links() }}
         </div>
 
-        @component('components.side-bar')
+        {{-- @component('components.side-bar') --}}
             {{-- ここはサイドバーです --}}
-        @endcomponent
+            <x-side_bar /> {{-- SideBar.phpコンポーネントを通して作成 --}}
+        {{-- @endcomponent --}}
     </div>
     @guest
         <div class="tippy_template" style="display:none;">
