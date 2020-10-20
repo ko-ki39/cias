@@ -58,8 +58,10 @@
 
             @endforeach
         </div>
-        @component('components.side-bar')
+        {{-- @component('components.side-bar') --}}
             {{-- ここはサイドバーです --}}
-        @endcomponent
+            <x-side_bar /> {{-- SideBar.phpコンポーネントを通して作成 --}}
+
+        {{-- @endcomponent --}}
     </div>
 @endsection

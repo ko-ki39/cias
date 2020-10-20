@@ -41,6 +41,8 @@
         </div>
         @component('components.comment')
             {{-- ここはサイドバーです --}}
+            {{-- <x-side_bar /> SideBar.phpコンポーネントを通して作成 --}}
+
         @endcomponent
     </div>
 @endsection
