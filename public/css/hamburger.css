@@ -19,14 +19,18 @@ header .nav {
   transition: 0.333s;
 }
 
-header .nav ul {
+header .nav ul:first-child {
   margin: 77px 0 0 0;
   padding: 0;
 }
 
+header .nav ul {
+  margin: 10px auto 0 auto;
+  padding: 10px;
+}
+
 header .nav ul li {
   list-style-type: none;
-  text-align: center;
   display: block;
   color: #fff;
 }
@@ -78,23 +82,41 @@ header .nav ul li {
 }
 
 .li_pro_img {
-  border: dashed 2px yellow;
-  border-radius: 20%;
+  text-align: center;
+}
+
+.li_pro_img img {
+  border: solid 1px white;
+  border-radius: 100%;
   height: 250px;
   width: 250px;
   margin: auto;
 }
 
 .li_pro_name {
-  font-size: 2em;
+  margin-bottom: 10px;
+  font-size: 1.6em;
+  text-align: center;
 }
 
-.li_pro_mypage {
+.li_pro_name a {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+.li_pro_comment_fav p {
+  margin-left: 25px;
+}
+
+.li_pro_comment_fav ul {
+  width: 90%;
+  border: solid 1px whitesmoke;
+  margin: 10px auto 0 auto;
   padding: 10px;
-  margin: 0;
-  width: 250px;
-  margin: 40px auto 0 auto;
-  border: dashed 2px yellow;
+}
+
+.li_pro_comment_fav ul li a {
+  color: yellowgreen;
 }
 
 .li_pro_ad {

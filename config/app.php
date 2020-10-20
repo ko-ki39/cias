@@ -230,6 +230,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'InterventionImage' => Intervention\Image\Facades\Image::class,
+        'HamburgerNotice' => app\Library\HamburgerNotice::class,
         'CommonClass' => app\Library\CommonClass::class,
     ],
 

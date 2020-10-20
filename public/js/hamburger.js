@@ -35,6 +35,7 @@ function hamburger(){
         document.getElementById("hamburger_menu").style.zIndex = "998";
         document.getElementsByClassName("hum_t_i_0")[0].style.top = "13px";
         document.getElementsByClassName("hum_t_i_2")[0].style.top = "13px";
+        document.getElementById("hum_target").style.background = "rgba(99,99,99,0)";
     }else{
         // クローズ状態
         // document.getElementById("line0").style.background = "#636363";
@@ -47,6 +48,7 @@ function hamburger(){
         }, 300);
         document.getElementsByClassName("hum_t_i_0")[0].style.top = "0px";
         document.getElementsByClassName("hum_t_i_2")[0].style.top = "26px";
+        document.getElementById("hum_target").style.background = "rgba(0,0,0,0.3)";
     }
 }
 

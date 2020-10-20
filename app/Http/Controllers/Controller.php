@@ -46,7 +46,6 @@ class Controller extends BaseController
         $post = DB::table('posts')->where('id', $id)->first();
 
         $comments = DB::table("comments")->where("article_id", $id)->latest()->get();
-        // dd($comments);
 
         $image = [$post->image1, $post->image2, $post->image3, $post->image4, $post->image5, $post->image6]; //bladeで変数宣言するのはよくない？
         $text = [$post->text1, $post->text2, $post->text3, $post->text4, $post->text5, $post->text6,];

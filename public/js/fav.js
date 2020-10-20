@@ -1,8 +1,12 @@
 
 
 
-let yajuu = document.getElementsByClassName("tippy_template")[0].innerHTML;
+let yjsnpi = document.getElementsByClassName("tippy_template")[0].innerHTML;
+let mur = document.getElementsByClassName("tippy_template")[1].innerHTML;
+let kmr = document.getElementsByClassName("tippy_template")[2].innerHTML;
 let buttons = document.getElementsByClassName("heart-button-l");
+let buttons2 = document.getElementsByClassName("twitter-button-l");
+let buttons3 = document.getElementsByClassName("comment-button-l");
 let article = document.getElementsByClassName("article");
 // console.log(buttons);
 // buttons[0].classList.remove("far");
@@ -30,10 +34,24 @@ for(let i=0; i<article.length; i++){
 
 for(let j=0; j<article.length; j++){
     buttons[j].addEventListener("mouseover", function(e){
-        if(buttons[j].classList[3] == "tippyLogin"){
+        if(buttons[j].classList[3] == "tippyLoginFav"){
             tippy_L();
-        }else if(buttons[j].classList[3] == "tippyGuest"){
+        }else if(buttons[j].classList[3] == "tippyGuestFav"){
             tippy_G();
+        }
+    });
+    buttons2[j].addEventListener("mouseover", function(e){
+        if(buttons[j].classList[3] == "tippyLoginFav"){
+            tippy_L_Twitter();
+        }else if(buttons[j].classList[3] == "tippyGuestFav"){
+            tippy_G_Twitter();
+        }
+    });
+    buttons3[j].addEventListener("mouseover", function(e){
+        if(buttons[j].classList[3] == "tippyLoginFav"){
+            tippy_L_Comment();
+        }else if(buttons[j].classList[3] == "tippyGuestFav"){
+            tippy_G_Comment();
         }
     });
 }
@@ -96,20 +114,61 @@ function fav(select, m_sting){
 }
 
 function tippy_L(){
-    tippy('.tippyLogin', {
-        content: yajuu,
+    tippy('.tippyLoginFav', {
+        content: yjsnpi,
         allowHTML: true,
         animation: "shift-toward-extreme",
-        delay: [0,300],
+        // delay: [0,300],
+        hideOnClick: false,
     });
 }
 
 function tippy_G(){
-    tippy('.tippyGuest', {
-        content: yajuu,
+    tippy('.tippyGuestFav', {
+        content: yjsnpi,
         allowHTML: true,
         animation: "shift-toward-extreme",
-        delay: [0,300],
+        // delay: [0,300],
+        hideOnClick: false,
     });
 }
 
+function tippy_L_Twitter(){
+    tippy('.twitter-button-l', {
+        content: mur,
+        allowHTML: true,
+        animation: "shift-toward-extreme",
+        // delay: [0,300],
+        hideOnClick: false,
+    });
+}
+
+function tippy_G_Twitter(){
+    tippy('.twitter-button-l', {
+        content: mur,
+        allowHTML: true,
+        animation: "shift-toward-extreme",
+        // delay: [0,300],
+        hideOnClick: false,
+    });
+}
+
+function tippy_L_Comment(){
+    tippy('.comment-button-l', {
+        content: kmr,
+        allowHTML: true,
+        animation: "shift-toward-extreme",
+        // delay: [0,300],
+        hideOnClick: false,
+    });
+}
+
+function tippy_G_Comment(){
+    tippy('.comment-button-l', {
+        content: kmr,
+        allowHTML: true,
+        animation: "shift-toward-extreme",
+        // delay: [0,300],
+        hideOnClick: false,
+    });
+}
