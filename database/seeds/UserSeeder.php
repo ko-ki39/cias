@@ -52,6 +52,7 @@ class UserSeeder extends Seeder
             'user_id' => 'tamori1',
             'user_name' => 'tamori1',
             'password' => bcrypt('1234567890'),
+            'role' => 3,
             'secret_question_id' => 1,
             'secret_answer' => 'tamori1',
         ];
@@ -62,6 +63,7 @@ class UserSeeder extends Seeder
             'user_id' => 'tamori2',
             'user_name' => 'tamori2',
             'password' => bcrypt('1234567890'),
+            'role' => 2,
             'secret_question_id' => 1,
             'secret_answer' => 'tamori2',
         ];
