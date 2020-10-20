@@ -3,6 +3,7 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use App\Library\CommonClass;
 
 class SideBar extends Component
 {
@@ -13,7 +14,7 @@ class SideBar extends Component
      */
     public function __construct()
     {
-        //
+        // dd('コンストラクト');
     }
 
     /**
@@ -23,6 +24,8 @@ class SideBar extends Component
      */
     public function render()
     {
-        return view('components.side-bar');
+        $articles_ranking = CommonClass::getArticlesRanking();
+        // dd($articles_ranking);
+        return view('components.side-bar', compact('articles_ranking'));
     }
 }

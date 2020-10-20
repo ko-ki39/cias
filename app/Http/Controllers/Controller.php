@@ -11,11 +11,9 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use InterventionImage;
-
 
 class Controller extends BaseController
 {
@@ -128,9 +126,9 @@ class Controller extends BaseController
                 $image = request()->file('u_i_input');
                 $fileName = time() . "_" . $image->getClientOriginalName();
                 $resizeImage = InterventionImage::make($image)
-                    ->resize(350, 350, function ($constraint) {
-                        $constraint->aspectRatio();
-                    });
+                ->resize(350, 350, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
 
                 // 20KB未満まで圧縮する。
                 // if($resizeImage->filesize() > 20000){
@@ -149,18 +147,24 @@ class Controller extends BaseController
                 $image_path = $request->current_image;
             }
 
-            $update_user = [
-                'user_name' => $request->user_name,
-                'image' => $image_path,
-                'email' => $request->email,
-                'secret_question_id' => $request->secret_question_id,
-                'secret_answer' => $request->secret_answer,
-            ];
+            // $update_user = [
+            //     'user_name' => $request->user_name,
+            //     'image' => $image_path,
+            //     'email' => $request->email,
+            //     'secret_question_id' => $request->secret_question_id,
+            //     'secret_answer' => $request->secret_answer,
+            // ];
 
-            $old_path = "/public/" . $user->image; //画像削除処理
-            Storage::delete($old_path); //画像削除処理
 
-            User::where('id', Auth::id())->update($update_user);
+            $update_user = User::find(Auth::id());
+            $update_user->user_name = $request->user_name;
+            $update_user->image = $image_path;
+            $update_user->email = $request->email;
+            $update_user->secret_question_id = $request->secret_question_id;
+            $update_user->secret_answer = $request->secret_answer;
+
+            $update_user->save();
+            // $user->save();
 
 
             return redirect()->route('top');
@@ -185,10 +189,9 @@ class Controller extends BaseController
             // dd($validator);
             return redirect('/top/password_edit')->withErrors($validator)->withInput(); //失敗した時の通常の処理
         } else {
-            $change_password = [
-                'password' => Hash::make($request->password),
-            ];
-            User::where('id', Auth::id())->update($change_password);
+            $update_user = User::find(Auth::id());
+            $update_user->password = Hash::make($request->password);
+            $update_user->save();
             return redirect()->route('user_edit');
         }
     }
