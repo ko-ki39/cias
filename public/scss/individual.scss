@@ -1,62 +1,62 @@
-.main {
-    width: 1000px;
-    .me {
-        margin-top: 10px;
-        width: 600px;
-        height: 110px;
-        .me_image {
-            padding: 50px;
-            float: left;
-            border: dashed 1px #000;
-        }
-        p {
-            // margin-top: 30px;
-            line-height: 110px;
-            font-size: 25px;
-        }
-    }
-    .content {
-        float: left;
-        width: 620px;
-        margin: 10px 0;
-        border: dashed 1px #000;
-        .article {
-            width: 500px;
-            height: 200px;
-            margin: 10px auto;
-            border: dashed 1px #f00;
-            position: relative;
-            .image {
-                height: 200px;
-                width: 200px;
-                float: left;
-                border: dashed 1px #000;
-            }
-            h4 {
-                margin: 0;
-            }
-            .add {
-                border: #ff0 dashed 1px;
-                float: left;
-                right: 0;
-                bottom: 0;
-                position: absolute;
-                .comment {
-                    float: left;
-                    padding: 39px;
-                    border: dashed 1px #00f;
-                }
-                .twitter {
-                    float: left;
-                    padding: 40px;
-                    border: dashed 1px #0f0;
-                }
-                .fav {
-                    float: left;
-                    padding: 40px;
-                    border: dashed 1px #0ff;
-                }
-            }
-        }
-    }
-}
+// .main {
+//     width: 1000px;
+//     .me {
+//         margin-top: 10px;
+//         width: 600px;
+//         height: 110px;
+//         .me_image {
+//             padding: 50px;
+//             float: left;
+//             border: dashed 1px #000;
+//         }
+//         p {
+//             // margin-top: 30px;
+//             line-height: 110px;
+//             font-size: 25px;
+//         }
+//     }
+//     .content {
+//         float: left;
+//         width: 620px;
+//         margin: 10px 0;
+//         border: dashed 1px #000;
+//         .article {
+//             width: 500px;
+//             height: 200px;
+//             margin: 10px auto;
+//             border: dashed 1px #f00;
+//             position: relative;
+//             .image {
+//                 height: 200px;
+//                 width: 200px;
+//                 float: left;
+//                 border: dashed 1px #000;
+//             }
+//             h4 {
+//                 margin: 0;
+//             }
+//             .add {
+//                 border: #ff0 dashed 1px;
+//                 float: left;
+//                 right: 0;
+//                 bottom: 0;
+//                 position: absolute;
+//                 .comment {
+//                     float: left;
+//                     padding: 39px;
+//                     border: dashed 1px #00f;
+//                 }
+//                 .twitter {
+//                     float: left;
+//                     padding: 40px;
+//                     border: dashed 1px #0f0;
+//                 }
+//                 .fav {
+//                     float: left;
+//                     padding: 40px;
+//                     border: dashed 1px #0ff;
+//                 }
+//             }
+//         }
+//     }
+// }
