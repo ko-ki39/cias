@@ -1,72 +1,25 @@
 .main {
-  width: 1000px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-.main .me {
-  margin-top: 10px;
-  width: 600px;
-  height: 110px;
+.main #main_left {
+  width: 55%;
+  border: solid 1px black;
 }
 
-.main .me .me_image {
-  padding: 50px;
-  float: left;
-  border: dashed 1px #000;
-}
-
-.main .me p {
-  line-height: 110px;
-  font-size: 25px;
-}
-
-.main .content {
-  float: left;
-  width: 620px;
-  margin: 10px 0;
-  border: dashed 1px #000;
-}
-
-.main .content .article {
-  width: 500px;
-  height: 200px;
-  margin: 10px auto;
-  border: dashed 1px #f00;
-  position: relative;
-}
-
-.main .content .article .image {
-  height: 200px;
-  width: 200px;
-  float: left;
-  border: dashed 1px #000;
-}
-
-.main .content .article h4 {
-  margin: 0;
-}
-
-.main .content .article .add {
-  border: #ff0 dashed 1px;
-  float: left;
-  right: 0;
-  bottom: 0;
-  position: absolute;
-}
-
-.main .content .article .add .comment {
-  float: left;
-  padding: 39px;
-  border: dashed 1px #00f;
-}
-
-.main .content .article .add .twitter {
-  float: left;
-  padding: 40px;
-  border: dashed 1px #0f0;
-}
-
-.main .content .article .add .fav {
-  float: left;
-  padding: 40px;
-  border: dashed 1px #0ff;
+.main #main_right {
+  width: 40%;
+  border: solid 1px black;
 }

@@ -13,6 +13,7 @@
                 <img src="" alt="">
                 <h1>{{ $user->user_name }} &nbsp; のマイページ</h1>
             </div>
+            @foreach ($articles as $article)
             <div id="myArticles">
                 <div class="article_list">
                     <div class="a_l_img">
@@ -38,6 +39,7 @@
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
         <div id="main_right">
             <div id="ajax_commentList">
@@ -61,11 +63,10 @@
             {{-- <div id="ajax_favList"></div> --}}
         </div>
     </div>
-    {{-- この下からbodyの中身を書き始める --}}
-    <div class="main">
+
+    {{-- <div class="main">
         <div class="me">
             <div class="me_image"></div>
-            {{-- {{ dd($user) }} --}}
             <p>{{ $user->user_name }}さんのマイページ</p>
         </div>
         <div class="content">
@@ -94,9 +95,7 @@
             @endforeach
         </div>
         @component('components.comment')
-            {{-- ここはサイドバーです --}}
-            {{-- <x-side_bar /> SideBar.phpコンポーネントを通して作成 --}}
 
         @endcomponent
-    </div>
+    </div> --}}
 @endsection

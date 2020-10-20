@@ -60,3 +60,17 @@
 //         }
 //     }
 // }
+
+.main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    #main_left{
+        width: 55%;
+        border: solid 1px black;
+    }
+    #main_right{
+        width: 40%;
+        border: solid 1px black;
+    }
+}
