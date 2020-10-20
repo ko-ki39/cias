@@ -32,6 +32,12 @@
             <ul class="li_pro_comment_fav">
                 <p style="color:whitesmoke;">通知ですよー<span style="font-size:3em; color:whitesmoke;">✌</span>^o^<span style="font-size:3em; color:whitesmoke;">✌</span></p>
                 @foreach ($hamburgerNotice as $hamburger)
+                @empty($hamburger)
+                <ul>
+                    <li>通知はありません</li>
+                </ul>
+                @break
+                @endempty
                 @if ($loop->index < 10)
                     @if($hamburger->detail == null)
                     <ul>
@@ -42,7 +48,7 @@
                             しました！
                         </li>
                         <li>
-                            <a href="#">{{ Illuminate\Support\Facades\DB::table('articles')->where('id', '=', $hamburger->article_id)->first()->title }}</a>
+                            <a href="{{ route('article_detail', ['id' => $hamburger->article_id]) }}">{{ Illuminate\Support\Facades\DB::table('articles')->where('id', '=', $hamburger->article_id)->first()->title }}</a>
                         </li>
                         <li>
                             {{ $hamburger->created_at }}
@@ -57,7 +63,7 @@
                             が来ています！
                         </li>
                         <li>
-                            <a href="#">{{ Illuminate\Support\Facades\DB::table('articles')->where('id', '=', $hamburger->article_id)->first()->title }}</a>
+                            <a href="{{ route('article_detail', ['id' => $hamburger->article_id]) }}">{{ Illuminate\Support\Facades\DB::table('articles')->where('id', '=', $hamburger->article_id)->first()->title }}</a>
                         </li>
                         <li>
                             {{ $hamburger->created_at }}
