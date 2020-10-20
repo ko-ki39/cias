@@ -113,7 +113,7 @@ class ArticleController extends Controller
 
             $article = new Article();
             $article->create([
-                'user_id' => 1,
+                'user_id' => Auth::id(),
                 'title' => $request->title,
                 'hash1_id' => $request->hash1,
                 'hash2_id' => $request->hash2,
