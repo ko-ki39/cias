@@ -31,47 +31,47 @@
             <hr>
             <ul class="li_pro_comment_fav">
                 <p style="color:whitesmoke;">通知ですよー<span style="font-size:3em; color:whitesmoke;">✌</span>^o^<span style="font-size:3em; color:whitesmoke;">✌</span></p>
-                @foreach ($hamburgerNotice as $hamburger)
-                @empty($hamburger)
-                <ul>
-                    <li>通知はありません</li>
-                </ul>
-                @break
-                @endempty
-                @if ($loop->index < 10)
-                    @if($hamburger->detail == null)
+                @if (!isset($hamburgerNotice[0]))
                     <ul>
-                        <li>
-                            {{ Illuminate\Support\Facades\DB::table('users')->where('id', '=', $hamburger->user_id)->first()->user_name }}&nbsp;が、
-                            お気に入り
-                            <i id="" class="fa-heart fas" style="color:#ff0000;"></i>
-                            しました！
-                        </li>
-                        <li>
-                            <a href="{{ route('article_detail', ['id' => $hamburger->article_id]) }}">{{ Illuminate\Support\Facades\DB::table('articles')->where('id', '=', $hamburger->article_id)->first()->title }}</a>
-                        </li>
-                        <li>
-                            {{ $hamburger->created_at }}
-                        </li>
+                        <li>通知はありません</li>
                     </ul>
-                    @else
-                    <ul>
-                        <li>
-                            {{ Illuminate\Support\Facades\DB::table('users')->where('id', '=', $hamburger->user_id)->first()->user_name }}&nbsp;から、
-                            コメント
-                            <i class="fas fa-comment" style="color:#71f371;"></i>
-                            が来ています！
-                        </li>
-                        <li>
-                            <a href="{{ route('article_detail', ['id' => $hamburger->article_id]) }}">{{ Illuminate\Support\Facades\DB::table('articles')->where('id', '=', $hamburger->article_id)->first()->title }}</a>
-                        </li>
-                        <li>
-                            {{ $hamburger->created_at }}
-                        </li>
-                    </ul>
-                    @endif
+                @else
+                    @foreach ($hamburgerNotice as $hamburger)
+                        @if ($loop->index < 10)
+                            @if($hamburger->detail == null)
+                                <ul>
+                                    <li>
+                                        {{ Illuminate\Support\Facades\DB::table('users')->where('id', '=', $hamburger->user_id)->first()->user_name }}&nbsp;が、
+                                        お気に入り
+                                        <i id="" class="fa-heart fas" style="color:#ff0000;"></i>
+                                        しました！
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('article_detail', ['id' => $hamburger->article_id]) }}">{{ Illuminate\Support\Facades\DB::table('articles')->where('id', '=', $hamburger->article_id)->first()->title }}</a>
+                                    </li>
+                                    <li>
+                                        {{ $hamburger->created_at }}
+                                    </li>
+                                </ul>
+                            @else
+                                <ul>
+                                    <li>
+                                        {{ Illuminate\Support\Facades\DB::table('users')->where('id', '=', $hamburger->user_id)->first()->user_name }}&nbsp;から、
+                                        コメント
+                                        <i class="fas fa-comment" style="color:#71f371;"></i>
+                                        が来ています！
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('article_detail', ['id' => $hamburger->article_id]) }}">{{ Illuminate\Support\Facades\DB::table('articles')->where('id', '=', $hamburger->article_id)->first()->title }}</a>
+                                    </li>
+                                    <li>
+                                        {{ $hamburger->created_at }}
+                                    </li>
+                                </ul>
+                            @endif
+                        @endif
+                    @endforeach
                 @endif
-                @endforeach
             </ul>
             <li class="li_pro_ad">ADが入ります</li>
         </ul>

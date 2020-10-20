@@ -11,24 +11,23 @@ class HamburgerNotice
     public static function callDB()
     {
         $user_id = Auth::id();
-        // $a_u_id = DB::raw('(SELECT id FROM articles WHERE user_id = ?)', array($user_id));
 
-        // $favs_first = DB::table('favs')
-        //     ->select('article_id', 'user_id', DB::raw('null as type'), 'created_at')
-        //     ->where($a_u_id);
-    
-        // $comments_union = DB::table('comments')
-        //     ->select('article_id', 'user_id', 'detail', 'created_at')
-        //     ->where($a_u_id)
-        //     ->union($favs_first)
-        //     ->orderByDesc('created_at')
-        //     ->get()
-        //     ->whereNotIn('user_id', [$user_id]);
+        $favUnion = DB::table("favs")
+            ->select('article_id', 'user_id', DB::raw('null as type'), 'created_at')
+            ->whereRaw('article_id = (SELECT id FROM articles WHERE user_id = ?)', [$user_id])
+            ->whereNotIn('user_id', [$user_id]);
 
-        $comments_union = DB::table("articles")->where($user_id)->get();
-        // dd($user_id, $comments_union);
+        $comUnionExe = DB::table("comments")
+            ->select('article_id', 'user_id', 'detail', 'created_at')
+            ->whereRaw('article_id = (SELECT id FROM articles WHERE user_id = ?)', [$user_id])
+            ->whereNotIn('user_id', [$user_id])
+            ->union($favUnion)
+            ->orderByDesc('created_at')
+            ->get();
 
-        return $comments_union;
+        // dd($user_id, $comUnionExe);
+
+        return $comUnionExe;
     }
 }
 
