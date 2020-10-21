@@ -420,4 +420,38 @@ class ArticleController extends Controller
 
         return view('article_detail', compact('article', 'user', 'post', 'image', 'text', 'comments'));
     }
+
+    public function commentArticle(){
+        // dd(Auth::id());
+        $comments = Comment::where('user_id', Auth::id())->get();
+
+        foreach($comments as $key => $comment){
+            $a_comments[$key] = $comment->article_id;
+        }
+
+        foreach($a_comments as $key => $a_comment){
+            $articles[$key] = Article::find($a_comment);
+        }
+        if(!empty($articles)){
+            // なかった場合の表示
+            $comment = 'null';
+
+        }
+        // compact $a_comments  $articles $comment
+    }
+
+    public function favArticle(){
+        $favs = Fav::where('user_id', Auth::id())->get();
+
+        foreach($favs as $key => $fav){
+            $articles[$key] = Article::find($fav->article_id);
+        }
+
+        if(!empty($articles)){
+            // なかった場合の表示
+            $comment = 'null';
+        }
+
+        // compact articles $comment
+    }
 }

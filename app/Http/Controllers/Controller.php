@@ -32,7 +32,7 @@ class Controller extends BaseController
     }
     public function top()
     {
-        $articles = DB::table('articles')->paginate(5);
+        $articles = DB::table('articles')->latest()->paginate(5);
 
         return view('top', compact('articles'));
     }
@@ -206,15 +206,16 @@ class Controller extends BaseController
                 //ハッシュタグをつけて検索した場合
                 $hash_search = substr($request->search, 1);
 
-                $articles = DB::table('articles')->where('hash1_id', $hash_search)->orWhere('hash2_id', $hash_search)->orWhere('hash3_id', $hash_search)->paginate(5);
+                $articles = DB::table('articles')->where('hash1_id', $hash_search)->orWhere('hash2_id', $hash_search)->orWhere('hash3_id', $hash_search)->latest()->paginate(5);
             } else {
 
                 //検索
                 $user = DB::table('users')->where('user_name', 'like', '%' . $search . '%')->first();
                 if ($user != null) { // ユーザー名があった場合
-                    $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->orWhere('user_id', $user->id)->paginate(5);
+                    $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->orWhere('user_id', $user->id)->latest()->paginate(5);
+                    // dd($user);
                 } else {
-                    $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->paginate(5);
+                    $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->latest()->paginate(5);
                 }
             }
             $message = null;
@@ -237,7 +238,7 @@ class Controller extends BaseController
 
     public function hashtagResult($hash)
     { //hashtagをクリックした時のでの遷移先
-        $articles = DB::table('articles')->where('hash1_id', $hash)->orWhere('hash2_id', $hash)->orWhere('hash3_id', $hash)->get();
+        $articles = DB::table('articles')->where('hash1_id', $hash)->orWhere('hash2_id', $hash)->orWhere('hash3_id', $hash)->latest()->get();
 
 
         return view('top', compact('articles'));
