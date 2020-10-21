@@ -9,34 +9,33 @@
 @section('content')
     <div class="main">
         <div id="main_left">
-            <div class="me">
-                <img src="" alt="">
-                <h1>{{ $user->user_name }} &nbsp; のマイページ</h1>
+            <div id="me">
+                <img src="/storage/{{ Auth::user()->image }}" alt="">
+                &nbsp;&nbsp;&nbsp;
+                <h1>{{ $user->user_name }}&nbsp;のマイページ</h1>
             </div>
             @foreach ($articles as $article)
-            <div id="myArticles">
-                <div class="article_list">
-                    <div class="a_l_img">
+            <div class="article_list">
+                <div class="a_l_img">
+                    <a href="{{ route('article_detail', ['id' => $article->id]) }}">
+                        <img src="/storage/{{ $article->image }}" alt="">
+                    </a>
+                </div>
+                <div class="a_l_details">
+                    <div class="a_l_d_link">
                         <a href="{{ route('article_detail', ['id' => $article->id]) }}">
-                            <img src="/storage/{{ $article->image }}" alt="">
+                            {{ $article->title }}
                         </a>
                     </div>
-                    <div class="a_l_details">
-                        <div class="a_l_d_link">
-                            <a href="{{ route('article_detail', ['id' => $article->id]) }}">
-                                {{ $article->title }}
-                            </a>
-                        </div>
-                        <div class="a_l_com-twi-fav">
-                            <a href=""><i class="far fa-comment fa-2x" style="color:#259b25;"></i></a>
-                            <a href=""><i class="fab fa-twitter-square fa-2x" style="color:#1da1f2;"></i></a>
-                            <a href=""><i class="far fa-heart fa-2x" style="color:#ff0000;"></i></a>
-                        </div>
+                    <div class="a_l_com-twi-fav">
+                        <a href=""><i class="far fa-comment fa-2x" style="color:#259b25;"></i></a>
+                        <a href=""><i class="fab fa-twitter-square fa-2x" style="color:#1da1f2;"></i></a>
+                        <a href=""><i class="far fa-heart fa-2x" style="color:#ff0000;"></i></a>
                     </div>
-                    <div class="a_l_edit">
-                        <a href="">編集</a>
-                        <a href="">削除</a>
-                    </div>
+                </div>
+                <div class="a_l_edit">
+                    <a href="">編集</a>
+                    <a href="">削除</a>
                 </div>
             </div>
             @endforeach

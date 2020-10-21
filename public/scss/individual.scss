@@ -65,9 +65,55 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 10px;
     #main_left{
         width: 55%;
         border: solid 1px black;
+        flex-direction: column;
+        padding: 10px;
+        #me{
+            display: flex;
+            flex-direction: row;
+            img{
+                width: 90px;
+                height: 90px;
+                border: solid 1px black;
+                border-radius: 100%;
+            }
+        }
+        .article_list{
+            display: flex;
+            flex-direction: row;
+            .a_l_img{
+                height: 170px;
+                width: 170px;
+                padding: 6px;
+                border: solid 1px rgb(255, 0, 0);
+                a{
+                    margin: auto;
+                    width: 100%;
+                    height: 100%;
+                    img{
+                        height: 170px;
+                        width: 170px;
+                    }
+                }
+            }
+            .a_l_details{
+                width: 310px;
+                border: solid 1px rgb(255, 0, 0);
+                .a_l_d_link{
+                    border: solid 1px rgb(0, 197, 16);
+                }
+                .a_l_com-twi-fav{
+                    border: solid 1px rgb(0, 197, 16);
+                }
+            }
+            .a_l_edit{
+                width: 50px;
+                border: solid 1px rgb(255, 0, 0);
+            }
+        }
     }
     #main_right{
         width: 40%;
