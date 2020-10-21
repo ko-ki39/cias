@@ -28,9 +28,9 @@
                         </a>
                     </div>
                     <div class="a_l_com-twi-fav">
-                        <i class="fas fa-comments fa-2x" style="color:#9b9b9b;"></i>
+                        <i class="fas fa-comments fa-2x c_nonActiv" style="color:#9b9b9b;"></i>
                         <i class="fab fa-twitter-square fa-2x" style="color:#1da1f2;"></i>
-                        <i class="fab fa-gratipay fa-2x" style="color:#9b9b9b;"></i>
+                        <i class="fab fa-gratipay fa-2x f_nonActiv" style="color:#9b9b9b;"></i>
                     </div>
                 </div>
                 <div class="a_l_edit">
@@ -84,6 +84,7 @@
             </div>
         </div>
     </div>
+    <script src="/js/individualFavCom_ajax.js"></script>
 
     {{-- <div class="main">
         <div class="me">
