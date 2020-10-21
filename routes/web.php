@@ -18,6 +18,8 @@ Auth::routes();
 
 Route::group(['middleware' => ['auth', 'can:user-higher']], function () { // 全ユーザー
 
+    Route::get('/top/individual/fav_page', 'ArticleController@favArticle')->name('');
+    Route::get('/top/individual/comment_page', 'ArticleController@commentArticle')->name('');
     Route::get('/top/password_edit', 'Controller@password_edit')->name('password_edit'); //パスワード編集画面
 
     Route::get('/top/login_password_change', 'Controller@login_password_change')->name('login_password_change'); //パスワード変更処理
@@ -96,4 +98,4 @@ Route::get("/top/search", "Controller@search")->name('search');
 Route::get('/top/hashtag', 'Controller@hashtag'); //ajaxを使ったhashの処理
 Route::get('/top/hashtag/{hash}', 'Controller@hashtagResult'); //hashtagの検索結果
 
-Route::get("/top", "ArticleController@favArticle");
+Route::get("/top", "ArticleController@top");
