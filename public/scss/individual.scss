@@ -70,8 +70,9 @@
         width: 55%;
         border: solid 1px black;
         flex-direction: column;
-        padding: 10px;
+        padding: 20px 10px 10px 10px;
         #me{
+            margin-bottom: 20px;
             display: flex;
             flex-direction: row;
             img{
@@ -84,6 +85,8 @@
         .article_list{
             display: flex;
             flex-direction: row;
+            height: 184px;
+            margin-bottom: 20px;
             .a_l_img{
                 height: 170px;
                 width: 170px;
@@ -101,12 +104,33 @@
             }
             .a_l_details{
                 width: 310px;
+                display: flex;
+                flex-direction: column;
                 border: solid 1px rgb(255, 0, 0);
                 .a_l_d_link{
+                    padding: 12px 6px 6px 6px;
                     border: solid 1px rgb(0, 197, 16);
+                    a{
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 2;
+                        overflow: hidden;
+                    }
                 }
                 .a_l_com-twi-fav{
+                    width: 100%;
+                    padding: 10px 0 10px 0;
+                    margin: auto auto 0 auto;
+                    align-self: flex-end;
                     border: solid 1px rgb(0, 197, 16);
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    a{
+                        margin: auto;
+                        width: 32px;
+                        height: 32px;
+                    }
                 }
             }
             .a_l_edit{
