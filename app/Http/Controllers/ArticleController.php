@@ -432,16 +432,26 @@ class ArticleController extends Controller
         foreach($a_comments as $key => $a_comment){
             $articles[$key] = Article::find($a_comment);
         }
-        // a_comments  $articles
+        if(!empty($articles)){
+            // なかった場合の表示
+            $comment = 'null';
+
+        }
+        // compact $a_comments  $articles $comment
     }
 
     public function favArticle(){
         $favs = Fav::where('user_id', Auth::id())->get();
 
         foreach($favs as $key => $fav){
-            $articles[$key] = Article::find($fav);
+            $articles[$key] = Article::find($fav->article_id);
         }
 
-        dd($articles);
+        if(!empty($articles)){
+            // なかった場合の表示
+            $comment = 'null';
+        }
+
+        // compact articles $comment
     }
 }
