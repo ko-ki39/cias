@@ -83,9 +83,6 @@ Route::get('/secret_question_answer', 'Auth\ForgotPasswordController@secretQuest
 
 //パスワード変更用のルート
 Route::post('/change_password', 'Auth\ForgotPasswordController@changePassword')->name('change_password');
-// Route::post('/change_password', function(){
-//     dd('test');
-// })->name('change_password');
 
 Route::get('/change_password', 'Auth\ForgotPasswordController@changePassword')->name('change_password'); //リダイレクトさせるためにget通信も許可させる
 Auth::routes();
@@ -98,3 +95,5 @@ Route::post("/top/fav/{id}", "ArticleController@favOperation");
 Route::get("/top/search", "Controller@search")->name('search');
 Route::get('/top/hashtag', 'Controller@hashtag'); //ajaxを使ったhashの処理
 Route::get('/top/hashtag/{hash}', 'Controller@hashtagResult'); //hashtagの検索結果
+
+Route::get("/top", "ArticleController@favArticle");
