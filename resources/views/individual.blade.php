@@ -28,9 +28,9 @@
                         </a>
                     </div>
                     <div class="a_l_com-twi-fav">
-                        <a href=""><i class="far fa-comment fa-2x" style="color:#259b25;"></i></a>
-                        <a href=""><i class="fab fa-twitter-square fa-2x" style="color:#1da1f2;"></i></a>
-                        <a href=""><i class="far fa-heart fa-2x" style="color:#ff0000;"></i></a>
+                        <i class="fas fa-comments fa-2x" style="color:#9b9b9b;"></i>
+                        <i class="fab fa-twitter-square fa-2x" style="color:#1da1f2;"></i>
+                        <i class="fab fa-gratipay fa-2x" style="color:#9b9b9b;"></i>
                     </div>
                 </div>
                 <div class="a_l_edit">
@@ -41,10 +41,10 @@
             @endforeach
         </div>
         <div id="main_right">
-            <div class="a_c_title">
-                <h2>記事に付いたコメント</h2>
-            </div>
             <div id="ajax_commentList">
+                <div class="a_c_title">
+                    <h2>記事に付いたコメント</h2>
+                </div>
                 {{-- ここからforearchでやる --}}
                 <div class="a_c_details">
                     <div class="a_c_d_userInfo">
@@ -60,7 +60,28 @@
                     </div>
                 </div>
             </div>
-            {{-- <div id="ajax_favList"></div> --}}
+            <div id="ajax_favList">
+                <div class="a_f_title">
+                    <h2>お気に入りしてくれた人</h2>
+                </div>
+                {{-- ここからforeachでやる --}}
+                <div class="a_f_details">
+                    <div class="a_f_d_userInfo">
+                        <a href=""><img src="/storage/{{ Auth::user()->image }}" alt="ユーザーアイコン"></a>
+                        <a href=""> ユーザー1</a>&nbsp;さん
+                    </div>
+                </div>
+            </div>
+            <div id="ajax_default">
+                <i class="fas fa-comments fa-2x" style="color:#9b9b9b;"></i>
+                &nbsp;か&nbsp;
+                <i class="fab fa-gratipay fa-2x" style="color:#9b9b9b;"></i>
+                &nbsp;を押すと、<br>
+                この場所に<br>
+                「コメントしてくれた人」<br>
+                「お気に入りに入れてくれた人」が<br>
+                一覧で表示されます！
+            </div>
         </div>
     </div>
 

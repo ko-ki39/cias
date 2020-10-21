@@ -17,7 +17,6 @@
 
 .main #main_left {
   width: 55%;
-  border: solid 1px #9b9b9b;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
@@ -123,29 +122,29 @@
           justify-content: space-around;
 }
 
-.main #main_left .article_list .a_l_details .a_l_com-twi-fav a {
-  margin: auto;
-  width: 32px;
-  height: 32px;
-}
-
 .main #main_left .article_list .a_l_edit {
   width: 50px;
+  padding: 20px 0;
 }
 
 .main #main_right {
   width: 38%;
   padding: 10px;
+  margin-top: 132px;
   border: solid 1px #9b9b9b;
 }
 
-.main #main_right .a_c_title {
+.main #main_right #ajax_commentList {
+  display: none;
+}
+
+.main #main_right #ajax_commentList .a_c_title {
   margin: auto;
   padding: 10px 0 10px 0;
   background-color: #259b25;
 }
 
-.main #main_right .a_c_title h2 {
+.main #main_right #ajax_commentList .a_c_title h2 {
   height: 33px;
   margin: auto;
   text-align: center;
@@ -232,4 +231,62 @@
 .main #main_right #ajax_commentList .a_c_details .a_c_d_other p {
   font-size: 0.84em;
   margin: 0.35em 0;
+}
+
+.main #main_right #ajax_favList {
+  display: none;
+}
+
+.main #main_right #ajax_favList .a_f_title {
+  margin: auto;
+  padding: 10px 0 10px 0;
+  background-color: #c73246;
+}
+
+.main #main_right #ajax_favList .a_f_title h2 {
+  height: 33px;
+  margin: auto;
+  text-align: center;
+  color: whitesmoke;
+}
+
+.main #main_right .a_f_details {
+  margin-top: 12px;
+  padding: 5px;
+  border: solid 1px #9b9b9b;
+}
+
+.main #main_right .a_f_details .a_f_d_userInfo {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main #main_right .a_f_details .a_f_d_userInfo a:nth-child(1) {
+  height: 44px;
+}
+
+.main #main_right .a_f_details .a_f_d_userInfo a:nth-child(1) img {
+  width: 42px;
+  height: 42px;
+  border: solid 1px black;
+  border-radius: 100%;
+}
+
+.main #main_right .a_f_details .a_f_d_userInfo a:nth-child(2) {
+  -webkit-align-self: center;
+      -ms-flex-item-align: center;
+              -ms-grid-row-align: center;
+          align-self: center;
+  margin-left: 10px;
 }
