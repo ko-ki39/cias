@@ -41,17 +41,18 @@
             @endforeach
         </div>
         <div id="main_right">
+            <div class="a_c_title">
+                <h2>記事に付いたコメント</h2>
+            </div>
             <div id="ajax_commentList">
-                <div class="a_c_title">
-                    <h2>コメント一覧</h2>
-                </div>
+                {{-- ここからforearchでやる --}}
                 <div class="a_c_details">
                     <div class="a_c_d_userInfo">
-                        <a href=""><img src="" alt="ユーザーアイコン"></a>
+                        <a href=""><img src="/storage/{{ Auth::user()->image }}" alt="ユーザーアイコン"></a>
                         <a href=""> ユーザー1</a>&nbsp;さん
                     </div>
                     <div class="a_c_d_commentDetail">
-                        あああ
+                        <pre>宇おおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおお</pre>
                     </div>
                     <div class="a_c_d_other">
                         <a href="">記事に移動</a>
