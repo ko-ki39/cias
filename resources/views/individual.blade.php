@@ -46,20 +46,6 @@
                 <div class="a_c_title">
                     <h2>記事に付いたコメント</h2>
                 </div>
-                {{-- ここからforearchでやる --}}
-                <div class="a_c_details">
-                    <div class="a_c_d_userInfo">
-                        <a href=""><img src="/storage/{{ Auth::user()->image }}" alt="ユーザーアイコン"></a>
-                        <a href=""> ユーザー1</a>&nbsp;さん
-                    </div>
-                    <div class="a_c_d_commentDetail">
-                        <pre>宇おおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおお</pre>
-                    </div>
-                    <div class="a_c_d_other">
-                        <a href="">記事に移動</a>
-                        <p>2020-10-20</p>
-                    </div>
-                </div>
             </div>
             <div id="ajax_favList">
                 <div class="a_f_title">

@@ -24,9 +24,12 @@ class IndividualController extends Controller
             ->get();
 
         $userImage = [];
+        $userName = [];
         foreach($comFavGet as $cfg){
             $getImage = DB::table("users")->where("id", "=", $cfg->user_id)->first()->image;
+            $getName = DB::table("users")->where("id", "=", $cfg->user_id)->first()->user_name;
             array_push($userImage, $getImage);
+            array_push($userName, $getName);
         }
 
         // $getImage = DB::table("users")->where("id", "=", $comFavGet[0]->user_id)->first()->image;
@@ -39,7 +42,7 @@ class IndividualController extends Controller
         //     "message2" => gettype($articleID),
         // ]);
         return response()->json([
-            $comFavGet, $userImage
+            $comFavGet, $userImage, $userName
             ]);
     }
 }
