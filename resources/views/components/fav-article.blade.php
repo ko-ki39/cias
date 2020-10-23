@@ -1,5 +1,5 @@
 @foreach ($articles as $article)
-    <div class="comment_article">
+    <div class="article_list">
         <p class="date"> @if (Illuminate\Support\Facades\DB::table("favs")
             ->where("article_id", "=", $article->id)
             ->where("user_id", "=", Auth::id())->exists() != null)

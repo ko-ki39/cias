@@ -32,6 +32,20 @@
 
 .main .article {
   border: black solid 1px;
+}
+
+.main .article #fav_article {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  display: none;
+}
+
+.main .article #comment_article {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -41,7 +55,7 @@
           flex-wrap: wrap;
 }
 
-.main .article .comment_article {
+.main .article .article_list {
   border: yellow solid 1px;
   width: 197px;
   height: 260px;
@@ -49,32 +63,32 @@
   margin-top: 10px;
 }
 
-.main .article .comment_article .date {
+.main .article .article_list .date {
   margin: 5px;
   text-align: center;
 }
 
-.main .article .comment_article .image {
+.main .article .article_list .image {
   height: 150px;
   width: 199px;
   background-color: black;
 }
 
-.main .article .comment_article .user {
+.main .article .article_list .user {
   margin-top: 5px;
 }
 
-.main .article .comment_article .user .user_image {
+.main .article .article_list .user .user_image {
   height: 30px;
   width: 30px;
   background-color: yellow;
   float: left;
 }
 
-.main .article .comment_article .user .user_name {
+.main .article .article_list .user .user_name {
   margin: auto 5px;
 }
 
-.main .article .comment_article .title {
+.main .article .article_list .title {
   margin: 5px 0 0 35px;
 }

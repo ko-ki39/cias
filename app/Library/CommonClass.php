@@ -2,6 +2,7 @@
 
 namespace App\Library;
 
+use App\Article;
 use Illuminate\Support\Facades\DB;
 
 class CommonClass
@@ -19,7 +20,8 @@ class CommonClass
         array_multisort($sorted, SORT_DESC, $rankings); //ソート処理
 
         foreach ($rankings as $key => $ranking) { //記事をとってきて配列に直す
-            $articles_ranking[] = DB::table('articles')->where('id', $ranking[0])->first();
+            // $articles_ranking[] = DB::table('articles')->where('id', $ranking[0])->first();
+            $articles_ranking[] = Article::where('id', $ranking[0])->first();
             if($key == 10){
             break;
             }
