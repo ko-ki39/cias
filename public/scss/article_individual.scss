@@ -1,0 +1,55 @@
+.main {
+    padding: 25px 50px;
+    .me {
+        display: flex;
+        .me_image {
+            border: black 1px solid;
+            height: 100px;
+            width: 100px;
+        }
+        p {
+            margin: auto 10px;
+            font-size: 25px;
+        }
+    }
+    .choice {
+        display: flex;
+        justify-content: space-around;
+    }
+    .article {
+        border: black solid 1px;
+        display: flex;
+        flex-wrap: wrap;
+        .comment_article {
+            border: yellow solid 1px;
+            width: 197px;
+            height: 260px;
+            margin-right: 25px;
+            margin-top: 10px;
+            .date {
+                margin: 5px;
+                text-align: center;
+            }
+            .image {
+                height: 150px;
+                width: 199px;
+                background-color: black;
+            }
+            .user {
+                margin-top: 5px;
+                .user_image {
+                    height: 30px;
+                    width: 30px;
+                    background-color: yellow;
+                    float: left;
+                }
+                .user_name {
+                    margin: auto 5px;
+                }
+            }
+            .title {
+                margin: 5px 0 0 35px;
+            }
+        }
+    }
+}

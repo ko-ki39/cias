@@ -1,0 +1,80 @@
+.main {
+  padding: 25px 50px;
+}
+
+.main .me {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.main .me .me_image {
+  border: black 1px solid;
+  height: 100px;
+  width: 100px;
+}
+
+.main .me p {
+  margin: auto 10px;
+  font-size: 25px;
+}
+
+.main .choice {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+}
+
+.main .article {
+  border: black solid 1px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+
+.main .article .comment_article {
+  border: yellow solid 1px;
+  width: 197px;
+  height: 260px;
+  margin-right: 25px;
+  margin-top: 10px;
+}
+
+.main .article .comment_article .date {
+  margin: 5px;
+  text-align: center;
+}
+
+.main .article .comment_article .image {
+  height: 150px;
+  width: 199px;
+  background-color: black;
+}
+
+.main .article .comment_article .user {
+  margin-top: 5px;
+}
+
+.main .article .comment_article .user .user_image {
+  height: 30px;
+  width: 30px;
+  background-color: yellow;
+  float: left;
+}
+
+.main .article .comment_article .user .user_name {
+  margin: auto 5px;
+}
+
+.main .article .comment_article .title {
+  margin: 5px 0 0 35px;
+}

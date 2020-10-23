@@ -31,6 +31,10 @@ Route::group(['middleware' => ['auth', 'can:user-higher']], function () { // 全
     Route::get('/top/user_update', 'Controller@user_update')->name('user_update'); //ユーザー情報変更処理
 
     Route::post("/top/article_detail/post_comment", "ArticleController@commnetAdd"); //コメントを投稿する
+
+    Route::get("/top/individual/article_individual", function(){
+      return view('article_individual');
+    }); //個人ページのfavしたものなどの表示
 });
 
 Route::group(['middleware' => ['auth', 'can:authorized-higher']], function () { //許可されたものと管理者のみ
