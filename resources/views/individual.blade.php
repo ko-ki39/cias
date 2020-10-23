@@ -52,12 +52,6 @@
                     <h2>お気に入りしてくれた人</h2>
                 </div>
                 {{-- ここからforeachでやる --}}
-                <div class="a_f_details">
-                    <div class="a_f_d_userInfo">
-                        <a href=""><img src="/storage/{{ Auth::user()->image }}" alt="ユーザーアイコン"></a>
-                        <a href=""> ユーザー1</a>&nbsp;さん
-                    </div>
-                </div>
             </div>
             <div id="ajax_default">
                 <i class="fas fa-comments fa-2x" style="color:#9b9b9b;"></i>

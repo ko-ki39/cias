@@ -54,7 +54,7 @@ function exclusionController(buttonType, select){
             case "fav":
                 fa_gratipay[select].classList.remove("f_nonActiv");
                 fa_gratipay[select].classList.add("f_Activ");
-                fa_gratipay[EX_arg].style.color = "#c73246";
+                fa_gratipay[select].style.color = "#c73246";
                 displayFavList("fav", select);
                 break;
         }
