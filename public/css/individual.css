@@ -12,7 +12,7 @@
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 10px;
+  padding: 10px 20px;
 }
 
 .main #main_left {

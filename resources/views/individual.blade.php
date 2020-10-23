@@ -26,6 +26,7 @@
                         <a href="{{ route('article_detail', ['id' => $article->id]) }}">
                             {{ $article->title }}
                         </a>
+                        <input type="hidden" name="" class="delivery_a_id" value="{{ $article->id }}">
                     </div>
                     <div class="a_l_com-twi-fav">
                         <i class="fas fa-comments fa-2x c_nonActiv" style="color:#9b9b9b;"></i>

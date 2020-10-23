@@ -39,24 +39,6 @@ for(let j=0; j<article_list.length; j++){
 /**
  * fanctions
  */
-// コメント
-function displayCommentList(buttonType, select){
-    EX_arg = select;
-    EX_actionType = buttonType;
-    document.getElementById("ajax_favList").style.display = "none";
-    document.getElementById("ajax_commentList").style.display = "block";
-    console.log(`article_number is : ${select}\nbutton_type is : ${buttonType}`);
-}
-
-// お気に入り
-function displayFavList(buttonType, select){
-    EX_arg = select;
-    EX_actionType = buttonType;
-    document.getElementById("ajax_commentList").style.display = "none";
-    document.getElementById("ajax_favList").style.display = "block";
-    console.log(`article_number is : ${select}\nbutton_type is : ${buttonType}`);
-}
-
 // 排他制御するためのやつ
 function exclusionController(buttonType, select){
     if(EX_firstAction == true){
@@ -96,4 +78,53 @@ function exclusionController(buttonType, select){
             }
         }
     }
+}
+
+// コメント
+function displayCommentList(buttonType, select){
+    EX_arg = select;
+    EX_actionType = buttonType;
+    document.getElementById("ajax_favList").style.display = "none";
+    document.getElementById("ajax_commentList").style.display = "block";
+    // console.log(`article_number is : ${select}\nbutton_type is : ${buttonType}`);
+    articleID = document.getElementsByClassName("delivery_a_id")[select].value;
+    individualAjax("comments", articleID);
+}
+
+// お気に入り
+function displayFavList(buttonType, select){
+    EX_arg = select;
+    EX_actionType = buttonType;
+    document.getElementById("ajax_commentList").style.display = "none";
+    document.getElementById("ajax_favList").style.display = "block";
+    // console.log(`article_number is : ${select}\nbutton_type is : ${buttonType}`);
+    articleID = document.getElementsByClassName("delivery_a_id")[select].value;
+    individualAjax("favs", articleID);
+}
+
+//非同期でContollerに通信する
+function individualAjax(buttonType, articleID){
+    $.ajaxSetup({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
+    });
+    $.ajax({
+        type: "GET",
+        url: "/top/individual/cfAjax/",
+        data: {
+            "buttonType": buttonType,
+            "articleID": articleID,
+        }
+    }).done(function(data){
+        console.log(data);
+        if(buttonType == "comments"){
+            let pushComments = '<div class="a_c_details">'
+                            + '<div class="a_c_d_userInfo">'
+                            + '<a href=""><img src="/storage/{{ Auth::user()->image }}" alt="ユーザーアイコン"></a>'
+                            + '</div>'
+                            + '</div>'
+        }else if(buttonType == "favs"){
+        }
+    }).fail(function(data){
+        console.log("no...");
+    });
 }
