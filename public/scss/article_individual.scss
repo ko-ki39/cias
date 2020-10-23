@@ -18,9 +18,16 @@
     }
     .article {
         border: black solid 1px;
-        display: flex;
-        flex-wrap: wrap;
-        .comment_article {
+        #fav_article {
+            display: flex;
+            flex-wrap: wrap;
+            display: none;
+        }
+        #comment_article {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .article_list {
             border: yellow solid 1px;
             width: 197px;
             height: 260px;

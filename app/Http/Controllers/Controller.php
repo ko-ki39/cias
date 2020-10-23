@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
 use App\Http\Requests\ChangePasswordRequest;
 use App\User;
 use Illuminate\Http\Request;
@@ -32,14 +33,16 @@ class Controller extends BaseController
     }
     public function top()
     {
-        $articles = DB::table('articles')->latest()->paginate(5);
+        // $articles = DB::table('articles')->latest()->paginate(5);
+        $articles = Article::latest()->paginate(3);
 
         return view('top', compact('articles'));
     }
 
     public function article_detail($id)
     { //記事詳細ページ
-        $article = DB::table('articles')->where('id', $id)->first();
+        // $article = DB::table('articles')->where('id', $id)->first();
+        $article = Article::find($id);
 
         $user = DB::table('users')->where('id', $article->user_id)->first();
 
