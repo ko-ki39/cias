@@ -63,9 +63,9 @@ for(let j=0; j<article.length; j++){
  */
 // select   :   選択した記事のID(整数)
 // m_string :   イベントリスナーのクロージャーから受け取ったメソッド名(文字列)
-function fav(select, m_sting){
+function fav(select, m_string){
     let article_id = document.getElementsByClassName("article_ajax_id")[select].value;
-    let _method = m_sting;
+    let _method = m_string;
 
     // JSONでリクエストしても、Controller側でnullになってしまうので、FormData使ってます
     let formData = new FormData();
