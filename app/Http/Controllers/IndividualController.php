@@ -23,10 +23,23 @@ class IndividualController extends Controller
             ->orderByDesc("created_at")
             ->get();
 
+        $userImage = [];
+        foreach($comFavGet as $cfg){
+            $getImage = DB::table("users")->where("id", "=", $cfg->user_id)->first()->image;
+            array_push($userImage, $getImage);
+        }
+
+        // $getImage = DB::table("users")->where("id", "=", $comFavGet[0]->user_id)->first()->image;
+        // array_push($userImage, $getImage);
+        // dd($comFavGet[0]->user_id);
+        // dd($userImage);
+
         // return response()->json([
         //     "message1" => gettype($buttonType),
         //     "message2" => gettype($articleID),
         // ]);
-        return response()->json($comFavGet);
+        return response()->json([
+            $comFavGet, $userImage
+            ]);
     }
 }
