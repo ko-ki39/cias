@@ -105,4 +105,4 @@ Route::get("/top/search", "Controller@search")->name('search');
 Route::get('/top/hashtag', 'Controller@hashtag'); //ajaxを使ったhashの処理
 Route::get('/top/hashtag/{hash}', 'Controller@hashtagResult'); //hashtagの検索結果
 
-Route::get("/top", "ArticleController@top");
+// Route::get("/top", "ArticleController@top");
