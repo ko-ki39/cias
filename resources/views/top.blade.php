@@ -106,6 +106,8 @@
         var regExp = new RegExp(searchText, "g"); //検索したい文字を変換するためお関数
 
 
+        document.getElementById('search').value = searchText;
+
         for (var i = 0; i < sourceClass.length; i++) {
             const sourceText = sourceClass[i].innerHTML;
             var text = `<span style='background:yellow'> ${searchText}</span>`; //変換後の文字列
@@ -113,6 +115,8 @@
 
             document.getElementsByClassName("text")[i].innerHTML = changeText; //入れ替える
         }
+
+
 
         function getParam(name, url) {
             if (!url) url = window.location.href;
@@ -124,7 +128,7 @@
             return decodeURIComponent(results[2].replace(/\+/g, " "));
         }
 
+
     </script>
     <script src="/js/hash.js"></script>
-
 @endsection
