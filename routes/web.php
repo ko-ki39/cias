@@ -51,6 +51,9 @@ Route::group(['middleware' => ['auth', 'can:authorized-higher']], function () { 
 
     // ↓記事削除用ルート
     Route::get('/top/delete/{id}', 'ArticleController@delete')->name('delete');
+
+    //individualページでコメント、お気に入り一覧を表示するやつ
+    Route::get('/top/individual/cfAjax', 'IndividualController@commentFavAjax');
 });
 
 Route::group(['middleware' => ['auth', 'can:admin-only']], function () { // 管理者のみ
