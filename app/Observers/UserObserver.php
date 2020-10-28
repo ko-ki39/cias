@@ -16,12 +16,20 @@ class UserObserver
      */
     public function updating(User $user) //更新前に削除処理
     {
-       $user_old = User::find($user->id);
-       if($user_old->image != $user->image){//変更があったら
-           $old_path = "/public/" . $user_old->image; //画像削除処理
-           // dd($old_path);
-           Storage::delete($old_path); //画像削除処理
-       }
+        $user_old = User::find($user->id);
+        if(!empty($user_old->image)){
+            if ($user->image) {
+                if ($user_old->image != $user->image) { //変更があったら
+                    $old_path = "/public/" . $user_old->image; //画像削除処理
+                    // dd($old_path);
+                    Storage::delete($old_path); //画像削除処理
+                }
+            } else {
+                $old_path = "/public/" . $user_old->image; //画像削除処理
+                // dd($old_path);
+                Storage::delete($old_path); //画像削除処理
+            }
+        }
     }
     public function updated(User $user)
     {
@@ -50,11 +58,19 @@ class UserObserver
     public function deleted(User $user)
     {
         $user_old = User::find($user->id);
-       if($user_old->image != $user->image){//変更があったら
-           $old_path = "/public/" . $user_old->image; //画像削除処理
-           // dd($old_path);
-           Storage::delete($old_path); //画像削除処理
-       }
+        if(!empty($user_old->image)){
+            if ($user->image) {
+                if ($user_old->image != $user->image) { //変更があったら
+                    $old_path = "/public/" . $user_old->image; //画像削除処理
+                    // dd($old_path);
+                    Storage::delete($old_path); //画像削除処理
+                }
+            } else {
+                $old_path = "/public/" . $user_old->image; //画像削除処理
+                // dd($old_path);
+                Storage::delete($old_path); //画像削除処理
+            }
+        }
     }
 
     /**
