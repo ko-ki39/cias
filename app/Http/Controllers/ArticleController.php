@@ -376,7 +376,9 @@ class ArticleController extends Controller
     {
         $comment_forcus_id = $request->comment_forcus_id;
         $user_id = Auth::id();
-        $article_id = substr(url()->previous(), -1);
+        // $article_id = substr(url()->previous(), -1);
+        $article_id = $request->article_id;
+
         $detailValidate = Validator::make(
             $request->all(),
             [

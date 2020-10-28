@@ -48,6 +48,7 @@
                     <h2>コメントを書く(400文字まで)</h2>
                     <form action="/top/article_detail/post_comment" method="post">
                         @csrf
+                        <input type="hidden" value="{{ $article->id }}" name="article_id">
                         <input type="hidden" name="comment_forcus_id" value="#comment_area">
                         <div class="c_a_u_info">
                             <img class="c_u_img" src="/storage/{{ Auth::user()->image }}" alt="">
