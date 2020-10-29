@@ -42,7 +42,11 @@
   width: 90px;
   height: 90px;
   border: solid 1px #9b9b9b;
-  border-radius: 100%;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .main #main_left .article_list {

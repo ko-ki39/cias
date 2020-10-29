@@ -79,7 +79,10 @@
                 width: 90px;
                 height: 90px;
                 border: solid 1px rgb(155, 155, 155);
-                border-radius: 100%;
+                border-radius: 50%;
+                background-position: center;
+                background-size: cover;
+                object-fit: cover;
             }
         }
         .article_list{

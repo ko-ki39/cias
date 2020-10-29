@@ -10920,6 +10920,7 @@ a.text-dark:focus {
   width: 250px;
   height: 250px;
   border: solid 1px indigo;
+  border-radius: 50%;
 }
 
 .u_i_input{
@@ -10929,14 +10930,23 @@ a.text-dark:focus {
   height: 250px;
   z-index: 99;
   border: solid 1px indigo;
+  border-radius: 50%;
 }
 
 .u_i_img{
   /* position: relative; */
-  display: none;
+  /* display: none; */
   /* z-index: 90;
   width: 250px;
   height: 250px; */
+  width: 250px;
+  height: 250px;
+  z-index: 99;
+  border: solid 1px indigo;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  object-fit: cover;
 }
 
 #u_i_canvas{

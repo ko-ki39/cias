@@ -89,7 +89,10 @@
                     .c_u_img{
                         width: 45px;
                         height: 45px;
-                        border-radius: 100%;
+                        border-radius: 50%;
+                        background-position: center;
+                        background-size: cover;
+                        object-fit: cover;
                     }
                     .c_u_name{
                         margin-left: 10px;

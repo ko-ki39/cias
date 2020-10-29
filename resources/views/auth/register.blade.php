@@ -16,7 +16,7 @@
                             <div class="u_i_display_area">
                                 <input type="file" name="u_i_input" class="u_i_input">
                                 <img alt="" class="u_i_img">
-                                <canvas id="u_i_canvas" width="250" height="250"></canvas>
+                                {{-- <canvas id="u_i_canvas" width="250" height="250"></canvas> --}}
                             </div>
                         </div>
                         

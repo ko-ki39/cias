@@ -63,11 +63,16 @@ html body .header .top .h_u_img {
 
 html body .header .top .h_u_img img {
   height: 56px;
-  border-radius: 100%;
+  width: 56px;
+  border-radius: 50%;
   margin-right: 30px;
   text-decoration: none;
   border: none;
   margin: 10px 0 0 0;
+  background-position: center;
+  background-size: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 html body .header .top .ztext {

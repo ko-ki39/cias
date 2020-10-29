@@ -120,7 +120,11 @@
 .main .article .text #comment_area .c_a_u_info .c_u_img {
   width: 45px;
   height: 45px;
-  border-radius: 100%;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .main .article .text #comment_area .c_a_u_info .c_u_name {

@@ -16,6 +16,11 @@ let article = document.getElementsByClassName("article");
 /**
  * イベントリスナー
  */
+// jQueryだと、繰り返し処理を入れずに、全てのクラスに適用される
+// $(".heart-button-l").on("click", function(){
+//     alert("great!!!");
+// });
+
 for(let i=0; i<article.length; i++){
     buttons[i].addEventListener("click", function(e){
         // console.log(e.target.classList);
