@@ -45,12 +45,18 @@
                 height: 360px;
                 width: 550px;
                 border: dashed 1px #0f0;
-            }
-            a {
-                .text {
-                    margin: 0.6em;
-                    text-align: center;
-                    font-size: 18px;
+                background: no-repeat;
+                background-size: 100% 100%;
+                a {
+                    .text {
+                        margin: 0.6em;
+                        text-align: center;
+                        font-size: 18px;
+                    }
+                    // img {
+                    //     height: 360px;
+                    //     // width: 300;
+                    // }
                 }
             }
             .article_title {
