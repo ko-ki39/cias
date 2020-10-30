@@ -67,6 +67,10 @@
   border: dashed 1px #0f0;
   background: no-repeat;
   background-size: 100% 100%;
+  background-position: center;
+  background-size: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .main .content .article .article_image a .text {

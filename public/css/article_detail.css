@@ -173,6 +173,11 @@
   height: 45px;
   border-radius: 100%;
   border: 1px solid gray;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .main .article .text #comment_list .c_l_contents .c_l_c_info .c_l_c_name {

@@ -73,6 +73,9 @@
                 width: 80px;
                 height: 80px;
                 border: solid 1.5px black;
+                background-position: center;
+                background-size: contain;
+                object-fit: contain;
             }
         }
         .l_a_detail {
