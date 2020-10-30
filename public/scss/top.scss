@@ -47,6 +47,9 @@
                 border: dashed 1px #0f0;
                 background: no-repeat;
                 background-size: 100% 100%;
+                background-position: center;
+                background-size: contain;
+                object-fit: contain;
                 a {
                     .text {
                         margin: 0.6em;

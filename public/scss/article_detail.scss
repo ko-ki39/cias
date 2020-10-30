@@ -121,6 +121,10 @@
                             height: 45px;
                             border-radius: 100%;
                             border: 1px solid gray;
+                            border-radius: 50%;
+                            background-position: center;
+                            background-size: cover;
+                            object-fit: cover;
                         }
                         .c_l_c_name{
                             margin-left: 10px;
