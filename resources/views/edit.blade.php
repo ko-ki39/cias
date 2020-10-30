@@ -19,6 +19,7 @@
                 <input type="text" name="hash3" value="{{ $article->hash3_id }}">
 
                 <input type="file" class="file" name="image1">
+                <img src="/storage/{{ $article->image }}" alt="">
                 <textarea name="text1" id="" cols="30" rows="10" class="text">{{ $post->text1 }}</textarea>
                 <input type="file" class="file" name="image2">
                 <textarea name="text2" id="" cols="30" rows="10" class="text">{{ $post->text2 }}</textarea>

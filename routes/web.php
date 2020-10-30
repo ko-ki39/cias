@@ -19,7 +19,7 @@ Auth::routes();
 Route::group(['middleware' => ['auth', 'can:user-higher']], function () { // 全ユーザー
 
     Route::get('/top/individual/fav_page', 'ArticleController@favArticle')->name('fav_page');
-    Route::get('/top/individual/comment_page', 'ArticleController@commentArticle')->name('');
+    // Route::get('/top/individual/comment_page', 'ArticleController@commentArticle');
     Route::get('/top/password_edit', 'Controller@password_edit')->name('password_edit'); //パスワード編集画面
 
     Route::get('/top/login_password_change', 'Controller@login_password_change')->name('login_password_change'); //パスワード変更処理
