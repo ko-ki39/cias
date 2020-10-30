@@ -28,6 +28,7 @@
         </div>
         <div class="ad">
             {{-- 広告を入れる場所 --}}
+            <a href="{{ route('post') }}">投稿するーーーーー</a>
         </div>
     </div>
 </div>

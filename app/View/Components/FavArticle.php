@@ -33,9 +33,10 @@ class FavArticle extends Component
             $articles[$key] = Article::find($fav->article_id);
         }
 
-        if(!empty($articles)){
+        if(empty($articles)){
             // なかった場合の表示
             $comment = 'null';
+            $articles = null;
         }
 
         return view('components.fav-article', compact('articles', 'comment'));

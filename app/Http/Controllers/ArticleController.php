@@ -449,13 +449,16 @@ class ArticleController extends Controller
 
         foreach($favs as $key => $fav){
             $articles[$key] = Article::find($fav->article_id);
+            dd('ok');
         }
 
-        if(!empty($articles)){
+        if(empty($articles)){
             // なかった場合の表示
             $comment = 'null';
+            $articles = 'n';
+            // dd();
         }
 
-        // compact articles $comment
+        return view('article_individual', compact('articles'));
     }
 }

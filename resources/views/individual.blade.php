@@ -13,6 +13,7 @@
                 <img src="/storage/{{ Auth::user()->image }}" alt="">
                 &nbsp;&nbsp;&nbsp;
                 <h1>{{ $user->user_name }}&nbsp;のマイページ</h1>
+                <a href="{{ route('fav_page') }}">コメントがついた記事などを見る</a>
             </div>
             @foreach ($articles as $article)
             <div class="article_list">
@@ -35,8 +36,8 @@
                     </div>
                 </div>
                 <div class="a_l_edit">
-                    <a href="">編集</a>
-                    <a href="">削除</a>
+                    <a href="{{ route('edit', $article->id) }}">編集</a>
+                    <a href="{{ route('delete', $article->id) }}">削除</a>
                 </div>
             </div>
             @endforeach
