@@ -71,6 +71,10 @@
                 margin-top: 20px;
                 margin-bottom: 20px;
                 border: dotted 1px #00f;
+                background-position: center;
+                background-size: contain;
+                object-fit: contain;
+                background-color: black;
             }
             #comment_area{
                 width: 550px;

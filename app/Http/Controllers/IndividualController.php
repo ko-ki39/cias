@@ -42,7 +42,7 @@ class IndividualController extends Controller
         //     "message2" => gettype($articleID),
         // ]);
         return response()->json([
-            $comFavGet, $userImage, $userName
+                $comFavGet, $userImage, $userName
             ]);
     }
 }

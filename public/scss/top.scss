@@ -70,13 +70,15 @@
                 text-align: center;
                 font-size: 18px;
             }
-            .text {
-                margin: 0.6em;
-                font-size: 0.9em;
-            }
+            // .text {
+            //     margin: 0.6em;
+            //     font-size: 0.9em;
+            // }
             .article_description {
+                // width: 500px;
                 margin: 0.6em;
                 font-size: 0.9em;
+                white-space: pre-wrap;
             }
             .date {
                 margin: 0.2em;
