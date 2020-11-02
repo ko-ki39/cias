@@ -14,12 +14,12 @@ class HamburgerNotice
 
         $favUnion = DB::table("favs")
             ->select('article_id', 'user_id', DB::raw('null as type'), 'created_at')
-            ->whereRaw('article_id = (SELECT id FROM articles WHERE user_id = ?)', [$user_id])
+            ->whereRaw('(SELECT id FROM articles WHERE user_id = ?)', [$user_id])
             ->whereNotIn('user_id', [$user_id]);
 
         $comUnionExe = DB::table("comments")
             ->select('article_id', 'user_id', 'detail', 'created_at')
-            ->whereRaw('article_id = (SELECT id FROM articles WHERE user_id = ?)', [$user_id])
+            ->whereRaw('(SELECT id FROM articles WHERE user_id = ?)', [$user_id])
             ->whereNotIn('user_id', [$user_id])
             ->union($favUnion)
             ->orderByDesc('created_at')
