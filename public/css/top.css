@@ -22,6 +22,8 @@
 }
 
 .main .content .search #search_list {
+  position: relative;
+  z-index: 3;
   margin-left: 208px;
   width: 177px;
   background-color: #fff;
@@ -35,11 +37,12 @@
 }
 
 .main .content .search #search_list ul a {
+  display: block;
   color: #00aaf8;
   text-decoration: none;
 }
 
-.main .content .search #search_list ul a :hover {
+.main .content .search #search_list ul a:hover {
   background-color: #cccccc;
   text-decoration: underline;
 }

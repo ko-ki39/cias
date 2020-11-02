@@ -1,6 +1,6 @@
 var search = document.getElementById('search');
-search.addEventListener('keyup', function() {
-    var search_id = document.getElementById('search_result');
+var search_id = document.getElementById('search_result');
+search.addEventListener('keyup', function() { //入力されるたびに発動
     if (search.value.charAt(0) == '#') { //一文字目が#の時
         $.ajax({
             type: 'GET',
@@ -21,3 +21,7 @@ search.addEventListener('keyup', function() {
         search_id.innerHTML = null; //# が削除された場合の削除
     }
 })
+
+document.body.onclick = function() { //画面をクリックした時の処理
+    search_id.innerHTML = null; //検索結果の表示を消す
+}
