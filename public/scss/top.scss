@@ -26,9 +26,10 @@
                     list-style: none;
                     text-align: left;
                     a {
+                        display: block;
                         color: #00aaf8;
                         text-decoration: none;
-                         :hover {
+                        &:hover {
                             background-color: #cccccc;
                             text-decoration: underline;
                         }
