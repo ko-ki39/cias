@@ -15,4 +15,8 @@ class SecretQuestion extends Model
     //     // return Crypt::decrypt($value);
     //     return ucfirst($value);
     // }
+
+    public function users(){
+        return $this->hasMany(User::class);
+    }
 }

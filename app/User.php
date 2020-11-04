@@ -44,9 +44,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function secret_question(){
-        return $this->hasOne('App\SecretQuestion');
-    }
 
     // public function getPasswordAttribute($value){
     //     return Crypt::decrypt($value);
@@ -57,4 +54,25 @@ class User extends Authenticatable
     //     return Crypt::encrypt($value);
     //     // return ucfirst($value);
     // }
+
+    //リレーション定義↓
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
+
+    public function favs()
+    {
+        return $this->hasMany(Fav::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function secret_question()
+    {
+        return $this->belongsTo(SecretQuestion::class);
+    }
 }

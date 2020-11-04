@@ -15,4 +15,12 @@ class Fav extends Model
     // protected $dispatchesEvents = [
     //     'deleted' => FavDelete::class
     // ];
+
+    public function article(){
+        return $this->belongsTo(Article::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

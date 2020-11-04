@@ -211,14 +211,22 @@ class Controller extends BaseController
 
                 $articles = DB::table('articles')->where('hash1_id', $hash_search)->orWhere('hash2_id', $hash_search)->orWhere('hash3_id', $hash_search)->latest()->paginate(5);
             } else {
-
-                //検索
-                $user = DB::table('users')->where('user_name', 'like', '%' . $search . '%')->first();
-                if ($user != null) { // ユーザー名があった場合
-                    $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->orWhere('user_id', $user->id)->latest()->paginate(5);
-                    // dd($user);
-                } else {
-                    $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->latest()->paginate(5);
+                $search_condition = $request->search_condition;
+                if( $search_condition == 1 ){ //タイトルで検索
+                    $articles = $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->latest()->paginate(5);
+                }else if($search_condition == 2){ //説明で検索
+                    $articles = $articles = DB::table('articles')->where('description', 'like', '%' . $search . '%')->latest()->paginate(5);
+                }else if($search_condition == 3){ //ユーザー名で検索
+                    $users = DB::table('users')->where('user_name', 'like', '%' . $search . '%')->get();
+                }else{
+                    //全検索
+                    $user = DB::table('users')->where('user_name', 'like', '%' . $search . '%')->first();
+                    if ($user != null) { // ユーザー名があった場合
+                        $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->orWhere('user_id', $user->id)->latest()->paginate(5);
+                        // dd($user);
+                    } else {
+                        $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->latest()->paginate(5);
+                    }
                 }
             }
             $message = null;

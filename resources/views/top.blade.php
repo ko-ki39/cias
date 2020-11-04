@@ -13,6 +13,12 @@
         <div class="content">
             <form action="{{ route('search') }}" method="get">
                 <div class="search">
+                    <select name="search_condition" id="search_condition">
+                        <option value="1" hidden>検索条件を設定してください</option>
+                        <option value="1">タイトル</option>
+                        <option value="2">説明</option>
+                        <option value="3">ユーザー名</option>
+                    </select>
                     <i class="fas fa-search"></i>
                     <input type="text" name="search" id="search" placeholder="検索" autocomplete="off">
                     <input type="submit" value="検索">
