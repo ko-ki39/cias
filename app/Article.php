@@ -36,4 +36,8 @@ class Article extends Model
     public function comments(){
         return $this->hasMany(Comment::class);
     }
+
+    public function post(){
+        return $this->hasOne(Post::class, 'id'); //第二引数で外部キーをオーバーライド
+    }
 }
