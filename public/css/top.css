@@ -90,14 +90,10 @@
   font-size: 18px;
 }
 
-.main .content .article .text {
-  margin: 0.6em;
-  font-size: 0.9em;
-}
-
 .main .content .article .article_description {
   margin: 0.6em;
   font-size: 0.9em;
+  white-space: pre-wrap;
 }
 
 .main .content .article .date {

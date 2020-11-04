@@ -83,6 +83,11 @@
   margin-top: 20px;
   margin-bottom: 20px;
   border: dotted 1px #00f;
+  background-position: center;
+  background-size: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
+  background-color: black;
 }
 
 .main .article .text #comment_area {
