@@ -75,4 +75,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(SecretQuestion::class);
     }
+
+
+    // public function findArticle($search){
+    //     return $this->with('articles')->where('user_name', 'like', '%'.$search.'%')->get();
+    // }
 }

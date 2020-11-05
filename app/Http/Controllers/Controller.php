@@ -44,10 +44,10 @@ class Controller extends BaseController
         // $article = DB::table('articles')->where('id', $id)->first();
         $article = Article::find($id);
 
-         //modelのリレーションを利用したデータの取り出し↓
+        //modelのリレーションを利用したデータの取り出し↓
         $comments = $article->comments()->latest()->get();
         $user = $article->user()->first();
-        $post =$article->post()->first();
+        $post = $article->post()->first();
 
         //↑との比較用
         // $user = DB::table('users')->where('id', $article->user_id)->first();
@@ -133,9 +133,9 @@ class Controller extends BaseController
                 $image = request()->file('u_i_input');
                 $fileName = time() . "_" . $image->getClientOriginalName();
                 $resizeImage = InterventionImage::make($image)
-                ->resize(350, 350, function ($constraint) {
-                    $constraint->aspectRatio();
-                });
+                    ->resize(350, 350, function ($constraint) {
+                        $constraint->aspectRatio();
+                    });
 
                 // 20KB未満まで圧縮する。
                 // if($resizeImage->filesize() > 20000){
@@ -216,13 +216,19 @@ class Controller extends BaseController
                 $articles = DB::table('articles')->where('hash1_id', $hash_search)->orWhere('hash2_id', $hash_search)->orWhere('hash3_id', $hash_search)->latest()->paginate(5);
             } else {
                 $search_condition = $request->search_condition;
-                if( $search_condition == 1 ){ //タイトルで検索
-                    $articles = $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->latest()->paginate(5);
-                }else if($search_condition == 2){ //説明で検索
+                if ($search_condition == 1) { //タイトルで検索
+
+                    $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->latest()->paginate(5);
+                } else if ($search_condition == 2) { //説明で検索
+
                     $articles = $articles = DB::table('articles')->where('description', 'like', '%' . $search . '%')->latest()->paginate(5);
-                }else if($search_condition == 3){ //ユーザー名で検索
-                    $users = DB::table('users')->where('user_name', 'like', '%' . $search . '%')->get();
-                }else{
+                } else if ($search_condition == 3) { //ユーザー名で検索
+
+                    $articles = Article::whereHas('user', function ($query) use ($search) {  //whereHasでuserの条件一致を探す
+                        $query->where('user_name', 'like', '%' . $search . '%');
+                    })->latest()->paginate();
+
+                } else {
                     //全検索
                     $user = DB::table('users')->where('user_name', 'like', '%' . $search . '%')->first();
                     if ($user != null) { // ユーザー名があった場合
