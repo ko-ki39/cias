@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Hashtag;
 use App\Http\Requests\ChangePasswordRequest;
 use App\User;
+use App\View\Components\article as ComponentsArticle;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -62,8 +64,10 @@ class Controller extends BaseController
 
     public function individual($id)
     { //マイページ
-        $user = DB::table('users')->where('id', $id)->first();
-        $articles = DB::table('articles')->where('user_id', $id)->get();
+        // $user = DB::table('users')->where('id', $id)->first();
+        $user = User::find($id);
+        $articles = Article::where('user_id', $id)->get();
+        // $articles = DB::table('articles')->where('user_id', $id)->get();
 
         if (Auth::id() == $id) {
             //本人だった場合
@@ -76,7 +80,8 @@ class Controller extends BaseController
 
     public function user_edit()
     {
-        $user = DB::table('users')->where('id', Auth::id())->first();
+        $user = User::find(Auth::id());
+        // $user = DB::table('users')->where('id', Auth::id())->first();
 
         return view('auth/user_edit', compact('user'));
     }
@@ -84,7 +89,8 @@ class Controller extends BaseController
     public function user_update(Request $request)
     {
         if ($request->isMethod('post')) {
-            $user = DB::table('users')->where('id', Auth::id())->first();
+            // $user = DB::table('users')->where('id', Auth::id())->first();
+            $user = User::find(Auth::id());
             if ($request->user_name == $user->user_name && $request->email == $user->email) {
                 // バリデーション
                 $request->validate([
@@ -213,20 +219,26 @@ class Controller extends BaseController
                 //ハッシュタグをつけて検索した場合
                 $hash_search = substr($request->search, 1);
 
-                $articles = DB::table('articles')->where('hash1_id', $hash_search)->orWhere('hash2_id', $hash_search)->orWhere('hash3_id', $hash_search)->latest()->paginate(5);
+                // $articles = DB::table('articles')->where('hash1_id', $hash_search)->orWhere('hash2_id', $hash_search)->orWhere('hash3_id', $hash_search)->latest()->paginate(5);
+
+                $articles = Article::Where('hash1_id', $hash_search)->orWhere('hash2_id', $hash_search)->orWhere('hash3_id', $hash_search)->latest()->paginate(5);
             } else {
                 $search_condition = $request->search_condition;
                 if ($search_condition == 1) { //タイトルで検索
 
-                    $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->latest()->paginate(5);
+                    // $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->latest()->paginate(5);
+
+                    $articles = Article::where('title', 'like', '%' . $search . '%')->latest()->paginate(5);
                 } else if ($search_condition == 2) { //説明で検索
 
-                    $articles = $articles = DB::table('articles')->where('description', 'like', '%' . $search . '%')->latest()->paginate(5);
+                    // $articles = $articles = DB::table('articles')->where('description', 'like', '%' . $search . '%')->latest()->paginate(5);
+
+                    $articles = Article::where('description', 'like', '%' . $search . '%')->latest()->paginate();
                 } else if ($search_condition == 3) { //ユーザー名で検索
 
                     $articles = Article::whereHas('user', function ($query) use ($search) {  //whereHasでuserの条件一致を探す
                         $query->where('user_name', 'like', '%' . $search . '%');
-                    })->latest()->paginate();
+                    })->latest()->paginate(5);
 
                 } else {
                     //全検索
@@ -253,13 +265,16 @@ class Controller extends BaseController
     public function hashtag()
     { //hashtagのajax受け取りと受け渡し処理
         $hashtag = $_GET['hashtag'];
-        $hash = DB::table('hashtags')->where('hashtag_contents', 'like', '%' . $hashtag . '%')->get();
+        // $hash = DB::table('hashtags')->where('hashtag_contents', 'like', '%' . $hashtag . '%')->get();
+        $hash = Hashtag::where('hashtag_contents', 'like', '%' . $hashtag . '%')->get();
         return response()->json($hash);
     }
 
     public function hashtagResult($hash)
     { //hashtagをクリックした時の遷移先
-        $articles = DB::table('articles')->where('hash1_id', $hash)->orWhere('hash2_id', $hash)->orWhere('hash3_id', $hash)->latest()->paginate(5);
+        // $articles = DB::table('articles')->where('hash1_id', $hash)->orWhere('hash2_id', $hash)->orWhere('hash3_id', $hash)->latest()->paginate(5);
+
+        $articles = Article::where('hash1_id', $hash)->orWhere('hash2_id', $hash)->orWhere('hash3_id', $hash)->latest()->paginate(5);
 
         return view('top', compact('articles'));
     }
