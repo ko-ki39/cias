@@ -17,6 +17,10 @@
   text-align: center;
 }
 
+.main .content .search #search_condition {
+  padding: 6px 0;
+}
+
 .main .content .search #search {
   height: 24px;
 }
