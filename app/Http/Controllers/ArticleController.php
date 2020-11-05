@@ -73,9 +73,14 @@ class ArticleController extends Controller
                 }
             }
 
-            $hash1 = DB::table('hashtags')->where('hashtag_contents', $request->hash1)->exists(); //データが存在しているか
-            $hash2 = DB::table('hashtags')->where('hashtag_contents', $request->hash2)->exists();
-            $hash3 = DB::table('hashtags')->where('hashtag_contents', $request->hash3)->exists();
+            // $hash1 = DB::table('hashtags')->where('hashtag_contents', $request->hash1)->exists(); //データが存在しているか
+            // $hash2 = DB::table('hashtags')->where('hashtag_contents', $request->hash2)->exists();
+            // $hash3 = DB::table('hashtags')->where('hashtag_contents', $request->hash3)->exists();
+
+            $hash1 = Hashtag::where('hashtag_contents', $request->hash1)->exists(); //データが存在しているか
+            $hash2 = Hashtag::where('hashtag_contents', $request->hash2)->exists(); //データが存在しているか
+            $hash3 = Hashtag::where('hashtag_contents', $request->hash3)->exists(); //データが存在しているか
+
 
             //  dd($request);
             if ($hash1 == false) {
@@ -146,11 +151,13 @@ class ArticleController extends Controller
 
     public function edit($id)
     {
-        $article = DB::table('articles')->where('id', $id)->first();
+        // $article = DB::table('articles')->where('id', $id)->first();
+        $article = Article::first($id);
 
         if ($article->user_id == Auth::id()) {
             //編集する人が本人か
-            $post = DB::table('posts')->where('id', $id)->first();
+            // $post = DB::table('posts')->where('id', $id)->first();
+            $post = Post::first($id);
             return view('edit', compact('article', 'post'));
         } else {
             return redirect()->route('top');
@@ -160,7 +167,8 @@ class ArticleController extends Controller
     public function update(Request $request, $id)
     {
         if ($request->isMethod('post')) {
-            $article = DB::table('articles')->where('id', $id)->first();
+            // $article = DB::table('articles')->where('id', $id)->first();
+            $articles = Article::first($id);
 
             if ($article->user_id != Auth::id()) {
                 return redirect()->route('top');
@@ -177,9 +185,13 @@ class ArticleController extends Controller
                 'image6' => 'file|image|mimes:jpeg,jpg,png,gif',
             ]);
 
-            $hash1 = DB::table('hashtags')->where('hashtag_contents', $request->hash1)->exists(); //データが存在しているか
-            $hash2 = DB::table('hashtags')->where('hashtag_contents', $request->hash2)->exists();
-            $hash3 = DB::table('hashtags')->where('hashtag_contents', $request->hash3)->exists();
+            // $hash1 = DB::table('hashtags')->where('hashtag_contents', $request->hash1)->exists(); //データが存在しているか
+            // $hash2 = DB::table('hashtags')->where('hashtag_contents', $request->hash2)->exists();
+            // $hash3 = DB::table('hashtags')->where('hashtag_contents', $request->hash3)->exists();
+
+            $hash1 = Hashtag::where('hashtag_contents', $request->hash1)->exists(); //データが存在しているか
+            $hash2 = Hashtag::where('hashtag_contents', $request->hash2)->exists(); //データが存在しているか
+            $hash3 = Hashtag::where('hashtag_contents', $request->hash3)->exists(); //データが存在しているか
 
             //  dd($request);
             if ($hash1 == false) {
@@ -305,7 +317,8 @@ class ArticleController extends Controller
 
     public function delete($id)
     {
-        $article = DB::table('articles')->where('id', $id)->first();
+        // $article = DB::table('articles')->where('id', $id)->first();
+        $article = Article::find($id);
 
         // dd(DB::table('articles'));
         if ($article->user_id == Auth::id()) { //本人か確認
@@ -327,7 +340,7 @@ class ArticleController extends Controller
             $p_article_id = $request->input("p_article_id");
             $p_method = $request->input("p_method");
             $a_d_message = "";
-            $query = DB::table("favs")->where("article_id", "=", $p_article_id)->where("user_id", "=", Auth::id())->first();
+            $query = Fav::where("article_id", "=", $p_article_id)->where("user_id", "=", Auth::id())->first();
             // 過去にお気に入りしていたら、テーブルから削除する
             if ($p_method == "create" && $query != null) {
                 $a_d_message = "お気に入りを削除ゾ";

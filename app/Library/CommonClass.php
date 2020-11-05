@@ -9,7 +9,8 @@ class CommonClass
 {
     public static function getArticlesRanking()
     {
-        $articles = DB::table('articles')->get();
+        // $articles = DB::table('articles')->get();
+        $articles = Article::all();
         foreach ($articles as $article) { //多次元配列にデータを用意
             $rankings[] = [$article->id, $article->comment_count + $article->fav_count];
         }
