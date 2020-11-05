@@ -118,7 +118,7 @@
 
         for (var i = 0; i < sourceClass.length; i++) {
             const sourceText = sourceClass[i].innerHTML;
-            var text = `<span style='background:yellow'> ${searchText}</span>`; //変換後の文字列
+            var text = `<span style='background:yellow'>${searchText}</span>`; //変換後の文字列
             var changeText = sourceText.replace(regExp, text); //特定の文字列のみ変換
 
             document.getElementsByClassName("text")[i].innerHTML = changeText; //入れ替える
