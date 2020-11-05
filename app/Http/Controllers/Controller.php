@@ -242,13 +242,10 @@ class Controller extends BaseController
 
                 } else {
                     //全検索
-                    $user = DB::table('users')->where('user_name', 'like', '%' . $search . '%')->first();
-                    if ($user != null) { // ユーザー名があった場合
-                        $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->orWhere('user_id', $user->id)->latest()->paginate(5);
-                        // dd($user);
-                    } else {
-                        $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->latest()->paginate(5);
-                    }
+                    $articles = Article::whereHas('user', function($query) use ($search){
+                        $query->where('user_name', 'like', '%' . $search . '%');
+                    })->orWhere('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->latest()->paginate();
+
                 }
             }
             $message = null;
