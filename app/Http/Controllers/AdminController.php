@@ -13,9 +13,13 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $users = DB::table('users')->get();
-        $articles = DB::table('articles')->get();
-        $comments = DB::table('comments')->get();
+        // $users = DB::table('users')->get();
+        // $articles = DB::table('articles')->get();
+        // $comments = DB::table('comments')->get();
+
+        $users = User::all();
+        $articles = Article::All();
+        $comments = Comment::All();
 
         return view('admin', compact('users', 'articles', 'comments'));
     }

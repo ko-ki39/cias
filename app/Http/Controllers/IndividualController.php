@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -26,8 +27,11 @@ class IndividualController extends Controller
         $userImage = [];
         $userName = [];
         foreach($comFavGet as $cfg){
-            $getImage = DB::table("users")->where("id", "=", $cfg->user_id)->first()->image;
-            $getName = DB::table("users")->where("id", "=", $cfg->user_id)->first()->user_name;
+            // $getImage = DB::table("users")->where("id", "=", $cfg->user_id)->first()->image;
+            // $getName = DB::table("users")->where("id", "=", $cfg->user_id)->first()->user_name;
+
+            $getImage = User::find($cfg->user_id)->image;
+            $getName = User::find($cfg->user_id)->user_name;
             array_push($userImage, $getImage);
             array_push($userName, $getName);
         }

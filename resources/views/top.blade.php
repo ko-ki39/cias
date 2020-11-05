@@ -14,7 +14,7 @@
             <form action="{{ route('search') }}" method="get">
                 <div class="search">
                     <select name="search_condition" id="search_condition">
-                        <option value="1" hidden>検索条件を設定してください</option>
+                        <option value="0">すべて</option>
                         <option value="1">タイトル</option>
                         <option value="2">説明</option>
                         <option value="3">ユーザー名</option>
@@ -118,7 +118,7 @@
 
         for (var i = 0; i < sourceClass.length; i++) {
             const sourceText = sourceClass[i].innerHTML;
-            var text = `<span style='background:yellow'> ${searchText}</span>`; //変換後の文字列
+            var text = `<span style='background:yellow'>${searchText}</span>`; //変換後の文字列
             var changeText = sourceText.replace(regExp, text); //特定の文字列のみ変換
 
             document.getElementsByClassName("text")[i].innerHTML = changeText; //入れ替える
