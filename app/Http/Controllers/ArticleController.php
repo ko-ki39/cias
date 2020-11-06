@@ -152,12 +152,18 @@ class ArticleController extends Controller
     public function edit($id)
     {
         // $article = DB::table('articles')->where('id', $id)->first();
-        $article = Article::first($id);
+        // $article = Article::where('id', $id)->first();
 
+        $article = Article::find($id);
+
+        // dd($article);
         if ($article->user_id == Auth::id()) {
             //編集する人が本人か
             // $post = DB::table('posts')->where('id', $id)->first();
-            $post = Post::first($id);
+            // $post = Post::where('id', $id)->first();
+
+            $post = Post::find($id);
+
             return view('edit', compact('article', 'post'));
         } else {
             return redirect()->route('top');
@@ -168,7 +174,7 @@ class ArticleController extends Controller
     {
         if ($request->isMethod('post')) {
             // $article = DB::table('articles')->where('id', $id)->first();
-            $articles = Article::first($id);
+            $article = Article::find($id);
 
             if ($article->user_id != Auth::id()) {
                 return redirect()->route('top');
@@ -462,7 +468,6 @@ class ArticleController extends Controller
 
         foreach($favs as $key => $fav){
             $articles[$key] = Article::find($fav->article_id);
-            dd('ok');
         }
 
         if(empty($articles)){

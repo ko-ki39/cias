@@ -243,6 +243,7 @@ class Controller extends BaseController
                 } else {
                     //全検索
                     $articles = Article::whereHas('user', function($query) use ($search){
+
                         $query->where('user_name', 'like', '%' . $search . '%');
                     })->orWhere('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->latest()->paginate();
 

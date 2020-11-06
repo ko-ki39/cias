@@ -35,18 +35,19 @@
                 <div class="article">
                     <input type="hidden" name="article-id" value="{{ $article->id }}" class="article_ajax_id">
                     <a href="article_detail">
-                        <div class="article_image" style="background-image: url(/storage/{{ $article->image }})">
+                        <a href="{{ route('individual', ['id' => \App\User::find($article->user_id)->id]) }}">
+                            <p class="text">{{ \App\User::find($article->user_id)->user_name }}</p>
+                            {{-- <img src="/storage/{{ $article->image }}" alt=""> --}}
+
+                        </a>
+                        <div class="article_image">
+                            <img src="/storage/{{ $article->image }}" alt="">
                             {{-- <img src="/storage/{{ $article->image }}">
                             --}}
                             {{-- route('名前', ['クエリパラメータ' => 渡したい値])
                             --}}
 
                             {{-- ↓/fake?id=1 になる --}}
-                            <a href="{{ route('individual', ['id' => \App\User::find($article->user_id)->id]) }}">
-                                <p class="text">{{ \App\User::find($article->user_id)->user_name }}</p>
-                                {{-- <img src="/storage/{{ $article->image }}" alt=""> --}}
-
-                            </a>
                         </div>
                     </a>
                     <a href="{{ route('article_detail', ['id' => $article->id]) }}">

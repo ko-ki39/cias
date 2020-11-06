@@ -48,14 +48,14 @@
             display: flex;
             flex-direction: column;
             .article_image {
-                height: 360px;
-                width: 550px;
-                border: dashed 1px #0f0;
-                background: no-repeat;
-                background-size: 100% 100%;
-                background-position: center;
-                background-size: contain;
-                object-fit: contain;
+                img {
+                    width: 550px;
+                    max-height: 400px;
+                    background-position: center;
+                    background-size: cover;
+                    object-fit: cover;
+                    margin: 0 10px;
+                }
                 a {
                     .text {
                         margin: 0.6em;
@@ -71,7 +71,7 @@
             .article_title {
                 margin: 0.6em;
                 text-align: center;
-                font-size: 18px;
+                font-size: 1.3em;
             }
             // .text {
             //     margin: 0.6em;
@@ -79,8 +79,11 @@
             // }
             .article_description {
                 // width: 500px;
-                margin: 0.6em;
-                font-size: 0.9em;
+                margin: 0.5em 1em 1.5em 1em;
+                font-size: 1.1em;
+                white-space: pre-wrap;
+            }
+            pre {
                 white-space: pre-wrap;
             }
             .date {
