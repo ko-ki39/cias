@@ -28,6 +28,7 @@ class FavArticle extends Component
     {
 
         $favs = Fav::where('user_id', Auth::id())->get();
+        $comment = 'null';
 
         foreach($favs as $key => $fav){
             $articles[$key] = Article::find($fav->article_id);
@@ -35,7 +36,6 @@ class FavArticle extends Component
 
         if(empty($articles)){
             // なかった場合の表示
-            $comment = 'null';
             $articles = null;
         }
 

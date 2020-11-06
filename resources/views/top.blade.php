@@ -35,11 +35,12 @@
                 <div class="article">
                     <input type="hidden" name="article-id" value="{{ $article->id }}" class="article_ajax_id">
                     <a href="article_detail">
-                        <a href="{{ route('individual', ['id' => \App\User::find($article->user_id)->id]) }}">
-                            <p class="text">{{ \App\User::find($article->user_id)->user_name }}</p>
-                            {{-- <img src="/storage/{{ $article->image }}" alt=""> --}}
-
-                        </a>
+                        <div class="article_userName">
+                            <a href="{{ route('individual', ['id' => \App\User::find($article->user_id)->id]) }}">
+                                {{ \App\User::find($article->user_id)->user_name }}
+                                {{-- <img src="/storage/{{ $article->image }}" alt=""> --}}
+                            </a>
+                        </div>
                         <div class="article_image">
                             <img src="/storage/{{ $article->image }}" alt="">
                             {{-- <img src="/storage/{{ $article->image }}">
@@ -50,13 +51,15 @@
                             {{-- ↓/fake?id=1 になる --}}
                         </div>
                     </a>
-                    <a href="{{ route('article_detail', ['id' => $article->id]) }}">
-                        <p class="article_title text">{{ $article->title }}</p>
-                    </a>
+                    <div class="article_title">
+                        <a href="{{ route('article_detail', ['id' => $article->id]) }}">
+                            {{ $article->title }}
+                        </a>
+                    </div>
 
                     <pre class="article_description text">{{ $article->description }}</pre>
-                    <p class="date">{{ $article->created_at }}</p>
                     <div class="ctf_container">
+                        <p class="date">{{ $article->created_at }}</p>
                         <div class="comment"><a href="{{ route('articleDetailForcus', ['id' => $article->id . '#comment_list']) }}"><i class="far fa-comment fa-2x comment-button-l" style="color:#259b25;"></i></a></div>
                         <div class="twitter"><a href="http://twitter.com/share?text={{ $article->title }}&url={{ route('article_detail', ['id' => $article->id]) }}&hashtags={{ $article->hash1_id }}" rel="nofollow" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter-square fa-2x twitter-button-l" style="color:#1da1f2;"></i></a></div>
                         @if (Illuminate\Support\Facades\DB::table("favs")
