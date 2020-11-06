@@ -50,21 +50,24 @@
 //     }
 // }
 .side_bar {
-    border: dashed 2px #000;
+    // border: dashed 2px #000;
     float: right;
-    width: 300px;
-    margin: 10px 10px 10px 0;
+    width: 320px;
+    margin: 20px 30px 10px 0;
+    background-color: #f2f2f2;
+    border-radius: 6px;
     h2 {
+        border-radius: 6px 6px 0 0;
         margin-top: 0;
         margin-bottom: 0;
         padding-top: 10px;
         padding-bottom: 10px;
         text-align: center;
-        background-color: #0f0;
+        background-color: #bfc79d;
     }
     .latest_article {
         height: 83px;
-        width: 280px;
+        width: 300px;
         display: flex;
         flex-direction: row;
         padding: 10px;
@@ -84,6 +87,8 @@
             display: flex;
             flex-direction: column;
             a:nth-child(1) {
+                color: #0f0d82;
+                text-decoration: none;
                 width: 96%;
                 font-size: 0.75em;
                 display: -webkit-box;
@@ -92,6 +97,8 @@
                 overflow: hidden;
             }
             a:nth-child(2) {
+                color: #0a094f;
+                text-decoration: none;
                 margin-top: auto;
                 align-self: flex-end;
                 font-size: 0.72em;

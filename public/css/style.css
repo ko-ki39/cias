@@ -10,12 +10,12 @@ html body {
           flex-flow: column;
   width: 1000px;
   margin: auto;
-  background-color: #f2f2f2;
+  background-color: #3f3f3f;
 }
 
 html body .header {
   padding-bottom: 10px;
-  background-color: aqua;
+  background-color: #dfdfdf;
 }
 
 html body .header .top {
@@ -36,7 +36,7 @@ html body .header .top {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #000;
+  background-color: #000000;
   height: 77px;
 }
 
@@ -116,7 +116,7 @@ html body .header .header_bot .ad {
 }
 
 html body .main {
-  background-color: #f8f8f8;
+  background-color: #3f3f3f;
 }
 
 html body .clearfix::after {
