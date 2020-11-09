@@ -39,6 +39,8 @@
   margin: 10px auto;
   border-radius: 6px;
   background-color: #fff;
+  -webkit-box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
+          box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 .main .content .article #fake_left {
