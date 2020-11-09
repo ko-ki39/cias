@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="/css/article_detail.css" type="text/css">
 @endsection
 
+@include('common_view.header', ['title' => '記事詳細ページ'])
+
 @section('content')
     {{-- この下からbodyの中身を書き始める --}}
     <div class="main">

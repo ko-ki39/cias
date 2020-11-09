@@ -24,6 +24,8 @@
             <a href="#">ポートフォリオページへ</a>
             <a href="#">ゲームページへ</a>
             <br>
+            <p>{{ $title }}</p>
+            <br>
             <h2>心眼を極めるべし、いつでも傍には不都合な真実がある。<br>[referrer] -> <br>{{ url()->previous() }}</h2>
         </div>
         <div class="ad">

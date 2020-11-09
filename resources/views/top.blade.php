@@ -7,6 +7,8 @@
     <script src=""></script>
 @endsection
 
+@include('common_view.header', ['title' => 'トップページ'])
+
 @section('content')
     {{-- この下からbodyの中身を書き始める --}}
     <div class="main">
