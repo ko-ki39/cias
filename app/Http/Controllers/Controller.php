@@ -95,7 +95,7 @@ class Controller extends BaseController
                 // バリデーション
                 $request->validate([
                     // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
-                    'now_password' => 'now_password',
+                    'now_password' => 'required|now_password',
                     'u_i_input' => 'file|image',
                     'user_name' => 'required|string|max:10',
                     'email' => 'nullable|string|email|max:255',
@@ -105,7 +105,7 @@ class Controller extends BaseController
             } else if ($request->user_name == $user->user_name) {
                 $request->validate([
                     // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
-                    'now_password' => 'now_password',
+                    'now_password' => 'required|now_password',
                     'u_i_input' => 'file|image',
                     'user_name' => 'required|string|max:10',
                     'email' => 'nullable|string|email|max:255|unique:users',
@@ -115,7 +115,7 @@ class Controller extends BaseController
             } else if ($request->email == $user->email) {
                 $request->validate([
                     // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
-                    'now_password' => 'now_password',
+                    'now_password' => 'required|now_password',
                     'u_i_input' => 'file|image',
                     'user_name' => 'required|string|max:10|unique:users',
                     'email' => 'nullable|string|email|max:255|unique:users',
@@ -125,7 +125,7 @@ class Controller extends BaseController
             } else {
                 $request->validate([
                     // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
-                    'now_password' => 'now_password',
+                    'now_password' => 'required|now_password',
                     'u_i_input' => 'file|image',
                     'user_name' => 'required|string|max:10|unique:users',
                     'email' => 'nullable|string|email|max:255|unique:users',
