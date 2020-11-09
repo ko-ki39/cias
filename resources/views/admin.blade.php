@@ -32,6 +32,7 @@
                                 <option value="3" selected>一般ユーザー 3</option>
                             </select>
                             <input type="submit" value="変更">
+                        </form>
                     @endif
 
                 </td>
