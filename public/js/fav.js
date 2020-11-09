@@ -8,6 +8,7 @@ let buttons = document.getElementsByClassName("heart-button-l");
 let buttons2 = document.getElementsByClassName("twitter-button-l");
 let buttons3 = document.getElementsByClassName("comment-button-l");
 let article = document.getElementsByClassName("article");
+let nowURL = location.href;
 // console.log(buttons);
 // buttons[0].classList.remove("far");
 // buttons[0].classList.add("fas");
@@ -20,21 +21,34 @@ let article = document.getElementsByClassName("article");
 // $(".heart-button-l").on("click", function(){
 //     alert("great!!!");
 // });
-
-for(let i=0; i<article.length; i++){
-    buttons[i].addEventListener("click", function(e){
-        // console.log(e.target.classList);
-        // console.log(buttons[i].classList);
+if(nowURL.substring(0,40) == "http://127.0.0.1:8000/top/article_detail"){
+    buttons[0].addEventListener("click", function(e){
         
         // 塗り潰しされてない(favされてない、またはログインしていない)
-        if(buttons[i].classList[4] == "far"){
-            fav(i, "create");
-            // requestTest();
-            // 塗り潰しされてる(過去にお気に入りした)
-        }else if(buttons[i].classList[4] == "fas"){
-            fav(i, "delete");
+        if(buttons[0].classList[4] == "far"){
+            fav(0, "create");
+
+         // 塗り潰しされてる(過去にお気に入りした)
+        }else if(buttons[0].classList[4] == "fas"){
+            fav(0, "delete");
         }
-    }, false);
+    }, true);
+}else if(nowURL.substring(0,25) == "http://127.0.0.1:8000/top"){
+    for(let i=0; i<article.length; i++){
+        buttons[i].addEventListener("click", function(e){
+            // console.log(e.target.classList);
+            // console.log(buttons[i].classList);
+            
+            // 塗り潰しされてない(favされてない、またはログインしていない)
+            if(buttons[i].classList[4] == "far"){
+                fav(i, "create");
+                // requestTest();
+                // 塗り潰しされてる(過去にお気に入りした)
+            }else if(buttons[i].classList[4] == "fas"){
+                fav(i, "delete");
+            }
+        }, true);
+    }
 }
 
 for(let j=0; j<article.length; j++){
