@@ -20,7 +20,6 @@
     </head>
     <body>
         <x-hamburger />
-        @include('common_view.header')
         @yield('content')
         @include('common_view.footer')
         <script src="/js/hamburger.js"></script>

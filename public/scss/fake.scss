@@ -1,59 +1,68 @@
 .main {
     width: 1000px;
-    .me {
-        margin-top: 10px;
-        margin-left: 10px;
-        width: 600px;
-        height: 110px;
-        .me_image {
-            padding: 50px;
-            float: left;
-            border: dashed 1px #000;
-        }
-        p {
-            // margin-top: 30px;
-            line-height: 110px;
-            font-size: 25px;
-        }
-    }
     .content {
-        // float: left;
         width: 620px;
-        margin: 10px 0 0 10px;
-        border: dashed 1px #000;
+        margin: 20px 0 0 10px;
+        border-radius: 6px;
+        background-color: #ccc;
+        .me {
+            margin-top: 10px;
+            margin-left: 10px;
+            width: 555px;
+            height: 70px;
+            margin: auto;
+            border-radius: 6px;
+            background-color: #fff;
+            .me_image {
+                height: 60px;
+                width: 60px;
+                margin: 5px;
+                float: left;
+                border-radius: 50%;
+            }
+            p {
+                // margin-top: 30px;
+                padding-left: 10px;
+                line-height: 70px;
+                font-size: 20px;
+            }
+        }
         .article {
             width: 555px;
             height: 150px;
             margin: 10px auto;
-            border: dashed 1px #f00;
+            // border: dashed 1px #f00;
+            border-radius: 6px;
+            background-color: #fff;
             // position: relative;
             // background-color: #fff;
             #fake_left {
                 float: left;
                 height: 150px;
                 width: 150px;
-                border: dashed 1px #000;
-                a{
+                // border: dashed 1px #000;
+                a {
                     height: 150px;
-                    width: 150px;    
-                    img{
+                    width: 150px;
+                    img {
                         height: 150px;
-                        width: 150px;        
+                        width: 150px;
+                        border-radius: 6px;
                     }
                 }
             }
-            #fake_right{
+            #fake_right {
                 padding: 10px;
                 display: flex;
                 flex-direction: column;
-                .title_text{
+                .title_text {
                     // width: 315px;
                     // margin: 5px 10px;
                     // float: left;
                     // position: relative;
-                    a{
+                    a {
                         display: inline-block;
-                        h3{
+                        h3 {
                             font-size: 1.1rem;
                             margin: 0;
                             max-width: 100%;
@@ -63,9 +72,9 @@
                         }
                     }
                 }
-                .desc_text{
+                .desc_text {
                     height: 76px;
-                    p{
+                    p {
                         font-size: 0.9rem;
                         margin: 5px 0;
                         line-height: 1.2;
@@ -76,25 +85,25 @@
                         overflow: hidden;
                     }
                 }
-                .ctf_container{
+                .ctf_container {
                     display: flex;
                     flex-direction: row;
                     align-items: flex-end;
                     justify-content: flex-end;
-                    .date{
+                    .date {
                         margin: 0 0 5px 0;
                         margin-right: auto;
                         font-size: 0.75rem;
                     }
-                    .comment{
+                    .comment {
                         margin-right: 0.5em;
                     }
-                    .twitter{
+                    .twitter {
                         margin-right: 0.5em;
                     }
-                    .fav{
+                    .fav {
                         margin-right: 0;
-                        color:#135f13;
+                        color: #135f13;
                         cursor: pointer;
                     }
                 }
