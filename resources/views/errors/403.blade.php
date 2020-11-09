@@ -2,6 +2,6 @@
 
 @section('title', __('Forbidden'))
 
-<img src="/storage/403error.jpg" alt="" height="80%" width="100%">
+<img src="/images/403error.jpg" alt="" height="80%" width="100%">
 {{-- @section('code', '403')
 @section('message', __($exception->getMessage() ?: 'Forbidden')) --}}
