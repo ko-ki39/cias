@@ -2,42 +2,51 @@
   width: 1000px;
 }
 
-.main .me {
-  margin-top: 10px;
-  margin-left: 10px;
-  width: 600px;
-  height: 110px;
-}
-
-.main .me .me_image {
-  padding: 50px;
-  float: left;
-  border: dashed 1px #000;
-}
-
-.main .me p {
-  line-height: 110px;
-  font-size: 25px;
-}
-
 .main .content {
   width: 620px;
-  margin: 10px 0 0 10px;
-  border: dashed 1px #000;
+  margin: 20px 0 0 10px;
+  border-radius: 6px;
+  background-color: #ccc;
+}
+
+.main .content .me {
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 555px;
+  height: 70px;
+  margin: auto;
+  border-radius: 6px;
+  background-color: #fff;
+}
+
+.main .content .me .me_image {
+  height: 60px;
+  width: 60px;
+  margin: 5px;
+  float: left;
+  border-radius: 50%;
+}
+
+.main .content .me p {
+  padding-left: 10px;
+  line-height: 70px;
+  font-size: 20px;
 }
 
 .main .content .article {
   width: 555px;
   height: 150px;
   margin: 10px auto;
-  border: dashed 1px #f00;
+  border-radius: 6px;
+  background-color: #fff;
+  -webkit-box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
+          box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 .main .content .article #fake_left {
   float: left;
   height: 150px;
   width: 150px;
-  border: dashed 1px #000;
 }
 
 .main .content .article #fake_left a {
@@ -48,6 +57,7 @@
 .main .content .article #fake_left a img {
   height: 150px;
   width: 150px;
+  border-radius: 6px;
 }
 
 .main .content .article #fake_right {

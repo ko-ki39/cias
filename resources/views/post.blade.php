@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="/css/post_page.css" type="text/css">
 @endsection
 
+@include('common_view.header', ['title' => '投稿ページ'])
+
 @section('content')
     {{-- この下からbodyの中身を書き始める --}}
     <div class="main">

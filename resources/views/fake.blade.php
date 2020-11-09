@@ -7,15 +7,16 @@
     <link rel="stylesheet" href="/css/fake.css" type="text/css">
 
 @endsection
+@include('common_view.header', ['title' => '他人のページ'])
 
 @section('content')
     {{-- この下からbodyの中身を書き始める --}}
     <div class="main">
-        <div class="me">
-            <div class="me_image"></div>
-            <p>{{ $user->user_name }}さんが投稿した記事</p>
-        </div>
         <div class="content">
+            <div class="me">
+                <img src="/storage/{{ $user->image }}" alt="" class="me_image">
+                <p>{{ $user->user_name }}さんが投稿した記事</p>
+            </div>
             @foreach ($articles as $article)
 
                 <div class="article">
