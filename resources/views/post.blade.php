@@ -14,29 +14,45 @@
         <div class="content">
             <form action="{{ route('upload') }}" method="POST" enctype='multipart/form-data'>
                 @csrf
+                <div class="title">
+                    <h2 id="title">タイトル</h2>
+                    <input type="text" name="title"  placeholder="タイトルを入力（必須）" required>
+                </div>
 
-                <input type="text" name="title">
+                <div class="hash">
+                    <h3>ハッシュタグ</h3>
+                    <input type="text" name="hash1" placeholder="ハッシュタグを入力">
+                    <input type="text" name="hash2" placeholder="ハッシュタグを入力">
+                    <input type="text" name="hash3" placeholder="ハッシュタグを入力">
+                </div>
 
-                <input type="text" name="hash1">
-                <input type="text" name="hash2">
-                <input type="text" name="hash3">
-
-                <input type="file" class="file" name="image1">
-                <textarea name="text1" id="" cols="30" rows="10" class="text"></textarea>
+                <input type="file" class="file" name="image1" value="画像を入れる（必須）" required>
+                <img src="" alt="">
+                <textarea name="text1" id="" cols="30" rows="10" class="text"  placeholder="見出しとなる部分です（必須）" required></textarea>
                 <input type="file" class="file" name="image2">
-                <textarea name="text2" id="" cols="30" rows="10" class="text"></textarea>
+                <img src="" alt="">
+
+                <textarea name="text2" id="" cols="30" rows="10" class="text" placeholder="記事詳細で表示されます"></textarea>
                 <input type="file" class="file" name="image3">
-                <textarea name="text3" id="" cols="30" rows="10" class="text"></textarea>
+                <img src="" alt="">
+
+                <textarea name="text3" id="" cols="30" rows="10" class="text" placeholder="記事詳細で表示されます"></textarea>
                 <input type="file" class="file" name="image4">
-                <textarea name="text4" id="" cols="30" rows="10" class="text"></textarea>
+                <img src="" alt="">
+
+                <textarea name="text4" id="" cols="30" rows="10" class="text" placeholder="記事詳細で表示されます"></textarea>
                 <input type="file" class="file" name="image5">
-                <textarea name="text5" id="" cols="30" rows="10" class="text"></textarea>
+                <img src="" alt="">
+
+                <textarea name="text5" id="" cols="30" rows="10" class="text" placeholder="記事詳細で表示されます"></textarea>
                 <input type="file" class="file" name="image6">
-                <textarea name="text6" id="" cols="30" rows="10" class="text"></textarea>
+                <img src="" alt="">
+
+                <textarea name="text6" id="" cols="30" rows="10" class="text" placeholder="記事詳細で表示されます"></textarea>
 
                 <input type="submit" value="投稿する" id="post">
             </form>
         </div>
     </div>
-
+<script src="/js/registerUserImage.js"></script>
 @endsection

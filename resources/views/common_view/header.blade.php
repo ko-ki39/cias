@@ -21,12 +21,13 @@
     </div>
     <div class="header_bot">
         <div class="tp_intro">
-            <a href="#">ポートフォリオページへ</a>
-            <a href="#">ゲームページへ</a>
-            <br>
-            <p>{{ $title }}</p>
-            <br>
-            <h2>心眼を極めるべし、いつでも傍には不都合な真実がある。<br>[referrer] -> <br>{{ url()->previous() }}</h2>
+            {{-- <a href="#">ポートフォリオページへ</a>
+            <a href="#">ゲームページへ</a> --}}
+            <img src="/images/header_image1.png" alt="" class="header_image">
+            <h2 class="title">{{ $title }}</h2>
+
+            {{-- <h2>心眼を極めるべし、いつでも傍には不都合な真実がある。<br>[referrer] -> <br>{{ url()->previous() }}</h2> --}}
+
         </div>
         <div class="ad">
             {{-- 広告を入れる場所 --}}
