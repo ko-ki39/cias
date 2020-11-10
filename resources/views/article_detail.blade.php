@@ -56,7 +56,7 @@
             </div>
             @guest
             <div id="comment_area">
-                <img src="/storage/images/図1.png" alt="">
+                <img src="/images/図1.png" alt="">
             </div>
             @else
             <div id="comment_area">
