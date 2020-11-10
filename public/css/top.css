@@ -108,6 +108,7 @@
 
 .main .content .article .article_image img {
   width: 100%;
+  max-height: 400px;
   background-position: center;
   background-size: cover;
   -o-object-fit: cover;

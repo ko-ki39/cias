@@ -1,14 +1,15 @@
+@section('content')
+
 @extends('common_view.common')
 
-@section('import')
-    {{-- css等の読み込み場所 --}}
-    <link rel="stylesheet" href="/css/side_bar.css" type="text/css">
-    <link rel="stylesheet" href="/css/article_detail.css" type="text/css">
-@endsection
+    @section('import')
+        {{-- css等の読み込み場所 --}}
+        <link rel="stylesheet" href="/css/side_bar.css" type="text/css">
+        <link rel="stylesheet" href="/css/article_detail.css" type="text/css">
+    @endsection
 
 @include('common_view.header', ['title' => '記事詳細ページ'])
 
-@section('content')
     {{-- この下からbodyの中身を書き始める --}}
     <div class="main">
         <div class="article">
@@ -29,7 +30,7 @@
                     <p class="hash">#{{ $article->hash3_id }}</p>
                 </div>
                 <div class="ctf_container">
-                    <div class="comment"><a href="#comment_list"><i class="far fa-comment fa-2x comment-button-l" style="color:#259b25;"></i></a></div>
+                    <div class="comment"><a href="#comment_area"><i class="far fa-comment fa-2x comment-button-l" style="color:#259b25;"></i></a></div>
                     <div class="twitter"><a href="http://twitter.com/share?text={{ $article->title }}&url={{ route('article_detail', ['id' => $article->id]) }}&hashtags={{ $article->hash1_id }}" rel="nofollow" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter-square fa-2x twitter-button-l" style="color:#1da1f2;"></i></a></div>
                     @if (Illuminate\Support\Facades\DB::table("favs")
                             ->where("article_id", "=", $article->id)
