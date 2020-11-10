@@ -75,13 +75,14 @@
                 }
             }
             .article_image {
-                background-color: white;
+                background-color: black;
                 width: 568px;
                 max-height: 400px;
                 display: flex;
                 align-items: center;
                 img {
                     width: 100%;
+                    max-height: 400px;
                     background-position: center;
                     background-size: cover;
                     object-fit: cover;
