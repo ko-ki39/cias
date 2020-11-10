@@ -96,6 +96,10 @@ html body .header .header_bot .tp_intro {
   float: left;
 }
 
+html body .header .header_bot .tp_intro .header_image {
+  width: 600px;
+}
+
 html body .header .header_bot .tp_intro a {
   color: red;
   float: left;
@@ -104,6 +108,12 @@ html body .header .header_bot .tp_intro a {
 
 html body .header .header_bot .tp_intro h2 {
   width: 600px;
+}
+
+html body .header .header_bot .tp_intro .title {
+  font-size: 30px;
+  text-align: center;
+  margin: 0;
 }
 
 html body .header .header_bot .ad {

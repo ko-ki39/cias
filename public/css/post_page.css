@@ -1,7 +1,8 @@
 .main {
-  width: 1000px;
-  margin-top: 10px;
-  border: aqua 1px dashed;
+  width: 800px;
+  margin: 10px auto;
+  border-radius: 10px;
+  background-color: #fff !important;
 }
 
 .main .content {
@@ -9,7 +10,15 @@
   margin: 10px auto;
 }
 
-.main .content .file {
+.main .content .title {
+  text-align: center;
+}
+
+.main .content .hash {
+  text-align: center;
+}
+
+.main .content img {
   width: 550px;
   height: 400px;
   margin: 10px auto;
