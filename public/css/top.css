@@ -74,14 +74,44 @@
 .main .content .article .article_userName {
   margin: 7px 0 12px 0;
   text-align: center;
-  font-size: 1.3em;
+  font-size: 1em;
   font-weight: bold;
   color: #3f3f3f;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main .content .article .article_userName .top_h_u_img {
+  padding: 0;
+  margin: 0;
+  height: 46px;
+  width: 46px;
+}
+
+.main .content .article .article_userName .top_h_u_img img {
+  height: 46px;
+  width: 46px;
+  border-radius: 50%;
+  text-decoration: none;
+  background-position: center;
+  background-size: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .main .content .article .article_userName a {
   text-decoration: none;
-  margin: auto;
+  margin-left: 10px;
 }
 
 .main .content .article .article_userName a:hover {

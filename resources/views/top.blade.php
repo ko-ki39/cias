@@ -39,6 +39,7 @@
                     <input type="hidden" name="article-id" value="{{ $article->id }}" class="article_ajax_id">
                     <a href="article_detail">
                         <div class="article_userName">
+                            <a href="{{ route('individual', ['id' => $article->user_id]) }}" class="top_h_u_img"><img src="/storage/{{  \App\User::find($article->user_id)->image }}" alt=""></a>
                             <a href="{{ route('individual', ['id' => \App\User::find($article->user_id)->id]) }}">
                                 {{ \App\User::find($article->user_id)->user_name }}
                                 {{-- <img src="/storage/{{ $article->image }}" alt=""> --}}
