@@ -1,7 +1,14 @@
+body{
+    div.main{
+        background-color: #f2f2f2;
+    }
+}
+
 .main {
     padding: 25px 50px;
     .me {
         display: flex;
+        background-color: #f2f2f2;
         .me_image {
             border: black 1px solid;
             height: 100px;
@@ -15,9 +22,11 @@
     .choice {
         display: flex;
         justify-content: space-around;
+        background-color: #f2f2f2;
     }
     .article {
         border: black solid 1px;
+        background-color: #f2f2f2;
         #fav_article {
             display: flex;
             flex-wrap: wrap;

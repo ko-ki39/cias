@@ -60,7 +60,11 @@
 //         }
 //     }
 // }
-
+body{
+    div.main{
+        background-color: #f2f2f2;
+    }
+}
 .main{
     display: flex;
     flex-direction: row;
