@@ -2,6 +2,7 @@
 
 @section('content')
     {{-- ユーザーの情報↓ --}}
+    <a href="{{ route('generate_page') }}">アカウント生成</a>
     <table>
         <th>ID</th>
         <th>ログインID</th>
@@ -28,8 +29,7 @@
                             @csrf
                             <select name="authority">
                                 <option value="1">管理者権限 1</option>
-                                <option value="2">投稿許可権限 2</option>
-                                <option value="3" selected>一般ユーザー 3</option>
+                                <option value="2" selected>投稿許可権限 2</option>
                             </select>
                             <input type="submit" value="変更">
                         </form>

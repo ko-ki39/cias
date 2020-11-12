@@ -51,4 +51,12 @@ class AdminController extends Controller
         Comment::find($id)->delete();
         return redirect()->route('admin');
     }
+
+    public function generate_page(){ //アカウント生成ページ
+        return view('generate');
+    }
+
+    public function generate(){ //アカウント生成
+
+    }
 }
