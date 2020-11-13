@@ -4,6 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
         <title>とどめの野菜ジュースを喰らいな</title>
         <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
         <link href="{{ asset('/css/welcome.css') }}" rel="stylesheet">
@@ -20,7 +21,7 @@
         <p class="ztext ztext-head">具志川<br>訓練校</p>
         @else
         <div class="welcome_header">
-            <p class="ztext ztext-head" style="margin-right:320px;">具志川<br>訓練校</p>
+            <p class="ztext ztext-head" style="">具志川<br>訓練校</p>
             <a href="{{ route('individual', ['id' => Auth::id()]) }}">{{ Auth::user()->user_name }}</a>
             <a href="{{ route('individual', ['id' => Auth::id()]) }}"><img src="/storage/{{ Auth::user()->image }}" alt="{{ Auth::user()->image }}"></a>
         </div>
