@@ -18,10 +18,27 @@
   text-align: center;
 }
 
-.main .content img {
+.main .content .post_inputs .p_i_input_img {
   width: 550px;
   height: 400px;
-  margin: 10px auto;
+}
+
+.main .content .post_inputs .p_i_input_img .post_file {
+  width: 100%;
+  height: 100%;
+  border: solid 1px olivedrab;
+  z-index: 10;
+  opacity: 0;
+  position: absolute;
+}
+
+.main .content .post_inputs .p_i_input_img .post_img {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .main .content .text {
