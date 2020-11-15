@@ -73,7 +73,7 @@
                     @endforeach
                 @endif
             </ul>
-            <li class="li_pro_ad">ADが入ります</li>
+            <li class="li_pro_ad">このサイトについて<br>プライバシーポリシー<br>開発者紹介</li>
         </ul>
     </nav>
     @endguest

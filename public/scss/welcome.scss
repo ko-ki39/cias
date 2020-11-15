@@ -1,86 +1,105 @@
+/* モバイルファーストでCSSを構築していく */
 body{
     // margin: auto;
-    width: 1000px;
+    width: 100%;
     background-color: black;
     .welcome_header{
         display: flex;
         flex-direction: row;
-        justify-content: flex-end;
+        justify-content: center;
         align-items: center;
-        height: 77px;
+        height: 3.8rem;
+        padding: 0.5rem;
         a:nth-child(2){
+            display: none;
             color: whitesmoke;
             text-decoration: none;
-            font-size: 1.25em;
+            // font-size: 1.25em;
             border: none;
-            margin-right: 10px;
+            margin-right: 3%;
         }
-        img{
-            text-decoration: none;
-            border: none;
-            height: 56px;
-            border-radius: 100%;
-            margin-top: 10px;
-            margin-right: 10px;
+        a:nth-child(3){
+            display: none;
+            img{
+                text-decoration: none;
+                border: none;
+                width: 3rem;
+                height: 3rem;
+                border-radius: 50%;
+                // margin-top: 10px;
+                // margin-right: 10px;
+                background-position: center;
+                background-size: cover;
+                object-fit: cover;
+            }
         }
-
     }
-}
-.ztext-head{
-    // position: absolute;
-    // top: 5px;
-    // left: 47%;
-    font-size: 1.5em;
-    line-height: 1.5rem;
-    color: whitesmoke;
-    margin: 25px auto 10px auto;
-}
-.z-layer:not(:first-child){
-    color: red;
-}
-// #Quietflow{
-//     margin: 0;
-//     height: 100vh;
-//     width: 1000px;
-// }
-.welcome_section{
-    margin: 0;
-}
-.header_band{
-    height: 77px;
-    background: black;
-}
-.welcome_image{
-    border: dashed 2px yellow;
-    height: 666px;
-    text-align: center;
-    margin: auto;
-    p{
-        margin-top: 200px;
-        font-size: 3em;
-        color: rgb(80, 80, 80);
+    .ztext-head{
+        // position: absolute;
+        // top: 5px;
+        // left: 47%;
+        font-size: 1.2rem;
+        line-height: 1.2rem;
+        color: whitesmoke;
+        // margin: 25px auto 10px auto;
+    }
+    .z-layer:not(:first-child){
+        color: red;
+    }
+    // #Quietflow{
+    //     margin: 0;
+    //     height: 100vh;
+    //     width: 1000px;
+    // }
+    .welcome_section{
+        margin: 0;
+    }
+    .header_band{
+        height: 77px;
+        background: black;
+    }
+    .welcome_image{
+        // border: dashed 1px yellow;
+        height: 90%;
         text-align: center;
-        vertical-align: middle;
+        margin: auto;
+        p:nth-child(1){
+            margin-top: 7rem;
+        }
+        p{
+            // margin-top: 200px;
+            font-size: 2em;
+            color: whitesmoke;
+            text-align: center;
+            vertical-align: middle;
+            margin-bottom: 5rem;
+        }
     }
-}
-#main{
-    border: dashed 2px yellow;
-    height: 500px;
-    // padding: 75px;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    a{
-        // display: flex;
-        // text-align: center;
-        display: block;
-        border: dashed 2px yellow;
-        height: 200px;
-        width: 250px;
-        // &:last-child{
-        //     float: right;
-        // }
+    #main{
+        // border: dashed 1px yellow;
+        height: 45rem;
+        padding: 5% 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        div{
+            width: 95%;
+            height: 42%;
+            background-color: rgba(255, 140, 0, 0.616);
+            a{
+                // display: flex;
+                // text-align: center;
+                display: block;
+                border: dashed 1px yellow;
+                height: 100%;
+                width: 100%;
+                // &:last-child{
+                //     float: right;
+                // }
+            }
+        }
     }
 }
 .footer{
@@ -90,44 +109,103 @@ html body .footer .foot_right .foot_twitter{
     border: dashed 1px yellow;
 }
 
-.welcome_image {
-	// height: 100%;
-	/* max-height: 600px; */
-    // width: 1000px;
-    z-index: 99;
-	background-color: rgb(97, 172, 209);
-	background-image:		
-		url('https://78.media.tumblr.com/cae86e76225a25b17332dfc9cf8b1121/tumblr_p7n8kqHMuD1uy4lhuo1_540.png'), 
-		url('https://78.media.tumblr.com/66445d34fe560351d474af69ef3f2fb0/tumblr_p7n908E1Jb1uy4lhuo1_1280.png'),
-		url('https://78.media.tumblr.com/8cd0a12b7d9d5ba2c7d26f42c25de99f/tumblr_p7n8kqHMuD1uy4lhuo2_1280.png'),
-		url('https://78.media.tumblr.com/5ecb41b654f4e8878f59445b948ede50/tumblr_p7n8on19cV1uy4lhuo1_1280.png'),
-		url('https://78.media.tumblr.com/28bd9a2522fbf8981d680317ccbf4282/tumblr_p7n8kqHMuD1uy4lhuo3_1280.png');
-	background-repeat: repeat-x;
-	background-position: 
-		0 20%,
-		0 100%,
-		0 50%,
-		0 100%,
-		0 0;
-	background-size: 
-		2500px,
-		800px,
-		500px 200px,
-		1000px,
-		400px 260px;
-	animation: 50s para infinite linear;
-	}
+@media screen and (min-width: 481px) {
+	/* 481px以上に適用されるCSS（タブレット用） */
+}
 
-@keyframes para {
-	100% {
-		background-position: 
-			-5000px 20%,
-			-800px 95%,
-			500px 50%,
-			1000px 100%,
-			400px 0;
-		}
-	}
+@media screen and (min-width: 960px){
+    body{
+        // margin: auto;
+        width: 100%;
+        background-color: black;
+        .welcome_header{
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+            height: 77px;
+            a:nth-child(2){
+                color: whitesmoke;
+                text-decoration: none;
+                font-size: 1.25em;
+                border: none;
+                margin-right: 10px;
+            }
+            img{
+                text-decoration: none;
+                border: none;
+                height: 56px;
+                border-radius: 100%;
+                margin-top: 10px;
+                margin-right: 10px;
+            }
+    
+        }
+    }
+    .ztext-head{
+        // position: absolute;
+        // top: 5px;
+        // left: 47%;
+        font-size: 1.5em;
+        line-height: 1.5rem;
+        color: whitesmoke;
+        margin: 25px auto 10px auto;
+    }
+    .z-layer:not(:first-child){
+        color: red;
+    }
+    // #Quietflow{
+    //     margin: 0;
+    //     height: 100vh;
+    //     width: 1000px;
+    // }
+    .welcome_section{
+        margin: 0;
+    }
+    .header_band{
+        height: 77px;
+        background: black;
+    }
+    .welcome_image{
+        border: dashed 2px yellow;
+        height: 666px;
+        text-align: center;
+        margin: auto;
+        p{
+            margin-top: 200px;
+            font-size: 3em;
+            color: rgb(80, 80, 80);
+            text-align: center;
+            vertical-align: middle;
+        }
+    }
+    #main{
+        border: dashed 2px yellow;
+        height: 500px;
+        // padding: 75px;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        a{
+            // display: flex;
+            // text-align: center;
+            display: block;
+            border: dashed 2px yellow;
+            height: 200px;
+            width: 250px;
+            // &:last-child{
+            //     float: right;
+            // }
+        }
+    }
+    .footer{
+        color: palegoldenrod;
+    }
+    html body .footer .foot_right .foot_twitter{
+        border: dashed 1px yellow;
+    }
+}
 
 // html {
 //     height: 100%;

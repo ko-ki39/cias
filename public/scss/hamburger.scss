@@ -1,10 +1,10 @@
- /* 静的な要素 */
+/* 静的な要素 */
 // body{
 //     margin: 0;
 // }
 header{
     z-index: -999;
-    width: 400px;
+    width: 100%;
     height: 100%;
     position: fixed;
     top: 0;
@@ -21,12 +21,12 @@ header{
         -webkit-transition: 0.333s;
         transition: 0.333s;
         ul:first-child{
-            margin: 77px 0 0 0;
+            margin: 15% 0 0 0;
             padding: 0;
         }
         ul{
-            margin: 10px auto 0 auto;
-            padding: 10px;
+            margin: 5% auto 0 auto;
+            padding: 3%;
             li{
                 // height: calc(100vh/5);
                 // line-height: 187.39px;
@@ -42,7 +42,7 @@ header{
 #hum_target{
     z-index: 999;
     background: rgba(63, 63, 63, 0.3);
-    padding: 25px 25px 22px 26px;
+    padding: 4%;
     // width: 40px;
     // height: 30px;
     // position: absolute;
@@ -60,8 +60,8 @@ header{
         position: relative;
         .hum_t_i_line{
             display: block;
-            width: 40px;
-            height: 5px;
+            width: 100%;
+            height: 15%;
             background: #ffffff;
             -webkit-transition: 0.6s;
             transition: 0.6s;
@@ -80,7 +80,7 @@ header{
     }
 }
 .hamburger_menu{
-    width: 400px;
+    width: 100%;
     position: fixed;
 }
 .li_pro_img{
@@ -97,7 +97,7 @@ header{
     }
 }
 .li_pro_name{
-    margin-bottom: 10px;
+    margin: 3% 0 6% 0;
     font-size: 1.6em;
     text-align: center;
     a{
@@ -107,20 +107,21 @@ header{
 }
 .li_pro_comment_fav{
     p{
-        margin-left: 25px;
+        margin: auto;
+        text-align: center;
     }
     ul{
         width: 90%;
         border: solid 1px whitesmoke;
-        margin: 10px auto 0 auto;
-        padding: 10px;
+        margin: 5% auto 0 auto;
+        padding: 5%;
         li{
             // text-align: left;
             a{
                 color: yellowgreen;
-            }
         }
     }
+}
 
 }
 .li_pro_ad{
@@ -133,8 +134,8 @@ header{
 
 /* 動的な要素 */
 .fadein{
-    -webkit-transform: translateY(100%);
-    transform: translateY(-100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(-100%);
 }
 // .fadein_head{
 //     z-index: 10;
@@ -166,4 +167,180 @@ header::-webkit-scrollbar{
     -webkit-transform: rotate(-225deg);
     transform: rotate(-225deg);
     top: 13px;
+}
+
+@media screen and (min-width: 481px) {
+	/* 481px以上に適用されるCSS（タブレット用） */
+}
+
+@media screen and (min-width: 483px){
+    /* 静的な要素 */
+    // body{
+    //     margin: 0;
+    // }
+    header{
+       z-index: -999;
+       width: 400px;
+       height: 100%;
+       position: fixed;
+       top: 0;
+       // left: 0;
+       overflow-y: scroll;
+       -webkit-overflow-scrolling: touch;
+       .nav{
+           position: absolute;
+           // height: 100%;
+           width: 100%;
+           top: 0;
+           // overflow: hidden;
+           background: rgba(99, 99, 99, .95);
+           -webkit-transition: 0.333s;
+           transition: 0.333s;
+           ul:first-child{
+               margin: 77px 0 0 0;
+               padding: 0;
+           }
+           ul{
+               margin: 10px auto 0 auto;
+               padding: 10px;
+               li{
+                   // height: calc(100vh/5);
+                   // line-height: 187.39px;
+                   list-style-type: none;
+                   // font-size: 3em;
+                   // text-align: center;
+                   display: block;
+                   color: #fff;
+               }
+           }
+       }
+    }
+    #hum_target{
+       z-index: 999;
+       background: rgba(63, 63, 63, 0.3);
+       padding: 25px 25px 22px 26px;
+       // width: 40px;
+       // height: 30px;
+       // position: absolute;
+       position: fixed;
+       top: 0;
+       // top: 25px;
+       // left: 26px;
+       cursor: pointer;
+       display: block;
+       -webkit-transition: 0.6s;
+       transition: 0.6s;
+       .hum_t_inner{
+           width: 40px;
+           height: 30px;
+           position: relative;
+           .hum_t_i_line{
+               display: block;
+               width: 40px;
+               height: 5px;
+               background: #ffffff;
+               -webkit-transition: 0.6s;
+               transition: 0.6s;
+               border-radius: 50px;
+               position: absolute;
+           }
+           .hum_t_i_0{
+               top: 0;
+           }
+           .hum_t_i_1{
+               top: 13px;
+           }
+           .hum_t_i_2{
+               top: 26px;
+           }
+       }
+    }
+    .hamburger_menu{
+       width: 400px;
+       position: fixed;
+    }
+    .li_pro_img{
+       text-align: center;
+       img{
+           // border: solid 1px white;
+           border-radius: 50%;
+           height: 250px;
+           width: 250px;
+           margin: auto;
+           background-position: center;
+           background-size: cover;
+           object-fit: cover;
+       }
+    }
+    .li_pro_name{
+       margin-bottom: 10px;
+       font-size: 1.6em;
+       text-align: center;
+       a{
+           color: whitesmoke;
+           text-decoration: none;
+       }
+    }
+    .li_pro_comment_fav{
+       p{
+           margin-left: 25px;
+       }
+       ul{
+           width: 90%;
+           border: solid 1px whitesmoke;
+           margin: 10px auto 0 auto;
+           padding: 10px;
+           li{
+               // text-align: left;
+               a{
+                   color: yellowgreen;
+               }
+           }
+       }
+    
+    }
+    .li_pro_ad{
+       border: dashed 2px yellow;
+       height: 300px;
+       width: 300px;
+       margin: 40px auto 40px auto;
+    }
+    
+    
+    /* 動的な要素 */
+    .fadein{
+       -webkit-transform: translateX(100%);
+       transform: translateX(-100%);
+    }
+    // .fadein_head{
+    //     z-index: 10;
+    //     width: 400px;
+    //     height: 100%;
+    //     position: fixed;
+    //     top: 0;
+    //     left: 0;
+    //     overflow-y: scroll;
+    //     -webkit-overflow-scrolling: touch;
+    // }
+    header::-webkit-scrollbar{
+       display: none;
+    }
+    .linea,
+    .lineb,
+    .linec{
+       background: #ffffff;
+    }
+    .linea{
+       -webkit-transform: rotate(225deg);
+       transform: rotate(225deg);
+       top: 13px;
+    }
+    .lineb{
+       opacity: 0;
+    }
+    .linec{
+       -webkit-transform: rotate(-225deg);
+       transform: rotate(-225deg);
+       top: 13px;
+    }
 }

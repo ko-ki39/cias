@@ -7,18 +7,13 @@
         <div id='stars2'></div>
         <div id='stars3'></div>
         <div class="welcome_image">
-            <p>Welcome to Abyss.<p>
-        </div>
-        <div>
-            <img src="" alt="">
-            <p>訓練生による訓練生のためのサイトです！！<br>
-            訓練生が取り組んでいることや、<br>
-            アピールしたいことなどを、透明化してやるぞ</p>
+            <p>ようこそ、<br>キャリア情報<br>代替サイトへ</p>
+            <p>本サイトは、<br>具志川職業能力開発校の<br>生徒たちの活動記録を<br>載せていくサイトです</p>
+            <p>興味が湧いた方は、<br>社会人、学生問わず、<br>どうぞ、楽しんでいって<br>ください。</p>
         </div>
         <div id="main">
-            <div><a href="#">ポートフォリオ集</a></div>
-            <div><a href="#">自作ゲエム</a></div>
-            <div><a href="/top">ブログのようなもの</a></div>
+            <div><a href="#">訓練生はこちらから</a></div>
+            <div><a href="/top">トップページへ</a></div>
         </div>
     </section>
 @endsection

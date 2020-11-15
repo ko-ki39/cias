@@ -26,29 +26,53 @@
                     <input type="text" name="hash3" placeholder="ハッシュタグを入力">
                 </div>
 
-                <input type="file" class="file" name="image1" value="画像を入れる（必須）" required>
-                <img src="" alt="">
-                <textarea name="text1" id="" cols="30" rows="10" class="text"  placeholder="見出しとなる部分です（必須）" required></textarea>
-                <input type="file" class="file" name="image2">
-                <img src="" alt="">
+                <div class="post_inputs">
+                    <div class="p_i_input_img">
+                        <input type="file" class="post_file" name="image1" value="画像を入れる（必須）" required>
+                        <img src="" alt="" class="post_img">
+                    </div>
+                    <textarea name="text1" id="" cols="30" rows="10" class="text"  placeholder="見出しとなる部分です（必須）" required></textarea>
+                </div>
 
-                <textarea name="text2" id="" cols="30" rows="10" class="text" placeholder="記事詳細で表示されます"></textarea>
-                <input type="file" class="file" name="image3">
-                <img src="" alt="">
+                <div class="post_inputs">
+                    <div class="p_i_input_img">
+                        <input type="file" class="post_file" name="image2">
+                        <img src="" alt="" class="post_img">
+                    </div>
+                    <textarea name="text2" id="" cols="30" rows="10" class="text" placeholder="記事詳細で表示されます"></textarea>
+                </div>
 
-                <textarea name="text3" id="" cols="30" rows="10" class="text" placeholder="記事詳細で表示されます"></textarea>
-                <input type="file" class="file" name="image4">
-                <img src="" alt="">
+                <div class="post_inputs">
+                    <div class="p_i_input_img">
+                        <input type="file" class="post_file" name="image3">
+                        <img src="" alt="" class="post_img">
+                    </div>
+                    <textarea name="text3" id="" cols="30" rows="10" class="text" placeholder="記事詳細で表示されます"></textarea>
+                </div>
 
-                <textarea name="text4" id="" cols="30" rows="10" class="text" placeholder="記事詳細で表示されます"></textarea>
-                <input type="file" class="file" name="image5">
-                <img src="" alt="">
+                <div class="post_inputs">
+                    <div class="p_i_input_img">
+                        <input type="file" class="post_file" name="image4">
+                        <img src="" alt="" class="post_img">
+                    </div>
+                    <textarea name="text4" id="" cols="30" rows="10" class="text" placeholder="記事詳細で表示されます"></textarea>
+                </div>
 
-                <textarea name="text5" id="" cols="30" rows="10" class="text" placeholder="記事詳細で表示されます"></textarea>
-                <input type="file" class="file" name="image6">
-                <img src="" alt="">
+                <div class="post_inputs">
+                    <div class="p_i_input_img">
+                        <input type="file" class="post_file" name="image5">
+                        <img src="" alt="" class="post_img">
+                    </div>
+                    <textarea name="text5" id="" cols="30" rows="10" class="text" placeholder="記事詳細で表示されます"></textarea>
+                </div>
 
-                <textarea name="text6" id="" cols="30" rows="10" class="text" placeholder="記事詳細で表示されます"></textarea>
+                <div class="post_inputs">
+                    <div class="p_i_input_img">
+                        <input type="file" class="post_file" name="image6">
+                        <img src="" alt="" class="post_img">
+                    </div>
+                    <textarea name="text6" id="" cols="30" rows="10" class="text" placeholder="記事詳細で表示されます"></textarea>
+                </div>
 
                 <input type="submit" value="投稿する" id="post">
             </form>
