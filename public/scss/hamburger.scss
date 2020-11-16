@@ -55,27 +55,27 @@ header{
     -webkit-transition: 0.6s;
     transition: 0.6s;
     .hum_t_inner{
-        width: 40px;
-        height: 30px;
+        width: 1.4rem;
+        height: 1rem;
         position: relative;
         .hum_t_i_line{
             display: block;
             width: 100%;
-            height: 15%;
+            height: 0.2rem;
             background: #ffffff;
             -webkit-transition: 0.6s;
             transition: 0.6s;
-            border-radius: 50px;
+            border-radius: 0.5rem;
             position: absolute;
         }
         .hum_t_i_0{
             top: 0;
         }
         .hum_t_i_1{
-            top: 13px;
+            top: 50%;
         }
         .hum_t_i_2{
-            top: 26px;
+            top: 100%;
         }
     }
 }
@@ -158,7 +158,7 @@ header::-webkit-scrollbar{
 .linea{
     -webkit-transform: rotate(225deg);
     transform: rotate(225deg);
-    top: 13px;
+    // top: 40%;
 }
 .lineb{
     opacity: 0;
@@ -166,14 +166,14 @@ header::-webkit-scrollbar{
 .linec{
     -webkit-transform: rotate(-225deg);
     transform: rotate(-225deg);
-    top: 13px;
+    // top: 40%;
 }
 
 @media screen and (min-width: 481px) {
 	/* 481px以上に適用されるCSS（タブレット用） */
 }
 
-@media screen and (min-width: 483px){
+@media screen and (min-width: 720px){
     /* 静的な要素 */
     // body{
     //     margin: 0;
@@ -231,8 +231,8 @@ header::-webkit-scrollbar{
        -webkit-transition: 0.6s;
        transition: 0.6s;
        .hum_t_inner{
-           width: 40px;
-           height: 30px;
+           width: 2rem !important;
+           height: 1.5rem !important;
            position: relative;
            .hum_t_i_line{
                display: block;
@@ -248,10 +248,10 @@ header::-webkit-scrollbar{
                top: 0;
            }
            .hum_t_i_1{
-               top: 13px;
+               top: 50%;
            }
            .hum_t_i_2{
-               top: 26px;
+               top: 100%;
            }
        }
     }
