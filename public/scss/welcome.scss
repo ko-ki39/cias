@@ -78,7 +78,7 @@ body{
     #main{
         // border: dashed 1px yellow;
         height: 45rem;
-        padding: 5% 0;
+        // padding: 5% 0;
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -87,12 +87,12 @@ body{
         div{
             width: 95%;
             height: 42%;
-            background-color: rgba(255, 140, 0, 0.616);
             a{
+                background-color: rgba(255, 140, 0, 0.616);
                 // display: flex;
                 // text-align: center;
                 display: block;
-                border: dashed 1px yellow;
+                // border: dashed 1px yellow;
                 height: 100%;
                 width: 100%;
                 // &:last-child{
@@ -105,15 +105,15 @@ body{
 .footer{
     color: palegoldenrod;
 }
-html body .footer .foot_right .foot_twitter{
-    border: dashed 1px yellow;
-}
+// html body .footer .foot_right .foot_twitter{
+//     border: dashed 1px yellow;
+// }
 
 @media screen and (min-width: 481px) {
 	/* 481px以上に適用されるCSS（タブレット用） */
 }
 
-@media screen and (min-width: 960px){
+@media screen and (min-width: 900px){
     body{
         // margin: auto;
         width: 100%;
@@ -123,33 +123,41 @@ html body .footer .foot_right .foot_twitter{
             flex-direction: row;
             justify-content: flex-end;
             align-items: center;
-            height: 77px;
+            height: 3.8rem;
+            padding: 1rem;
+            p{
+                position: absolute !important;
+                right: 49%;
+            }
             a:nth-child(2){
+                display: block;
                 color: whitesmoke;
                 text-decoration: none;
                 font-size: 1.25em;
                 border: none;
-                margin-right: 10px;
+                margin-right: 1rem;
             }
-            img{
-                text-decoration: none;
-                border: none;
-                height: 56px;
-                border-radius: 100%;
-                margin-top: 10px;
-                margin-right: 10px;
+            a:nth-child(3){
+                display: block;
+                img{
+                    height: 4rem;
+                    width: 4rem;
+                    text-decoration: none;
+                    border: solid 1px #9b9b9b;
+                    margin-right: 1rem;
+                    border-radius: 50%;
+                    background-position: center;
+                    background-size: cover;
+                    object-fit: cover;
+                }
             }
-    
         }
     }
     .ztext-head{
-        // position: absolute;
-        // top: 5px;
-        // left: 47%;
         font-size: 1.5em;
         line-height: 1.5rem;
         color: whitesmoke;
-        margin: 25px auto 10px auto;
+        // margin: 1rem auto;
     }
     .z-layer:not(:first-child){
         color: red;
@@ -167,7 +175,7 @@ html body .footer .foot_right .foot_twitter{
         background: black;
     }
     .welcome_image{
-        border: dashed 2px yellow;
+        // border: dashed 2px yellow;
         height: 666px;
         text-align: center;
         margin: auto;
@@ -180,31 +188,39 @@ html body .footer .foot_right .foot_twitter{
         }
     }
     #main{
-        border: dashed 2px yellow;
-        height: 500px;
-        // padding: 75px;
+        // border: dashed 2px yellow;
+        margin: 15rem 0;
+        height: 15rem !important;
+        // padding: 5% 0;
         width: 100%;
         display: flex;
+        flex-direction: row !important;
         justify-content: space-around;
         align-items: center;
-        a{
-            // display: flex;
-            // text-align: center;
-            display: block;
-            border: dashed 2px yellow;
-            height: 200px;
-            width: 250px;
-            // &:last-child{
-            //     float: right;
-            // }
+        div{
+            // width: 95%;
+            height: 20rem !important;
+            padding: 1rem;
+            a{
+                background-color: rgba(255, 140, 0, 0.616);
+                // display: flex;
+                // text-align: center;
+                display: block;
+                // border: dashed 2px yellow;
+                // height: 40%;
+                // width: 40%;
+                // &:last-child{
+                //     float: right;
+                // }
+            }
         }
     }
     .footer{
         color: palegoldenrod;
     }
-    html body .footer .foot_right .foot_twitter{
-        border: dashed 1px yellow;
-    }
+    // html body .footer .foot_right .foot_twitter{
+    //     border: dashed 1px yellow;
+    // }
 }
 
 // html {

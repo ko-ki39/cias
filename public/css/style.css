@@ -153,12 +153,12 @@ html body .footer {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 3%;
-  margin-top: 33%;
+  margin-top: 6%;
 }
 
 html body .footer .foot_left {
   width: 90%;
-  padding: 5%;
+  padding: 1% 5%;
 }
 
 html body .footer .foot_middle {
@@ -169,7 +169,7 @@ html body .footer .foot_middle {
       -ms-flex-item-align: center;
               -ms-grid-row-align: center;
           align-self: center;
-  padding: 5%;
+  padding: 1% 5%;
 }
 
 html body .footer .foot_middle p {
@@ -184,7 +184,7 @@ html body .footer .foot_middle .z-layer:not(:first-child) {
 
 html body .footer .foot_right {
   width: 90%;
-  padding: 5%;
+  padding: 1% 5%;
 }
 
 html body .footer .foot_right p {
