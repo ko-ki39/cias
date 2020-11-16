@@ -31,6 +31,7 @@
                             <select name="authority">
                                 <option value="1">管理者権限 1</option>
                                 <option value="2" selected>投稿許可権限 2</option>
+                                <option value="3">削除のみ許可 3</option>
                             </select>
                             <input type="submit" value="変更">
                         </form>
