@@ -90,7 +90,6 @@ body .welcome_image p {
 
 body #main {
   height: 45rem;
-  padding: 5% 0;
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -113,12 +112,11 @@ body #main {
 body #main div {
   width: 95%;
   height: 42%;
-  background-color: rgba(255, 140, 0, 0.616);
 }
 
 body #main div a {
+  background-color: rgba(255, 140, 0, 0.616);
   display: block;
-  border: dashed 1px yellow;
   height: 100%;
   width: 100%;
 }
@@ -127,15 +125,11 @@ body #main div a {
   color: palegoldenrod;
 }
 
-html body .footer .foot_right .foot_twitter {
-  border: dashed 1px yellow;
-}
-
 @media screen and (min-width: 481px) {
   /* 481px以上に適用されるCSS（タブレット用） */
 }
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 900px) {
   body {
     width: 100%;
     background-color: black;
@@ -158,28 +152,40 @@ html body .footer .foot_right .foot_twitter {
     -webkit-align-items: center;
         -ms-flex-align: center;
             align-items: center;
-    height: 77px;
+    height: 3.8rem;
+    padding: 1rem;
+  }
+  body .welcome_header p {
+    position: absolute !important;
+    right: 49%;
   }
   body .welcome_header a:nth-child(2) {
+    display: block;
     color: whitesmoke;
     text-decoration: none;
     font-size: 1.25em;
     border: none;
-    margin-right: 10px;
+    margin-right: 1rem;
   }
-  body .welcome_header img {
+  body .welcome_header a:nth-child(3) {
+    display: block;
+  }
+  body .welcome_header a:nth-child(3) img {
+    height: 4rem;
+    width: 4rem;
     text-decoration: none;
-    border: none;
-    height: 56px;
-    border-radius: 100%;
-    margin-top: 10px;
-    margin-right: 10px;
+    border: solid 1px #9b9b9b;
+    margin-right: 1rem;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
   }
   .ztext-head {
     font-size: 1.5em;
     line-height: 1.5rem;
     color: whitesmoke;
-    margin: 25px auto 10px auto;
   }
   .z-layer:not(:first-child) {
     color: red;
@@ -192,7 +198,6 @@ html body .footer .foot_right .foot_twitter {
     background: black;
   }
   .welcome_image {
-    border: dashed 2px yellow;
     height: 666px;
     text-align: center;
     margin: auto;
@@ -205,13 +210,18 @@ html body .footer .foot_right .foot_twitter {
     vertical-align: middle;
   }
   #main {
-    border: dashed 2px yellow;
-    height: 500px;
+    margin: 15rem 0;
+    height: 15rem !important;
     width: 100%;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+    -webkit-flex-direction: row !important;
+        -ms-flex-direction: row !important;
+            flex-direction: row !important;
     -webkit-justify-content: space-around;
         -ms-flex-pack: distribute;
             justify-content: space-around;
@@ -220,17 +230,16 @@ html body .footer .foot_right .foot_twitter {
         -ms-flex-align: center;
             align-items: center;
   }
-  #main a {
+  #main div {
+    height: 20rem !important;
+    padding: 1rem;
+  }
+  #main div a {
+    background-color: rgba(255, 140, 0, 0.616);
     display: block;
-    border: dashed 2px yellow;
-    height: 200px;
-    width: 250px;
   }
   .footer {
     color: palegoldenrod;
-  }
-  html body .footer .foot_right .foot_twitter {
-    border: dashed 1px yellow;
   }
 }
 

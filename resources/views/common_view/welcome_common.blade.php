@@ -18,7 +18,7 @@
 
     <body style="background-color:black;">
         @guest
-        <p class="ztext ztext-head">具志川<br>訓練校</p>
+        <p class="ztext ztext-head" style="margin:1.2rem auto auto auto;">具志川<br>訓練校</p>
         @else
         <div class="welcome_header">
             <p class="ztext ztext-head" style="">具志川<br>訓練校</p>
