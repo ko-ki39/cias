@@ -10,7 +10,8 @@
         </ul>
     </div>
     <div class="foot_middle">
-        <p class="ztext">具志川<br>訓練校</p>
+        {{-- <p class="ztext">具志川<br>訓練校</p> --}}
+        <iframe width="100%" height="100%" frameborder="0" src="https://maps.google.co.jp/maps?output=embed&q=沖縄県立具志川職業能力開発校&t=m&hl=ja"></iframe>
     </div>
     <div class="foot_right">
         <p>〒999-9999<br>
@@ -18,4 +19,4 @@
         <small>サイト開設日 2020/00/00</small>
     </div>
 </div>
-<iframe width="1000" height="500" frameborder="0" src="https://maps.google.co.jp/maps?output=embed&q=沖縄県立具志川職業能力開発校&t=m&hl=ja"></iframe>
+

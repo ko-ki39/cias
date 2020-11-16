@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Crypt;
+use Carbon\Carbon;
 // use App\Events\ImageFileDelete;
 
 class User extends Authenticatable
@@ -44,6 +45,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // //ゲッター
+    // public function getCreatedAtAttribute($date)
+    // {
+    //     return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y-m-d(D)');//created_atの取得時のフォーマット変更
+    // }
+
+    // セッター
+    // public function setCreatedAtAttribute($date)
+    // {
+    //     return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y-m-d(D)');//created_atの取得時のフォーマット変更
+    // }
 
     // public function getPasswordAttribute($value){
     //     return Crypt::decrypt($value);

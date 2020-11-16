@@ -7,7 +7,7 @@ use App\Article;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Str;
 
 class AdminController extends Controller
 {
@@ -49,6 +49,57 @@ class AdminController extends Controller
     public function commentDelete($id)
     {
         Comment::find($id)->delete();
+        return redirect()->route('admin');
+    }
+
+    public function generate_page(){ //アカウント生成ページ
+        return view('generate');
+    }
+
+    public function generate(Request $request){ //アカウント生成
+
+        $year = date("Y");
+        switch($request->department){ //user_idに使う
+            case 1:
+                $department = "ofzen";
+            break;
+            case 2:
+                $department = "ofkou";
+            break;
+            case 3:
+                $department = "ji";
+            break;
+            case 4:
+                $department = "de";
+            break;
+            case 5:
+                $department = "me";
+            break;
+            case 6:
+                $department = "jo";
+            break;
+            case 7:
+                $department = "zo";
+            break;
+            case 8:
+                $department = "so";
+            break;
+        }
+        $join = $year. "_". $department. "_";
+
+        for($i=1; $request->num>=$i; $i++){
+            $user = new User(); //forの中でnewしないとダメ
+            $user_id = $join. $i;
+            $password = bcrypt(Str::random(16)); //ランダムな16文字生成
+            $user->user_id = $user_id;
+            $user->department_id = $request->department;
+            $user->time_limit = $request->date;
+            $user->age = $request->age;
+            $user->password = $password;
+
+            $user->save();
+        }
+
         return redirect()->route('admin');
     }
 }
