@@ -3,7 +3,7 @@
 @section('content')
     {{-- ユーザーの情報↓ --}}
     <a href="{{ route('generate_page') }}">アカウント生成</a>
-    {{-- <a href="{{ route('user_admin_change') }}">有効期限が過ぎたユーザーの権限変更</a> --}}
+    <a href="{{ route('auto_admin_change') }}">有効期限が過ぎたユーザーの権限変更</a>
     <table>
         <th>ID</th>
         <th>ログインID</th>
