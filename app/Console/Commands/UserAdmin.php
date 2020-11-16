@@ -11,14 +11,14 @@ class UserAdmin extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'user:name';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'ユーザーの権限を変更したい';
 
     /**
      * Create a new command instance.
