@@ -60,6 +60,7 @@ Route::group(['middleware' => ['auth', 'can:admin-only']], function () { // 管�
     Route::get('/admin/generate_page', 'AdminController@generate_page')->name('generate_page'); //ユーザー生成ページ
     Route::get('/admin/generate_page/generate', 'AdminController@generate')->name('generate');  //ユーザー生成
 
+    Route::get('/admin/download', 'AdminController@download')->name('download'); //ユーザー情報が入ったファイルのダウンロード
     Route::get('/admin', 'AdminController@index')->name('admin'); //ページ閲覧
 
     // ユーザーの権限変更
