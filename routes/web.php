@@ -57,10 +57,15 @@ Route::group(['middleware' => ['auth', 'can:authorized-higher']], function () { 
 });
 
 Route::group(['middleware' => ['auth', 'can:admin-only']], function () { // 管理者のみ
+    Route::get('/admin/generate_page', 'AdminController@generate_page')->name('generate_page'); //ユーザー生成ページ
+    Route::get('/admin/generate_page/generate', 'AdminController@generate')->name('generate');  //ユーザー生成
+
     Route::get('/admin', 'AdminController@index')->name('admin'); //ページ閲覧
 
     // ユーザーの権限変更
     Route::get('/admin/admin_change/{id}', 'AdminController@adminChange')->name('admin_change');
+
+    Route::get('/admin/auto_admin_change/', 'AdminController@autoAdminChange')->name('auto_admin_change');
 
 
     //記事やユーザーの削除

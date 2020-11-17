@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSecretQuestionsTable extends Migration
+class CreateDepartmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateSecretQuestionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('secret_questions', function (Blueprint $table) {
+        Schema::create('departments', function (Blueprint $table) {
             $table->id();
-            $table->string('question_contents');
+            $table->string('department');
         });
     }
 
@@ -26,6 +26,6 @@ class CreateSecretQuestionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('secret_questions');
+        Schema::dropIfExists('departments');
     }
 }
