@@ -65,6 +65,8 @@ Route::group(['middleware' => ['auth', 'can:admin-only']], function () { // 管�
     // ユーザーの権限変更
     Route::get('/admin/admin_change/{id}', 'AdminController@adminChange')->name('admin_change');
 
+    Route::get('/admin/auto_admin_change/', 'AdminController@autoAdminChange')->name('auto_admin_change');
+
 
     //記事やユーザーの削除
     Route::get('/admin/user_delete/{id}', 'AdminController@userDelete')->name('user_delete');
