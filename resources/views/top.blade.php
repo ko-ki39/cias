@@ -147,4 +147,7 @@
 
     </script>
     <script src="/js/hash.js"></script>
+    <style>
+        .pagination{ font-weight: bold; }
+    </style>
 @endsection

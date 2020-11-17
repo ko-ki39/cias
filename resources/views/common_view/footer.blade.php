@@ -1,4 +1,4 @@
-<hr color="#9b9b9b" size="3" style="z-index:999;">
+{{-- <hr color="#9b9b9b" size="3" style="z-index:999;"> --}}
 <div class="footer">
 
     <div class="foot_left">
