@@ -49,20 +49,18 @@ html body .header .top a {
 }
 
 html body .header .top a:nth-child(1) {
-  margin-right: 32%;
+  position: absolute !important;
+  right: 45%;
 }
 
 html body .header .top a:nth-child(2),
 html body .header .top a:nth-child(4) {
   display: none;
-  color: whitesmoke;
-  text-decoration: none;
-  font-size: 1.25em;
-  border: none;
 }
 
 html body .header .top a:nth-child(3) {
   height: 2.5rem;
+  width: 2.5rem;
   margin-right: 0.5rem;
 }
 
@@ -263,13 +261,11 @@ iframe {
     color: #f00;
   }
   html body .header .top a:nth-child(2),
-  html body .header .top a:nth-child(3),
-  html body .header .top a:nth-child(4) {
+  html body .header .top a:nth-child(3) {
     display: block;
     color: whitesmoke;
     text-decoration: none;
     font-size: 1.25em;
-    border: none;
   }
   html body .header .top a:nth-child(1) {
     position: absolute !important;

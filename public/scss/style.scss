@@ -26,18 +26,16 @@ html {
                     color: #f00;
                 }
                 a:nth-child(1){
-                    margin-right: 32%;
+                    position: absolute !important;
+                    right: 45%;
                 }
                 a:nth-child(2),
                 a:nth-child(4) {
                     display: none;
-                    color: whitesmoke;
-                    text-decoration: none;
-                    font-size: 1.25em;
-                    border: none;
                 }
                 a:nth-child(3){
                     height: 2.5rem;
+                    width: 2.5rem;
                     margin-right: 0.5rem;
                 }
                 .h_u_img {
@@ -199,25 +197,15 @@ iframe{
                     background-color: #000000;
                     height: 5rem;
                     a{
-                        // margin-left: 50%;
-                        // margin-right: 10px;
                         font-size: 1.2em;
                         color: #f00;
-                        // padding-right: 10px;
-                        // padding-left: 10px;
-                        // border: dashed #fff 2px;
                     }
-                    // a:nth-child(1){
-                    //     margin-left: 50%;
-                    // }
                     a:nth-child(2),
-                    a:nth-child(3),
-                    a:nth-child(4) {
+                    a:nth-child(3){
                         display: block;
                         color: whitesmoke;
                         text-decoration: none;
                         font-size: 1.25em;
-                        border: none;
                     }
                     a:nth-child(1){
                         position: absolute !important;

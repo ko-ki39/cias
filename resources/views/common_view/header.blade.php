@@ -3,7 +3,8 @@
         {{-- <i class="far fa-bars"></i> --}}
         @guest
         <a href="{{ url('top') }}" class="ztext">具志川<br>訓練校</a>
-        <a href="{{ url('/register') }}">Sign up</a>
+        <a href="{{ url('/register') }}" style="display:none;">Sign up</a>
+        <a href=""></a>
         <a href="{{ url('/login') }}">Login</a>
         @else
         <a href="{{ url('top') }}" class="ztext" style="">具志川<br>訓練校</a>
