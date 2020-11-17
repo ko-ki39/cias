@@ -3,18 +3,15 @@
     <nav class="nav fadein" id="nav_f">
         <ul>
             <li class="li_pro_img"></li>
-            <li class="li_pro_name">ほげ太郎</li>
+            <li class="li_pro_name">Welcome to CIAS.</li>
             <hr>
-            <ul class="li_pro_comment_fav">
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Sign Up</a></li>
+            <ul>
+                <li class="li_pro_gushi"><a href="">学生の方はこちら</a></li>
             </ul>
-            <li class="li_pro_mypage">マイページへのリンクが入ります</li>
-            <ul class="li_pro_comment_fav">
-                <p>記事にコメントが来ています！</p>
-                <li><a href="#">記事のタイトル</a></li>
+            <ul>
+                <li class="li_pro_other"><a href="">トップページへ</a></li>
             </ul>
-            <li class="li_pro_ad">ADが入ります</li>
+            <li class="li_pro_ad">このサイトについて<br>プライバシーポリシー<br>開発者紹介</li>
         </ul>
     </nav>
     @else
@@ -27,6 +24,10 @@
                 <a href="{{ route('individual', ['id' => Auth::id()]) }}">
                     {{ Auth::user()->user_name }}
                 </a>
+            </li>
+            <li class="li_pro_top_logout">
+                <a href="">トップへ</a>
+                <a href="">ログアウト</a>
             </li>
             <hr>
             <ul class="li_pro_comment_fav">

@@ -41,6 +41,7 @@ header .nav ul li {
   padding: 4%;
   position: fixed;
   top: 0;
+  left: 0;
   cursor: pointer;
   display: block;
   -webkit-transition: 0.6s;
@@ -48,19 +49,19 @@ header .nav ul li {
 }
 
 #hum_target .hum_t_inner {
-  width: 40px;
-  height: 30px;
+  width: 1.4rem;
+  height: 1rem;
   position: relative;
 }
 
 #hum_target .hum_t_inner .hum_t_i_line {
   display: block;
   width: 100%;
-  height: 15%;
+  height: 0.2rem;
   background: #ffffff;
   -webkit-transition: 0.6s;
   transition: 0.6s;
-  border-radius: 50px;
+  border-radius: 0.5rem;
   position: absolute;
 }
 
@@ -69,11 +70,11 @@ header .nav ul li {
 }
 
 #hum_target .hum_t_inner .hum_t_i_1 {
-  top: 13px;
+  top: 50%;
 }
 
 #hum_target .hum_t_inner .hum_t_i_2 {
-  top: 26px;
+  top: 100%;
 }
 
 .hamburger_menu {
@@ -105,6 +106,45 @@ header .nav ul li {
 .li_pro_name a {
   color: whitesmoke;
   text-decoration: none;
+}
+
+.li_pro_top_logout {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  margin: 1rem;
+  font-size: 1.15rem;
+}
+
+.li_pro_top_logout a {
+  margin: 2rem;
+}
+
+.li_pro_top_logout a:visited, .li_pro_top_logout a:link {
+  color: whitesmoke;
+}
+
+.li_pro_gushi, .li_pro_other {
+  color: whitesmoke;
+  font-size: 1.2rem;
+}
+
+.li_pro_gushi a, .li_pro_gushi a:visited, .li_pro_gushi a:link, .li_pro_other a, .li_pro_other a:visited, .li_pro_other a:link {
+  color: whitesmoke;
 }
 
 .li_pro_comment_fav p {
@@ -149,7 +189,6 @@ header::-webkit-scrollbar {
 .linea {
   -webkit-transform: rotate(225deg);
   transform: rotate(225deg);
-  top: 13px;
 }
 
 .lineb {
@@ -159,14 +198,13 @@ header::-webkit-scrollbar {
 .linec {
   -webkit-transform: rotate(-225deg);
   transform: rotate(-225deg);
-  top: 13px;
 }
 
 @media screen and (min-width: 481px) {
   /* 481px以上に適用されるCSS（タブレット用） */
 }
 
-@media screen and (min-width: 483px) {
+@media screen and (min-width: 720px) {
   /* 静的な要素 */
   header {
     z-index: -999;
@@ -210,8 +248,8 @@ header::-webkit-scrollbar {
     transition: 0.6s;
   }
   #hum_target .hum_t_inner {
-    width: 40px;
-    height: 30px;
+    width: 2rem !important;
+    height: 1.5rem !important;
     position: relative;
   }
   #hum_target .hum_t_inner .hum_t_i_line {
@@ -228,10 +266,10 @@ header::-webkit-scrollbar {
     top: 0;
   }
   #hum_target .hum_t_inner .hum_t_i_1 {
-    top: 13px;
+    top: 50%;
   }
   #hum_target .hum_t_inner .hum_t_i_2 {
-    top: 26px;
+    top: 100%;
   }
   .hamburger_menu {
     width: 400px;
