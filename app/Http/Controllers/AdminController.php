@@ -160,9 +160,15 @@ class AdminController extends Controller
 
     public function download()
     {
-        $headers = ['Content-Type' => 'text/plain'];
-        $filename = 'test.txt';
-        return Storage::download('user_info/test.txt', $filename, $headers);
+        $headers = [
+            'Content-Type' => 'text/plain',
+            'Cache-control' => 'no-store' //キャッシュを残さないように
+        ];
+        $filename = '2020_情報システム科.csv';
+        $path = 'user_info/2020_情報システム科.csv';
+
+        Storage::download('user_info/2020_情報システム科.csv', $filename, $headers);
+        return redirect()->route('admin');
     }
 
     public function autoAdminChange()
