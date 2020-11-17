@@ -70,7 +70,7 @@
                         <p class="c_u_name">{{ Auth::user()->user_name }}</p>
                     </div>
                     <div class="c_a_u_comment">
-                        <textarea name="c_a_u_comment" id="" cols="" rows="10">{{ old('c_a_u_comment') }}</textarea>
+                        <textarea name="c_a_u_comment" id="" cols="" rows="">{{ old('c_a_u_comment') }}</textarea>
                     </div>
                     @if ($errors->any())
                     <div class="alert alert-danger">
@@ -89,6 +89,7 @@
             @endguest
             <div id="comment_list">
                 <h2>コメント一覧</h2>
+                <div class="h2_underLine"></div>
                 @foreach ($comments as $item)
                     @if (!$loop->first)
                         <hr>
@@ -102,7 +103,9 @@
                             <pre>{{ $item->detail }}</pre>
                         </div>
                         <div class="c_l_c_other">
-                            <i class="far fa-thumbs-up"></i> | <i class="far fa-thumbs-down"></i>
+                            <div class="c_l_c_o_thums">
+                                <i class="far fa-thumbs-up"></i> | <i class="far fa-thumbs-down"></i>
+                            </div>
                             <time datetime="{{ $item->created_at }}">{{ $item->created_at }}</time>
                         </div>
                     </div>
