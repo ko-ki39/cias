@@ -61,7 +61,7 @@
                         </a>
                     </div>
 
-                    <pre class="article_description text">{{ $article->description }}</pre>
+                    {{-- <pre class="article_description text">{{ $article->description }}</pre> --}}
                     <div class="ctf_container">
                         <p class="date">{{ $article->created_at }}</p>
                         <div class="comment"><a href="{{ route('articleDetailForcus', ['id' => $article->id . '#comment_area']) }}"><i class="far fa-comment fa-2x comment-button-l" style="color:#259b25;"></i></a></div>

@@ -41,6 +41,7 @@ header .nav ul li {
   padding: 4%;
   position: fixed;
   top: 0;
+  left: 0;
   cursor: pointer;
   display: block;
   -webkit-transition: 0.6s;
@@ -105,6 +106,45 @@ header .nav ul li {
 .li_pro_name a {
   color: whitesmoke;
   text-decoration: none;
+}
+
+.li_pro_top_logout {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  margin: 1rem;
+  font-size: 1.15rem;
+}
+
+.li_pro_top_logout a {
+  margin: 2rem;
+}
+
+.li_pro_top_logout a:visited, .li_pro_top_logout a:link {
+  color: whitesmoke;
+}
+
+.li_pro_gushi, .li_pro_other {
+  color: whitesmoke;
+  font-size: 1.2rem;
+}
+
+.li_pro_gushi a, .li_pro_gushi a:visited, .li_pro_gushi a:link, .li_pro_other a, .li_pro_other a:visited, .li_pro_other a:link {
+  color: whitesmoke;
 }
 
 .li_pro_comment_fav p {
