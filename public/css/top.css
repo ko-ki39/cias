@@ -235,6 +235,7 @@
 }
 
 .main .content nav .pagination {
+  margin: 2rem auto;
   list-style: none;
   padding: 0;
   display: -webkit-box;
@@ -300,9 +301,12 @@
     padding-top: 0.6rem;
     padding-bottom: 5rem;
   }
+  .main .side_bar {
+    margin-top: 29px;
+  }
   .main .content {
-    width: 65%;
-    margin: 0 0 0 0.625rem;
+    width: 66%;
+    margin: 20px 0 0 0.625rem;
     float: left;
     display: -webkit-box;
     display: -webkit-flex;
@@ -365,7 +369,7 @@
     border-radius: 6px;
     padding: 0.4rem 0;
     width: 100%;
-    max-width: 14.5rem;
+    max-width: 210px;
     margin: 1rem auto;
     display: -webkit-box;
     display: -webkit-flex;

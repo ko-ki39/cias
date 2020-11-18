@@ -6,10 +6,10 @@
             <li class="li_pro_name">Welcome to CIAS.</li>
             <hr>
             <ul>
-                <li class="li_pro_gushi"><a href="">学生の方はこちら</a></li>
+                <li class="li_pro_gushi"><a href="{{ url('/login') }}">学生の方はこちら</a></li>
             </ul>
             <ul>
-                <li class="li_pro_other"><a href="">トップページへ</a></li>
+                <li class="li_pro_other"><a href="{{ url('/top') }}">トップページへ</a></li>
             </ul>
             <li class="li_pro_ad">このサイトについて<br>プライバシーポリシー<br>開発者紹介</li>
         </ul>
@@ -27,7 +27,11 @@
             </li>
             <li class="li_pro_top_logout">
                 <a href="">トップへ</a>
-                <a href="">ログアウト</a>
+                <a href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                    {{ __('ログアウト') }}
+                </a>
             </li>
             <hr>
             <ul class="li_pro_comment_fav">
