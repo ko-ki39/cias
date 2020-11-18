@@ -55,7 +55,7 @@ body div.main {
 
 .main #main_left #me h2 {
   margin: 10px 0 0 10px;
-  color: whitesmoke;
+  color: #ffffff;
 }
 
 .main #main_left #me h2 span {
@@ -122,9 +122,9 @@ body div.main {
 }
 
 .main #main_left .article_list .a_l_img {
-  height: 95.5%;
+  height: 88%;
   width: 35%;
-  padding: 3px;
+  margin: auto 3px;
 }
 
 .main #main_left .article_list .a_l_img a {
@@ -195,6 +195,7 @@ body div.main {
   padding: 10px;
   margin: auto;
   border: solid 1px #9b9b9b;
+  border-radius: 12px;
 }
 
 .main #main_right #ajax_commentList {
