@@ -83,7 +83,7 @@
 }
 
 .main .article .sub .title {
-  margin-top: 0.15rem;
+  margin-top: 1.5px;
   background-color: #f2f2f2;
   text-align: center;
   padding: 0.5rem 0.5rem 0 0.5rem;
@@ -147,7 +147,7 @@
 }
 
 .main .article .text {
-  margin-top: 0.1rem;
+  margin-top: 1.5px;
   background-color: #f2f2f2;
   width: 100%;
   border-radius: 0 0 6px 6px;
@@ -173,7 +173,9 @@
 }
 
 .main .article .text p {
+  margin-bottom: 1rem;
   padding: 0.5rem;
+  word-wrap: break-word;
 }
 
 .main .article #comment_area {
@@ -270,6 +272,12 @@
   padding-bottom: 1rem;
 }
 
+.main .article #comment_list .c_l_noComment {
+  font-weight: bold;
+  margin: 1.5rem 0 1.5rem 1.5rem;
+  color: #383701;
+}
+
 .main .article #comment_list .c_l_contents {
   border-radius: 6px;
 }
@@ -363,10 +371,14 @@
   .main {
     width: 100%;
   }
+  .main .side_bar {
+    margin-top: 39px;
+  }
   .main .article {
-    width: 96%;
-    margin: auto;
+    width: 64%;
+    margin: 30px auto 40px 10px;
     padding-bottom: 66px;
+    float: left;
     border-radius: 6px;
     display: -webkit-box;
     display: -webkit-flex;
@@ -427,7 +439,7 @@
     margin-left: auto;
   }
   .main .article .sub .title {
-    margin-top: 3px;
+    margin-top: 1.5px;
     background-color: #f2f2f2;
     text-align: center;
   }
@@ -476,10 +488,9 @@
     cursor: pointer;
   }
   .main .article .text {
-    margin-top: 3px;
+    margin-top: 1px;
     background-color: #f2f2f2;
-    width: 560px;
-    padding: 0 30px 60px 30px;
+    width: 100%;
     border-radius: 0 0 6px 6px;
     display: -webkit-box;
     display: -webkit-flex;
@@ -492,32 +503,26 @@
             flex-direction: column;
   }
   .main .article .text .big_image {
-    width: 550px;
-    max-height: 400px;
+    width: 96%;
+    max-height: 70%;
     margin: 30px auto;
     background-position: center;
     background-size: contain;
     -o-object-fit: contain;
        object-fit: contain;
   }
-  .main .article .text img {
-    margin: 30px auto;
-  }
   .main .article .text p {
-    margin: 0 auto;
+    margin: 0 0 30px 0;
+    word-wrap: break-word;
   }
   .main .article #comment_area {
     background-color: #f2f2f2;
     border-radius: 6px;
-    padding: 30px;
-    width: 560px;
+    width: 100%;
     margin: 20px auto 0 auto;
   }
   .main .article #comment_area h2 {
     margin: 10px auto 10px auto;
-  }
-  .main .article #comment_area img {
-    width: 550px;
   }
   .main .article #comment_area .c_a_u_info {
     display: -webkit-box;
@@ -550,7 +555,7 @@
     margin-left: 10px;
   }
   .main .article #comment_area .c_a_u_comment {
-    width: 550px;
+    width: 95%;
   }
   .main .article #comment_area .c_a_u_comment textarea {
     width: 100%;
@@ -558,8 +563,7 @@
   .main .article #comment_list {
     background-color: #f2f2f2;
     border-radius: 6px;
-    padding: 30px;
-    width: 560px;
+    width: 100%;
     margin: 20px auto 0 auto;
   }
   .main .article #comment_list .c_l_contents {

@@ -56,7 +56,7 @@
             </div>
             @guest
             <div id="comment_area">
-                <img src="/images/図1.png" alt="">
+                {{-- <img src="/images/図1.png" alt=""> --}}
             </div>
             @else
             <div id="comment_area">
@@ -90,6 +90,9 @@
             <div id="comment_list">
                 <h2>コメント一覧</h2>
                 <div class="h2_underLine"></div>
+                @if (!$commentNullCheck)
+                    <div class="c_l_noComment">まだコメントはありません m(_ _)m</div>
+                @endif
                 @foreach ($comments as $item)
                     @if (!$loop->first)
                         <hr>
