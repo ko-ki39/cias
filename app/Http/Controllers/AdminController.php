@@ -180,7 +180,7 @@ class AdminController extends Controller
             'Cache-control' => 'no-store' //キャッシュを残さないように
         ];
         $path = 'user_info/'.$file_name; //ファイルのパス
-
+// dd(Storage::download($path, $file_name, $headers));
         // dd(Storage::files('user_info'));
         return Storage::download($path, $file_name, $headers);
         // return redirect()->route('admin');
@@ -205,5 +205,37 @@ class AdminController extends Controller
             }
         }
         return redirect()->route('admin');
+    }
+
+    //検索機能
+    public function userSearch(Request $request){
+        // dd($request);
+        $search = $request->input('user_search'); //検索したい文字列
+
+        if(isset($search)){
+            $users = User::where('user_name', 'like', '%' . $search . '%')->get();
+            // dd($users);
+        }else{
+            $users = User::select('id', 'user_id', 'email', 'role', 'created_at', 'updated_at')->sortable();//検索されていない場合
+        }
+        return view('admin_user', compact('users'));
+    }
+
+    public function articleSearch(Request $request){
+        $search = $request->input('article_search');
+        if(isset($search)){
+            if($request->search_list == 1){ //ユーザー名で検索
+                $articles = Article::whereHas('user', function ($query) use ($search) {  //whereHasでuserの条件一致を探す;
+                    $query->where('user_name', 'like', '%' . $search . '%');
+                });
+                // dd($articles);
+            }else{//記事のタイトルで検索
+                $articles = Article::where('title', 'like', '%' . $search . '%')->get();
+            }
+        }else{
+            $articles = Article::all();
+        }
+
+        return view('admin_article', compact('articles'));
     }
 }

@@ -178,6 +178,7 @@ return [
 
         App\Providers\NowPasswordProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        Kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
 
     ],
 

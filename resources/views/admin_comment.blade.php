@@ -11,14 +11,18 @@
     <table>
         <th>ID</th>
         <th>ユーザーID</th>
+        <th>ユーザー名</th>
         <th>記事ID</th>
+        <th>記事タイトル</th>
         <th>コメント内容</th>
         <th>作成日</th>
         @foreach ($comments as $key => $comment)
             <tr>
                 <td>{{ $comment->id }}</td>
                 <td>{{ $comment->user_id }}</td>
+                <td>{{ \App\User::find($comment->user_id)->user_name }}</td>
                 <td>{{ $comment->article_id }}</td>
+                <td>{{ \App\Article::find($comment->article_id)->title }}</td>
                 <td>{{ $comment->detail }}</td>
                 <td>{{ $comment->created_at }}
                     <a href="{{ route('comment_delete', ['id' => $comment->id]) }}">
