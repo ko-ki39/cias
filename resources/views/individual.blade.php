@@ -13,11 +13,18 @@
         <div id="main_left">
             <div id="me">
                 <img src="/storage/{{ Auth::user()->image }}" alt="">
-                &nbsp;&nbsp;&nbsp;
-                <h1>{{ $user->user_name }}&nbsp;のマイページ</h1>
-                <a href="{{ route('fav_page') }}">コメントがついた記事などを見る</a>
+                <h2>{{ $user->user_name }}<br><span>のマイページ</span></h2>
+            </div>
+            <div id="myComFav_link">
+                <a href="{{ route('fav_page') }}">&gt;&nbsp;コメント、お気に入りした記事の一覧</a>
             </div>
             @foreach ($articles as $article)
+            <div class="article_edit">
+                <div>
+                    <a href="{{ route('edit', $article->id) }}">編集</a>&nbsp;|
+                    <a href="{{ route('delete', $article->id) }}">削除</a>
+                </div>
+            </div>
             <div class="article_list">
                 <div class="a_l_img">
                     <a href="{{ route('article_detail', ['id' => $article->id]) }}">
@@ -36,10 +43,6 @@
                         <i class="fab fa-twitter-square fa-2x" style="color:#1da1f2;"></i>
                         <i class="fab fa-gratipay fa-2x f_nonActiv" style="color:#9b9b9b;"></i>
                     </div>
-                </div>
-                <div class="a_l_edit">
-                    <a href="{{ route('edit', $article->id) }}">編集</a>
-                    <a href="{{ route('delete', $article->id) }}">削除</a>
                 </div>
             </div>
             @endforeach
