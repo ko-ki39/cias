@@ -264,7 +264,7 @@
 }
 
 .main .article #comment_list .h2_underLine {
-  border-bottom: solid 0.15rem #969696;
+  border-bottom: solid 1.5px #969696;
   margin-bottom: 1rem;
 }
 
@@ -567,7 +567,6 @@
     margin: 20px auto 0 auto;
   }
   .main .article #comment_list .c_l_contents {
-    border: 1px solid gray;
     border-radius: 8px;
     padding: 5px 10px;
   }
@@ -593,7 +592,6 @@
     width: 45px;
     height: 45px;
     border-radius: 100%;
-    border: 1px solid gray;
     border-radius: 50%;
     background-position: center;
     background-size: cover;
