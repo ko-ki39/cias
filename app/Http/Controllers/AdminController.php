@@ -19,13 +19,28 @@ class AdminController extends Controller
         // $articles = DB::table('articles')->get();
         // $comments = DB::table('comments')->get();
 
-        $users = User::all();
-        $articles = Article::All();
-        $comments = Comment::All();
 
-        return view('admin', compact('users', 'articles', 'comments'));
+        return view('admin');
     }
 
+    public function adminUser(){
+        $users = User::all();
+
+        return view('admin_user', compact('users'));
+    }
+
+    public function adminArticle(){
+        $articles = Article::All();
+
+        return view('admin_article', compact('articles'));
+
+    }
+
+    public function adminComment(){
+        $comments = Comment::All();
+
+        return view('admin_comment', compact('comments'));
+    }
     public function adminChange(Request $request, $id) //権限変更用
     {
         $admin_change = [
@@ -155,20 +170,20 @@ class AdminController extends Controller
 
         fclose($file); //ファイルを閉じる
 
-        return redirect()->route('download');
+        return redirect()->route('download', ['file' => $file_name]);
     }
 
-    public function download()
+    public function download($file_name)
     {
         $headers = [
             'Content-Type' => 'text/plain',
             'Cache-control' => 'no-store' //キャッシュを残さないように
         ];
-        $filename = '2020_情報システム科.csv';
-        $path = 'user_info/2020_情報システム科.csv';
+        $path = 'user_info/'.$file_name; //ファイルのパス
 
-        Storage::download('user_info/2020_情報システム科.csv', $filename, $headers);
-        return redirect()->route('admin');
+        // dd(Storage::files('user_info'));
+        return Storage::download($path, $file_name, $headers);
+        // return redirect()->route('admin');
     }
 
     public function autoAdminChange()
@@ -189,5 +204,6 @@ class AdminController extends Controller
                 }
             }
         }
+        return redirect()->route('admin');
     }
 }
