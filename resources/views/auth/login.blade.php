@@ -56,15 +56,6 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                    <a href="{{ route('secret_question') }}">
-                                        {{ __('秘密の質問でパスワードを変更する') }}
-                                    </a>
-                                @endif
                             </div>
                         </div>
                     </form>

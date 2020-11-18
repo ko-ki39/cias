@@ -20,10 +20,10 @@ Route::group(['middleware' => ['auth', 'can:user-higher']], function () { // 全
 
     Route::get('/top/individual/fav_page', 'ArticleController@favArticle')->name('fav_page');
     // Route::get('/top/individual/comment_page', 'ArticleController@commentArticle');
-    Route::get('/top/password_edit', 'Controller@password_edit')->name('password_edit'); //パスワード編集画面
+    // Route::get('/top/password_edit', 'Controller@password_edit')->name('password_edit'); //パスワード編集画面
 
-    Route::get('/top/login_password_change', 'Controller@login_password_change')->name('login_password_change'); //パスワード変更処理
-    Route::post('/top/login_password_change', 'Controller@login_password_change')->name('login_password_change'); //パスワード変更処理
+    // Route::get('/top/login_password_change', 'Controller@login_password_change')->name('login_password_change'); //パスワード変更処理
+    // Route::post('/top/login_password_change', 'Controller@login_password_change')->name('login_password_change'); //パスワード変更処理
 
 
     Route::get('/top/user_edit', 'Controller@user_edit')->name('user_edit'); //ユーザー情報編集画面
@@ -60,12 +60,20 @@ Route::group(['middleware' => ['auth', 'can:admin-only']], function () { // 管�
     Route::get('/admin/generate_page', 'AdminController@generate_page')->name('generate_page'); //ユーザー生成ページ
     Route::get('/admin/generate_page/generate', 'AdminController@generate')->name('generate');  //ユーザー生成
 
+    Route::get('/admin/download/{file}', 'AdminController@download')->name('download'); //ユーザー情報が入ったファイルのダウンロード
     Route::get('/admin', 'AdminController@index')->name('admin'); //ページ閲覧
 
     // ユーザーの権限変更
     Route::get('/admin/admin_change/{id}', 'AdminController@adminChange')->name('admin_change');
 
     Route::get('/admin/auto_admin_change/', 'AdminController@autoAdminChange')->name('auto_admin_change');
+
+    //情報表示ページ
+    Route::get('/admin/admin_user/', 'AdminController@adminUser')->name('admin_user');
+    Route::get('/admin/admin_article/', 'AdminController@adminArticle')->name('admin_article');
+    Route::get('/admin/admin_comment/', 'AdminController@adminComment')->name('admin_comment');
+
+
 
 
     //記事やユーザーの削除
@@ -89,16 +97,16 @@ Route::get('/top/individual/{id}', 'Controller@individual')->name('individual');
 Route::get('/top/article_detail/{id}', 'Controller@article_detail')->name('article_detail'); //記事詳細
 Route::get('/top/article_detail/{id?}', 'ArticleController@articleDetailForcus')->name("articleDetailForcus"); //コメントにフォーカス
 
-//パスワードを忘れた場合の秘密の質問ページ
-Route::get('/secret_question', 'Auth\ForgotPasswordController@secretQuestion')->name('secret_question');
-Route::post('/secret_question', 'Auth\ForgotPasswordController@secretQuestion')->name('secret_question'); //リダイレクトさせるためにpost通信も許可させる
-Route::post('/secret_question_answer', 'Auth\ForgotPasswordController@secretQuestionAnswer')->name('secret_question_answer');
-Route::get('/secret_question_answer', 'Auth\ForgotPasswordController@secretQuestionAnswer')->name('secret_question_answer'); //リダイレクトさせるためにget通信も許可させる
+// //パスワードを忘れた場合の秘密の質問ページ
+// Route::get('/secret_question', 'Auth\ForgotPasswordController@secretQuestion')->name('secret_question');
+// Route::post('/secret_question', 'Auth\ForgotPasswordController@secretQuestion')->name('secret_question'); //リダイレクトさせるためにpost通信も許可させる
+// Route::post('/secret_question_answer', 'Auth\ForgotPasswordController@secretQuestionAnswer')->name('secret_question_answer');
+// Route::get('/secret_question_answer', 'Auth\ForgotPasswordController@secretQuestionAnswer')->name('secret_question_answer'); //リダイレクトさせるためにget通信も許可させる
 
 //パスワード変更用のルート
-Route::post('/change_password', 'Auth\ForgotPasswordController@changePassword')->name('change_password');
+// Route::post('/change_password', 'Auth\ForgotPasswordController@changePassword')->name('change_password');
 
-Route::get('/change_password', 'Auth\ForgotPasswordController@changePassword')->name('change_password'); //リダイレクトさせるためにget通信も許可させる
+// Route::get('/change_password', 'Auth\ForgotPasswordController@changePassword')->name('change_password'); //リダイレクトさせるためにget通信も許可させる
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 

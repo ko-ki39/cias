@@ -17,7 +17,9 @@
         "laravel/framework": "^7.24",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.4",
-        "panique/laravel-sass": "master"
+        "maatwebsite/excel": "^3.1",
+        "panique/laravel-sass": "master",
+        "sukohi/fluent-csv": "3.*"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
