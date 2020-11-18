@@ -1,4 +1,4 @@
-<hr color="#9b9b9b" size="3" style="z-index:999;">
+{{-- <hr color="#9b9b9b" size="3" style="z-index:999;"> --}}
 <div class="footer">
 
     <div class="foot_left">
@@ -20,3 +20,4 @@
     <iframe width="100%" height="100%" frameborder="0"
         src="https://maps.google.co.jp/maps?output=embed&q=沖縄県立具志川職業能力開発校&t=m&hl=ja"></iframe>
 </div>
+<iframe width="100%" height="100%" frameborder="0" src="https://maps.google.co.jp/maps?output=embed&q=沖縄県立具志川職業能力開発校&t=m&hl=ja"></iframe>

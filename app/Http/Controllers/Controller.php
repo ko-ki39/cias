@@ -36,7 +36,7 @@ class Controller extends BaseController
     public function top()
     {
         // $articles = DB::table('articles')->latest()->paginate(5);
-        $articles = Article::latest()->paginate(3);
+        $articles = Article::latest()->paginate(9);
 
         return view('top', compact('articles'));
     }
