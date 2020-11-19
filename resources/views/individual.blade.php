@@ -47,6 +47,7 @@
             </div>
             @endforeach
         </div>
+        <div id="pop_background"></div>
         <div id="main_right">
             <div id="ajax_commentList">
                 <div class="a_c_title">

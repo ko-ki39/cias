@@ -6,6 +6,7 @@ let c_nonActiv = document.getElementsByClassName("c_nonActiv");
 let f_nonActiv = document.getElementsByClassName("f_nonActiv");
 let fa_comments = document.getElementsByClassName("fa-comments");
 let fa_gratipay = document.getElementsByClassName("fa-gratipay");
+let main_right = document.getElementById("main_right");
 
 // 排他制御のために使う変数
 let EX_arg = 0; //１つ前にクリックした要素のインデックスを保持保持する
@@ -20,6 +21,9 @@ let EX_firstAction = true; //trueだったら、まだ何も触っていない�
 // コメント
 for(let i=0; i<article_list.length; i++){
     fa_comments[i].addEventListener("click", function(){
+        // main_right.style.display = "block";
+        $("#main_right").fadeIn("1000");
+        $("#pop_background").fadeIn("300");
         exclusionController("comment", i);
     }, false);
 }
@@ -27,12 +31,12 @@ for(let i=0; i<article_list.length; i++){
 // お気に入り
 for(let j=0; j<article_list.length; j++){
     fa_gratipay[j].addEventListener("click", function(){
+        // main_right.style.display = "block";
+        $("#main_right").fadeIn("1000");
+        $("#pop_background").fadeIn("300");
         exclusionController("fav", j);
     }, false);
 }
-
-
-
 
 
 
@@ -159,6 +163,11 @@ function individualAjax(buttonType, articleID){
                                 + `</div>`
             }
             document.getElementsByClassName("a_c_title")[0].insertAdjacentHTML("afterend", pushComments);
+
+            //コメントが付いていなかったら
+            if(!data[0].length){
+                console.log("great.");
+            }
         }else if(buttonType == "favs"){
             if(document.getElementsByClassName("a_f_details") != null){
                 $(".a_f_details").remove();

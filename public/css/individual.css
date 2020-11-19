@@ -70,12 +70,11 @@ body div.main {
 
 .main #main_left #myComFav_link a {
   font-weight: bold;
-  text-decoration: none;
-  color: #ddce00;
+  color: #ffee00;
 }
 
 .main #main_left #myComFav_link a:visited {
-  color: #ddce00;
+  color: #ffee00;
 }
 
 .main #main_left .article_edit {
@@ -190,16 +189,32 @@ body div.main {
   height: 50%;
 }
 
+.main #pop_background {
+  display: none;
+  position: fixed;
+  top: 0;
+  background-color: gray;
+  opacity: 0.6;
+  width: 100%;
+  height: 100%;
+  z-index: 666;
+}
+
 .main #main_right {
+  display: none;
   width: 86%;
   padding: 10px;
   margin: auto;
   border: solid 1px #9b9b9b;
   border-radius: 12px;
+  position: fixed;
+  background-color: #ffffff;
+  z-index: 999;
 }
 
 .main #main_right #ajax_commentList {
   display: none;
+  z-index: 999;
 }
 
 .main #main_right #ajax_commentList .a_c_title {
@@ -299,6 +314,7 @@ body div.main {
 
 .main #main_right #ajax_favList {
   display: none;
+  z-index: 999;
 }
 
 .main #main_right #ajax_favList .a_f_title {
