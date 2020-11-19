@@ -208,9 +208,9 @@ class AdminController extends Controller
     }
 
     //検索機能
-    public function userSearch(Request $request){
+    public function userSearch(Request $request){ //userを検索
         // dd($request);
-        $search = $request->input('user_search'); //検索したい文字列
+        $search = $request->input('search'); //検索したい文字列
 
         if(isset($search)){
             $users = User::where('user_name', 'like', '%' . $search . '%')->get();
@@ -221,13 +221,13 @@ class AdminController extends Controller
         return view('admin_user', compact('users'));
     }
 
-    public function articleSearch(Request $request){
-        $search = $request->input('article_search');
+    public function articleSearch(Request $request){// 記事を検索
+        $search = $request->input('search');
         if(isset($search)){
             if($request->search_list == 1){ //ユーザー名で検索
                 $articles = Article::whereHas('user', function ($query) use ($search) {  //whereHasでuserの条件一致を探す;
                     $query->where('user_name', 'like', '%' . $search . '%');
-                });
+                })->paginate();
                 // dd($articles);
             }else{//記事のタイトルで検索
                 $articles = Article::where('title', 'like', '%' . $search . '%')->get();
@@ -237,5 +237,34 @@ class AdminController extends Controller
         }
 
         return view('admin_article', compact('articles'));
+    }
+
+    public function commentSearch(Request $request){ //コメントを検索
+        $search = $request->input('search');
+
+        if(isset($search)){
+            switch($request->search_list){
+                case 1: //ユーザー名で検索
+                    $comments = Comment::whereHas('user', function ($query) use ($search) {  //whereHasでuserの条件一致を探す
+                        $query->where('user_name', 'like', '%' . $search . '%');
+                    })->paginate();
+
+                break;
+                case 2: //記事タイトルで検索
+                    $comments = Comment::whereHas('article', function ($query) use ($search) {  //whereHasでuserの条件一致を探す
+                        $query->where('title', 'like', '%' . $search . '%');
+                    })->paginate();
+                    // dd($comments);
+                break;
+                case 3: //コメント内容で検索
+                    $comments = Comment::where('detail', 'like', '%' . $search . '%')->get();
+                break;
+                default:
+                    $comments = Comment::All();
+            }
+        }else{
+            $comments = Comment::All();
+        }
+        return view('admin_comment', compact('comments'));
     }
 }

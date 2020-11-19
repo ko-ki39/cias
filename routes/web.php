@@ -81,6 +81,7 @@ Route::group(['middleware' => ['auth', 'can:admin-only']], function () { // 管�
     //admin内での検索機能
     Route::get('/admin/admin_user/search', 'AdminController@userSearch')->name('admin_user_search');
     Route::get('/admin/admin_article/search', 'AdminController@articleSearch')->name('admin_article_search');
+    Route::get('/admin/admin_comment/search', 'AdminController@commentSearch')->name('admin_comment_search');
 });
 Route::get('/home', 'HomeController@index')->name('home');
 

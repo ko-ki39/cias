@@ -7,6 +7,16 @@
     <a href="{{ route('admin_user') }}">ユーザー情報</a>
     <a href="{{ route('admin_article') }}">記事情報</a>
 
+    <form action="{{ route('admin_comment_search') }}">
+        <select name="search_list" id="search_list">
+            <option value="1">ユーザー名</option>
+            <option value="2">記事タイトル</option>
+            <option value="3">コメント内容</option>
+        </select>
+        <input type="text" placeholder="検索" name="search" id="search">
+        <input type="submit" value="検索">
+    </form>
+
     {{-- コメントの情報 --}}
     <table>
         <th>ID</th>
@@ -27,7 +37,8 @@
                 <td>{{ $comment->created_at }}
                     <a href="{{ route('comment_delete', ['id' => $comment->id]) }}">
                         削除
-                    </a></td>
+                    </a>
+                </td>
             </tr>
         @endforeach
     </table>

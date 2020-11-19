@@ -7,7 +7,7 @@
     <a href="{{ route('admin_article') }}">記事情報</a>
     <a href="{{ route('admin_comment') }}">コメント情報</a>
     <form action="{{ route('admin_user_search') }}">
-        <input type="text" name="user_search" placeholder="ユーザー名で検索">
+        <input type="text" name="search" placeholder="ユーザー名で検索" id="search">
         <input type="submit" value="検索">
     </form>
     <table>

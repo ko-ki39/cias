@@ -8,11 +8,11 @@
     <a href="{{ route('admin_comment') }}">コメント情報</a>
     {{-- 記事の情報↓ --}}
     <form action="{{ route('admin_article_search') }}">
-        <select name="search_list">
+        <select name="search_list" id="search_list">
             <option value="1">ユーザー名</option>
             <option value="2">タイトル</option>
         </select>
-        <input type="text" name="article_search" placeholder="検索">
+        <input type="text" name="search" placeholder="検索" id="search">
         <input type="submit" value="検索">
     </form>
     <table>
