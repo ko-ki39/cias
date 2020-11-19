@@ -21,8 +21,8 @@
             @foreach ($articles as $article)
             <div class="article_edit">
                 <div>
-                    <a href="{{ route('edit', $article->id) }}">編集</a>&nbsp;|
-                    <a href="{{ route('delete', $article->id) }}">削除</a>
+                    <a href="{{ route('edit', $article->id) }}"><i class="fas fa-pencil-alt fa"></i></a>&nbsp;|
+                    <a href="{{ route('delete', $article->id) }}"><i class="fas fa-trash-alt fa"></i></a>
                 </div>
             </div>
             <div class="article_list">
@@ -38,10 +38,10 @@
                         </a>
                         <input type="hidden" name="" class="delivery_a_id" value="{{ $article->id }}">
                     </div>
-                    <div class="a_l_com-twi-fav">
-                        <i class="fas fa-comments fa-2x c_nonActiv" style="color:#9b9b9b;"></i>
-                        <i class="fab fa-twitter-square fa-2x" style="color:#1da1f2;"></i>
-                        <i class="fab fa-gratipay fa-2x f_nonActiv" style="color:#9b9b9b;"></i>
+                    <div class="a_l_com-twi-fav" style="font-size: 1.6rem;">
+                        <i class="fas fa-comments fa c_nonActiv" style="color:#9b9b9b;"></i>
+                        <i class="fab fa-twitter-square fa" style="color:#1da1f2;"></i>
+                        <i class="fab fa-gratipay fa f_nonActiv" style="color:#9b9b9b;"></i>
                     </div>
                 </div>
             </div>
@@ -49,6 +49,11 @@
         </div>
         <div id="pop_background"></div>
         <div id="main_right">
+            {{-- <div class="batu_button">
+                <div>
+                    <p>×</p>
+                </div>
+            </div> --}}
             <div id="ajax_commentList">
                 <div class="a_c_title">
                     <h2>記事に付いたコメント</h2>

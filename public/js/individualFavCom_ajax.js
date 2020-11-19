@@ -21,9 +21,6 @@ let EX_firstAction = true; //trueだったら、まだ何も触っていない�
 // コメント
 for(let i=0; i<article_list.length; i++){
     fa_comments[i].addEventListener("click", function(){
-        // main_right.style.display = "block";
-        $("#main_right").fadeIn("1000");
-        $("#pop_background").fadeIn("300");
         exclusionController("comment", i);
     }, false);
 }
@@ -31,12 +28,14 @@ for(let i=0; i<article_list.length; i++){
 // お気に入り
 for(let j=0; j<article_list.length; j++){
     fa_gratipay[j].addEventListener("click", function(){
-        // main_right.style.display = "block";
-        $("#main_right").fadeIn("1000");
-        $("#pop_background").fadeIn("300");
         exclusionController("fav", j);
     }, false);
 }
+
+document.getElementById("pop_background").addEventListener("click", function(){
+    $("#main_right").fadeOut("700");
+    $("#pop_background").fadeOut("300");
+});
 
 
 
@@ -45,6 +44,8 @@ for(let j=0; j<article_list.length; j++){
  */
 // 排他制御するためのやつ
 function exclusionController(buttonType, select){
+    $("#main_right").fadeIn("1000");
+    $("#pop_background").fadeIn("300");
     if(EX_firstAction == true){
         EX_firstAction = false;
         document.getElementById("ajax_default").style.display = "none";
@@ -162,12 +163,13 @@ function individualAjax(buttonType, articleID){
                                     + `</div>`
                                 + `</div>`
             }
-            document.getElementsByClassName("a_c_title")[0].insertAdjacentHTML("afterend", pushComments);
-
             //コメントが付いていなかったら
             if(!data[0].length){
-                console.log("great.");
+                pushComments += `<div class="a_c_details">`
+                                + `<h3>まだコメントがありませんm(__)m</h3>`
+                              + `</div>`
             }
+            document.getElementsByClassName("a_c_title")[0].insertAdjacentHTML("afterend", pushComments);
         }else if(buttonType == "favs"){
             if(document.getElementsByClassName("a_f_details") != null){
                 $(".a_f_details").remove();
@@ -180,6 +182,12 @@ function individualAjax(buttonType, articleID){
                                     + `<a href="/top/individual/${data[0][i].user_id}"> ${data[2][i]}</a>&nbsp;さん`
                                 + `</div>`
                             + `</div>`
+            }
+            //お気に入りされていなかったら
+            if(!data[0].length){
+                pushFavs += `<div class="a_f_details">`
+                            + `<h3>まだお気に入りされていませんm(__)m</h3>`
+                          + `</div>`
             }
             document.getElementsByClassName("a_f_title")[0].insertAdjacentHTML("afterend", pushFavs);
         }
