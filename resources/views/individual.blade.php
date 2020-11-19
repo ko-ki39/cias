@@ -20,6 +20,7 @@
             </div>
             @foreach ($articles as $article)
             <div class="article_edit">
+                <p>{{ $article->created_at }}&nbsp;に作成しました</p>
                 <div>
                     <a href="{{ route('edit', $article->id) }}"><i class="fas fa-pencil-alt fa"></i></a>&nbsp;|
                     <a href="{{ route('delete', $article->id) }}"><i class="fas fa-trash-alt fa"></i></a>

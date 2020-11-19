@@ -1,6 +1,6 @@
 @charset "UTF-8";
 body div.main {
-  background-color: #e1e1e1;
+  background-color: #d8d8d8;
 }
 
 .main {
@@ -78,7 +78,7 @@ body div.main {
 }
 
 .main #main_left .article_edit {
-  background-color: #e1e1e1;
+  background-color: #f2f2f2;
   width: 97%;
   margin: 40px auto auto auto;
   display: -webkit-box;
@@ -91,6 +91,11 @@ body div.main {
           justify-content: flex-end;
   margin-bottom: -2px;
   z-index: 10;
+}
+
+.main #main_left .article_edit p {
+  margin: auto;
+  font-size: 0.8rem;
 }
 
 .main #main_left .article_edit div {
@@ -162,10 +167,11 @@ body div.main {
 }
 
 .main #main_left .article_list .a_l_details .a_l_d_link {
-  margin: 10px 0 0 10px;
+  margin: 15px 0 0 10px;
 }
 
 .main #main_left .article_list .a_l_details .a_l_d_link a {
+  font-weight: bold;
   text-decoration: none;
   display: -webkit-box;
   -webkit-box-orient: vertical;
