@@ -18,7 +18,12 @@ Auth::routes();
 
 Route::group(['middleware' => ['auth', 'can:user-higher']], function () { // 全ユーザー
 
-    Route::get('/top/individual/fav_page', 'ArticleController@favArticle')->name('fav_page');
+        // ↓記事削除用ルート
+        Route::get('/top/delete/{id}', 'ArticleController@delete')->name('delete');
+
+
+
+    // Route::get('/top/individual/fav_page', 'ArticleController@favArticle')->name('fav_page');
     // Route::get('/top/individual/comment_page', 'ArticleController@commentArticle');
     // Route::get('/top/password_edit', 'Controller@password_edit')->name('password_edit'); //パスワード編集画面
 
@@ -26,15 +31,15 @@ Route::group(['middleware' => ['auth', 'can:user-higher']], function () { // 全
     // Route::post('/top/login_password_change', 'Controller@login_password_change')->name('login_password_change'); //パスワード変更処理
 
 
-    Route::get('/top/user_edit', 'Controller@user_edit')->name('user_edit'); //ユーザー情報編集画面
-    Route::post('/top/user_update', 'Controller@user_update')->name('user_update'); //ユーザー情報変更処理
-    Route::get('/top/user_update', 'Controller@user_update')->name('user_update'); //ユーザー情報変更処理
+    // Route::get('/top/user_edit', 'Controller@user_edit')->name('user_edit'); //ユーザー情報編集画面
+    // Route::post('/top/user_update', 'Controller@user_update')->name('user_update'); //ユーザー情報変更処理
+    // Route::get('/top/user_update', 'Controller@user_update')->name('user_update'); //ユーザー情報変更処理
 
-    Route::post("/top/article_detail/post_comment", "ArticleController@commnetAdd"); //コメントを投稿する
+    // Route::post("/top/article_detail/post_comment", "ArticleController@commnetAdd"); //コメントを投稿する
 
-    Route::get("/top/individual/article_individual", function(){
-      return view('article_individual');
-    }); //個人ページのfavしたものなどの表示
+    // Route::get("/top/individual/article_individual", function(){
+    //   return view('article_individual');
+    // }); //個人ページのfavしたものなどの表示
 });
 
 Route::group(['middleware' => ['auth', 'can:authorized-higher']], function () { //許可されたものと管理者のみ
@@ -49,8 +54,6 @@ Route::group(['middleware' => ['auth', 'can:authorized-higher']], function () { 
     Route::post('/top/update/{id}', 'ArticleController@update')->name('update');
     Route::get('/top/update/{id}', 'ArticleController@update')->name('update');
 
-    // ↓記事削除用ルート
-    Route::get('/top/delete/{id}', 'ArticleController@delete')->name('delete');
 
     //individualページでコメント、お気に入り一覧を表示するやつ
     Route::get('/top/individual/cfAjax', 'IndividualController@commentFavAjax');
@@ -109,7 +112,7 @@ Route::get('/top/article_detail/{id?}', 'ArticleController@articleDetailForcus')
 
 // Route::get('/change_password', 'Auth\ForgotPasswordController@changePassword')->name('change_password'); //リダイレクトさせるためにget通信も許可させる
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 // お気に入り
 Route::post("/top/fav/{id}", "ArticleController@favOperation");
@@ -117,6 +120,6 @@ Route::post("/top/fav/{id}", "ArticleController@favOperation");
 //検索機能↓
 Route::get("/top/search", "Controller@search")->name('search');
 Route::get('/top/hashtag', 'Controller@hashtag'); //ajaxを使ったhashの処理
-Route::get('/top/hashtag/{hash}', 'Controller@hashtagResult'); //hashtagの検索結果
+Route::get('/top/hashtag/{hash}', 'Controller@hashtagResult')->name('hashtag_result'); //hashtagの検索結果
 
 // Route::get("/top", "ArticleController@top");
