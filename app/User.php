@@ -50,6 +50,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    //ゲッター↓
+    public function getImageAttribute($image)
+    {
+        if(!$image){
+            $image = '1603929194_images.png';
+        }
+        return $image;
+    }
+
     // //ゲッター
     // public function getCreatedAtAttribute($date)
     // {
