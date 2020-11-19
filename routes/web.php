@@ -73,14 +73,15 @@ Route::group(['middleware' => ['auth', 'can:admin-only']], function () { // 管�
     Route::get('/admin/admin_article/', 'AdminController@adminArticle')->name('admin_article');
     Route::get('/admin/admin_comment/', 'AdminController@adminComment')->name('admin_comment');
 
-
-
-
     //記事やユーザーの削除
     Route::get('/admin/user_delete/{id}', 'AdminController@userDelete')->name('user_delete');
     Route::get('/admin/article_delete/{id}', 'AdminController@articleDelete')->name('article_delete');
     Route::get('/admin/comment_delete/{id}', 'AdminController@commentDelete')->name('comment_delete');
 
+    //admin内での検索機能
+    Route::get('/admin/admin_user/search', 'AdminController@userSearch')->name('admin_user_search');
+    Route::get('/admin/admin_article/search', 'AdminController@articleSearch')->name('admin_article_search');
+    Route::get('/admin/admin_comment/search', 'AdminController@commentSearch')->name('admin_comment_search');
 });
 Route::get('/home', 'HomeController@index')->name('home');
 

@@ -225,17 +225,17 @@ class Controller extends BaseController
                 $articles = Article::Where('hash1_id', $hash_search)->orWhere('hash2_id', $hash_search)->orWhere('hash3_id', $hash_search)->latest()->paginate(5);
             } else {
                 $search_condition = $request->search_condition;
-                if ($search_condition == 1) { //タイトルで検索
+                if ($search_condition == 2) { //タイトルで検索
 
                     // $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->latest()->paginate(5);
 
                     $articles = Article::where('title', 'like', '%' . $search . '%')->latest()->paginate(5);
-                } else if ($search_condition == 2) { //説明で検索
+                } else if ($search_condition == 3) { //説明で検索
 
                     // $articles = $articles = DB::table('articles')->where('description', 'like', '%' . $search . '%')->latest()->paginate(5);
 
                     $articles = Article::where('description', 'like', '%' . $search . '%')->latest()->paginate();
-                } else if ($search_condition == 3) { //ユーザー名で検索
+                } else if ($search_condition == 4) { //ユーザー名で検索
 
                     $articles = Article::whereHas('user', function ($query) use ($search) {  //whereHasでuserの条件一致を探す
                         $query->where('user_name', 'like', '%' . $search . '%');

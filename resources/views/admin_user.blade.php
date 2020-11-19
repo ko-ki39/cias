@@ -6,15 +6,19 @@
     <a href="{{ route('auto_admin_change') }}">有効期限が過ぎたユーザーの権限変更</a>
     <a href="{{ route('admin_article') }}">記事情報</a>
     <a href="{{ route('admin_comment') }}">コメント情報</a>
+    <form action="{{ route('admin_user_search') }}">
+        <input type="text" name="search" placeholder="ユーザー名で検索" id="search">
+        <input type="submit" value="検索">
+    </form>
     <table>
-        <th>ID</th>
+        <th>@sortablelink('id', 'ID')</th>
         <th>ログインID</th>
         <th>名前</th>
         <th>E-mail</th>
         <th>権限</th>
         <th>権限変更</th>
-        <th>作成日</th>
-        <th>更新日</th>
+        <th>@sortablelink('created_at', '作成日')</th>
+        <th>@sortablelink('updated_at', '更新日')</th>
         @foreach ($users as $key => $user)
             <tr>
                 <td>{{ $user->id }}</td>
