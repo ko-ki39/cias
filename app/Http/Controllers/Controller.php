@@ -101,7 +101,7 @@ class Controller extends BaseController
                     'user_name' => 'required|string|max:10',
                     'email' => 'nullable|string|email|max:255',
                     // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
-                    'secret_answer' => 'required|string|max:50',
+                    // 'secret_answer' => 'required|string|max:50',
                 ]);
             } else if ($request->user_name == $user->user_name) {
                 $request->validate([
@@ -111,7 +111,7 @@ class Controller extends BaseController
                     'user_name' => 'required|string|max:10',
                     'email' => 'nullable|string|email|max:255|unique:users',
                     // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
-                    'secret_answer' => 'required|string|max:50',
+                    // 'secret_answer' => 'required|string|max:50',
                 ]);
             } else if ($request->email == $user->email) {
                 $request->validate([
@@ -121,7 +121,7 @@ class Controller extends BaseController
                     'user_name' => 'required|string|max:10|unique:users',
                     'email' => 'nullable|string|email|max:255|unique:users',
                     // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
-                    'secret_answer' => 'required|string|max:50',
+                    // 'secret_answer' => 'required|string|max:50',
                 ]);
             } else {
                 $request->validate([
@@ -131,7 +131,7 @@ class Controller extends BaseController
                     'user_name' => 'required|string|max:10|unique:users',
                     'email' => 'nullable|string|email|max:255|unique:users',
                     // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
-                    'secret_answer' => 'required|string|max:50',
+                    // 'secret_answer' => 'required|string|max:50',
                 ]);
             }
             $quality = 90;
@@ -174,8 +174,8 @@ class Controller extends BaseController
             $update_user->user_name = $request->user_name;
             $update_user->image = $image_path;
             $update_user->email = $request->email;
-            $update_user->secret_question_id = $request->secret_question_id;
-            $update_user->secret_answer = $request->secret_answer;
+            // $update_user->secret_question_id = $request->secret_question_id;
+            // $update_user->secret_answer = $request->secret_answer;
 
             $update_user->save();
             // $user->save();
