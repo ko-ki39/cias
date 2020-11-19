@@ -28,20 +28,23 @@ class CommentArticle extends Component
     {
         $comments = Comment::where('user_id', Auth::id())->get();
 
-        foreach($comments as $key => $comment){
+        foreach ($comments as $key => $comment) {
             $a_comments[$key] = $comment->article_id;
         }
+        if(!empty($a_comments)){
 
-        $a_comments = array_unique($a_comments); //重複した記事を削除
-
-        foreach($a_comments as $key => $a_comment){
-            $articles[$key] = Article::find($a_comment);
-        }
-        if(!empty($articles)){
-            // なかった場合の表示
+            $a_comments = array_unique($a_comments); //重複した記事を削除
+            foreach ($a_comments as $key => $a_comment) {
+                $articles[$key] = Article::find($a_comment);
+            }
+        }else{
+            $articles = null;
             $comment = 'コメントがありません';
-
         }
+
+        // if (!empty($articles)) {
+        //     // なかった場合の表示
+        // }
         // compact $a_comments  $articles $comment
         return view('components.comment-article', compact('articles', 'comment'));
     }

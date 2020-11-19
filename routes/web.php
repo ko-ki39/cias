@@ -18,12 +18,12 @@ Auth::routes();
 
 Route::group(['middleware' => ['auth', 'can:user-higher']], function () { // 全ユーザー
 
-        // ↓記事削除用ルート
-        Route::get('/top/delete/{id}', 'ArticleController@delete')->name('delete');
+    // ↓記事削除用ルート
+    Route::get('/top/delete/{id}', 'ArticleController@delete')->name('delete');
 
 
 
-    // Route::get('/top/individual/fav_page', 'ArticleController@favArticle')->name('fav_page');
+    Route::get('/top/individual/fav_page', 'ArticleController@favArticle')->name('fav_page');
     // Route::get('/top/individual/comment_page', 'ArticleController@commentArticle');
     // Route::get('/top/password_edit', 'Controller@password_edit')->name('password_edit'); //パスワード編集画面
 
@@ -31,11 +31,10 @@ Route::group(['middleware' => ['auth', 'can:user-higher']], function () { // 全
     // Route::post('/top/login_password_change', 'Controller@login_password_change')->name('login_password_change'); //パスワード変更処理
 
 
-    // Route::get('/top/user_edit', 'Controller@user_edit')->name('user_edit'); //ユーザー情報編集画面
-    // Route::post('/top/user_update', 'Controller@user_update')->name('user_update'); //ユーザー情報変更処理
-    // Route::get('/top/user_update', 'Controller@user_update')->name('user_update'); //ユーザー情報変更処理
+    Route::get('/top/user_edit', 'Controller@user_edit')->name('user_edit'); //ユーザー情報編集画面
+    Route::post('/top/user_update', 'Controller@user_update')->name('user_update'); //ユーザー情報変更処理
+    Route::get('/top/user_update', 'Controller@user_update')->name('user_update'); //ユーザー情報変更処理
 
-    // Route::post("/top/article_detail/post_comment", "ArticleController@commnetAdd"); //コメントを投稿する
 
     // Route::get("/top/individual/article_individual", function(){
     //   return view('article_individual');
@@ -45,6 +44,7 @@ Route::group(['middleware' => ['auth', 'can:user-higher']], function () { // 全
 Route::group(['middleware' => ['auth', 'can:authorized-higher']], function () { //許可されたものと管理者のみ
     // ↓記事作成用のルート
 
+    Route::post("/top/article_detail/post_comment", "ArticleController@commnetAdd"); //コメントを投稿する
     Route::get('/top/post', 'ArticleController@postForm')->name('post');
     Route::post('/top/upload', 'ArticleController@upload')->name('upload');
     Route::get('/top/upload', 'ArticleController@upload')->name('upload'); //リダイレクトさせるためにget通信も許可させる
@@ -92,7 +92,7 @@ Route::get('/', 'SanController@welcomePage');
 Route::get('/top', 'Controller@top')->name('top');
 
 
- //マイページ
+//マイページ
 Route::get('/top/individual/{id}', 'Controller@individual')->name('individual'); //マイページ
 
 
