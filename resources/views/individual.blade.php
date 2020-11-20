@@ -2,7 +2,8 @@
 
 @section('import')
     {{-- css等の読み込み場所 --}}
-    {{-- <link rel="stylesheet" href="/css/comment.css" type="text/css"> --}}
+    {{--
+    <link rel="stylesheet" href="/css/comment.css" type="text/css"> --}}
     <link rel="stylesheet" href="/css/individual.css" type="text/css">
 @endsection
 
@@ -18,30 +19,32 @@
                 <a href="{{ route('fav_page') }}">コメントがついた記事などを見る</a>
             </div>
             @foreach ($articles as $article)
-            <div class="article_list">
-                <div class="a_l_img">
-                    <a href="{{ route('article_detail', ['id' => $article->id]) }}">
-                        <img src="/storage/{{ $article->image }}" alt="">
-                    </a>
-                </div>
-                <div class="a_l_details">
-                    <div class="a_l_d_link">
+                <div class="article_list">
+                    <div class="a_l_img">
                         <a href="{{ route('article_detail', ['id' => $article->id]) }}">
-                            {{ $article->title }}
+                            <img src="/storage/{{ $article->image }}" alt="">
                         </a>
-                        <input type="hidden" name="" class="delivery_a_id" value="{{ $article->id }}">
                     </div>
-                    <div class="a_l_com-twi-fav">
-                        <i class="fas fa-comments fa-2x c_nonActiv" style="color:#9b9b9b;"></i>
-                        <i class="fab fa-twitter-square fa-2x" style="color:#1da1f2;"></i>
-                        <i class="fab fa-gratipay fa-2x f_nonActiv" style="color:#9b9b9b;"></i>
+                    <div class="a_l_details">
+                        <div class="a_l_d_link">
+                            <a href="{{ route('article_detail', ['id' => $article->id]) }}">
+                                {{ $article->title }}
+                            </a>
+                            <input type="hidden" name="" class="delivery_a_id" value="{{ $article->id }}">
+                        </div>
+                        <div class="a_l_com-twi-fav">
+                            <i class="fas fa-comments fa-2x c_nonActiv" style="color:#9b9b9b;"></i>
+                            <i class="fab fa-twitter-square fa-2x" style="color:#1da1f2;"></i>
+                            <i class="fab fa-gratipay fa-2x f_nonActiv" style="color:#9b9b9b;"></i>
+                        </div>
+                    </div>
+                    <div class="a_l_edit">
+                        <a href="{{ route('edit', $article->id) }}">編集</a>
+                        <form action="{{ route('delete', $article->id) }}" onsubmit="return article_delete(this.name)" name="{{ $article->title }}">
+                            <input type="submit" value="削除">
+                        </form>
                     </div>
                 </div>
-                <div class="a_l_edit">
-                    <a href="{{ route('edit', $article->id) }}">編集</a>
-                    <a href="{{ route('delete', $article->id) }}">削除</a>
-                </div>
-            </div>
             @endforeach
         </div>
         <div id="main_right">

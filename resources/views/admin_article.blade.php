@@ -38,9 +38,9 @@
                 <td>{{ $article->hash3_id }}</td>
                 <td>{{ $article->created_at }}</td>
                 <td>{{ $article->updated_at }}
-                    <a href="{{ route('article_delete', ['id' => $article->id]) }}">
-                        削除
-                    </a></td>
+                    <form action="{{ route('article_delete', ['id' => $article->id]) }}" onsubmit="return article_delete()" name="{{ $article->title }}">
+                        <input type="submit" value="削除">
+                    </form>
             </tr>
         @endforeach
     </table>

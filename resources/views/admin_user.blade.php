@@ -47,9 +47,9 @@
                 <td>{{ $user->created_at }}</td>
                 <td>{{ $user->updated_at }}
                     @if ($user->id != 1)
-                        <a href="{{ route('user_delete', ['id' => $user->id]) }}">
-                            削除
-                        </a>
+                    <form action="{{ route('user_delete', ['id' => $user->id]) }}" onsubmit="return user_delete(this.name)" name="{{ $user->user_name }}">
+                        <input type="submit" value="削除">
+                    </form>
                     @endif
                 </td>
             </tr>

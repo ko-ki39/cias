@@ -12,7 +12,7 @@
     {{-- この下からbodyの中身を書き始める --}}
     <div class="main">
         <div class="content">
-            <form action="{{ route('upload') }}" method="POST" enctype='multipart/form-data'>
+            <form action="{{ route('upload') }}" method="POST" enctype='multipart/form-data'  onsubmit="return article_upload()">
                 @csrf
                 <div class="title">
                     <h2 id="title">タイトル</h2>

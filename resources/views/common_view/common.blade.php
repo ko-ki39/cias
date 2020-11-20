@@ -17,6 +17,7 @@
         <script src="/js/ztext.min.js"></script>
         <script src="/js/popper.min.js"></script>
         <script src="/js/tippy-bundle.umd.js"></script>
+        <script src="/js/confirm.js"></script>
         {{-- <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script> --}}
     </head>
     <body>

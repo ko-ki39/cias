@@ -7,7 +7,7 @@
     <th>人数</th>
     <th>期限</th>
     <tr>
-        <form action="{{ route('generate') }}">
+        <form action="{{ route('generate') }}" onsubmit="return user_create()">
             <td><select name="department">
                     <option value="1">オフィスビジネス科（前期）</option>
                     <option value="2">オフィスビジネス科（後期）</option>
@@ -23,9 +23,9 @@
                     <option value="1">1</option>
                     <option value="2">2</option>
                 </select></td>
-            <td><input type="number" name="num" id="num"></td>
-            <td><input type="date" name="date"></td>
-                <input type="submit" value="作成">
+            <td><input type="number" name="num" id="num" required ></td>
+            <td><input type="date" name="date" required></td>
+            <input type="submit" value="作成">
         </form>
     </tr>
 @endsection
