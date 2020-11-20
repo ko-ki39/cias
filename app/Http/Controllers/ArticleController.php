@@ -308,6 +308,7 @@ class ArticleController extends Controller
             // ];
             // Article::where('id', $id)->update($update_article);
             $article = Article::find($id);
+            $article->title = $request->title;
             $article->description = $request->text1;
             $article->image = $image_path[0];
             $article->hash1_id = $request->hash1;

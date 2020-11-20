@@ -35,9 +35,9 @@
                 <td>{{ \App\Article::find($comment->article_id)->title }}</td>
                 <td>{{ $comment->detail }}</td>
                 <td>{{ $comment->created_at }}
-                    <a href="{{ route('comment_delete', ['id' => $comment->id]) }}">
-                        削除
-                    </a>
+                    <form action="{{ route('comment_delete', ['id' => $comment->id]) }}" onsubmit="return comment_delete()">
+                        <input type="submit" value="削除">
+                    </form>
                 </td>
             </tr>
         @endforeach
