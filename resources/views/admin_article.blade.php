@@ -16,7 +16,7 @@
         <input type="submit" value="検索">
     </form>
     <table>
-        <th>ID</th>
+        <th>@sortablelink('id', 'ID')</th>
         <th>ユーザーID</th>
         <th>ユーザー名</th>
         <th>タイトル</th>
@@ -24,8 +24,8 @@
         <th>ハッシュ１</th>
         <th>ハッシュ２</th>
         <th>ハッシュ３</th>
-        <th>作成日</th>
-        <th>更新日</th>
+        <th>@sortablelink('created_at', '作成日')</th>
+        <th>@sortablelink('updated_at', '更新日')</th>
         @foreach ($articles as $key => $article)
             <tr>
                 <td>{{ $article->id }}</td>

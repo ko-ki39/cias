@@ -30,7 +30,7 @@ class AdminController extends Controller
     }
 
     public function adminArticle(){
-        $articles = Article::All();
+        $articles = Article::sortable()->get();
 
         return view('admin_article', compact('articles'));
 

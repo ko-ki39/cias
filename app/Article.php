@@ -5,9 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 // use App\Events\FavDelete;
+use Kyslik\ColumnSortable\Sortable;
 
 class Article extends Model
 {
+    use Sortable;
     //
     protected $fillable =[
         'user_id', 'title', 'description',
