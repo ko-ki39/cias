@@ -44,8 +44,12 @@ document.getElementById("pop_background").addEventListener("click", function(){
  */
 // 排他制御するためのやつ
 function exclusionController(buttonType, select){
-    $("#main_right").fadeIn("1000");
-    $("#pop_background").fadeIn("300");
+    let window_W = document.documentElement.clientWidth;
+    let window_H =document.documentElement.clientHeight;
+    if(window_W <= 720){
+        $("#main_right").fadeIn("1000");
+        $("#pop_background").fadeIn("300");
+    }
     if(EX_firstAction == true){
         EX_firstAction = false;
         document.getElementById("ajax_default").style.display = "none";
