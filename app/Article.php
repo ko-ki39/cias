@@ -14,6 +14,8 @@ class Article extends Model
         'image', 'hash1_id', 'hash2_id', 'hash3_id'
     ];
 
+    //ソートに使う
+    public $sortable = ['id', 'user_id', 'created_at', 'updated_at'];
     // protected $dispatchesEvents = [
     //     'deleted' => FavDelete::class
     // ];

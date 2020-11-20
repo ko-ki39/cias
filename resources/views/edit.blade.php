@@ -12,7 +12,7 @@
     {{-- この下からbodyの中身を書き始める --}}
     <div class="main">
         <div class="content">
-            <form action="{{ route('update', ['id' => $post->id]) }}" method="POST" enctype='multipart/form-data'>
+            <form action="{{ route('update', ['id' => $post->id]) }}" method="POST" enctype='multipart/form-data'  onsubmit="return article_edit()">
                 @csrf
                 <input type="text" name="title" value="{{ $article->title }}">
 

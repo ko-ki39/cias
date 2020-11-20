@@ -177,6 +177,8 @@ return [
         Intervention\Image\ImageServiceProvider::class,
 
         App\Providers\NowPasswordProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+        Kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
 
     ],
 
@@ -232,6 +234,7 @@ return [
         'InterventionImage' => Intervention\Image\Facades\Image::class,
         'HamburgerNotice' => app\Library\HamburgerNotice::class,
         'CommonClass' => app\Library\CommonClass::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];

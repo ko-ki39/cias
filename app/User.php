@@ -8,10 +8,12 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Crypt;
 use Carbon\Carbon;
 // use App\Events\ImageFileDelete;
+use Kyslik\ColumnSortable\Sortable;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use Sortable;
 
     /**
      * The attributes that are mass assignable.
@@ -24,8 +26,11 @@ class User extends Authenticatable
     //     'updating' => ImageFileDelete::class
     // ];
     protected $fillable = [
-        'image', 'user_id', 'password', 'user_name', 'email', 'secret_question_id', 'secret_answer',
+        'image', 'user_id', 'password', 'user_name', 'email'
     ];
+
+    //ソートに使うよう
+    public $sortable = ['id','user_id', 'department_id', 'created_at', 'updated_at'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -44,6 +49,25 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //ゲッター↓
+    public function getImageAttribute($image)
+    {
+        if(!$image){ //画像が無かったらデフォルトの画像を表示させる
+            $image = '1603929194_images.png'; //デフォルト画像のパス
+        }
+        return $image;
+    }
+
+    //ゲッター↓
+    public function getUserNameAttribute($name)
+    {
+        if($this->role == 3){
+            $name = $name.'（卒業生）';
+        }
+
+        return $name;
+    }
 
     // //ゲッター
     // public function getCreatedAtAttribute($date)

@@ -54,72 +54,6 @@
                                     @enderror
                                 </div>
                             </div>
-
-                            <div class="form-group row">
-                                <label for="secret_question_id"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('秘密の質問') }}</label>
-
-                                <div class="col-md-6">
-                                    <select required id="secret_question_id" type="text"
-                                        class="form-control @error('secret_question_id') is-invalid @enderror"
-                                        name="secret_question_id" required autocomplete="secret_question_id" autofocus>
-
-                                        <option value="1">初めて買ったペットの名前は？</option>
-                                        @if ($user->secret_question_id == 2)
-                                            <option value="2" selected>好きな絵本の題名は？</option>
-                                        @else
-                                            <option value="2">好きな絵本の題名は？</option>
-                                        @endif
-                                        @if ($user->secret_question_id == 3)
-                                            <option value="3" selected>行ってみたい惑星は？</option>
-                                        @else
-                                            <option value="3">行ってみたい惑星は？</option>
-                                        @endif
-                                        @if ($user->secret_question_id == 4)
-                                            <option value="4" selected>子供の頃のニックネームは？</option>
-                                        @else
-                                            <option value="4">子供の頃のニックネームは？</option>
-                                        @endif
-                                        @if ($user->secret_question_id == 5)
-                                            <option value="5" selected>初めて所有した車の名前は？</option>
-                                        @else
-                                            <option value="5">初めて所有した車の名前は？</option>
-                                        @endif
-                                        @if ($user->secret_question_id == 6)
-
-                                            <option value="6" selected>初めて映画館で見た映画は？</option>
-                                        @else
-                                            <option value="6">初めて映画館で見た映画は？</option>
-                                        @endif
-
-                                    </select>
-
-                                    @error('secret_question_id')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="secret_answer"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('秘密の質問の回答') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="secret_answer" value="{{ $user->secret_answer }}" type="text"
-                                        class="form-control  @error('secret_answer') is-invalid @enderror"
-                                        name="secret_answer" value="{{ old('secret_answer') }}" required
-                                        autocomplete="secret_answer" autofocus>
-
-                                    @error('secret_answer')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-
                             <div class="form-group row">
                                 <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('現在のパスワード') }}</label>
 
@@ -133,13 +67,6 @@
                                     @enderror
                                 </div>
                             </div>
-
-                            <div class="form-group row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <a href="{{ route('password_edit') }}">パスワード変更</a>
-                                </div>
-                            </div>
-
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
@@ -147,7 +74,6 @@
                                     </button>
                                 </div>
                             </div>
-
                         </form>
                     </div>
                 </div>

@@ -69,12 +69,12 @@
                 display: flex;
                 // justify-content: center;
                 align-items: center;
-                .top_h_u_img{
+                .top_h_u_img {
                     padding: 0;
                     margin: 0;
                     height: 3rem;
                     width: 3rem;
-                    img{
+                    img {
                         height: 3rem;
                         width: 3rem;
                         border-radius: 50%;
@@ -181,18 +181,18 @@
         #message {
             margin-left: 150px;
         }
-        nav{
-            .pagination{
+        nav {
+            .pagination {
                 margin: 2rem auto;
                 list-style: none;
                 padding: 0;
                 display: flex;
                 flex-direction: row;
                 justify-content: center;
-                .active{
+                .active {
                     opacity: 0.5;
                 }
-                li{
+                li {
                     margin: 0 0.1rem;
                     border: solid 1px #9b9b9b;
                     background-color: whitesmoke;
@@ -201,14 +201,14 @@
                     display: inline-flex;
                     justify-content: center;
                     align-items: center;
-                    a{
+                    a {
                         color: #3f3f3f;
                         text-decoration: none;
                     }
-                    a:visited{
+                    a:visited {
                         color: #3f3f3f;
                     }
-                    span{
+                    span {
                         color: #3f3f3f;
                         text-align: center;
                     }
@@ -219,16 +219,16 @@
 }
 
 @media screen and (min-width: 481px) {
-	/* 481px以上に適用されるCSS（タブレット用） */
+    /* 481px以上に適用されるCSS（タブレット用） */
 }
 
-@media screen and (min-width: 720px){
+@media screen and (min-width: 720px) {
     .main {
         // width: 1000px;
         width: 100%;
         padding-top: 0.6rem;
         padding-bottom: 5rem;
-        .side_bar{
+        .side_bar {
             margin-top: 29px;
         }
         .content {
@@ -303,12 +303,12 @@
                     display: flex;
                     // justify-content: center;
                     align-items: center;
-                    .top_h_u_img{
+                    .top_h_u_img {
                         padding: 0;
                         margin: 0;
                         height: 3rem;
                         width: 3rem;
-                        img{
+                        img {
                             height: 3rem;
                             width: 3rem;
                             border-radius: 50%;
@@ -417,19 +417,19 @@
             #message {
                 margin-left: 150px;
             }
-            nav{
+            nav {
                 margin: auto;
                 width: 100%;
-                .pagination{
+                .pagination {
                     list-style: none;
                     padding: 0;
                     display: flex;
                     flex-direction: row;
                     justify-content: center;
-                    .active{
+                    .active {
                         opacity: 0.5;
                     }
-                    li{
+                    li {
                         margin: 0 0.1rem;
                         border: solid 1px #9b9b9b;
                         background-color: whitesmoke;
@@ -438,14 +438,14 @@
                         display: inline-flex;
                         justify-content: center;
                         align-items: center;
-                        a{
+                        a {
                             color: #3f3f3f;
                             text-decoration: none;
                         }
-                        a:visited{
+                        a:visited {
                             color: #3f3f3f;
                         }
-                        span{
+                        span {
                             color: #3f3f3f;
                             text-align: center;
                         }

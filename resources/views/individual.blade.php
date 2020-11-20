@@ -2,7 +2,8 @@
 
 @section('import')
     {{-- css等の読み込み場所 --}}
-    {{-- <link rel="stylesheet" href="/css/comment.css" type="text/css"> --}}
+    {{--
+    <link rel="stylesheet" href="/css/comment.css" type="text/css"> --}}
     <link rel="stylesheet" href="/css/individual.css" type="text/css">
 @endsection
 

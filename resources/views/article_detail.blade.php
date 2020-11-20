@@ -25,9 +25,17 @@
                     <h2>{{ $article->title }}</h2>
                 </div>
                 <div class="article_hashs">
-                    <p class="hash">#{{ $article->hash1_id }}</p>&nbsp;&nbsp;
-                    <p class="hash">#{{ $article->hash2_id }}</p>&nbsp;&nbsp;
-                    <p class="hash">#{{ $article->hash3_id }}</p>
+                    @if($article->hash1_id)
+                    <a href="{{ route('hashtag_result', ['hash' => $article->hash1_id]) }}" class="hash">#{{ $article->hash1_id }}</a>&nbsp;&nbsp;
+                    @endif
+
+                    @if($article->hash2_id)
+                    <a href="{{ route('hashtag_result', ['hash' => $article->hash2_id]) }}" class="hash">#{{ $article->hash2_id }}</a>&nbsp;&nbsp;
+                    @endif
+
+                    @if($article->hash3_id)
+                    <a href="{{ route('hashtag_result', ['hash' => $article->hash3_id]) }}" class="hash">#{{ $article->hash3_id }}</a>
+                    @endif
                 </div>
                 <div class="ctf_container">
                     <div class="comment"><a href="#comment_area"><i class="far fa-comment fa-2x comment-button-l" style="color:#259b25;"></i></a></div>
