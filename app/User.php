@@ -53,10 +53,20 @@ class User extends Authenticatable
     //ゲッター↓
     public function getImageAttribute($image)
     {
-        if(!$image){
-            $image = '1603929194_images.png';
+        if(!$image){ //画像が無かったらデフォルトの画像を表示させる
+            $image = '1603929194_images.png'; //デフォルト画像のパス
         }
         return $image;
+    }
+
+    //ゲッター↓
+    public function getUserNameAttribute($name)
+    {
+        if($this->role == 3){
+            $name = $name.'（卒業生）';
+        }
+
+        return $name;
     }
 
     // //ゲッター
