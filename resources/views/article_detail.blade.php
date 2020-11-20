@@ -99,7 +99,7 @@
                 <h2>コメント一覧</h2>
                 <div class="h2_underLine"></div>
                 @if (!$commentNullCheck)
-                    <div class="c_l_noComment">まだコメントはありません m(_ _)m</div>
+                    <div class="c_l_noComment">まだコメントがありません m(__)m</div>
                 @endif
                 @foreach ($comments as $item)
                     @if (!$loop->first)

@@ -6,6 +6,7 @@ let c_nonActiv = document.getElementsByClassName("c_nonActiv");
 let f_nonActiv = document.getElementsByClassName("f_nonActiv");
 let fa_comments = document.getElementsByClassName("fa-comments");
 let fa_gratipay = document.getElementsByClassName("fa-gratipay");
+let main_right = document.getElementById("main_right");
 
 // 排他制御のために使う変数
 let EX_arg = 0; //１つ前にクリックした要素のインデックスを保持保持する
@@ -31,8 +32,10 @@ for(let j=0; j<article_list.length; j++){
     }, false);
 }
 
-
-
+document.getElementById("pop_background").addEventListener("click", function(){
+    $("#main_right").fadeOut("700");
+    $("#pop_background").fadeOut("300");
+});
 
 
 
@@ -41,6 +44,12 @@ for(let j=0; j<article_list.length; j++){
  */
 // 排他制御するためのやつ
 function exclusionController(buttonType, select){
+    let window_W = document.documentElement.clientWidth;
+    let window_H =document.documentElement.clientHeight;
+    if(window_W <= 720){
+        $("#main_right").fadeIn("1000");
+        $("#pop_background").fadeIn("300");
+    }
     if(EX_firstAction == true){
         EX_firstAction = false;
         document.getElementById("ajax_default").style.display = "none";
@@ -158,6 +167,12 @@ function individualAjax(buttonType, articleID){
                                     + `</div>`
                                 + `</div>`
             }
+            //コメントが付いていなかったら
+            if(!data[0].length){
+                pushComments += `<div class="a_c_details">`
+                                + `<h3>まだコメントがありませんm(__)m</h3>`
+                              + `</div>`
+            }
             document.getElementsByClassName("a_c_title")[0].insertAdjacentHTML("afterend", pushComments);
         }else if(buttonType == "favs"){
             if(document.getElementsByClassName("a_f_details") != null){
@@ -171,6 +186,12 @@ function individualAjax(buttonType, articleID){
                                     + `<a href="/top/individual/${data[0][i].user_id}"> ${data[2][i]}</a>&nbsp;さん`
                                 + `</div>`
                             + `</div>`
+            }
+            //お気に入りされていなかったら
+            if(!data[0].length){
+                pushFavs += `<div class="a_f_details">`
+                            + `<h3>まだお気に入りされていませんm(__)m</h3>`
+                          + `</div>`
             }
             document.getElementsByClassName("a_f_title")[0].insertAdjacentHTML("afterend", pushFavs);
         }

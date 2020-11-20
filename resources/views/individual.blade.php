@@ -10,15 +10,23 @@
 @include('common_view.header', ['title' => 'マイページ'])
 
 @section('content')
+    <div id="me">
+        <img src="/storage/{{ Auth::user()->image }}" alt="">
+        <h2>{{ $user->user_name }}<br><span>のマイページ</span></h2>
+    </div>
+    <div id="myComFav_link">
+        <a href="{{ route('fav_page') }}">&gt;&nbsp;コメント、お気に入りした記事の一覧</a>
+    </div>
     <div class="main">
         <div id="main_left">
-            <div id="me">
-                <img src="/storage/{{ Auth::user()->image }}" alt="">
-                &nbsp;&nbsp;&nbsp;
-                <h1>{{ $user->user_name }}&nbsp;のマイページ</h1>
-                <a href="{{ route('fav_page') }}">コメントがついた記事などを見る</a>
-            </div>
             @foreach ($articles as $article)
+            <div id="superArticles">
+                <div class="article_edit">
+                    <p>{{ $article->created_at }}&nbsp;に作成しました</p>
+                    <div>
+                        <a href="{{ route('edit', $article->id) }}"><i class="fas fa-pencil-alt fa"></i></a>|<a href="{{ route('delete', $article->id) }}"><i class="fas fa-trash-alt fa"></i></a>
+                    </div>
+                </div>
                 <div class="article_list">
                     <div class="a_l_img">
                         <a href="{{ route('article_detail', ['id' => $article->id]) }}">
@@ -32,22 +40,23 @@
                             </a>
                             <input type="hidden" name="" class="delivery_a_id" value="{{ $article->id }}">
                         </div>
-                        <div class="a_l_com-twi-fav">
-                            <i class="fas fa-comments fa-2x c_nonActiv" style="color:#9b9b9b;"></i>
-                            <i class="fab fa-twitter-square fa-2x" style="color:#1da1f2;"></i>
-                            <i class="fab fa-gratipay fa-2x f_nonActiv" style="color:#9b9b9b;"></i>
+                        <div class="a_l_com-twi-fav" style="font-size: 1.6rem;">
+                            <i class="fas fa-comments fa c_nonActiv" style="color:#9b9b9b;"></i>
+                            <i class="fab fa-twitter-square fa" style="color:#1da1f2;"></i>
+                            <i class="fab fa-gratipay fa f_nonActiv" style="color:#9b9b9b;"></i>
                         </div>
                     </div>
-                    <div class="a_l_edit">
-                        <a href="{{ route('edit', $article->id) }}">編集</a>
-                        <form action="{{ route('delete', $article->id) }}" onsubmit="return article_delete(this.name)" name="{{ $article->title }}">
-                            <input type="submit" value="削除">
-                        </form>
-                    </div>
                 </div>
+            </div>
             @endforeach
         </div>
+        <div id="pop_background"></div>
         <div id="main_right">
+            {{-- <div class="batu_button">
+                <div>
+                    <p>×</p>
+                </div>
+            </div> --}}
             <div id="ajax_commentList">
                 <div class="a_c_title">
                     <h2>記事に付いたコメント</h2>
