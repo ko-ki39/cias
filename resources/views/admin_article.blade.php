@@ -17,10 +17,12 @@
     </form>
     <table>
         <th>@sortablelink('id', 'ID')</th>
-        <th>ユーザーID</th>
+        <th>@sortablelink('user_id', 'ユーザーID')</th>
         <th>ユーザー名</th>
         <th>タイトル</th>
         <th>詳細</th>
+        <th>@sortablelink('fav_count', 'いいね数')</th>
+        <th>@sortablelink('comment_count', 'コメント数')</th>
         <th>ハッシュ１</th>
         <th>ハッシュ２</th>
         <th>ハッシュ３</th>
@@ -33,6 +35,8 @@
                 <td>{{ \App\User::find($article->user_id)->user_name }}</td>
                 <td>{{ $article->title }}</td>
                 <td>{{ $article->description }}</td>
+                <td>{{ $article->fav_count }}</td>
+                <td>{{ $article->comment_count }}</td>
                 <td>{{ $article->hash1_id }}</td>
                 <td>{{ $article->hash2_id }}</td>
                 <td>{{ $article->hash3_id }}</td>

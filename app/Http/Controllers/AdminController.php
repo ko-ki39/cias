@@ -24,7 +24,7 @@ class AdminController extends Controller
     }
 
     public function adminUser(){
-        $users = User::all();
+        $users = User::sortable()->get();
 
         return view('admin_user', compact('users'));
     }
@@ -37,7 +37,7 @@ class AdminController extends Controller
     }
 
     public function adminComment(){
-        $comments = Comment::All();
+        $comments = Comment::sortable()->get();
 
         return view('admin_comment', compact('comments'));
     }
