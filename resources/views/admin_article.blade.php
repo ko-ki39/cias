@@ -15,7 +15,7 @@
         <input type="text" name="search" placeholder="検索" id="search">
         <input type="submit" value="検索">
     </form>
-    <table>
+    <table border="1">
         <th>@sortablelink('id', 'ID')</th>
         <th>@sortablelink('user_id', 'ユーザーID')</th>
         <th>ユーザー名</th>
