@@ -101,7 +101,7 @@ body div.main {
 .main #main_left #superArticles .article_edit div {
   padding: 4px 4px 0 4px;
   border: solid 1px #9b9b9b;
-  border-bottom: solid 1px #f2f2f2;
+  border-bottom: solid 1px #fcf0f0;
   background-color: #f9f9f9;
 }
 
@@ -151,6 +151,10 @@ body div.main {
   border: solid 1px #9b9b9b;
   height: 98.5%;
   width: 100%;
+  background-position: center;
+  background-size: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .main #main_left #superArticles .article_list .a_l_details {

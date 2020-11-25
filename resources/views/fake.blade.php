@@ -65,4 +65,5 @@
 
         {{-- @endcomponent --}}
     </div>
+    <script src="/js/fav.js"></script>
 @endsection

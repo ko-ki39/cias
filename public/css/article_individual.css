@@ -1,28 +1,42 @@
+@charset "UTF-8";
+/* モバイルファースト */
 body div.main {
   background-color: #f2f2f2;
 }
 
-.main {
-  padding: 25px 50px;
-}
-
-.main .me {
+.main #me {
+  width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  background-color: #f2f2f2;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  background-color: #575757;
 }
 
-.main .me .me_image {
-  border: black 1px solid;
-  height: 100px;
-  width: 100px;
+.main #me img {
+  margin: 30px 0 0 20px;
+  width: 60px;
+  height: 60px;
+  border: solid 1px #9b9b9b;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
-.main .me p {
-  margin: auto 10px;
-  font-size: 25px;
+.main #me h2 {
+  margin: 45px 0 0 10px;
+  color: #ffffff;
+}
+
+.main #me h2 span {
+  font-size: 0.9rem;
 }
 
 .main .choice {
@@ -98,4 +112,8 @@ body div.main {
 
 .main .article .article_list .title {
   margin: 5px 0 0 35px;
+}
+
+@media screen and (min-width: 481px) {
+  /* 481px以上に適用されるCSS（タブレット用） */
 }

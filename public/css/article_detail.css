@@ -83,7 +83,6 @@
 }
 
 .main .article .sub .title {
-  margin-top: 1.5px;
   background-color: #f2f2f2;
   text-align: center;
   padding: 0.5rem 0.5rem 0 0.5rem;
@@ -91,7 +90,7 @@
 
 .main .article .sub .title h2 {
   font-size: 1.2rem;
-  margin: 0.5rem 0 0 0;
+  margin: 20px 0 15px 0;
 }
 
 .main .article .sub .article_hashs {
@@ -147,7 +146,6 @@
 }
 
 .main .article .text {
-  margin-top: 1.5px;
   background-color: #f2f2f2;
   width: 100%;
   border-radius: 0 0 6px 6px;
@@ -160,6 +158,10 @@
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.main .article .text hr {
+  width: 95%;
 }
 
 .main .article .text .big_image {
@@ -260,7 +262,7 @@
 
 .main .article #comment_list h2 {
   font-size: 1.2rem;
-  margin-left: 0.5rem;
+  margin-left: 20px;
 }
 
 .main .article #comment_list .h2_underLine {
@@ -325,6 +327,11 @@
   font-weight: bold;
   text-decoration: none;
   color: #242323;
+}
+
+.main .article #comment_list hr {
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .main .article #comment_list .c_l_c_detail {

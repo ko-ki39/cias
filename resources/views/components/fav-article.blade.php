@@ -2,18 +2,7 @@
     @foreach ($articles as $article)
         <div class="article_list">
             <p class="date">
-                @if (Illuminate\Support\Facades\DB::table('favs')
-        ->where('article_id', '=', $article->id)
-        ->where('user_id', '=', Auth::id())
-        ->exists() != null)
-                    <div class="fav">
-                        <i id="" class="heart-button-l fa-heart fa-2x tippyLoginFav fas" style="color:#ff0000;"></i>
-                    </div>
-                @else
-                    <div class="fav">
-                        <i id="" class="heart-button-l fa-heart fa-2x tippyGuestFav far" style="color:#ff0000;"></i>
-                    </div>
-                @endif{{ $article->created_at }}
+                {{ $article->created_at }}
             </p>
             <img src="/storage/{{ $article->image }}" class="image">
             <div class="user">

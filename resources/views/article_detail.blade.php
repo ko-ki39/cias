@@ -22,6 +22,7 @@
                     <p class="u_date">投稿した日 : {{ $article->created_at }}</p>
                 </div>
                 <div class="title">
+                    <hr>
                     <h2>{{ $article->title }}</h2>
                 </div>
                 <div class="article_hashs">
@@ -54,6 +55,7 @@
                 </div>
             </div>
             <div class="text">
+                <hr>
                 @for ($i = 0; $i < 6; $i++)
                 {{-- {{ dd($image) }} --}}
                     @if ($image[$i] != null)
@@ -108,7 +110,7 @@
                     <div class="c_l_contents">
                         <div class="c_l_c_info">
                             <a href="{{ route('individual', ['id' => $item->user_id]) }}"><img class="c_l_c_img" src="/storage/{{ Illuminate\Support\Facades\DB::table('users')->where("id", "=", $item->user_id)->first()->image }}" alt=""></a>
-                            <a href="{{ route('individual', ['id' => $item->user_id]) }}" class="c_l_c_name">{{ Illuminate\Support\Facades\DB::table('users')->where("id", "=", $item->user_id)->first()->user_name }}</a>
+                            <a href="{{ route('individual', ['id' => $item->user_id]) }}" class="c_l_c_name" name="kakaka">{{ Illuminate\Support\Facades\DB::table('users')->where("id", "=", $item->user_id)->first()->user_name }}</a>
                         </div>
                         <div class="c_l_c_detail">
                             <pre>{{ $item->detail }}</pre>
@@ -150,4 +152,5 @@
         この記事に、コメントを書く！
     </div>
 @endguest
+    <script src="/js/fav.js"></script>
 @endsection

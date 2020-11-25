@@ -12,14 +12,13 @@
     {{-- この下からbodyの中身を書き始める --}}
 
     <div class="main">
-        <div class="me">
-            <div class="me_image"></div>
-            {{-- {{ dd($user) }} --}}
-            <p>さんのマイページ</p>
+        <div id="me">
+            <img src="/storage/{{ Auth::user()->image }}" alt="">
+            <h2>{{ Auth::user()->user_name }}<br><span>のマイページ</span></h2>
         </div>
         <div class="choice">
-            <p id="comment_button">コメントした記事</p>
             <p id="fav_button">お気に入りした記事</p>
+            <p id="comment_button">コメントした記事</p>
         </div>
         <div class="article">
             <div id="fav_article">
@@ -29,15 +28,6 @@
                 <x-comment-article />
             </div>
         </div>
-    </div>
-    <div class="tippy_template" style="display:none;">
-        この記事を、マイページに保存する！
-    </div>
-    <div class="tippy_template" style="display:none;">
-        この記事を、Twitterに晒す！
-    </div>
-    <div class="tippy_template" style="display:none;">
-        この記事に、コメントを書く！
     </div>
     <script>
         'use strict';
