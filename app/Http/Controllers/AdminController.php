@@ -162,7 +162,7 @@ class AdminController extends Controller
             $user->user_id = $user_id;
             $user->department_id = $request->department;
             $user->time_limit = $request->date;
-            $user->age = $request->age;
+            $user->age = $year;
             $user->password = $password;
 
             $user->save();
