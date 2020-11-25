@@ -47,6 +47,7 @@ class PostObserver
             $old_post->image6,
         ];
 
+        // dd($image_path, $old_image_path);
         for ($i = 0; $i < 6; $i++) {
             if ($old_image_path[$i] != $image_path[$i]) {
                 $old_path = "/public/" . $old_image_path[$i]; //画像削除処理

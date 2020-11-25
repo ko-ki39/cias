@@ -21,17 +21,27 @@
                 <input type="text" name="hash3" value="{{ $article->hash3_id }}">
 
                 <input type="file" class="file" name="image1">
-                <img src="/storage/{{ $article->image }}" alt="">
+                <img src="/storage/{{ $post->image1 }}" alt="">
                 <textarea name="text1" id="" cols="30" rows="10" class="text">{{ $post->text1 }}</textarea>
+
                 <input type="file" class="file" name="image2">
+                <img src="/storage/{{ $post->image2 }}" alt="">
                 <textarea name="text2" id="" cols="30" rows="10" class="text">{{ $post->text2 }}</textarea>
+
                 <input type="file" class="file" name="image3">
+                <img src="/storage/{{ $post->image3 }}" alt="">
                 <textarea name="text3" id="" cols="30" rows="10" class="text">{{ $post->text3 }}</textarea>
+
                 <input type="file" class="file" name="image4">
+                <img src="/storage/{{ $post->image4 }}" alt="">
                 <textarea name="text4" id="" cols="30" rows="10" class="text">{{ $post->text4 }}</textarea>
+
                 <input type="file" class="file" name="image5">
+                <img src="/storage/{{ $post->image5 }}" alt="">
                 <textarea name="text5" id="" cols="30" rows="10" class="text">{{ $post->text5 }}</textarea>
+
                 <input type="file" class="file" name="image6">
+                <img src="/storage/{{ $post->image6 }}" alt="">
                 <textarea name="text6" id="" cols="30" rows="10" class="text">{{ $post->text6 }}</textarea>
 
                 <input type="submit" value="編集する" id="post">
