@@ -21,7 +21,8 @@ Route::group(['middleware' => ['auth', 'can:user-higher']], function () { // 全
     // ↓記事削除用ルート
     Route::get('/top/delete/{id}', 'ArticleController@delete')->name('delete');
 
-
+    //コメント削除用のルート
+    Route::get('/top/article_detail/comment_delete', 'Controller@comment_delete')->name('detail_comment_delete');
 
     Route::get('/top/individual/fav_page', 'ArticleController@favArticle')->name('fav_page');
     // Route::get('/top/individual/comment_page', 'ArticleController@commentArticle');

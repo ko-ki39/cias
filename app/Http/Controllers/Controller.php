@@ -6,6 +6,7 @@ use App\Article;
 use App\Hashtag;
 use App\Http\Requests\ChangePasswordRequest;
 use App\User;
+use App\Comment;
 use App\View\Components\article as ComponentsArticle;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -276,5 +277,16 @@ class Controller extends BaseController
         $articles = Article::where('hash1_id', $hash)->orWhere('hash2_id', $hash)->orWhere('hash3_id', $hash)->latest()->paginate(5);
 
         return view('top', compact('articles'));
+    }
+
+    public function comment_delete(Request $request){ //コメントの削除処理
+         // $article = DB::table('articles')->where('id', $id)->first();
+         $comment = Comment::find($request->comment_id);
+
+         // dd(DB::table('articles'));
+         if ($comment->user_id == Auth::id()) { //本人か確認
+             Comment::find($request->comment_id)->delete();
+         }
+         return redirect()->route('article_detail', ['id' => $request->article_id]);
     }
 }
