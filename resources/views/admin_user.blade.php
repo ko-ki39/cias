@@ -13,9 +13,11 @@
     <table>
         <th>@sortablelink('id', 'ID')</th>
         <th>ログインID</th>
-        <th>名前</th>
+        <th>@sortablelink('user_name', '名前')</th>
         <th>E-mail</th>
-        <th>権限</th>
+        <th>@sortablelink('role', '権限')</th>
+        <th>学科</th>
+        <th>@sortablelink('department_id', '学科ID')</th>
         <th>権限変更</th>
         <th>@sortablelink('created_at', '作成日')</th>
         <th>@sortablelink('updated_at', '更新日')</th>
@@ -26,6 +28,8 @@
                 <td>{{ $user->user_name }}</td>
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->role }}</td>
+                <td>{{ \App\Department::find($user->department_id)->department }}</td>
+                <td>{{ $user->department_id }}</td>
                 <td>
                     {{-- 管理者が一人もいなくなったらまずいからuser_idが1のユーザーは変更できなくする
                     --}}

@@ -15,17 +15,19 @@
         <input type="text" name="search" placeholder="検索" id="search">
         <input type="submit" value="検索">
     </form>
-    <table>
-        <th>ID</th>
-        <th>ユーザーID</th>
+    <table border="1">
+        <th>@sortablelink('id', 'ID')</th>
+        <th>@sortablelink('user_id', 'ユーザーID')</th>
         <th>ユーザー名</th>
         <th>タイトル</th>
         <th>詳細</th>
+        <th>@sortablelink('fav_count', 'いいね数')</th>
+        <th>@sortablelink('comment_count', 'コメント数')</th>
         <th>ハッシュ１</th>
         <th>ハッシュ２</th>
         <th>ハッシュ３</th>
-        <th>作成日</th>
-        <th>更新日</th>
+        <th>@sortablelink('created_at', '作成日')</th>
+        <th>@sortablelink('updated_at', '更新日')</th>
         @foreach ($articles as $key => $article)
             <tr>
                 <td>{{ $article->id }}</td>
@@ -33,6 +35,8 @@
                 <td>{{ \App\User::find($article->user_id)->user_name }}</td>
                 <td>{{ $article->title }}</td>
                 <td>{{ $article->description }}</td>
+                <td>{{ $article->fav_count }}</td>
+                <td>{{ $article->comment_count }}</td>
                 <td>{{ $article->hash1_id }}</td>
                 <td>{{ $article->hash2_id }}</td>
                 <td>{{ $article->hash3_id }}</td>

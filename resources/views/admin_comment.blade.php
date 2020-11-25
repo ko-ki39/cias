@@ -19,13 +19,13 @@
 
     {{-- コメントの情報 --}}
     <table>
-        <th>ID</th>
-        <th>ユーザーID</th>
+        <th>@sortablelink('id', 'ID')</th>
+        <th>@sortablelink('user_id', 'ユーザーId')</th>
         <th>ユーザー名</th>
-        <th>記事ID</th>
+        <th>@sortablelink('article_id', '記事ID')</th>
         <th>記事タイトル</th>
         <th>コメント内容</th>
-        <th>作成日</th>
+        <th>@sortablelink('created_at', '作成日')</th>
         @foreach ($comments as $key => $comment)
             <tr>
                 <td>{{ $comment->id }}</td>

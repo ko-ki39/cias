@@ -49,25 +49,25 @@ class ArticleController extends Controller
             $storagePath = '/app/public/';
             for ($i = 0; $i < 6; $i++) {
                 if ($image_file[$i] != null) {
-                $fileName = time() . "_" . $image_file[$i]->getClientOriginalName();
-                $resizeImage = InterventionImage::make($image_file[$i])
-                ->resize(350, 350, function ($constraint) {
-                    $constraint->aspectRatio();
-                });
+                    $fileName = time() . "_" . $image_file[$i]->getClientOriginalName();
+                    $resizeImage = InterventionImage::make($image_file[$i])
+                        ->resize(350, 350, function ($constraint) {
+                            $constraint->aspectRatio();
+                        });
 
-                // 20KB未満まで圧縮する。
-                // if($resizeImage->filesize() > 20000){
-                //     do{
-                //         if($quality < 15){
-                //             // dd($quality);
-                //             break;
-                //         }
-                //         $quality = $quality - 5;
-                //         $resizeImage->save(storage_path($storagePath . $fileName), $quality);
-                //     }while($resizeImage->filesize() > 20000);
-                // }
-                $resizeImage->save(storage_path($storagePath . $fileName), $quality);
-                $image_path[$i] = basename($fileName); //画像名のみ保存
+                    // 20KB未満まで圧縮する。
+                    // if($resizeImage->filesize() > 20000){
+                    //     do{
+                    //         if($quality < 15){
+                    //             // dd($quality);
+                    //             break;
+                    //         }
+                    //         $quality = $quality - 5;
+                    //         $resizeImage->save(storage_path($storagePath . $fileName), $quality);
+                    //     }while($resizeImage->filesize() > 20000);
+                    // }
+                    $resizeImage->save(storage_path($storagePath . $fileName), $quality);
+                    $image_path[$i] = basename($fileName); //画像名のみ保存
                 } else {
                     $image_path[$i] = null; //nullを入れないと空になる
                 }
@@ -240,9 +240,9 @@ class ArticleController extends Controller
                     if ($image_file[$i] != null) {
                         $fileName = time() . "_" . $image_file[$i]->getClientOriginalName();
                         $resizeImage = InterventionImage::make($image_file[$i])
-                        ->resize(350, 350, function ($constraint) {
-                            $constraint->aspectRatio();
-                        });
+                            ->resize(350, 350, function ($constraint) {
+                                $constraint->aspectRatio();
+                            });
 
                         // 20KB未満まで圧縮する。
                         // if($resizeImage->filesize() > 20000){
@@ -257,9 +257,9 @@ class ArticleController extends Controller
                         // }
                         $resizeImage->save(storage_path($storagePath . $fileName), $quality);
                         $image_path[$i] = basename($fileName); //画像名のみ保存
-                        } else {
-                            $image_path[$i] = null; //nullを入れないと空になる
-                        }
+                    } else {
+                        $image_path[$i] = null; //nullを入れないと空になる
+                    }
                 } else {
                     $image_path[$i] = null; //nullを入れないと空になる
                 }
@@ -283,6 +283,20 @@ class ArticleController extends Controller
             // Post::where('id', $id)->update($update_post);
 
             $post = Post::find($id);
+            $image_list = [
+                $post->image1,
+                $post->image2,
+                $post->image3,
+                $post->image4,
+                $post->image5,
+                $post->image6,
+            ];
+
+            for ($i = 0; $i < count($image_path); $i++) {
+                if (!$image_path[$i]) { //画像が入れられていなかった場合
+                    $image_path[$i] = $image_list[$i]; //元の画像を入れる
+                }
+            }
             $post->image1 = $image_path[0];
             $post->image2 = $image_path[1];
             $post->image3 = $image_path[2];
@@ -464,14 +478,15 @@ class ArticleController extends Controller
     //     return view('')
     // }
 
-    public function favArticle(){
+    public function favArticle()
+    {
         $favs = Fav::where('user_id', Auth::id())->get();
 
-        foreach($favs as $key => $fav){
+        foreach ($favs as $key => $fav) {
             $articles[$key] = Article::find($fav->article_id);
         }
 
-        if(empty($articles)){
+        if (empty($articles)) {
             // なかった場合の表示
             $comment = 'null';
             $articles = null;

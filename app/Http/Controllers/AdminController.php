@@ -24,20 +24,20 @@ class AdminController extends Controller
     }
 
     public function adminUser(){
-        $users = User::all();
+        $users = User::sortable()->get();
 
         return view('admin_user', compact('users'));
     }
 
     public function adminArticle(){
-        $articles = Article::All();
+        $articles = Article::sortable()->get();
 
         return view('admin_article', compact('articles'));
 
     }
 
     public function adminComment(){
-        $comments = Comment::All();
+        $comments = Comment::sortable()->get();
 
         return view('admin_comment', compact('comments'));
     }
@@ -162,7 +162,7 @@ class AdminController extends Controller
             $user->user_id = $user_id;
             $user->department_id = $request->department;
             $user->time_limit = $request->date;
-            $user->age = $request->age;
+            $user->age = $year;
             $user->password = $password;
 
             $user->save();

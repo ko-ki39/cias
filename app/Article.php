@@ -5,9 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 // use App\Events\FavDelete;
+use Kyslik\ColumnSortable\Sortable;
 
 class Article extends Model
 {
+    use Sortable;
     //
     protected $fillable =[
         'user_id', 'title', 'description',
@@ -15,7 +17,7 @@ class Article extends Model
     ];
 
     //ソートに使う
-    public $sortable = ['id', 'user_id', 'created_at', 'updated_at'];
+    public $sortable = ['id', 'user_id', 'fav_count', 'comment_count',  'created_at', 'updated_at'];
     // protected $dispatchesEvents = [
     //     'deleted' => FavDelete::class
     // ];
