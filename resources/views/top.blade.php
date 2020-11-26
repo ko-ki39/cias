@@ -14,6 +14,20 @@
 {{-- この下からbodyの中身を書き始める --}}
 <div class="main">
     <div class="content">
+        <form action="{{ route('search_department') }}">
+            <select name="search_department" id="search_department">
+                <option value="0">すべて</option>
+                <option value="1">オフィスビジネス科（前期）</option>
+                <option value="2">オフィスビジネス科（後期）</option>
+                <option value="3">自動車整備科</option>
+                <option value="4">電気システム科</option>
+                <option value="5">メディア・アート科</option>
+                <option value="6">情報システム科</option>
+                <option value="7">造園ガーデニング科</option>
+                <option value="8">総合実務科（知的障がい者対象）</option>
+            </select>
+            <input type="submit" value="絞り込む">
+        </form>
         <form action="{{ route('search') }}" method="get">
             <div class="search">
                 <select name="search_condition" id="search_condition">
@@ -105,13 +119,13 @@
 </div>
 @guest
     <div class="tippy_template" style="display:none;">
-        この記事を、マイページに<br>保存することが出来ます！<br><small style="font-size: 0.7rem;">( Sorry...   m(__)m <br>訓練生のみが使える機能です )</small>
+        この記事を、マイページに<br>保存することが出来ます！<br><small style="font-size: 0.7rem;">( Sorry... m(__)m <br>訓練生のみが使える機能です )</small>
     </div>
     <div class="tippy_template" style="display:none;">
-        この記事を、Twitterに<br>晒すことが出来ます！<br><small style="font-size: 0.7rem;">( Sorry...   m(__)m <br>訓練生のみが使える機能です )</small>
+        この記事を、Twitterに<br>晒すことが出来ます！<br><small style="font-size: 0.7rem;">( Sorry... m(__)m <br>訓練生のみが使える機能です )</small>
     </div>
     <div class="tippy_template" style="display:none;">
-        この記事に、コメントを<br>書くことが出来ます！<br><small style="font-size: 0.7rem;">( Sorry...   m(__)m <br>訓練生のみが使える機能です )</small>
+        この記事に、コメントを<br>書くことが出来ます！<br><small style="font-size: 0.7rem;">( Sorry... m(__)m <br>訓練生のみが使える機能です )</small>
     </div>
 @else
     <div class="tippy_template" style="display:none;">
@@ -130,9 +144,44 @@
     const sourceClass = document.getElementsByClassName("text");
     var searchText = getParam('search'); //クエリパラメータ取得する関数
     var searchList = getParam('search_condition'); //選択し取得
+    var searchDepartment = getParam('search_department'); //学科
     var regExp = new RegExp(searchText, "g"); //検索したい文字を変換するためお関数
     ;
 
+    //↓絞り込みの条件保持
+    var search = document.getElementById('search_department');
+
+    switch (searchDepartment) {
+        case '1':
+            search.options[1].selected = true;
+            break;
+        case '2':
+            search.options[2].selected = true;
+            break;
+        case '3':
+            search.options[3].selected = true;
+            break;
+        case '4':
+            search.options[4].selected = true;
+            break;
+        case '5':
+            search.options[5].selected = true;
+            break;
+        case '6':
+            search.options[6].selected = true;
+            break;
+        case '7':
+            search.options[7].selected = true;
+            break;
+        case '8':
+            search.options[8].selected = true;
+            break;
+        default:
+            search.options[0].selected = true;
+            break;
+    }
+
+    //↓検索条件の保持
     document.getElementById('search').value = searchText;
 
     var select = document.getElementById('search_condition');
@@ -176,6 +225,9 @@
 </script>
 <script src="/js/hash.js"></script>
 <style>
-    .pagination{ font-weight: bold; }
+    .pagination {
+        font-weight: bold;
+    }
+
 </style>
 @endsection
