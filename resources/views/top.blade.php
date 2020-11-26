@@ -14,7 +14,7 @@
 {{-- この下からbodyの中身を書き始める --}}
 <div class="main">
     <div class="content">
-        <form action="{{ route('search_department') }}">
+        {{-- <form action="{{ route('search_department') }}">
             <select name="search_department" id="search_department">
                 <option value="0">すべて</option>
                 <option value="1">オフィスビジネス科（前期）</option>
@@ -27,8 +27,19 @@
                 <option value="8">総合実務科（知的障がい者対象）</option>
             </select>
             <input type="submit" value="絞り込む">
-        </form>
+        </form> --}}
         <form action="{{ route('search') }}" method="get">
+            <select name="search_department" id="search_department">
+                <option value="0">すべて</option>
+                <option value="1">オフィスビジネス科（前期）</option>
+                <option value="2">オフィスビジネス科（後期）</option>
+                <option value="3">自動車整備科</option>
+                <option value="4">電気システム科</option>
+                <option value="5">メディア・アート科</option>
+                <option value="6">情報システム科</option>
+                <option value="7">造園ガーデニング科</option>
+                <option value="8">総合実務科（知的障がい者対象）</option>
+            </select>
             <div class="search">
                 <select name="search_condition" id="search_condition">
                     <option value="1">すべて</option>

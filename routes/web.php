@@ -97,7 +97,7 @@ Route::get('/top', 'Controller@top')->name('top');
 Route::get('/top/individual/{id}', 'Controller@individual')->name('individual'); //マイページ
 
 //学科での絞り込み
-Route::get('/top/search_department', 'Controller@search_department')->name('search_department');
+// Route::get('/top/search_department', 'Controller@search_department')->name('search_department');
 
 //routeで送ってきたいからnameをつける
 Route::get('/top/article_detail/{id}', 'Controller@article_detail')->name('article_detail'); //記事詳細
