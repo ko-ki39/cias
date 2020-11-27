@@ -50,7 +50,20 @@
         }, false);
 
 
+        //ページ読み込み時に、article_listのアスペクト比を整える
+        let article_list = document.getElementsByClassName("article_list");
+        let www = article_list[0].getBoundingClientRect().width;
 
+        function article_listAspect(){
+            for(let i=0; i<article_list.length; i++){
+                article_list[i].style.height = www;
+                console.log(www);
+            }
+        }
 
+        window.onload = article_listAspect();
+        window.onresize = article_listAspect();
+
+        // window.addEventListener("resize", article_listAspect);
     </script>
 @endsection
