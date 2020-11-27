@@ -25,7 +25,8 @@
                 </select></td>
             <td><input type="number" name="num" id="num" required ></td>
             <td><input type="date" name="date" required></td>
-            <input type="submit" value="作成">
+            <input type="submit" value="作成" onclick="redirect();">
         </form>
     </tr>
+
 @endsection

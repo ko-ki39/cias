@@ -6,6 +6,7 @@ use App\Article;
 use App\Hashtag;
 use App\Http\Requests\ChangePasswordRequest;
 use App\User;
+use App\Comment;
 use App\View\Components\article as ComponentsArticle;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -213,8 +214,27 @@ class Controller extends BaseController
     public function search(Request $request)
     {
 
+        //↓学科での絞り込み
+        $department = $request->input('search_department');
+
+        $query = Article::query();
+        if ($department) {
+            if ($department == 0) { //すべてで検索された場合
+                // $articles = Article::latest()->paginate();
+            } else {
+                $query = $query->whereHas('user', function ($query) use ($department) { //ユーザーの学科をとってきて一致したユーザーの記事をとってくる処理
+                    $query->where('department_id', $department);
+                });
+                // $articles = Article::whereHas('user', function ($query) use ($department) { //ユーザーの学科をとってきて一致したユーザーの記事をとってくる処理
+                //     $query->where('department_id', $department);
+                // })->latest()->paginate();
+            }
+        }
+
+        //↓タイトルなどでの検索処理
         $search = $request->input('search');
         if (isset($search)) {
+
             $hash = substr($request->search, 0, 1);
             if ($hash == '#') {
                 //ハッシュタグをつけて検索した場合
@@ -222,44 +242,64 @@ class Controller extends BaseController
 
                 // $articles = DB::table('articles')->where('hash1_id', $hash_search)->orWhere('hash2_id', $hash_search)->orWhere('hash3_id', $hash_search)->latest()->paginate(5);
 
-                $articles = Article::Where('hash1_id', $hash_search)->orWhere('hash2_id', $hash_search)->orWhere('hash3_id', $hash_search)->latest()->paginate(5);
+                $query->Where('hash1_id', $hash_search)->orWhere('hash2_id', $hash_search)->orWhere('hash3_id', $hash_search);
             } else {
                 $search_condition = $request->search_condition;
+
                 if ($search_condition == 2) { //タイトルで検索
 
                     // $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->latest()->paginate(5);
 
-                    $articles = Article::where('title', 'like', '%' . $search . '%')->latest()->paginate(5);
+                    $query->where('title', 'like', '%' . $search . '%');
                 } else if ($search_condition == 3) { //説明で検索
 
                     // $articles = $articles = DB::table('articles')->where('description', 'like', '%' . $search . '%')->latest()->paginate(5);
 
-                    $articles = Article::where('description', 'like', '%' . $search . '%')->latest()->paginate();
+                    $query->where('description', 'like', '%' . $search . '%')->latest()->paginate();
                 } else if ($search_condition == 4) { //ユーザー名で検索
 
-                    $articles = Article::whereHas('user', function ($query) use ($search) {  //whereHasでuserの条件一致を探す
+                    $query->whereHas('user', function ($query) use ($search) {  //whereHasでuserの条件一致を探す
                         $query->where('user_name', 'like', '%' . $search . '%');
-                    })->latest()->paginate(5);
-
+                    });
                 } else {
                     //全検索
-                    $articles = Article::whereHas('user', function($query) use ($search){
-
-                        $query->where('user_name', 'like', '%' . $search . '%');
-                    })->orWhere('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->latest()->paginate();
-
+                    $query->where(function ($query) use($search) {
+                        $query->whereHas('user', function ($query) use ($search) {
+                            $query->where('user_name', 'like', '%' . $search . '%');
+                        })->orWhere('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%');
+                    });
                 }
             }
             $message = null;
+            // dd($query);
+            $articles = $query->latest()->paginate();
+
             if (empty($articles[0])) {
                 $message = '「' . $request->search . '」<br>の検索結果が見つかりませんでした。';
             }
 
             return view('top', compact('articles', 'message'));
         } else {
-            return redirect()->route('top');
+            $articles = $query->latest()->paginate();
+            return view('top', compact('articles'));
         }
     }
+
+    // public function search_department(Request $request)
+    // {
+    //     // dd($request);
+    //     $department = $request->input('search_department');
+
+    //     if ($department == 0) { //すべてで検索された場合
+    //         $articles = Article::latest()->paginate();
+    //     } else {
+    //         $articles = Article::whereHas('user', function ($query) use ($department) { //ユーザーの学科をとってきて一致したユーザーの記事をとってくる処理
+    //             $query->where('department_id', $department);
+    //         })->latest()->paginate();
+    //     }
+
+    //     return view('top', compact('articles'));
+    // }
 
     public function hashtag()
     { //hashtagのajax受け取りと受け渡し処理
@@ -276,5 +316,17 @@ class Controller extends BaseController
         $articles = Article::where('hash1_id', $hash)->orWhere('hash2_id', $hash)->orWhere('hash3_id', $hash)->latest()->paginate(5);
 
         return view('top', compact('articles'));
+    }
+
+    public function comment_delete(Request $request)
+    { //コメントの削除処理
+        // $article = DB::table('articles')->where('id', $id)->first();
+        $comment = Comment::find($request->comment_id);
+
+        // dd(DB::table('articles'));
+        if ($comment->user_id == Auth::id()) { //本人か確認
+            Comment::find($request->comment_id)->delete();
+        }
+        return redirect()->route('article_detail', ['id' => $request->article_id]);
     }
 }

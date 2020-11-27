@@ -21,7 +21,8 @@ Route::group(['middleware' => ['auth', 'can:user-higher']], function () { // 全
     // ↓記事削除用ルート
     Route::get('/top/delete/{id}', 'ArticleController@delete')->name('delete');
 
-
+    //コメント削除用のルート
+    Route::get('/top/article_detail/comment_delete', 'Controller@comment_delete')->name('detail_comment_delete');
 
     Route::get('/top/individual/fav_page', 'ArticleController@favArticle')->name('fav_page');
     // Route::get('/top/individual/comment_page', 'ArticleController@commentArticle');
@@ -95,7 +96,8 @@ Route::get('/top', 'Controller@top')->name('top');
 //マイページ
 Route::get('/top/individual/{id}', 'Controller@individual')->name('individual'); //マイページ
 
-
+//学科での絞り込み
+// Route::get('/top/search_department', 'Controller@search_department')->name('search_department');
 
 //routeで送ってきたいからnameをつける
 Route::get('/top/article_detail/{id}', 'Controller@article_detail')->name('article_detail'); //記事詳細
