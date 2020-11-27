@@ -5,8 +5,8 @@ function user_create() {
     message = confirm("ユーザーアカウントを生成します");
 
     if (message) {
-        console.log("si");
-        location.replace("http://www.htmq.com/js/location_replace.shtml");
+        // console.log("si");
+        // location.replace("http://localhost/admin");
         return true;
     } else {
 
