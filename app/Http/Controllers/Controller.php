@@ -242,7 +242,7 @@ class Controller extends BaseController
 
                 // $articles = DB::table('articles')->where('hash1_id', $hash_search)->orWhere('hash2_id', $hash_search)->orWhere('hash3_id', $hash_search)->latest()->paginate(5);
 
-                $articles = $query->Where('hash1_id', $hash_search)->orWhere('hash2_id', $hash_search)->orWhere('hash3_id', $hash_search)->latest()->paginate();
+                $query->Where('hash1_id', $hash_search)->orWhere('hash2_id', $hash_search)->orWhere('hash3_id', $hash_search);
             } else {
                 $search_condition = $request->search_condition;
 
@@ -250,26 +250,30 @@ class Controller extends BaseController
 
                     // $articles = DB::table('articles')->where('title', 'like', '%' . $search . '%')->latest()->paginate(5);
 
-                    $articles = $query->where('title', 'like', '%' . $search . '%')->latest()->paginate();
+                    $query->where('title', 'like', '%' . $search . '%');
                 } else if ($search_condition == 3) { //説明で検索
 
                     // $articles = $articles = DB::table('articles')->where('description', 'like', '%' . $search . '%')->latest()->paginate(5);
 
-                    $articles = $query->where('description', 'like', '%' . $search . '%')->latest()->paginate();
+                    $query->where('description', 'like', '%' . $search . '%')->latest()->paginate();
                 } else if ($search_condition == 4) { //ユーザー名で検索
 
-                    $articles = $query->whereHas('user', function ($query) use ($search) {  //whereHasでuserの条件一致を探す
+                    $query->whereHas('user', function ($query) use ($search) {  //whereHasでuserの条件一致を探す
                         $query->where('user_name', 'like', '%' . $search . '%');
-                    })->latest()->paginate();
+                    });
                 } else {
                     //全検索
-                    $articles = $query->whereHas('user', function ($query) use ($search) {
-
-                        $query->where('user_name', 'like', '%' . $search . '%');
-                    })->orWhere('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->latest()->paginate();
+                    $query->where(function ($query) use($search) {
+                        $query->whereHas('user', function ($query) use ($search) {
+                            $query->where('user_name', 'like', '%' . $search . '%');
+                        })->orWhere('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%');
+                    });
                 }
             }
             $message = null;
+            // dd($query);
+            $articles = $query->latest()->paginate();
+
             if (empty($articles[0])) {
                 $message = '「' . $request->search . '」<br>の検索結果が見つかりませんでした。';
             }
