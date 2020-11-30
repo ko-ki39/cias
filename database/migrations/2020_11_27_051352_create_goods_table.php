@@ -17,6 +17,7 @@ class CreateGoodsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('comment_id')->constrained('comments')->onDelete('cascade');
+            $table->unique(['user_id', 'comment_id']);
             $table->timestamps();
         });
     }

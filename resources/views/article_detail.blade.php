@@ -138,9 +138,19 @@
                     <div class="c_l_c_other">
                         {{-- コメントへのいいね --}}
                         @if (Auth::id())
-                            <a class="c_l_c_o_thums" comment_id="{{ $item->id }}" good_comment="0">
-                                <i class="far fa-thumbs-up"></i>
-                            </a>
+                            @if (\App\Good::where('comment_id', $item->id)->where('user_id', Auth::id())->exists()
+                            != null)
+                                {{-- すでにgoodしていた場合 --}}
+                                <a class="c_l_c_o_thums" comment_id="{{ $item->id }}" good_comment="1">
+                                    <i class="far fa-thumbs-down"></i>
+                                </a>
+                            @else
+                                {{-- goodされていない場合 --}}
+                                <a class="c_l_c_o_thums" comment_id="{{ $item->id }}" good_comment="0">
+
+                                    <i class="far fa-thumbs-up"></i>
+                                </a>
+                            @endif
                         @endif
                         <time datetime="{{ $item->created_at }}">{{ $item->created_at }}</time>
                     </div>

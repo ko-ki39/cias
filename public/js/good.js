@@ -22,13 +22,15 @@ $(function() {
                         //クリックしたタグのステータスを変更
                         click_button.attr("good_comment", "1");
                         //クリックしたタグの子の要素を変更(表示されているハートの模様を書き換える)
-                        click_button.children().attr("class", "fas fa-heart");
+                        click_button.children().attr("class", "far fa-thumbs-down");
                     }
                     if (data == 1) {
                         //クリックしたタグのステータスを変更
                         click_button.attr("good_comment", "0");
                         //クリックしたタグの子の要素を変更(表示されているハートの模様を書き換える)
-                        click_button.children().attr("class", "far fa-heart");
+
+
+                        click_button.children().attr("class", "far fa-thumbs-up");
                     }
                 })
             ////正常に処理が完了しなかった場合

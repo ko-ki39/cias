@@ -500,18 +500,18 @@ class ArticleController extends Controller
     public function goodComment(Request $request){
         if ( $request->input('good_comment') == 0) {
             //ステータスが0のときはデータベースに情報を保存
-            $message = '保存';
+            // $message = '保存';
             Good::create([
                 'comment_id' => $request->input('comment_id'),
                  'user_id' => Auth::id(),
             ]);
            //ステータスが1のときはデータベースに情報を削除
         } elseif ( $request->input('good_comment')  == 1 ) {
-            $message = '削除';
+            // $message = '削除';
             Good::where('comment_id', $request->input('comment_id'))
                ->where('user_id', Auth::id())
                ->delete();
        }
-        return  $message;
+        return  $request->input('good_comment');
     }
 }
