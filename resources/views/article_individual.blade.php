@@ -17,8 +17,12 @@
             <h2>{{ Auth::user()->user_name }}<br><span>のマイページ</span></h2>
         </div>
         <div class="choice">
-            <p id="fav_button">お気に入りした記事</p>
-            <p id="comment_button">コメントした記事</p>
+            <div class="c_favs">
+                <p id="fav_button">お気に入りした記事</p>
+            </div>
+            <div class="c_comments">
+                <p id="comment_button">コメントした記事</p>
+            </div>
         </div>
         <div class="article">
             <div id="fav_article">
@@ -53,17 +57,47 @@
         //ページ読み込み時に、article_listのアスペクト比を整える
         let article_list = document.getElementsByClassName("article_list");
         let www = article_list[0].getBoundingClientRect().width;
+        let wwwAFTER;
+        let wwwFLAG = 0;
 
         function article_listAspect(){
-            for(let i=0; i<article_list.length; i++){
-                article_list[i].style.height = www;
-                console.log(www);
+            switch(wwwFLAG){
+                case 0:
+                    for(let i=0; i<article_list.length; i++){
+                        article_list[i].style.height = www;
+                    }
+                    wwwFLAG = 1;
+                    break;
+                case 1:
+                    wwwAFTER = article_list[0].clientWidth;
+                    for(let i=0; i<article_list.length; i++){
+                        article_list[i].style.height = wwwAFTER;
+                    }
+                    break;
             }
+            console.log(`width=${wwwAFTER}`, "resized!!!", `height=${article_list[0].style.height}`);
         }
 
         window.onload = article_listAspect();
-        window.onresize = article_listAspect();
-
+        // window.onresize = article_listAspect();
         // window.addEventListener("resize", article_listAspect);
+        window.addEventListener("resize", article_listAspect, true);
+
+        let c_favs = document.getElementsByClassName("c_favs")[0];
+        let c_comments = document.getElementsByClassName("c_comments")[0];
+
+        function choiceButtonSwitch(e){
+            console.log(e.target.id);
+            if(e.target.id === "fav_button"){
+                c_comments.style.backgroundColor = "#c7c7c7";
+                c_favs.style.backgroundColor = "#f8f8f8";
+            }else{
+                c_comments.style.backgroundColor = "#f8f8f8";
+                c_favs.style.backgroundColor = "#c7c7c7";
+            }
+        }
+
+        c_favs.addEventListener("click", choiceButtonSwitch, true);
+        c_comments.addEventListener("click", choiceButtonSwitch, true);
     </script>
 @endsection
