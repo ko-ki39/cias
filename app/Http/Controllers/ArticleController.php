@@ -508,9 +508,9 @@ class ArticleController extends Controller
            //ステータスが1のときはデータベースに情報を削除
         } elseif ( $request->input('good_comment')  == 1 ) {
             // $message = '削除';
-            Good::where('comment_id', $request->input('comment_id'))
-               ->where('user_id', Auth::id())
-               ->delete();
+            $good = Good::where('comment_id', $request->input('comment_id'))
+               ->where('user_id', Auth::id())->first();
+            Good::find($good->id)->delete();
        }
         return  $request->input('good_comment');
     }

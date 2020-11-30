@@ -150,7 +150,8 @@
 
                                     <i class="far fa-thumbs-up"></i>
                                 </a>
-                            @endif
+                                @endif
+                                <pre>{{ $item->good_count }}</pre>
                         @endif
                         <time datetime="{{ $item->created_at }}">{{ $item->created_at }}</time>
                     </div>

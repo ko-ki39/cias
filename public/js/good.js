@@ -17,7 +17,7 @@ $(function() {
             //正常にコントローラーの処理が完了した場合
             .done(function(data) //コントローラーからのリターンされた値をdataとして指定
                 {
-                    console.log(data);
+
                     if (data == 0) {
                         //クリックしたタグのステータスを変更
                         click_button.attr("good_comment", "1");
