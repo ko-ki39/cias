@@ -135,6 +135,34 @@ body{
     }
 }
 
+#pop_background{
+    display: none;
+    position: fixed;
+    top: 0;
+    background-color: gray;
+    opacity: 0.6;
+    width: 100%;
+    height: 100%;
+    z-index: 666;
+}
+
+#main_modal{
+    display: none;
+    width: 86%;
+    height: 74%;
+    padding: 8px;
+    // margin: auto;
+    border: solid 1px #9b9b9b;
+    border-radius: 12px;
+    position: fixed;
+    top: 11%;
+    left: 4.3%;
+    background-color: #ffffff;
+    z-index: 667;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
 @media screen and (min-width: 481px) {
     /* 481px以上に適用されるCSS（タブレット用） */
     .main {
