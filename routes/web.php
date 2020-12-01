@@ -45,6 +45,8 @@ Route::group(['middleware' => ['auth', 'can:user-higher']], function () { // 全
 Route::group(['middleware' => ['auth', 'can:authorized-higher']], function () { //許可されたものと管理者のみ
     // ↓記事作成用のルート
 
+    Route::post('/top/article_detail/good_comment', 'ArticleController@goodComment')->name('good_comment'); //コメントへの goodボタンの処理
+
     Route::post("/top/article_detail/post_comment", "ArticleController@commnetAdd"); //コメントを投稿する
     Route::get('/top/post', 'ArticleController@postForm')->name('post');
     Route::post('/top/upload', 'ArticleController@upload')->name('upload');

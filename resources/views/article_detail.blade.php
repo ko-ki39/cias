@@ -6,6 +6,7 @@
     {{-- css等の読み込み場所 --}}
     <link rel="stylesheet" href="/css/side_bar.css" type="text/css">
     <link rel="stylesheet" href="/css/article_detail.css" type="text/css">
+    <script src="/js/good.js"></script>
 @endsection
 
 @include('common_view.header', ['title' => '記事詳細ページ'])
@@ -125,20 +126,33 @@
                     <div class="c_l_c_detail">
                         <pre>{{ $item->detail }}</pre>
 
-                        @if (Illuminate\Support\Facades\Auth::id() == $item->user_id) {{-- コメントを投稿したユーザーと同一人物だったら --}}
-                        <form action="{{ route('detail_comment_delete') }}">
-                            <input type="hidden" value="{{ $article->id }}" name="article_id">
-                            <input type="hidden" value="{{ $item->id }}" name="comment_id">
-                            <input type="submit" value="削除">
-                        </form>
-
+                        @if (Illuminate\Support\Facades\Auth::id() == $item->user_id)
+                            {{-- コメントを投稿したユーザーと同一人物だったら --}}
+                            <form action="{{ route('detail_comment_delete') }}">
+                                <input type="hidden" value="{{ $article->id }}" name="article_id">
+                                <input type="hidden" value="{{ $item->id }}" name="comment_id">
+                                <input type="submit" value="削除">
+                            </form>
                         @endif
-
                     </div>
                     <div class="c_l_c_other">
-                        <div class="c_l_c_o_thums">
-                            <i class="far fa-thumbs-up"></i> | <i class="far fa-thumbs-down"></i>
-                        </div>
+                        {{-- コメントへのいいね --}}
+                        @if (Auth::id())
+                            @if (\App\Good::where('comment_id', $item->id)->where('user_id', Auth::id())->exists()
+                            != null)
+                                {{-- すでにgoodしていた場合 --}}
+                                <a class="c_l_c_o_thums" comment_id="{{ $item->id }}" good_comment="1">
+                                    <i class="far fa-thumbs-down"></i>
+                                </a>
+                            @else
+                                {{-- goodされていない場合 --}}
+                                <a class="c_l_c_o_thums" comment_id="{{ $item->id }}" good_comment="0">
+
+                                    <i class="far fa-thumbs-up"></i>
+                                </a>
+                                @endif
+                                <pre>{{ $item->good_count }}</pre>
+                        @endif
                         <time datetime="{{ $item->created_at }}">{{ $item->created_at }}</time>
                     </div>
                 </div>
@@ -172,4 +186,5 @@
         この記事に、コメントを書く！
     </div>
 @endguest
+
 @endsection

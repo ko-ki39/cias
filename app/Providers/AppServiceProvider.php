@@ -5,10 +5,12 @@ namespace App\Providers;
 use App\Article;
 use App\Comment;
 use App\Fav;
+use App\Good;
 use App\Library\CommonClass;
 use App\Observers\ArticleObserver;
 use App\Observers\CommentObserver;
 use App\Observers\FavObserver;
+use App\Observers\GoodObserver;
 use App\Observers\PostObserver;
 use App\Observers\UserObserver;
 use App\User;
@@ -39,5 +41,6 @@ class AppServiceProvider extends ServiceProvider
         Comment::observe(CommentObserver::class);
         Fav::observe(FavObserver::class);
         Post::observe(PostObserver::class);
+        Good::observe(GoodObserver::class);
     }
 }
