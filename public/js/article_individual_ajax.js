@@ -109,22 +109,22 @@ function hideModal(){
 /**
  * ajax
  */
-function article_individualAjax(buttonType, articleID){
+function article_individualAjax(modalType, articleID){
     $.ajaxSetup({
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
     });
     $.ajax({
-        url: "/top/individual/cfAjax/",
+        url: "/top/individual/fav_page/fp_cfAjax/",
         type: "GET",
         data: {
-            "buttonType": buttonType,
+            "modalType": modalType,
             "articleID": articleID,
         }
     }).done(function(data){
         console.log(data);
 
         //commentアイコンをクリックしてたら、モーダルにコメント一覧を表示する
-        if(buttonType == "comments"){
+        if(modalType == "comments"){
             if(document.getElementsByClassName("a_c_details") != null){
                 $(".a_c_details").remove();
             }
@@ -153,7 +153,7 @@ function article_individualAjax(buttonType, articleID){
             document.getElementsByClassName("a_c_title")[0].insertAdjacentHTML("afterend", pushComments);
 
         //favアイコンをクリックしてたら、モーダルにコメント一覧を表示する
-        }else if(buttonType == "favs"){
+        }else if(modalType == "favs"){
             if(document.getElementsByClassName("a_f_details") != null){
                 $(".a_f_details").remove();
             }
