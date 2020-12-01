@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
+use Carbon\Carbon;
 
 class Comment extends Model
 {
@@ -15,6 +16,14 @@ class Comment extends Model
     protected $fillable = [
         "user_id", "article_id", "detail",
     ];
+
+    //ゲッター↓
+    public function getCreatedAtAttribute($date)
+    {
+        // dd($date);
+
+        return Carbon::parse($date)->format('Y年m月d日 H時i分s秒');//created_atの取得時のフォーマット変更
+    }
 
     public function user()
     {

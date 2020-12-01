@@ -100,8 +100,7 @@
                             rel="nofollow" target="_blank" rel="noopener noreferrer"><i
                                 class="fab fa-twitter-square fa-2x twitter-button-l" style="color:#1da1f2;"></i></a>
                     </div>
-                    @if (Illuminate\Support\Facades\DB::table('favs')
-        ->where('article_id', '=', $article->id)
+                    @if (\App\Fav::where('article_id', '=', $article->id)
         ->where('user_id', '=', Auth::id())
         ->exists() != null)
                         <div class="fav">

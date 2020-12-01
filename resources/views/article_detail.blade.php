@@ -49,8 +49,7 @@
                         href="http://twitter.com/share?text={{ $article->title }}&url={{ route('article_detail', ['id' => $article->id]) }}&hashtags={{ $article->hash1_id }}"
                         rel="nofollow" target="_blank" rel="noopener noreferrer"><i
                             class="fab fa-twitter-square fa-2x twitter-button-l" style="color:#1da1f2;"></i></a></div>
-                @if (Illuminate\Support\Facades\DB::table('favs')
-        ->where('article_id', '=', $article->id)
+                @if (\App\Fav::where('article_id', '=', $article->id)
         ->where('user_id', '=', Auth::id())
         ->exists() != null)
                     <div class="fav">
@@ -118,10 +117,10 @@
                 <div class="c_l_contents">
                     <div class="c_l_c_info">
                         <a href="{{ route('individual', ['id' => $item->user_id]) }}"><img class="c_l_c_img"
-                                src="/storage/{{ Illuminate\Support\Facades\DB::table('users')->where('id', '=', $item->user_id)->first()->image }}"
+                                src="/storage/{{ \App\User::where('id', '=', $item->user_id)->first()->image }}"
                                 alt=""></a>
                         <a href="{{ route('individual', ['id' => $item->user_id]) }}"
-                            class="c_l_c_name">{{ Illuminate\Support\Facades\DB::table('users')->where('id', '=', $item->user_id)->first()->user_name }}</a>
+                            class="c_l_c_name">{{ \App\User::where('id', '=', $item->user_id)->first()->user_name }}</a>
                     </div>
                     <div class="c_l_c_detail">
                         <pre>{{ $item->detail }}</pre>
