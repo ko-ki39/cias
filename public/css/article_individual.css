@@ -45,21 +45,27 @@ body div.main {
 }
 
 .main .choice {
+  width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
   background-color: #f8f8f8;
-  text-align: center;
   font-weight: bold;
+  text-align: center;
 }
 
-.main .choice .c_favs {
+.main .choice #fav_button {
   width: 50%;
+  padding: 12px 0;
 }
 
-.main .choice .c_comments {
+.main .choice #comment_button {
   width: 50%;
+  padding: 12px 0;
   background-color: #d3d3d3;
 }
 
@@ -70,7 +76,7 @@ body div.main {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin: auto;
+  margin: 15px auto 40px auto;
 }
 
 .main .article #fav_article {
@@ -158,7 +164,7 @@ body div.main {
 
 .main .article .article_list .a_l_detail .a_l_d_title p {
   margin: 3px 0 0 3px;
-  font-size: 0.6rem;
+  font-size: 0.65rem;
 }
 
 .main .article .article_list .a_l_detail:hover {
@@ -233,6 +239,7 @@ body div.main {
     font-size: 0.9rem;
   }
   .main .choice {
+    width: 100%;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -241,6 +248,17 @@ body div.main {
         -ms-flex-pack: distribute;
             justify-content: space-around;
     background-color: #f8f8f8;
+    font-weight: bold;
+    text-align: center;
+  }
+  .main .choice #fav_button {
+    width: 50%;
+    padding: 12px 0;
+  }
+  .main .choice #comment_button {
+    width: 50%;
+    padding: 12px 0;
+    background-color: #d3d3d3;
   }
   .main .article {
     background-color: #f8f8f8;
@@ -249,7 +267,6 @@ body div.main {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    margin: auto;
   }
   .main .article #fav_article {
     width: 100%;
@@ -349,6 +366,7 @@ body div.main {
     font-size: 0.9rem;
   }
   .main .choice {
+    width: 100%;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -357,6 +375,17 @@ body div.main {
         -ms-flex-pack: distribute;
             justify-content: space-around;
     background-color: #f8f8f8;
+    font-weight: bold;
+    text-align: center;
+  }
+  .main .choice #fav_button {
+    width: 50%;
+    padding: 12px 0;
+  }
+  .main .choice #comment_button {
+    width: 50%;
+    padding: 12px 0;
+    background-color: #d3d3d3;
   }
   .main .article {
     background-color: #f8f8f8;
@@ -365,7 +394,6 @@ body div.main {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    margin: auto;
   }
   .main .article #fav_article {
     width: 100%;

@@ -33,15 +33,19 @@ body{
         }
     }
     .choice{
+        width: 100%;
         display: flex;
+        justify-content: space-around;
         background-color: #f8f8f8;
-        text-align: center;
         font-weight: bold;
-        .c_favs{
+        text-align: center;
+        #fav_button{
             width: 50%;
+            padding: 12px 0;
         }
-        .c_comments{
+        #comment_button{
             width: 50%;
+            padding: 12px 0;
             background-color: #d3d3d3;
         }
     }
@@ -50,7 +54,7 @@ body{
         background-color: #f8f8f8;
         width: 95%;
         display: flex;
-        margin: auto;
+        margin: 15px auto 40px auto;
         #fav_article{
             width: 100%;
             display: flex;
@@ -101,7 +105,7 @@ body{
                     overflow: hidden;
                     p{
                         margin: 3px 0 0 3px;
-                        font-size: 0.6rem;
+                        font-size: 0.65rem;
                     }
                 }
             }
@@ -159,17 +163,28 @@ body{
                 }
             }
         }
-        .choice {
+        .choice{
+            width: 100%;
             display: flex;
             justify-content: space-around;
             background-color: #f8f8f8;
+            font-weight: bold;
+            text-align: center;
+            #fav_button{
+                width: 50%;
+                padding: 12px 0;
+            }
+            #comment_button{
+                width: 50%;
+                padding: 12px 0;
+                background-color: #d3d3d3;
+            }
         }
         .article {
             // border: black solid 1px;
             background-color: #f8f8f8;
             width: 95%;
             display: flex;
-            margin: auto;
             #fav_article {
                 width: 100%;
                 display: flex;
@@ -241,17 +256,28 @@ body{
                 }
             }
         }
-        .choice {
+        .choice{
+            width: 100%;
             display: flex;
             justify-content: space-around;
             background-color: #f8f8f8;
+            font-weight: bold;
+            text-align: center;
+            #fav_button{
+                width: 50%;
+                padding: 12px 0;
+            }
+            #comment_button{
+                width: 50%;
+                padding: 12px 0;
+                background-color: #d3d3d3;
+            }
         }
         .article {
             // border: black solid 1px;
             background-color: #f8f8f8;
             width: 95%;
             display: flex;
-            margin: auto;
             #fav_article {
                 width: 100%;
                 display: flex;

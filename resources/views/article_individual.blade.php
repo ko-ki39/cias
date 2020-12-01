@@ -17,11 +17,11 @@
             <h2>{{ Auth::user()->user_name }}<br><span>のマイページ</span></h2>
         </div>
         <div class="choice">
-            <div class="c_favs">
-                <p id="fav_button">お気に入りした記事</p>
+            <div id="fav_button">
+                お気に入りした記事
             </div>
-            <div class="c_comments">
-                <p id="comment_button">コメントした記事</p>
+            <div id="comment_button">
+                コメントした記事
             </div>
         </div>
         <div class="article">
@@ -33,6 +33,8 @@
             </div>
         </div>
     </div>
+    <div id="pop_background"></div>
+    <div id="main_modal"></div>
     <script>
         'use strict';
 
@@ -83,21 +85,23 @@
         // window.addEventListener("resize", article_listAspect);
         window.addEventListener("resize", article_listAspect, true);
 
-        let c_favs = document.getElementsByClassName("c_favs")[0];
-        let c_comments = document.getElementsByClassName("c_comments")[0];
+
+
+        let choice = document.getElementsByClassName("choice")[0];
 
         function choiceButtonSwitch(e){
             console.log(e.target.id);
             if(e.target.id === "fav_button"){
-                c_comments.style.backgroundColor = "#c7c7c7";
-                c_favs.style.backgroundColor = "#f8f8f8";
+                comment_button.style.backgroundColor = "#c7c7c7";
+                fav_button.style.backgroundColor = "#f8f8f8";
             }else{
-                c_comments.style.backgroundColor = "#f8f8f8";
-                c_favs.style.backgroundColor = "#c7c7c7";
+                comment_button.style.backgroundColor = "#f8f8f8";
+                fav_button.style.backgroundColor = "#c7c7c7";
             }
         }
 
-        c_favs.addEventListener("click", choiceButtonSwitch, true);
-        c_comments.addEventListener("click", choiceButtonSwitch, true);
+        // c_favs.addEventListener("click", choiceButtonSwitch, true);
+        // c_comments.addEventListener("click", choiceButtonSwitch, true);
+        choice.addEventListener("click", function(e){choiceButtonSwitch(e)}, true);
     </script>
 @endsection
