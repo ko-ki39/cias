@@ -47,8 +47,44 @@ class Controller extends BaseController
         // $article = DB::table('articles')->where('id', $id)->first();
         $article = Article::find($id);
 
+        // $articles = DB::table('articles')->get();
+        $sorts = $article->comments()->latest()->get();
+        foreach ($sorts as $sort) { //多次元配列にデータを用意
+            if ($sort->good_count < 5) { //goodが5ないコメント
+                $times_sort[] = [$sort->id, $sort->created_at];
+            } else {
+                $comments_sort[] = [$sort->id, $sort->good_count, $sort->created_at];
+            }
+        }
+
+        if(isset($comments_sort)){
+            foreach ($comments_sort as $key => $comment_sort) { //goodが5以上あるコメント用のソート
+                $sorted[$key] = $comment_sort[1];
+                $time_sorted[$key] = $comment_sort[2];
+            }
+            array_multisort($sorted, SORT_DESC, $time_sorted, SORT_DESC, $comments_sort); //ソート処理 goodの値が同じだった場合、新しい順で表示
+
+            foreach ($comments_sort as $ranking) { //記事をとってきて配列に直す
+                $comments[] = Comment::where('id', $ranking[0])->first();
+            }
+        }
+
+        if(isset($times_sort)){
+            foreach($times_sort as $key => $time_sort){//goodが5ないコメント用のソート
+                $sorted[$key] = $time_sort[1];
+            }
+            array_multisort($sorted, SORT_DESC, $times_sort); //ソート処理
+
+            foreach ($times_sort as $ranking) { //記事をとってきて配列に直す
+                $comments[] = Comment::where('id', $ranking[0])->first();
+            }
+        }
+
+
+        // dd($comments);
+
         //modelのリレーションを利用したデータの取り出し↓
-        $comments = $article->comments()->latest()->get();
+        // $comments = $article->comments()->latest()->get();
         $commentNullCheck = $article->comments()->first();
         $user = $article->user()->first();
         $post = $article->post()->first();
@@ -263,7 +299,7 @@ class Controller extends BaseController
                     });
                 } else {
                     //全検索
-                    $query->where(function ($query) use($search) {
+                    $query->where(function ($query) use ($search) {
                         $query->whereHas('user', function ($query) use ($search) {
                             $query->where('user_name', 'like', '%' . $search . '%');
                         })->orWhere('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%');
