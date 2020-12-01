@@ -22,7 +22,7 @@ class Comment extends Model
     {
         // dd($date);
 
-        return Carbon::parse($date)->format('Y年m月d日 H時i分s秒');//created_atの取得時のフォーマット変更
+        return Carbon::parse($date)->format('Y年m月d日 H時i分');//created_atの取得時のフォーマット変更
     }
 
     public function user()
