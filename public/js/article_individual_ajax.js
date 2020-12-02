@@ -40,6 +40,8 @@ let wwwFLAG = 0;
 function article_listAspect(){
     switch(wwwFLAG){
         case 0:
+            wwwAFTER = article_list[0].clientWidth;
+            console.log(wwwAFTER, www);
             for(let i=0; i<article_list.length; i++){
                 article_list[i].style.height = www;
             }
@@ -85,8 +87,10 @@ for(let i=0; i<article_list.length; i++){
 pop_background.addEventListener("click", hideModal, true);
 
 function displayModal(comfav){
+    // let modal_centering = 
     $("#pop_background").fadeIn("300");
     $("#main_modal").fadeIn("1000");
+    console.log(main_modal.clientWidth);
     switch(comfav){
         case "fav":
             m_m_fav.style.display = "block";

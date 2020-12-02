@@ -1,5 +1,9 @@
 @charset "UTF-8";
 /* モバイルファースト */
+:calcWidth {
+  --yoko-amari: calc(width - 100%);
+}
+
 body div.main {
   background-color: #f8f8f8;
 }
@@ -220,8 +224,7 @@ body div.main {
   border: solid 1px #9b9b9b;
   border-radius: 12px;
   position: fixed;
-  top: 11%;
-  left: 4.3%;
+  left: calc(width - 100%);
   background-color: #ffffff;
   z-index: 667;
   overflow-y: scroll;
@@ -353,6 +356,19 @@ body div.main {
   .main .article .article_list .a_l_detail .image img {
     width: 100%;
     height: 100%;
+  }
+  #main_modal {
+    display: none;
+    width: 73%;
+    height: 70%;
+    padding: 8px;
+    border: solid 1px #9b9b9b;
+    border-radius: 12px;
+    position: fixed;
+    background-color: #ffffff;
+    z-index: 667;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
   }
 }
 

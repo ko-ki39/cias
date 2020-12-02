@@ -1,5 +1,9 @@
 /* モバイルファースト */
 
+:calcWidth{
+    --yoko-amari: calc(width - 100%);
+}
+
 body{
     div.main{
         background-color: #f8f8f8;
@@ -155,8 +159,7 @@ body{
     border: solid 1px #9b9b9b;
     border-radius: 12px;
     position: fixed;
-    top: 11%;
-    left: 4.3%;
+    left: calc(width - 100%);
     background-color: #ffffff;
     z-index: 667;
     overflow-y: scroll;
@@ -254,6 +257,21 @@ body{
                 }
             }
         }
+    }
+
+    #main_modal{
+        display: none;
+        width: 73%;
+        height: 70%;
+        padding: 8px;
+        // margin: auto;
+        border: solid 1px #9b9b9b;
+        border-radius: 12px;
+        position: fixed;
+        background-color: #ffffff;
+        z-index: 667;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
     }
 }
 
