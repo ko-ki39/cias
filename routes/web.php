@@ -80,9 +80,9 @@ Route::group(['middleware' => ['auth', 'can:admin-only']], function () { // 管�
     Route::get('/admin/admin_comment/', 'AdminController@adminComment')->name('admin_comment');
 
     //記事やユーザーの削除
-    Route::get('/admin/user_delete/{id}', 'AdminController@userDelete')->name('user_delete');
-    Route::get('/admin/article_delete/{id}', 'AdminController@articleDelete')->name('article_delete');
-    Route::get('/admin/comment_delete/{id}', 'AdminController@commentDelete')->name('comment_delete');
+    Route::post('/admin/user_delete', 'AdminController@userDelete')->name('user_delete');
+    Route::post('/admin/article_delete', 'AdminController@articleDelete')->name('article_delete');
+    Route::post('/admin/comment_delete', 'AdminController@commentDelete')->name('comment_delete');
 
     //admin内での検索機能
     Route::get('/admin/admin_user/search', 'AdminController@userSearch')->name('admin_user_search');
