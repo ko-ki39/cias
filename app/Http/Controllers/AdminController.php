@@ -179,10 +179,10 @@ class AdminController extends Controller
             'Content-Type' => 'text/plain',
             'Cache-control' => 'no-store' //キャッシュを残さないように
         ];
-        $path = 'user_info/'.$file_name; //ファイルのパス
+        $path = Storage::path('user_info/'.$file_name); //ファイルのパス
 // dd(Storage::download($path, $file_name, $headers));
         // dd(Storage::files('user_info'));
-        return Storage::download($path, $file_name, $headers);
+        return response()->download($path, $file_name, $headers)->deleteFileAfterSend();
         // return redirect()->route('admin');
     }
 
