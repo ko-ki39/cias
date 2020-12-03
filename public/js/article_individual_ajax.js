@@ -72,13 +72,13 @@ let m_m_fav = document.getElementById("m_m_fav");
 let m_m_com = document.getElementById("m_m_com");
 
 for(let i=0; i<article_list.length; i++){
-    article_list[i].addEventListener("click", function(){
+    article_list[i].addEventListener("click", function(e){
         switch(EX_choiceStatus){
             case 0:
-                displayModal("fav");
+                displayModal("fav", i);
                 break;
             case 1:
-                displayModal("com");
+                displayModal("com", i);
                 break;
         }
     }, true);
@@ -86,20 +86,24 @@ for(let i=0; i<article_list.length; i++){
 
 pop_background.addEventListener("click", hideModal, true);
 
-function displayModal(comfav){
-    // let modal_centering = 
-    $("#pop_background").fadeIn("300");
-    $("#main_modal").fadeIn("1000");
-    console.log(main_modal.clientWidth);
-    switch(comfav){
-        case "fav":
-            m_m_fav.style.display = "block";
-            m_m_com.style.display = "none";
-            break;
-        case "com":
-            m_m_fav.style.display = "none";
-            m_m_com.style.display = "block";
-            break;
+function displayModal(comfav, article_num){
+    if(comfav == "com"){
+        $("#pop_background").fadeIn("300");
+        $("#main_modal").fadeIn("1000");
+    
+        let modal_centering_width = (pop_background.offsetWidth - main_modal.offsetWidth)/2;
+        let modal_centering_height = (pop_background.offsetHeight - main_modal.offsetHeight)/2;
+        main_modal.style.left = modal_centering_width;
+        main_modal.style.top = modal_centering_height;
+    }
+
+    console.log(main_modal.offsetWidth, pop_background.offsetWidth, modal_centering_width, article_list[article_num].firstElementChild.value);
+
+    //対象のarticle_id
+    let article_id = article_list[article_num].firstElementChild.value;
+
+    if(comfav == "com"){
+        article_individualAjax("comments", article_id);
     }
 }
 

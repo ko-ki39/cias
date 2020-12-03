@@ -24,6 +24,7 @@ Route::group(['middleware' => ['auth', 'can:user-higher']], function () { // 全
 
 
     Route::get('/top/individual/fav_page', 'ArticleController@favArticle')->name('fav_page');
+    Route::get('/top/individual/fav_page/fp_cfAjax', 'ArticleController@a_i_commentFavAjax');
     // Route::get('/top/individual/comment_page', 'ArticleController@commentArticle');
     // Route::get('/top/password_edit', 'Controller@password_edit')->name('password_edit'); //パスワード編集画面
 

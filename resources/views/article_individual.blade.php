@@ -35,8 +35,7 @@
     </div>
     <div id="pop_background"></div>
     <div id="main_modal">
-        <div>タイトルだけ表示する</div>
-        <div id="m_m_fav">fav</div>
+        <div id="m_m_title">{{ $articles[0]->title }}</div>
         <div id="m_m_com">com</div>
     </div>
     <script src="/js/article_individual_ajax.js"></script>

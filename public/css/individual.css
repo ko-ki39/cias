@@ -228,8 +228,6 @@ body div.main {
   border: solid 1px #9b9b9b;
   border-radius: 12px;
   position: fixed;
-  top: 11%;
-  left: 4.3%;
   background-color: #ffffff;
   z-index: 667;
   overflow-y: scroll;

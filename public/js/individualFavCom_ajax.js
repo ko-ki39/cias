@@ -52,6 +52,11 @@ function exclusionController(buttonType, select){
     if(window_W <= 720){
         $("#main_right").fadeIn("1000");
         $("#pop_background").fadeIn("300");
+
+        let modal_centering_width = (pop_background.offsetWidth - main_right.offsetWidth)/2;
+        let modal_centering_height = (pop_background.offsetHeight - main_right.offsetHeight)/2;
+        main_right.style.left = modal_centering_width;
+        main_right.style.top = modal_centering_height;
     }
 
     //最初にクリックした場合
