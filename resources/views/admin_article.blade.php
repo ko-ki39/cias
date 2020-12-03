@@ -16,6 +16,7 @@
         <input type="submit" value="検索">
     </form>
     <form action="{{ route('article_delete') }}" method="post" onsubmit="return article_delete()">
+        @csrf
         <input type="submit" value="まとめて削除する">
         <table border="1">
             <th>@sortablelink('id', 'ID')</th>

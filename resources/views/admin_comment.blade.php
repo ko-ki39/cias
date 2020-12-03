@@ -18,6 +18,8 @@
     </form>
     {{-- コメントの情報 --}}
     <form action="{{ route('comment_delete') }}" method="post" onsubmit="return comment_delete()">
+        @csrf
+
         <input type="submit" value="まとめて削除">
         <table>
             <th>@sortablelink('id', 'ID')</th>
