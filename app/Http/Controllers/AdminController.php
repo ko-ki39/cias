@@ -48,25 +48,25 @@ class AdminController extends Controller
         ];
 
         User::where('id', $id)->update($admin_change);
-        return redirect()->route('admin');
+        return redirect()->route('admin_user');
     }
 
     public function userDelete($id)
     {
         User::find($id)->delete();
-        return redirect()->route('admin');
+        return redirect()->route('admin_user');
     }
 
     public function articleDelete($id)
     {
         Article::find($id)->delete();
-        return redirect()->route('admin');
+        return redirect()->route('admin_article');
     }
 
     public function commentDelete($id)
     {
         Comment::find($id)->delete();
-        return redirect()->route('admin');
+        return redirect()->route('admin_comment');
     }
 
     public function generate_page()
@@ -182,7 +182,7 @@ class AdminController extends Controller
         $path = Storage::path('user_info/'.$file_name); //ファイルのパス
 // dd(Storage::download($path, $file_name, $headers));
         // dd(Storage::files('user_info'));
-        return response()->download($path, $file_name, $headers)->deleteFileAfterSend();
+        return response()->download($path, $file_name, $headers)->deleteFileAfterSend(); //ファイルをダウンロードと同時に削除
         // return redirect()->route('admin');
     }
 

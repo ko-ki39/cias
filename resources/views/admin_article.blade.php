@@ -6,6 +6,7 @@
     <a href="{{ route('auto_admin_change') }}">有効期限が過ぎたユーザーの権限変更</a>
     <a href="{{ route('admin_user') }}">ユーザー情報</a>
     <a href="{{ route('admin_comment') }}">コメント情報</a>
+    <a href="">まとめて削除</a>
     {{-- 記事の情報↓ --}}
     <form action="{{ route('admin_article_search') }}">
         <select name="search_list" id="search_list">
@@ -42,9 +43,10 @@
                 <td>{{ $article->hash3_id }}</td>
                 <td>{{ $article->created_at }}</td>
                 <td>{{ $article->updated_at }}
-                    <form action="{{ route('article_delete', ['id' => $article->id]) }}" onsubmit="return article_delete()" name="{{ $article->title }}">
+                    <form action="{{ route('article_delete', ['id' => $article->id]) }}" onsubmit="return article_delete(this.name)" name="{{ $article->title }}">
                         <input type="submit" value="削除">
                     </form>
+
             </tr>
         @endforeach
     </table>
