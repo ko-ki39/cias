@@ -11,7 +11,7 @@ class Comment extends Model
     use Sortable;
 
     //ソートに使うよう
-    public $sortable = ['id', 'user_id', 'article_id', 'created_at', 'updated_at'];
+    public $sortable = ['id', 'user_id', 'article_id', 'good_count', 'created_at', 'updated_at'];
 
     protected $fillable = [
         "user_id", "article_id", "detail",

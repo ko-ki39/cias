@@ -28,6 +28,7 @@
             <th>@sortablelink('article_id', '記事ID')</th>
             <th>記事タイトル</th>
             <th>コメント内容</th>
+            <th>@sortablelink('good_count', 'good数')</th>
             <th>@sortablelink('created_at', '作成日')</th>
             @foreach ($comments as $key => $comment)
                 <tr>
@@ -37,6 +38,7 @@
                     <td>{{ $comment->article_id }}</td>
                     <td>{{ \App\Article::find($comment->article_id)->title }}</td>
                     <td>{{ $comment->detail }}</td>
+                    <td>{{ $comment->good_count }}</td>
                     <td>{{ $comment->created_at }}<input type="checkbox" name="delete[]" value="{{ $comment->id }}"></td>
 
                 </tr>
