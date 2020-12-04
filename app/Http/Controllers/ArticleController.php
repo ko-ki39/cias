@@ -346,7 +346,7 @@ class ArticleController extends Controller
         if ($article->user_id == Auth::id()) { //本人か確認
             Article::find($id)->delete();
         }
-        return redirect()->route('top');
+        return back(); //直前のページにリダイレクト
     }
 
     public function favOperation(Request $request)

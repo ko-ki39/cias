@@ -16,6 +16,8 @@
             <th>@sortablelink('id', 'ID')</th>
             <th>ログインID</th>
             <th>@sortablelink('user_name', '名前')</th>
+            <th>@sortablelink('article_count', '記事数')</th>
+            <th>@sortablelink('comment_count', 'コメント数')</th>
             <th>E-mail</th>
             <th>@sortablelink('role', '権限')</th>
             <th>学科</th>
@@ -28,6 +30,8 @@
                     <td>{{ $user->id }}</td>
                     <td>{{ $user->user_id }}</td>
                     <td>{{ $user->user_name }}</td>
+                    <td>{{ $user->article_count }}</td>
+                    <td>{{ $user->comment_count }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->role }}</td>
                     <td>{{ \App\Department::find($user->department_id)->department }}</td>
