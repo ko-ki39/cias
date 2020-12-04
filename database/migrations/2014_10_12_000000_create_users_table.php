@@ -22,6 +22,8 @@ class CreateUsersTable extends Migration
             $table->foreignId('department_id')->constrained('departments')->onDelete('cascade');
             $table->tinyInteger('age');
             $table->text('introduction')->nullable();
+            $table->integer('article_count')->default(0);
+            $table->integer('comment_count')->default(0);
             $table->dateTime('time_limit')->nullable();
             $table->tinyInteger('role')->default(2);
             $table->string('password');
