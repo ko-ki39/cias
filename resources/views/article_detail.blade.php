@@ -109,8 +109,8 @@
             <div class="h2_underLine"></div>
             @if (!$commentNullCheck)
                 <div class="c_l_noComment">まだコメントがありません m(__)m</div>
-            @endif
-            @foreach ($comments as $item)
+                @else
+                @foreach ($comments as $item)
                 @if (!$loop->first)
                     <hr>
                 @endif
@@ -156,6 +156,8 @@
                     </div>
                 </div>
             @endforeach
+            @endif
+
         </div>
     </div>
     {{-- @component('components.side-bar') --}}

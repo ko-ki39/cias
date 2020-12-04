@@ -83,6 +83,9 @@ class Controller extends BaseController
 
         // dd($comments);
 
+        if(empty($comments)){
+            $comments = null;
+        }
         //modelのリレーションを利用したデータの取り出し↓
         // $comments = $article->comments()->latest()->get();
         $commentNullCheck = $article->comments()->first();
