@@ -12,7 +12,7 @@
     </form>
     <form action="{{ route('user_delete') }}" method="post" onsubmit="return user_delete()">
         <input type="submit" value="まとめて削除">
-        <table>
+        <table border="1">
             <th>@sortablelink('id', 'ID')</th>
             <th>ログインID</th>
             <th>@sortablelink('user_name', '名前')</th>
@@ -53,8 +53,6 @@
                         @endif
 
                     </td>
-                    <td>{{ $user->secret_question_id }}</td>
-                    <td>{{ $user->secret_answer }}</td>
                     <td>{{ $user->created_at }}</td>
                     <td>{{ $user->updated_at }}
                         @if ($user->id != 1)

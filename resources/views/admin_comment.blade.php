@@ -21,7 +21,7 @@
         @csrf
 
         <input type="submit" value="まとめて削除">
-        <table>
+        <table border="1">
             <th>@sortablelink('id', 'ID')</th>
             <th>@sortablelink('user_id', 'ユーザーId')</th>
             <th>ユーザー名</th>
