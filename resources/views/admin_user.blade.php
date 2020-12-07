@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'ユーザー情報ページ')
 
 @section('content')
     {{-- ユーザーの情報↓ --}}

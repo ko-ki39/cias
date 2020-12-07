@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-        <title>とどめの野菜ジュースを喰らいな</title>
+        <title>訓練校キャリア情報</title>
         <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
         <link href="{{ asset('/css/welcome.css') }}" rel="stylesheet">
         <link href="{{ asset('/css/hamburger.css') }}" rel="stylesheet">

@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'アカウント生成ページ')
 
 @section('content')
     {{-- アカウント生成用のページ --}}

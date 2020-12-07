@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/css/post_page.css" type="text/css">
 @endsection
 
-@include('common_view.header', ['title' => '記事編集ページ'])
+@section('title', '記事編集ページ')
 
 @section('content')
     {{-- この下からbodyの中身を書き始める --}}
