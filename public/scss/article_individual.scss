@@ -65,6 +65,13 @@ body{
             flex-direction: row;
             flex-wrap: wrap;
             // justify-content: space-around;
+            a{
+                text-decoration: none;
+                color: #2422a7;
+            }
+            a:visited{
+                color: #2422a7;
+            }
         }
         #comment_article{
             width: 100%;
@@ -160,10 +167,75 @@ body{
     border-radius: 12px;
     position: fixed;
     left: calc(width - 100%);
-    background-color: #ffffff;
+    background-color: #f3f4f7;
     z-index: 667;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
+    .m_m_d_title{
+        h2{
+            font-size: 1.1rem;
+            a{
+                text-decoration: none;
+                color: #2422a7;
+            }
+            a:visited{
+                color: #2422a7;
+            }
+        }
+    }
+    .m_m_details{
+        margin-top: 5px;
+        padding: 6px;
+        display: flex;
+        flex-direction: column;
+        // border: solid 1px #D9DADE;
+        box-shadow: 0.3px 0.3px 8px #BCBEC1, -0.3px -0.3px 8px #FFFFFF;
+        .m_m_d_userInfo{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height: 36px;
+            img{
+                width: 36px;
+                height: 36px;
+                border: solid 1px black;
+                border-radius: 50%;
+                background-position: center;
+                background-size: cover;
+                object-fit: cover;
+            }
+            p{
+                margin-left: 10px;
+                font-size: 0.85rem;
+            }
+        }
+        .m_m_d_detail{
+            margin-left: 24px;
+            pre{
+                white-space: pre-wrap;
+                margin: 0.8em 0;
+                font-size: 0.95rem;
+            }
+        }
+        .m_m_d_time{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            a{
+                text-decoration: none;
+                color: #2422a7;
+                font-size: 0.75rem;
+            }
+            a:visited{
+                color: #2422a7;
+            }
+            p{
+                margin: 0.7em 0;
+                font-size: 0.75rem;
+            }
+        }
+    }
 }
 
 @media screen and (min-width: 481px) {

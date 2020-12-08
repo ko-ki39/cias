@@ -34,10 +34,7 @@
         </div>
     </div>
     <div id="pop_background"></div>
-    <div id="main_modal">
-        <div id="m_m_title">{{ $articles[0]->title }}</div>
-        <div id="m_m_com">com</div>
-    </div>
+    <div id="main_modal"></div>
     <script src="/js/article_individual_ajax.js"></script>
 
 @endsection

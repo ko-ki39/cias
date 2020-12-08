@@ -330,6 +330,10 @@ body div.main {
   height: 42px;
   border: solid 1px black;
   border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .main #main_right #ajax_commentList .a_c_details .a_c_d_userInfo a:nth-child(2) {

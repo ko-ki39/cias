@@ -483,6 +483,29 @@ class ArticleController extends Controller
     }
 
     public function a_i_commentFavAjax(){
-        
+        $user_id = Auth::id();
+        $articleID = $_GET["articleID"];
+        // $articleID = "4";
+
+        $comFavGets = DB::table("comments")
+            ->where("article_id", "=", $articleID)
+            ->where("user_id", "=", $user_id)
+            ->orderByDesc("created_at")
+            ->get();
+
+        //やり方が分からないので、DB::tableで記述しておきます
+        $userInfo = DB::table("users")
+            ->select("user_name", "image")
+            ->where("id", "=", $user_id)
+            ->first();
+
+        $articleTitle = DB::table("articles")
+            ->select("title")
+            ->where("id", "=", $articleID)
+            ->first();
+
+        return response()->json([
+                $comFavGets, $userInfo, $articleTitle
+            ]);
     }
 }

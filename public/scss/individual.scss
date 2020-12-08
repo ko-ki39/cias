@@ -221,6 +221,9 @@ body{
                             height: 42px;
                             border: solid 1px black;
                             border-radius: 50%;
+                            background-position: center;
+                            background-size: cover;
+                            object-fit: cover;
                         }
                     }
                     a:nth-child(2){

@@ -71,43 +71,33 @@ let main_modal = document.getElementById("main_modal");
 let m_m_fav = document.getElementById("m_m_fav");
 let m_m_com = document.getElementById("m_m_com");
 
+//favのときはモーダルいらないことを、後から気づきました^^;
 for(let i=0; i<article_list.length; i++){
     article_list[i].addEventListener("click", function(e){
-        switch(EX_choiceStatus){
-            case 0:
-                displayModal("fav", i);
-                break;
-            case 1:
-                displayModal("com", i);
-                break;
-        }
+        displayModal(i);
     }, true);
 }
 
 pop_background.addEventListener("click", hideModal, true);
 
-function displayModal(comfav, article_num){
-    if(comfav == "com"){
-        $("#pop_background").fadeIn("300");
-        $("#main_modal").fadeIn("1000");
-    
-        let modal_centering_width = (pop_background.offsetWidth - main_modal.offsetWidth)/2;
-        let modal_centering_height = (pop_background.offsetHeight - main_modal.offsetHeight)/2;
-        main_modal.style.left = modal_centering_width;
-        main_modal.style.top = modal_centering_height;
-    }
+function displayModal(article_num){
+    $("#pop_background").fadeIn("300");
+    $("#main_modal").fadeIn("1000");
 
-    console.log(main_modal.offsetWidth, pop_background.offsetWidth, modal_centering_width, article_list[article_num].firstElementChild.value);
+    let modal_centering_width = (pop_background.offsetWidth - main_modal.offsetWidth)/2;
+    let modal_centering_height = (pop_background.offsetHeight - main_modal.offsetHeight)/2;
+    main_modal.style.left = modal_centering_width;
+    main_modal.style.top = modal_centering_height;
 
     //対象のarticle_id
     let article_id = article_list[article_num].firstElementChild.value;
+    console.log(article_id);
 
-    if(comfav == "com"){
-        article_individualAjax("comments", article_id);
-    }
+    article_individualAjax(article_id);
 }
 
 function hideModal(){
+    $("#main_modal").children().remove();
     $("#pop_background").fadeOut("300");
     $("#main_modal").fadeOut("700");
 }
@@ -117,7 +107,7 @@ function hideModal(){
 /**
  * ajax
  */
-function article_individualAjax(modalType, articleID){
+function article_individualAjax(articleID){
     $.ajaxSetup({
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
     });
@@ -125,63 +115,43 @@ function article_individualAjax(modalType, articleID){
         url: "/top/individual/fav_page/fp_cfAjax/",
         type: "GET",
         data: {
-            "modalType": modalType,
             "articleID": articleID,
         }
     }).done(function(data){
         console.log(data);
+        console.log(
+            `Title = ${data[2].title}\n`,
+            `myImage = ${data[1].image}\n`,
+            `myName = ${data[1].user_name}\n`,
+            `detial = ${data[0][0].detail}\n`,
+            `created_at = ${data[0][0].created_at}`
+        );
 
-        //commentアイコンをクリックしてたら、モーダルにコメント一覧を表示する
-        if(modalType == "comments"){
-            if(document.getElementsByClassName("a_c_details") != null){
-                $(".a_c_details").remove();
-            }
-            let pushComments = ``;
-            for(let i=0; i<data[0].length; i++){
-                pushComments += `<div class="a_c_details">`
-                                    + `<div class="a_c_d_userInfo">`
-                                        + `<a href="/top/individual/${data[0][i].user_id}"><img src="/storage/${data[1][i]}" alt=""></a>`
-                                        + `<a href="/top/individual/${data[0][i].user_id}"> ${data[2][i]}</a>&nbsp;さん`
-                                    + `</div>`
-                                    + `<div class="a_c_d_commentDetail">`
-                                        + `<pre>${data[0][i].detail}</pre>`
-                                    + `</div>`
-                                    + `<div class="a_c_d_other">`
-                                        + `<a href="/top/article_detail/${data[0][i].article_id}">記事に移動</a>`
-                                        + `<p>${data[0][i].created_at}</p>`
-                                    + `</div>`
+        if(main_modal.firstElementChild != null){
+            $("#main_modal").children().remove();
+        }
+        
+        let pushCommentsTitle = `<div class="m_m_d_title"><h2><a href="/top/article_detail/${articleID}">${data[2].title}</a></h2></div>`;
+        let pushComments = ``;
+
+        for(let i=0; i<data[0].length; i++){
+            pushComments +=   `<div class="m_m_details">`
+                                + `<div class="m_m_d_userInfo">`
+                                    + `<img src="/storage/${data[1].image}" alt="">`
+                                    + `<p>${data[1].user_name}</p>`
                                 + `</div>`
-            }
-            //コメントが付いていなかったら
-            if(!data[0].length){
-                pushComments += `<div class="a_c_details">`
-                                + `<h3>まだコメントがありませんm(__)m</h3>`
-                              + `</div>`
-            }
-            document.getElementsByClassName("a_c_title")[0].insertAdjacentHTML("afterend", pushComments);
-
-        //favアイコンをクリックしてたら、モーダルにコメント一覧を表示する
-        }else if(modalType == "favs"){
-            if(document.getElementsByClassName("a_f_details") != null){
-                $(".a_f_details").remove();
-            }
-            let pushFavs = ``;
-            for(let i=0; i<data[0].length; i++){
-                pushFavs += `<div class="a_f_details">`
-                                + `<div class="a_f_d_userInfo">`
-                                    + `<a href="/top/individual/${data[0][i].user_id}"><img src="/storage/${data[1][i]}" alt=""></a>`
-                                    + `<a href="/top/individual/${data[0][i].user_id}"> ${data[2][i]}</a>&nbsp;さん`
+                                + `<div class="m_m_d_detail">`
+                                    + `<pre>${data[0][i].detail}</pre>`
+                                + `</div>`
+                                + `<div class="m_m_d_time">`
+                                    + `<a href="/top/article_detail/${articleID}?cfs=${data[0][i].detail}">このコメントまで移動</a>`
+                                    + `<p>${data[0][i].created_at}</p>`
                                 + `</div>`
                             + `</div>`
-            }
-            //お気に入りされていなかったら
-            if(!data[0].length){
-                pushFavs += `<div class="a_f_details">`
-                            + `<h3>まだお気に入りされていませんm(__)m</h3>`
-                          + `</div>`
-            }
-            document.getElementsByClassName("a_f_title")[0].insertAdjacentHTML("afterend", pushFavs);
         }
+        main_modal.insertAdjacentHTML("afterbegin", pushCommentsTitle);
+        main_modal.insertAdjacentHTML("beforeend", pushComments);
+        
     }).fail(function(data){
         console.log("OMG...");
     });
