@@ -45,7 +45,7 @@
                                 <div class="col-md-6">
                                     <input id="email" type="email" value="{{ $user->email }}"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}" autocomplete="email">
+                                        value="{{ old('email') }}" autocomplete="email" placeholder="登録すると通知が来るようになります">
 
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
