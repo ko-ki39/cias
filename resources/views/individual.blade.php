@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/css/individual.css" type="text/css">
 @endsection
 
-@include('common_view.header', ['title' => 'マイページ'])
+@section('title', 'マイページ')
 
 @section('content')
     <div id="me">

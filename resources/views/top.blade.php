@@ -2,14 +2,14 @@
 
     @extends('common_view.common')
 
+
+@section('title', '記事一覧ページ')
 @section('import')
     {{-- css等の読み込み場所 --}}
     <link rel="stylesheet" href="/css/side_bar.css" type="text/css">
     <link rel="stylesheet" href="/css/top.css" type="text/css">
-    <script src=""></script>
 @endsection
 
-@include('common_view.header', ['title' => 'トップページ'])
 
 {{-- この下からbodyの中身を書き始める --}}
 <div class="main">
@@ -100,8 +100,7 @@
                             rel="nofollow" target="_blank" rel="noopener noreferrer"><i
                                 class="fab fa-twitter-square fa-2x twitter-button-l" style="color:#1da1f2;"></i></a>
                     </div>
-                    @if (Illuminate\Support\Facades\DB::table('favs')
-        ->where('article_id', '=', $article->id)
+                    @if (\App\Fav::where('article_id', '=', $article->id)
         ->where('user_id', '=', Auth::id())
         ->exists() != null)
                         <div class="fav">

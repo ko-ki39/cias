@@ -22,21 +22,21 @@
                 .u_image {
                     width: 3.3rem;
                     height: 3.3rem;
-                    img{
-                      height: 3.3rem;
-                      width: 3.3rem;
-                      border-radius: 50%;
-                      background-position: center;
-                      background-size: cover;
-                      object-fit: cover;
+                    img {
+                        height: 3.3rem;
+                        width: 3.3rem;
+                        border-radius: 50%;
+                        background-position: center;
+                        background-size: cover;
+                        object-fit: cover;
                     }
                 }
-                .u_name{
+                .u_name {
                     margin-left: 0.5rem;
                     font-size: 1rem;
                     font-weight: bold;
                 }
-                .u_date{
+                .u_date {
                     width: 100%;
                     font-size: 0.8rem;
                     margin-bottom: 0;
@@ -47,12 +47,12 @@
                 background-color: #f2f2f2;
                 text-align: center;
                 padding: 0.5rem 0.5rem 0 0.5rem;
-                h2{
+                h2 {
                     font-size: 1.2rem;
                     margin: 0.5rem 0 0 0;
                 }
             }
-            .article_hashs{
+            .article_hashs {
                 // height: 2rem;
                 padding: 0 1rem;
                 background-color: #f2f2f2;
@@ -62,20 +62,20 @@
                 flex-wrap: wrap;
                 font-size: 0.8em;
             }
-            .ctf_container{
+            .ctf_container {
                 padding: 10px 15px;
                 background-color: #f2f2f2;
                 display: flex;
                 flex-direction: row;
                 justify-content: flex-end;
                 // border-radius: 0 0 6px 6px;
-                .comment{
+                .comment {
                     margin-right: 15px;
                 }
-                .twitter{
+                .twitter {
                     margin-right: 15px;
                 }
-                .fav{
+                .fav {
                     cursor: pointer;
                 }
             }
@@ -95,13 +95,13 @@
                 background-size: contain;
                 object-fit: contain;
             }
-            p{
+            p {
                 margin-bottom: 1rem;
                 padding: 0.5rem;
                 word-wrap: break-word;
             }
         }
-        #comment_area{
+        #comment_area {
             background-color: #f2f2f2;
             border-radius: 6px;
             width: 100%;
@@ -109,17 +109,17 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            h2{
+            h2 {
                 font-size: 1.2rem;
                 margin: 1rem 0 0.5rem 0.5rem;
             }
-            .c_a_u_info{
+            .c_a_u_info {
                 margin: 0 0 0.5rem 0.5rem;
                 display: flex;
                 flex-direction: row;
                 flex-flow: wrap;
                 align-items: center;
-                .c_u_img{
+                .c_u_img {
                     width: 2.7rem;
                     height: 2.7rem;
                     border-radius: 50%;
@@ -127,56 +127,56 @@
                     background-size: cover;
                     object-fit: cover;
                 }
-                .c_u_name{
+                .c_u_name {
                     margin-left: 10px;
                 }
             }
-            .c_a_u_comment{
+            .c_a_u_comment {
                 margin: auto;
                 text-align: center;
-                textarea{
+                textarea {
                     width: 96%;
                     height: 8rem;
                 }
             }
-            .c_a_u_submit{
+            .c_a_u_submit {
                 margin: 0.5rem 0.5rem 1rem 75%;
             }
         }
-        #comment_list{
+        #comment_list {
             background-color: #f2f2f2;
             border-radius: 6px;
             width: 100%;
             margin: 2rem auto 0 auto;
-            h2{
+            h2 {
                 font-size: 1.2rem;
                 margin-left: 0.5rem;
             }
-            .h2_underLine{
+            .h2_underLine {
                 border-bottom: solid 1.5px #969696;
                 margin-bottom: 1rem;
             }
-            .c_l_contents:last-child{
+            .c_l_contents:last-child {
                 padding-bottom: 1rem;
             }
-            .c_l_noComment{
+            .c_l_noComment {
                 font-weight: bold;
                 margin: 1.5rem 0 1.5rem 1.5rem;
                 color: rgb(56, 55, 1);
             }
-            .c_l_contents{
+            .c_l_contents {
                 border-radius: 6px;
-                .c_l_c_info{
+                .c_l_c_info {
                     margin-left: 0.5rem;
                     display: flex;
                     flex-direction: row;
                     flex-flow: wrap;
                     align-items: center;
-                    a:nth-child(1){
+                    a:nth-child(1) {
                         width: 2.5rem;
                         height: 2.5rem;
                     }
-                    .c_l_c_img{
+                    .c_l_c_img {
                         width: 2.5rem;
                         height: 2.5rem;
                         border-radius: 50%;
@@ -186,7 +186,7 @@
                         background-size: cover;
                         object-fit: cover;
                     }
-                    .c_l_c_name{
+                    .c_l_c_name {
                         margin-left: 0.5rem;
                         font-size: 0.9em;
                         font-weight: bold;
@@ -195,22 +195,22 @@
                     }
                 }
             }
-            .c_l_c_detail{
+            .c_l_c_detail {
                 width: 100%;
-                pre{
+                pre {
                     width: 94%;
                     white-space: pre-wrap;
                     margin: 0.5rem 0.5rem 1rem 1rem;
                 }
             }
-            .c_l_c_other{
+            .c_l_c_other {
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-start;
-                .c_l_c_o_thums{
+                .c_l_c_o_thums {
                     margin-left: 0.75rem;
                 }
-                time{
+                time {
                     margin-left: auto;
                     margin-right: 0.5rem;
                     font-size: 0.75rem;
@@ -221,13 +221,13 @@
 }
 
 @media screen and (min-width: 481px) {
-	/* 481px以上に適用されるCSS（タブレット用） */
+    /* 481px以上に適用されるCSS（タブレット用） */
 }
 
-@media screen and (min-width: 720px){
+@media screen and (min-width: 720px) {
     .main {
         width: 100%;
-        .side_bar{
+        .side_bar {
             margin-top: 39px;
         }
         .article {
@@ -256,20 +256,20 @@
                     .u_image {
                         // border: dashed 1px #f00;
                         height: 60px;
-                        img{
-                          height: 60px;
-                          border-radius: 50%;
-                          background-position: center;
-                          background-size: cover;
-                          object-fit: cover;
+                        img {
+                            height: 60px;
+                            border-radius: 50%;
+                            background-position: center;
+                            background-size: cover;
+                            object-fit: cover;
                         }
                     }
-                    .u_name{
+                    .u_name {
                         margin-left: 20px;
                         font-size: 1.2em;
                         font-weight: bold;
                     }
-                    .u_date{
+                    .u_date {
                         margin-left: auto;
                     }
                 }
@@ -279,7 +279,7 @@
                     text-align: center;
                     // border-radius: 6px 6px 0 0;
                 }
-                .article_hashs{
+                .article_hashs {
                     height: 30px;
                     padding: 0 15px;
                     background-color: #f2f2f2;
@@ -288,20 +288,20 @@
                     flex-wrap: wrap;
                     font-size: 0.8em;
                 }
-                .ctf_container{
+                .ctf_container {
                     padding: 10px 15px;
                     background-color: #f2f2f2;
                     display: flex;
                     flex-direction: row;
                     justify-content: flex-end;
                     // border-radius: 0 0 6px 6px;
-                    .comment{
+                    .comment {
                         margin-right: 15px;
                     }
-                    .twitter{
+                    .twitter {
                         margin-right: 15px;
                     }
-                    .fav{
+                    .fav {
                         cursor: pointer;
                     }
                 }
@@ -321,25 +321,25 @@
                     background-size: contain;
                     object-fit: contain;
                 }
-                p{
+                p {
                     margin: 0 0 30px 0;
                     word-wrap: break-word;
                 }
             }
-            #comment_area{
+            #comment_area {
                 background-color: #f2f2f2;
                 border-radius: 6px;
                 width: 100%;
                 margin: 20px auto 0 auto;
-                h2{
+                h2 {
                     margin: 10px auto 10px auto;
                 }
-                .c_a_u_info{
+                .c_a_u_info {
                     display: flex;
                     flex-direction: row;
                     flex-flow: wrap;
                     align-items: center;
-                    .c_u_img{
+                    .c_u_img {
                         width: 45px;
                         height: 45px;
                         border-radius: 50%;
@@ -347,32 +347,32 @@
                         background-size: cover;
                         object-fit: cover;
                     }
-                    .c_u_name{
+                    .c_u_name {
                         margin-left: 10px;
                     }
                 }
-                .c_a_u_comment{
+                .c_a_u_comment {
                     width: 95%;
-                    textarea{
+                    textarea {
                         width: 100%;
                     }
                 }
             }
-            #comment_list{
+            #comment_list {
                 background-color: #f2f2f2;
                 border-radius: 6px;
                 width: 100%;
                 margin: 20px auto 0 auto;
-                .c_l_contents{
+                .c_l_contents {
                     // border: 1px solid gray;
                     border-radius: 8px;
                     padding: 5px 10px;
-                    .c_l_c_info{
+                    .c_l_c_info {
                         display: flex;
                         flex-direction: row;
                         flex-flow: wrap;
                         align-items: center;
-                        .c_l_c_img{
+                        .c_l_c_img {
                             width: 45px;
                             height: 45px;
                             border-radius: 100%;
@@ -382,7 +382,7 @@
                             background-size: cover;
                             object-fit: cover;
                         }
-                        .c_l_c_name{
+                        .c_l_c_name {
                             margin-left: 10px;
                             font-size: 1.05em;
                             font-weight: bold;
@@ -391,16 +391,16 @@
                         }
                     }
                 }
-                .c_l_c_detail{
+                .c_l_c_detail {
                     width: 500px;
-                    pre{
+                    pre {
                         width: 100%;
                         margin: 5px auto 5px 10px;
                         white-space: pre-wrap;
                     }
                 }
-                .c_l_c_other{
-                    time{
+                .c_l_c_other {
+                    time {
                         margin-left: 333px;
                         font-size: 0.75em;
                     }

@@ -14,8 +14,8 @@ function user_create() {
     }
 }
 
-function user_delete(user) {
-    message = confirm(user + "このユーザーを削除しますか？");
+function user_delete() {
+    message = confirm("選択したユーザーを削除しますか？");
 
     if (message) {
         return true;
@@ -25,7 +25,7 @@ function user_delete(user) {
 }
 
 function article_delete(title) {
-    message = confirm(title + " この記事を削除しますか？");
+    message = confirm("選択した記事を削除しますか？");
     if (message) {
         return true;
     } else {
@@ -52,7 +52,7 @@ function article_upload() {
 }
 
 function comment_delete() {
-    message = confirm("コメントを削除しますか？");
+    message = confirm("選択したコメントを削除しますか？");
     if (message) {
         return true;
     } else {

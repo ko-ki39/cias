@@ -1,5 +1,8 @@
 @extends('common_view.common')
 
+@section('title')
+{{ $user->user_name }}さんのページ
+@endsection
 @section('import')
     {{-- css等の読み込み場所 --}}
     <link rel="stylesheet" href="/css/side_bar.css" type="text/css">
@@ -7,7 +10,6 @@
     <link rel="stylesheet" href="/css/fake.css" type="text/css">
 
 @endsection
-@include('common_view.header', ['title' => '他人のページ'])
 
 @section('content')
     {{-- この下からbodyの中身を書き始める --}}

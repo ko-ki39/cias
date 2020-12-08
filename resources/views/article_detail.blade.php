@@ -9,7 +9,9 @@
     <script src="/js/good.js"></script>
 @endsection
 
-@include('common_view.header', ['title' => '記事詳細ページ'])
+@section('title')
+    {{ $article->title }}
+@endsection
 
 {{-- この下からbodyの中身を書き始める --}}
 <div class="main">
@@ -49,8 +51,7 @@
                         href="http://twitter.com/share?text={{ $article->title }}&url={{ route('article_detail', ['id' => $article->id]) }}&hashtags={{ $article->hash1_id }}"
                         rel="nofollow" target="_blank" rel="noopener noreferrer"><i
                             class="fab fa-twitter-square fa-2x twitter-button-l" style="color:#1da1f2;"></i></a></div>
-                @if (Illuminate\Support\Facades\DB::table('favs')
-        ->where('article_id', '=', $article->id)
+                @if (\App\Fav::where('article_id', '=', $article->id)
         ->where('user_id', '=', Auth::id())
         ->exists() != null)
                     <div class="fav">
@@ -110,53 +111,59 @@
             <div class="h2_underLine"></div>
             @if (!$commentNullCheck)
                 <div class="c_l_noComment">まだコメントがありません m(__)m</div>
-            @endif
-            @foreach ($comments as $item)
-                @if (!$loop->first)
-                    <hr>
-                @endif
-                <div class="c_l_contents">
-                    <div class="c_l_c_info">
-                        <a href="{{ route('individual', ['id' => $item->user_id]) }}"><img class="c_l_c_img"
-                                src="/storage/{{ Illuminate\Support\Facades\DB::table('users')->where('id', '=', $item->user_id)->first()->image }}"
-                                alt=""></a>
-                        <a href="{{ route('individual', ['id' => $item->user_id]) }}"
-                            class="c_l_c_name">{{ Illuminate\Support\Facades\DB::table('users')->where('id', '=', $item->user_id)->first()->user_name }}</a>
-                    </div>
-                    <div class="c_l_c_detail">
-                        <pre>{{ $item->detail }}</pre>
+            @else
+                @foreach ($comments as $item)
+                    @if (!$loop->first)
+                        <hr>
+                    @endif
+                    <div class="c_l_contents">
+                        <div class="c_l_c_info">
+                            <a href="{{ route('individual', ['id' => $item->user_id]) }}"><img class="c_l_c_img"
+                                    src="/storage/{{ \App\User::where('id', '=', $item->user_id)->first()->image }}"
+                                    alt=""></a>
+                            <a href="{{ route('individual', ['id' => $item->user_id]) }}"
+                                class="c_l_c_name">{{ \App\User::where('id', '=', $item->user_id)->first()->user_name }}</a>
+                        </div>
+                        <div class="c_l_c_detail">
+                            <pre>{{ $item->detail }}</pre>
 
-                        @if (Illuminate\Support\Facades\Auth::id() == $item->user_id)
-                            {{-- コメントを投稿したユーザーと同一人物だったら --}}
-                            <form action="{{ route('detail_comment_delete') }}">
-                                <input type="hidden" value="{{ $article->id }}" name="article_id">
-                                <input type="hidden" value="{{ $item->id }}" name="comment_id">
-                                <input type="submit" value="削除">
-                            </form>
-                        @endif
-                    </div>
-                    <div class="c_l_c_other">
-                        {{-- コメントへのいいね --}}
-                        @if (Auth::id())
-                            @if (\App\Good::where('comment_id', $item->id)->where('user_id', Auth::id())->exists()
-                            != null)
-                                {{-- すでにgoodしていた場合 --}}
-                                <a class="c_l_c_o_thums" comment_id="{{ $item->id }}" good_comment="1">
-                                    <i class="far fa-thumbs-down"></i>
-                                </a>
-                            @else
-                                {{-- goodされていない場合 --}}
-                                <a class="c_l_c_o_thums" comment_id="{{ $item->id }}" good_comment="0">
+                            @if (Illuminate\Support\Facades\Auth::id() == $item->user_id)
+                                {{-- コメントを投稿したユーザーと同一人物だったら
+                                --}}
+                                <form action="{{ route('detail_comment_delete') }}">
+                                    <input type="hidden" value="{{ $article->id }}" name="article_id">
+                                    <input type="hidden" value="{{ $item->id }}" name="comment_id">
+                                    <input type="submit" value="削除">
+                                </form>
+                            @endif
+                        </div>
+                        <div class="c_l_c_other">
+                            {{-- コメントへのいいね --}}
+                            @if (Auth::id())
+                                @if (\App\Good::where('comment_id', $item->id)
+        ->where('user_id', Auth::id())
+        ->exists() != null)
+                                    {{-- すでにgoodしていた場合 --}}
+                                    <a class="c_l_c_o_thums" comment_id="{{ $item->id }}" good_comment="1">
+                                        <i id="" class="heart-button-l fa-heart fa-2x tippyLoginFav fas" style="color:#ff0000;"></i>
+                                    </a>
+                                @else
+                                    {{-- goodされていない場合 --}}
+                                    <a class="c_l_c_o_thums" comment_id="{{ $item->id }}" good_comment="0">
 
-                                    <i class="far fa-thumbs-up"></i>
-                                </a>
+                                        <i id="" class="heart-button-l fa-heart fa-2x tippyGuestFav far"
+                                            style="color:#ff0000;"></i>
+
+                                    </a>
                                 @endif
                                 <pre>{{ $item->good_count }}</pre>
-                        @endif
-                        <time datetime="{{ $item->created_at }}">{{ $item->created_at }}</time>
+                            @endif
+                            <time datetime="{{ $item->created_at }}">{{ $item->created_at }}</time>
+                        </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            @endif
+
         </div>
     </div>
     {{-- @component('components.side-bar') --}}
