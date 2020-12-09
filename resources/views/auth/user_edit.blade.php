@@ -6,7 +6,6 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('ユーザー情報編集') }}</div>
-
                     <div class="card-body">
                         <form method="POST" action="{{ route('user_update') }}" enctype="multipart/form-data" multiple>
                             @csrf
