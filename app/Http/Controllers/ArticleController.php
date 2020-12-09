@@ -518,13 +518,40 @@ class ArticleController extends Controller
             $articles = null;
             // dd();
         }
+        // dd($articles);
 
         return view('article_individual', compact('articles'));
     }
 
-    public function goodComment(Request $request)
-    {
-        if ($request->input('good_comment') == 0) {
+    public function a_i_commentFavAjax(){
+        $user_id = Auth::id();
+        $articleID = $_GET["articleID"];
+        // $articleID = "4";
+
+        $comFavGets = DB::table("comments")
+            ->where("article_id", "=", $articleID)
+            ->where("user_id", "=", $user_id)
+            ->orderByDesc("created_at")
+            ->get();
+
+        //やり方が分からないので、DB::tableで記述しておきます
+        $userInfo = DB::table("users")
+            ->select("user_name", "image")
+            ->where("id", "=", $user_id)
+            ->first();
+
+        $articleTitle = DB::table("articles")
+            ->select("title")
+            ->where("id", "=", $articleID)
+            ->first();
+
+        return response()->json([
+                $comFavGets, $userInfo, $articleTitle
+            ]);
+    }
+
+    public function goodComment(Request $request){
+        if ( $request->input('good_comment') == 0) {
             //ステータスが0のときはデータベースに情報を保存
             // $message = '保存';
             Good::create([
