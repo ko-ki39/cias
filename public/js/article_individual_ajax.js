@@ -74,7 +74,7 @@ let m_m_com = document.getElementById("m_m_com");
 //favのときはモーダルいらないことを、後から気づきました^^;
 for(let i=0; i<article_list.length; i++){
     article_list[i].addEventListener("click", function(e){
-        displayModal(i);
+        if(EX_choiceStatus == 1) displayModal(i);
     }, true);
 }
 

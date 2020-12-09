@@ -14,55 +14,57 @@
     <div class="main">
         <div class="article">
             <input type="hidden" name="article-id" value="{{ $article->id }}" class="article_ajax_id">
-            <div class="sub">
-                <div class="user">
-                    <a href="{{ route('individual', ['id' => $user->id]) }}" class="u_image"><img src="/storage/{{ $user->image }}" alt=""></a>
-                    <!-- <a href="{{ route('post', ['id' => $user->id]) }}"> -->
-                    <a href="{{ route('individual', ['id' => $user->id]) }}" class="u_name">{{ $user->user_name }}</a>
-                    <p class="u_date">投稿した日 : {{ $article->created_at }}</p>
-                </div>
-                <div class="title">
-                    <hr>
-                    <h2>{{ $article->title }}</h2>
-                </div>
-                <div class="article_hashs">
-                    @if($article->hash1_id)
-                    <a href="{{ route('hashtag_result', ['hash' => $article->hash1_id]) }}" class="hash">#{{ $article->hash1_id }}</a>&nbsp;&nbsp;
-                    @endif
-
-                    @if($article->hash2_id)
-                    <a href="{{ route('hashtag_result', ['hash' => $article->hash2_id]) }}" class="hash">#{{ $article->hash2_id }}</a>&nbsp;&nbsp;
-                    @endif
-
-                    @if($article->hash3_id)
-                    <a href="{{ route('hashtag_result', ['hash' => $article->hash3_id]) }}" class="hash">#{{ $article->hash3_id }}</a>
-                    @endif
-                </div>
-                <div class="ctf_container">
-                    <div class="comment"><a href="#comment_area"><i class="far fa-comment fa-2x comment-button-l" style="color:#259b25;"></i></a></div>
-                    <div class="twitter"><a href="http://twitter.com/share?text={{ $article->title }}&url={{ route('article_detail', ['id' => $article->id]) }}&hashtags={{ $article->hash1_id }}" rel="nofollow" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter-square fa-2x twitter-button-l" style="color:#1da1f2;"></i></a></div>
-                    @if (Illuminate\Support\Facades\DB::table("favs")
-                            ->where("article_id", "=", $article->id)
-                            ->where("user_id", "=", Auth::id())->exists() != null)
-                    <div class="fav">
-                        <i id="" class="heart-button-l fa-heart fa-2x tippyLoginFav fas" style="color:#ff0000;"></i>
+            <div id="a_article">
+                <div class="sub">
+                    <div class="user">
+                        <a href="{{ route('individual', ['id' => $user->id]) }}" class="u_image"><img src="/storage/{{ $user->image }}" alt=""></a>
+                        <!-- <a href="{{ route('post', ['id' => $user->id]) }}"> -->
+                        <a href="{{ route('individual', ['id' => $user->id]) }}" class="u_name">{{ $user->user_name }}</a>
+                        <p class="u_date">投稿した日 : {{ $article->created_at }}</p>
                     </div>
-                    @else
-                        <div class="fav">
-                            <i id="" class="heart-button-l fa-heart fa-2x tippyGuestFav far" style="color:#ff0000;"></i>
+                    <div id="tac_container">
+                        <div class="title">
+                            <h2>{{ $article->title }}</h2>
                         </div>
-                    @endif
+                        <div class="article_hashs">
+                            @if($article->hash1_id)
+                            <a href="{{ route('hashtag_result', ['hash' => $article->hash1_id]) }}" class="hash">#{{ $article->hash1_id }}</a>&nbsp;&nbsp;
+                            @endif
+        
+                            @if($article->hash2_id)
+                            <a href="{{ route('hashtag_result', ['hash' => $article->hash2_id]) }}" class="hash">#{{ $article->hash2_id }}</a>&nbsp;&nbsp;
+                            @endif
+        
+                            @if($article->hash3_id)
+                            <a href="{{ route('hashtag_result', ['hash' => $article->hash3_id]) }}" class="hash">#{{ $article->hash3_id }}</a>
+                            @endif
+                        </div>
+                        <div class="ctf_container">
+                            <div class="comment"><a href="#comment_area"><i class="far fa-comment fa-2x comment-button-l" style="color:#259b25;"></i></a></div>
+                            <div class="twitter"><a href="http://twitter.com/share?text={{ $article->title }}&url={{ route('article_detail', ['id' => $article->id]) }}&hashtags={{ $article->hash1_id }}" rel="nofollow" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter-square fa-2x twitter-button-l" style="color:#1da1f2;"></i></a></div>
+                            @if (Illuminate\Support\Facades\DB::table("favs")
+                                    ->where("article_id", "=", $article->id)
+                                    ->where("user_id", "=", Auth::id())->exists() != null)
+                            <div class="fav">
+                                <i id="" class="heart-button-l fa-heart fa-2x tippyLoginFav fas" style="color:#ff0000;"></i>
+                            </div>
+                            @else
+                                <div class="fav">
+                                    <i id="" class="heart-button-l fa-heart fa-2x tippyGuestFav far" style="color:#ff0000;"></i>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="text">
-                <hr>
-                @for ($i = 0; $i < 6; $i++)
-                {{-- {{ dd($image) }} --}}
-                    @if ($image[$i] != null)
-                        <img src="/storage/{{ $image[$i] }}" class="big_image">
-                        <p>{{ $text[$i] }}</p>
-                    @endif
-                @endfor
+                <div class="text">
+                    @for ($i = 0; $i < 6; $i++)
+                    {{-- {{ dd($image) }} --}}
+                        @if ($image[$i] != null)
+                            <img src="/storage/{{ $image[$i] }}" class="big_image">
+                            <p>{{ $text[$i] }}</p>
+                        @endif
+                    @endfor
+                </div>
             </div>
             @guest
             <div id="comment_area">
@@ -99,14 +101,13 @@
             @endguest
             <div id="comment_list">
                 <h2>コメント一覧</h2>
-                <div class="h2_underLine"></div>
                 @if (!$commentNullCheck)
                     <div class="c_l_noComment">まだコメントがありません m(__)m</div>
                 @endif
                 @foreach ($comments as $item)
-                    @if (!$loop->first)
+                    {{-- @if (!$loop->first)
                         <hr>
-                    @endif
+                    @endif --}}
                     <div class="c_l_contents">
                         <div class="c_l_c_info">
                             <a href="{{ route('individual', ['id' => $item->user_id]) }}"><img class="c_l_c_img" src="/storage/{{ Illuminate\Support\Facades\DB::table('users')->where("id", "=", $item->user_id)->first()->image }}" alt=""></a>

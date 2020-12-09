@@ -198,9 +198,9 @@ function tippy_G_Comment() {
 /**
  * マイページ、コメントした一覧から遷移して来た
  */
-console.log(document.getElementsByClassName("c_l_c_detail")[5].firstElementChild.innerHTML);
 let q_p = decodeURI(location.search);
 let c_l_c_detail = document.getElementsByClassName("c_l_c_detail");
+let c_l_c_other = document.getElementsByClassName("c_l_c_other");
 console.log(q_p);
 
 // element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
@@ -208,8 +208,13 @@ console.log(q_p);
 window.onload = function(){
     for(let i=0; i<c_l_c_detail.length; i++){
         if(c_l_c_detail[i].firstElementChild.innerHTML == q_p.slice(5)){
+            scrolling(i);
             console.log("ixgy...\n", `counter = ${i}`);
             break;
         }
     }
+}
+
+function scrolling(i){
+    c_l_c_other[i].scrollIntoView({behavior:"smooth", block:"center", inline:"center"});
 }
