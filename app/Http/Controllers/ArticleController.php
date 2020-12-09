@@ -455,7 +455,7 @@ class ArticleController extends Controller
 
         //↓メール送信用
         $user_name = User::find(Auth::id())->user_name; //コメントをしたユーザー
-        $article_title = Article::find($article_id)->title; //記事のタイトル
+        $article_title = Article::find($article_id); //記事のタイトル
         $email = User::find(Article::find($article_id)->user_id)->email; //記事を投稿したユーザーのemail
         $article_user_id =  User::find(Article::find($article_id)->user_id)->id; //記事のid
         if ($email) { //メールが登録されていたら

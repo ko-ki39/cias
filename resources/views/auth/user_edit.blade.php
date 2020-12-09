@@ -23,7 +23,7 @@
 
                             <div class="form-group row">
                                 <label for="user_name"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('ユーザー名') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('ニックネーム（表示される名前です）') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="user_name" type="text" value="{{ $user->user_name }}"
