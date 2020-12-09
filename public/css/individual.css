@@ -101,7 +101,7 @@ body div.main {
 .main #main_left #superArticles .article_edit div {
   padding: 4px 4px 0 4px;
   border: solid 1px #9b9b9b;
-  border-bottom: solid 1px #fcf0f0;
+  border-bottom: solid 1px #f2f2f2;
   background-color: #f9f9f9;
 }
 
@@ -151,10 +151,6 @@ body div.main {
   border: solid 1px #9b9b9b;
   height: 98.5%;
   width: 100%;
-  background-position: center;
-  background-size: cover;
-  -o-object-fit: cover;
-     object-fit: cover;
 }
 
 .main #main_left #superArticles .article_list .a_l_details {
@@ -228,6 +224,8 @@ body div.main {
   border: solid 1px #9b9b9b;
   border-radius: 12px;
   position: fixed;
+  top: 11%;
+  left: 4.3%;
   background-color: #ffffff;
   z-index: 667;
   overflow-y: scroll;
@@ -330,10 +328,6 @@ body div.main {
   height: 42px;
   border: solid 1px black;
   border-radius: 50%;
-  background-position: center;
-  background-size: cover;
-  -o-object-fit: cover;
-     object-fit: cover;
 }
 
 .main #main_right #ajax_commentList .a_c_details .a_c_d_userInfo a:nth-child(2) {
