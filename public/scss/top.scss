@@ -97,15 +97,14 @@
                 }
             }
             .article_image {
-                margin: auto;
                 background-color: white;
-                width: 96%;
-                height: 200px;
+                width: 100%;
+                height: 60%;
                 display: flex;
                 align-items: center;
                 img {
                     width: 100%;
-                    height: 100%;
+                    height: 16rem;
                     background-position: center;
                     background-size: cover;
                     object-fit: cover;
@@ -127,7 +126,7 @@
                 text-align: center;
                 font-size: 1.3em;
                 font-weight: bold;
-                color: #2422a7;
+                color: #0f0d82;
                 display: -webkit-box;
                 -webkit-box-orient: vertical;
                 -webkit-line-clamp: 4;
@@ -140,7 +139,7 @@
                     text-decoration: underline;
                 }
                 a:visited {
-                    color: #2422a7;
+                    color: #0f0d82;
                 }
             }
             // .text {
@@ -361,7 +360,7 @@
                     text-align: center;
                     font-size: 1em;
                     font-weight: bold;
-                    color: #2422a7;
+                    color: #0f0d82;
                     display: -webkit-box;
                     -webkit-box-orient: vertical;
                     -webkit-line-clamp: 3;
@@ -374,7 +373,7 @@
                         text-decoration: underline;
                     }
                     a:visited {
-                        color: #2422a7;
+                        color: #0f0d82;
                     }
                 }
                 // .text {
