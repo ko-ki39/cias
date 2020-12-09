@@ -28,7 +28,6 @@
         @yield('content')
         @include('common_view.footer')
         <script src="/js/hamburger.js"></script>
-        <script src="/js/fav.js"></script>
         <script src="/js/ztextPlay.js"></script>
     </body>
 </html>
