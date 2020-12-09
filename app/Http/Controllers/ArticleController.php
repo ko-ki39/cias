@@ -518,7 +518,6 @@ class ArticleController extends Controller
             $articles = null;
             // dd();
         }
-        // dd($articles);
 
         return view('article_individual', compact('articles'));
     }

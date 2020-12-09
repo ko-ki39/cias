@@ -234,7 +234,6 @@
 
 </script>
 <script src="/js/hash.js"></script>
-<script src="/js/fav.js"></script>
 <style>
     .pagination {
         font-weight: bold;
