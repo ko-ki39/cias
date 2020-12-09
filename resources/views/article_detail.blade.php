@@ -33,11 +33,11 @@
                             @if($article->hash1_id)
                             <a href="{{ route('hashtag_result', ['hash' => $article->hash1_id]) }}" class="hash">#{{ $article->hash1_id }}</a>&nbsp;&nbsp;
                             @endif
-        
+
                             @if($article->hash2_id)
                             <a href="{{ route('hashtag_result', ['hash' => $article->hash2_id]) }}" class="hash">#{{ $article->hash2_id }}</a>&nbsp;&nbsp;
                             @endif
-        
+
                             @if($article->hash3_id)
                             <a href="{{ route('hashtag_result', ['hash' => $article->hash3_id]) }}" class="hash">#{{ $article->hash3_id }}</a>
                             @endif
@@ -106,7 +106,7 @@
                 <h2>コメント一覧</h2>
                 @if (!$commentNullCheck)
                     <div class="c_l_noComment">まだコメントがありません m(__)m</div>
-                @endif
+                @else
                 @foreach ($comments as $item)
                     {{-- @if (!$loop->first)
                         <hr>
@@ -189,4 +189,3 @@
     </div>
 @endguest
     <script src="/js/fav.js"></script>
-@endsection
