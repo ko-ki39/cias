@@ -4,6 +4,7 @@
     // width: 1000px;
     width: 100%;
     padding-top: 0.6rem;
+    background-color: #fcfcfc;
     .content {
         width: 96%;
         margin: auto;
@@ -11,19 +12,26 @@
         // border: dashed 1px #000;
         form {
             width: 100%;
-            background-color: #f2f2f2;
+            height: 120px;
+            background-color: #e1e1e1;
             margin: 10px auto auto;
+            padding: 0.5em 0;
             border-radius: 6px;
-            .search {
-                padding-top: 0.5rem;
-                padding-bottom: 0.5rem;
-                height: 2rem;
-                text-align: center;
-                #search_condition {
-                    padding: 0.4rem 0;
+            box-shadow: 0.3px 0.3px 7px #D1D1D1, -0.3px -0.3px 7px #FFFFFF;
+            .depa_search{
+                height: 1.8rem;
+                margin: 0 auto 0 10px;
+                font-size: 0.8em;
+                #search_department{
+                    height: 1.8rem;
                 }
-                #search {
-                    height: 1.5rem;
+            }
+            .search {
+                height: 1.8rem;
+                margin: 6px auto 0 10px;
+                font-size: 0.8em;
+                #search_condition {
+                    height: 1.8rem;
                 }
                 #search_list {
                     position: relative;
@@ -48,6 +56,13 @@
                     }
                 }
             }
+            .txt_search{
+                height: 1.5rem;
+                margin: 6px auto 0 10px;
+                #search{
+                    height: 1.5rem;
+                }
+            }
         }
         .article {
             border-radius: 6px;
@@ -59,7 +74,8 @@
             display: flex;
             justify-content: flex-start;
             flex-direction: column;
-            background-color: #f2f2f2;
+            background-color: #fcfcfc;
+            box-shadow: 0.3px 0.3px 7px #D1D1D1, -0.3px -0.3px 7px #FFFFFF;
             .article_userName {
                 margin-bottom: 0.6rem;
                 text-align: center;

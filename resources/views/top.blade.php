@@ -29,30 +29,33 @@
             <input type="submit" value="絞り込む">
         </form> --}}
         <form action="{{ route('search') }}" method="get">
-            <select name="search_department" id="search_department">
-                <option value="0">すべて</option>
-                <option value="1">オフィスビジネス科（前期）</option>
-                <option value="2">オフィスビジネス科（後期）</option>
-                <option value="3">自動車整備科</option>
-                <option value="4">電気システム科</option>
-                <option value="5">メディア・アート科</option>
-                <option value="6">情報システム科</option>
-                <option value="7">造園ガーデニング科</option>
-                <option value="8">総合実務科（知的障がい者対象）</option>
-            </select>
-            <div class="search">
+            <div class="depa_search">学科で絞る :
+                <select name="search_department" id="search_department">
+                    <option value="0">すべて</option>
+                    <option value="1">オフィスビジネス科（前期）</option>
+                    <option value="2">オフィスビジネス科（後期）</option>
+                    <option value="3">自動車整備科</option>
+                    <option value="4">電気システム科</option>
+                    <option value="5">メディア・アート科</option>
+                    <option value="6">情報システム科</option>
+                    <option value="7">造園ガーデニング科</option>
+                    <option value="8">総合実務科（知的障がい者対象）</option>
+                </select>
+            </div>
+            <div class="search">記事内容で絞る :
                 <select name="search_condition" id="search_condition">
                     <option value="1">すべて</option>
                     <option value="2">タイトル</option>
                     <option value="3">説明</option>
                     <option value="4">ユーザー名</option>
                 </select>
+            </div>
+            <div class="txt_search">
                 <i class="fas fa-search"></i>
                 <input type="text" name="search" id="search" placeholder="検索" autocomplete="off">
                 <input type="submit" value="検索">
                 <div id="search_list">
                     <ul id="search_result">
-
                     </ul>
                 </div>
             </div>
