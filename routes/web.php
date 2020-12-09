@@ -21,7 +21,8 @@ Route::group(['middleware' => ['auth', 'can:user-higher']], function () { // 全
     // ↓記事削除用ルート
     Route::get('/top/delete/{id}', 'ArticleController@delete')->name('delete');
 
-
+    //コメント削除用のルート
+    Route::get('/top/article_detail/comment_delete', 'Controller@comment_delete')->name('detail_comment_delete');
 
     Route::get('/top/individual/fav_page', 'ArticleController@favArticle')->name('fav_page');
     Route::get('/top/individual/fav_page/fp_cfAjax', 'ArticleController@a_i_commentFavAjax');
@@ -44,6 +45,8 @@ Route::group(['middleware' => ['auth', 'can:user-higher']], function () { // 全
 
 Route::group(['middleware' => ['auth', 'can:authorized-higher']], function () { //許可されたものと管理者のみ
     // ↓記事作成用のルート
+
+    Route::post('/top/article_detail/good_comment', 'ArticleController@goodComment')->name('good_comment'); //コメントへの goodボタンの処理
 
     Route::post("/top/article_detail/post_comment", "ArticleController@commnetAdd"); //コメントを投稿する
     Route::get('/top/post', 'ArticleController@postForm')->name('post');
@@ -78,9 +81,9 @@ Route::group(['middleware' => ['auth', 'can:admin-only']], function () { // 管�
     Route::get('/admin/admin_comment/', 'AdminController@adminComment')->name('admin_comment');
 
     //記事やユーザーの削除
-    Route::get('/admin/user_delete/{id}', 'AdminController@userDelete')->name('user_delete');
-    Route::get('/admin/article_delete/{id}', 'AdminController@articleDelete')->name('article_delete');
-    Route::get('/admin/comment_delete/{id}', 'AdminController@commentDelete')->name('comment_delete');
+    Route::post('/admin/user_delete', 'AdminController@userDelete')->name('user_delete');
+    Route::post('/admin/article_delete', 'AdminController@articleDelete')->name('article_delete');
+    Route::post('/admin/comment_delete', 'AdminController@commentDelete')->name('comment_delete');
 
     //admin内での検索機能
     Route::get('/admin/admin_user/search', 'AdminController@userSearch')->name('admin_user_search');
@@ -96,7 +99,8 @@ Route::get('/top', 'Controller@top')->name('top');
 //マイページ
 Route::get('/top/individual/{id}', 'Controller@individual')->name('individual'); //マイページ
 
-
+//学科での絞り込み
+// Route::get('/top/search_department', 'Controller@search_department')->name('search_department');
 
 //routeで送ってきたいからnameをつける
 Route::get('/top/article_detail/{id}', 'Controller@article_detail')->name('article_detail'); //記事詳細

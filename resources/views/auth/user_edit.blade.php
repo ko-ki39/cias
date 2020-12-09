@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', 'ユーザー情報変更ページ')
 @section('content')
     <div class="container">
         <div class="row justify-content-center">

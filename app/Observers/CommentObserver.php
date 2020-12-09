@@ -4,6 +4,8 @@ namespace App\Observers;
 
 use App\Comment;
 use App\Article;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class CommentObserver
 {
@@ -17,9 +19,12 @@ class CommentObserver
     {
         // dd("作成");
         $update_article = Article::find($comment->article_id);
+        $update_user = User::find($comment->user_id);
 
+        $update_user->comment_count += 1;
         $update_article->comment_count += 1;
 
+        $update_user->save();
         $update_article->save();
     }
 
@@ -43,9 +48,12 @@ class CommentObserver
     public function deleted(Comment $comment)
     {
         $update_article = Article::find($comment->article_id);
+        $update_user = User::find($comment->user_id);
 
         $update_article->comment_count -= 1;
+        $update_user->comment_count -= 1;
 
+        $update_user->save();
         $update_article->save();
     }
 

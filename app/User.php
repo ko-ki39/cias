@@ -10,6 +10,7 @@ use Carbon\Carbon;
 // use App\Events\ImageFileDelete;
 use Kyslik\ColumnSortable\Sortable;
 
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -30,7 +31,7 @@ class User extends Authenticatable
     ];
 
     //ソートに使うよう
-    public $sortable = ['id','user_id', 'department_id', 'created_at', 'updated_at'];
+    public $sortable = ['id','user_id', 'user_name', 'role', 'article_count', 'comment_count', 'department_id', 'created_at', 'updated_at'];
 
     /**
      * The attributes that should be hidden for arrays.

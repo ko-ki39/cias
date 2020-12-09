@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/css/article_individual.css" type="text/css">
 @endsection
 
-@include('common_view.header', ['title' => 'コメントがついた記事等を見る'])
+@section('title', 'コメントをした記事等')
 
 @section('content')
     {{-- この下からbodyの中身を書き始める --}}

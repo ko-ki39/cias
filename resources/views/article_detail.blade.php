@@ -1,14 +1,17 @@
 @section('content')
 
-@extends('common_view.common')
+    @extends('common_view.common')
 
-    @section('import')
-        {{-- css等の読み込み場所 --}}
-        <link rel="stylesheet" href="/css/side_bar.css" type="text/css">
-        <link rel="stylesheet" href="/css/article_detail.css" type="text/css">
-    @endsection
+@section('import')
+    {{-- css等の読み込み場所 --}}
+    <link rel="stylesheet" href="/css/side_bar.css" type="text/css">
+    <link rel="stylesheet" href="/css/article_detail.css" type="text/css">
+    <script src="/js/good.js"></script>
+@endsection
 
-@include('common_view.header', ['title' => '記事詳細ページ'])
+@section('title')
+    {{ $article->title }}
+@endsection
 
     {{-- この下からbodyの中身を書き始める --}}
     <div class="main">
@@ -85,13 +88,13 @@
                         <textarea name="c_a_u_comment" id="" cols="" rows="">{{ old('c_a_u_comment') }}</textarea>
                     </div>
                     @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
                     @endif
                     <div class="c_a_u_submit">
                         <input type="submit" value="投稿する！">
@@ -110,29 +113,61 @@
                     @endif --}}
                     <div class="c_l_contents">
                         <div class="c_l_c_info">
-                            <a href="{{ route('individual', ['id' => $item->user_id]) }}"><img class="c_l_c_img" src="/storage/{{ Illuminate\Support\Facades\DB::table('users')->where("id", "=", $item->user_id)->first()->image }}" alt=""></a>
-                            <a href="{{ route('individual', ['id' => $item->user_id]) }}" class="c_l_c_name" name="kakaka">{{ Illuminate\Support\Facades\DB::table('users')->where("id", "=", $item->user_id)->first()->user_name }}</a>
+                            <a href="{{ route('individual', ['id' => $item->user_id]) }}"><img class="c_l_c_img"
+                                    src="/storage/{{ \App\User::where('id', '=', $item->user_id)->first()->image }}"
+                                    alt=""></a>
+                            <a href="{{ route('individual', ['id' => $item->user_id]) }}"
+                                class="c_l_c_name">{{ \App\User::where('id', '=', $item->user_id)->first()->user_name }}</a>
                         </div>
                         <div class="c_l_c_detail">
                             <pre>{{ $item->detail }}</pre>
+
+                            @if (Illuminate\Support\Facades\Auth::id() == $item->user_id)
+                                {{-- コメントを投稿したユーザーと同一人物だったら
+                                --}}
+                                <form action="{{ route('detail_comment_delete') }}">
+                                    <input type="hidden" value="{{ $article->id }}" name="article_id">
+                                    <input type="hidden" value="{{ $item->id }}" name="comment_id">
+                                    <input type="submit" value="削除">
+                                </form>
+                            @endif
                         </div>
                         <div class="c_l_c_other">
-                            <div class="c_l_c_o_thums">
-                                <i class="far fa-thumbs-up"></i> | <i class="far fa-thumbs-down"></i>
-                            </div>
+                            {{-- コメントへのいいね --}}
+                            @if (Auth::id())
+                                @if (\App\Good::where('comment_id', $item->id)
+        ->where('user_id', Auth::id())
+        ->exists() != null)
+                                    {{-- すでにgoodしていた場合 --}}
+                                    <a class="c_l_c_o_thums" comment_id="{{ $item->id }}" good_comment="1">
+                                        <i id="" class="heart-button-l fa-heart fa-2x tippyLoginFav fas" style="color:#ff0000;"></i>
+                                    </a>
+                                @else
+                                    {{-- goodされていない場合 --}}
+                                    <a class="c_l_c_o_thums" comment_id="{{ $item->id }}" good_comment="0">
+
+                                        <i id="" class="heart-button-l fa-heart fa-2x tippyGuestFav far"
+                                            style="color:#ff0000;"></i>
+
+                                    </a>
+                                @endif
+                                <pre>{{ $item->good_count }}</pre>
+                            @endif
                             <time datetime="{{ $item->created_at }}">{{ $item->created_at }}</time>
                         </div>
                     </div>
                 @endforeach
-            </div>
-        </div>
-        {{-- @component('components.side-bar') --}}
-            {{-- ここはサイドバーです --}}
-            <x-side_bar /> {{-- SideBar.phpコンポーネントを通して作成 --}}
+            @endif
 
-        {{-- @endcomponent --}}
+        </div>
     </div>
-    @guest
+    {{-- @component('components.side-bar') --}}
+    {{-- ここはサイドバーです --}}
+    <x-side_bar /> {{-- SideBar.phpコンポーネントを通して作成 --}}
+
+    {{-- @endcomponent --}}
+</div>
+@guest
     <div class="tippy_template" style="display:none;">
         この記事を、マイページに<br>保存することが出来ます！<br>(ログインが必要です)
     </div>
@@ -142,7 +177,7 @@
     <div class="tippy_template" style="display:none;">
         この記事に、コメントを<br>書くことが出来ます！<br>(ログインが必要です)
     </div>
-    @else
+@else
     <div class="tippy_template" style="display:none;">
         この記事を、マイページに保存する！
     </div>

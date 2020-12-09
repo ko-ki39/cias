@@ -1,6 +1,6 @@
-.main {
+.main{
     width: 100%;
-    .article {
+    .article{
         width: 96%;
         margin: 2rem auto;
         display: flex;
@@ -9,10 +9,10 @@
         #a_article{
             background-color: #fafbfc;
             border-radius: 6px;
-            .sub {
+            .sub{
                 display: flex;
                 flex-direction: column;
-                .user {
+                .user{
                     border-radius: 6px 6px 0 0;
                     padding: 0.5rem;
                     background-color: #fafbfc;
@@ -20,7 +20,7 @@
                     justify-content: flex-start;
                     flex-wrap: wrap;
                     align-items: center;
-                    .u_image {
+                    .u_image{
                         width: 3.3rem;
                         height: 3.3rem;
                         img{
@@ -87,7 +87,7 @@
                     }
                 }
             }
-            .text {
+            .text{
                 margin: 0 auto 1em auto;
                 background-color: #fafbfc;
                 width: 97%;
@@ -97,7 +97,7 @@
                 hr{
                     width: 95%;
                 }
-                .big_image {
+                .big_image{
                     width: 96%;
                     height: 100%;
                     margin: 2rem auto 0 auto;
@@ -120,7 +120,7 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            h2{
+            h2 {
                 font-size: 1.2rem;
                 margin: 1rem 0 0 0.5rem;
             }
@@ -165,14 +165,14 @@
             border-radius: 6px;
             width: 100%;
             margin: 2rem auto 0 auto;
-            h2{
+            h2 {
                 font-size: 1.2rem;
                 margin-left: 20px;
             }
-            .c_l_contents:last-child{
+            .c_l_contents:last-child {
                 padding-bottom: 1rem;
             }
-            .c_l_noComment{
+            .c_l_noComment {
                 font-weight: bold;
                 margin: 1.5rem 0 1.5rem 1.5rem;
                 color: rgb(56, 55, 1);
@@ -186,11 +186,11 @@
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    a:nth-child(1){
+                    a:nth-child(1) {
                         width: 2.5rem;
                         height: 2.5rem;
                     }
-                    .c_l_c_img{
+                    .c_l_c_img {
                         width: 2.5rem;
                         height: 2.5rem;
                         border-radius: 50%;
@@ -200,7 +200,7 @@
                         background-size: cover;
                         object-fit: cover;
                     }
-                    .c_l_c_name{
+                    .c_l_c_name {
                         margin-left: 0.5rem;
                         font-size: 0.9em;
                         font-weight: bold;
@@ -215,13 +215,13 @@
             }
             .c_l_c_detail{
                 width: 100%;
-                pre{
+                pre {
                     width: 94%;
                     white-space: pre-wrap;
                     margin: 0.5rem 0.5rem 1rem 1rem;
                 }
             }
-            .c_l_c_other{
+            .c_l_c_other {
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
@@ -233,17 +233,17 @@
     }
 }
 
-@media screen and (min-width: 481px) {
-	/* 481px以上に適用されるCSS（タブレット用） */
+@media screen and (min-width: 481px){
+    /* 481px以上に適用されるCSS（タブレット用） */
 }
 
 @media screen and (min-width: 720px){
-    .main {
+    .main{
         width: 100%;
-        .side_bar{
+        .side_bar {
             margin-top: 39px;
         }
-        .article {
+        .article{
             width: 64%;
             margin: 30px auto 40px 10px;
             padding-bottom: 66px;
@@ -256,17 +256,17 @@
             #a_article{
                 background-color: #fafbfc;
                 border-radius: 6px;
-                .sub {
+                .sub{
                     display: flex;
                     flex-direction: column;
-                    .user {
+                    .user{
                         margin: 1em auto;
                         width: 95.5%;
                         background-color: #fafbfc;
                         display: inline-flex;
                         align-items: center;
                         // box-shadow: 0.3px 0.3px 8px #BCBEC1, -0.3px -0.3px 8px #FFFFFF;
-                        .u_image {
+                        .u_image{
                             // border: dashed 1px #f00;
                             width: 60px;
                             height: 60px;
@@ -295,7 +295,7 @@
                         margin: 0 auto 1em auto;
                         width: 97%;
                         box-shadow: 0.3px 0.3px 8px #BCBEC1, -0.3px -0.3px 8px #FFFFFF;
-                        .title {
+                        .title{
                             background-color: #fafbfc;
                             text-align: center;
                             // border-radius: 6px 6px 0 0;
@@ -331,7 +331,7 @@
                         }
                     }
                 }
-                .text {
+                .text{
                     margin: 0 auto 1em auto;
                     background-color: #fafbfc;
                     width: 97%;

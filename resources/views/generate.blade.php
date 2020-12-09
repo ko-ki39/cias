@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'アカウント生成ページ')
 
 @section('content')
     {{-- アカウント生成用のページ --}}
@@ -28,4 +29,5 @@
             <input type="submit" value="作成">
         </form>
     </tr>
+
 @endsection

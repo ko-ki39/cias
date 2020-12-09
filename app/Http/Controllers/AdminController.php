@@ -23,21 +23,23 @@ class AdminController extends Controller
         return view('admin');
     }
 
-    public function adminUser(){
-        $users = User::all();
+    public function adminUser()
+    {
+        $users = User::sortable()->get();
 
         return view('admin_user', compact('users'));
     }
 
-    public function adminArticle(){
-        $articles = Article::All();
+    public function adminArticle()
+    {
+        $articles = Article::sortable()->get();
 
         return view('admin_article', compact('articles'));
-
     }
 
-    public function adminComment(){
-        $comments = Comment::All();
+    public function adminComment()
+    {
+        $comments = Comment::sortable()->get();
 
         return view('admin_comment', compact('comments'));
     }
@@ -48,25 +50,41 @@ class AdminController extends Controller
         ];
 
         User::where('id', $id)->update($admin_change);
-        return redirect()->route('admin');
+        return redirect()->route('admin_user');
     }
 
-    public function userDelete($id)
+    public function userDelete(Request $request)
     {
-        User::find($id)->delete();
-        return redirect()->route('admin');
+
+        //バリデーション
+        // $validatedData = $request->validate([
+        //     'delete' => 'array|required'
+        // ]);
+        User::destroy($request->delete);
+        return redirect()->route('admin_user');
     }
 
-    public function articleDelete($id)
+    public function articleDelete(Request $request)
     {
-        Article::find($id)->delete();
-        return redirect()->route('admin');
+        //バリデーション
+
+        // $validatedData = $request->validate([
+        //     'delete' => 'array|required'
+        // ]);
+        Article::destroy($request->delete);
+        return redirect()->route('admin_article');
     }
 
-    public function commentDelete($id)
+    public function commentDelete(Request $request)
     {
-        Comment::find($id)->delete();
-        return redirect()->route('admin');
+        //バリデーション
+
+        // $validatedData = $request->validate([
+        //     'delete' => 'array|required'
+        // ]);
+        Comment::destroy($request->delete);
+
+        return redirect()->route('admin_comment');
     }
 
     public function generate_page()
@@ -140,7 +158,7 @@ class AdminController extends Controller
             'パスワード',
             '有効期限',
         ];
-        $file = fopen("../storage/app/user_info/".$file_name, 'w');
+        $file = fopen("../storage/app/user_info/" . $file_name, 'w');
         mb_convert_variables('SJIS-win', 'UTF-8', $columns); //文字化け対策
 
         fputcsv($file, $columns); //1行目の情報を追記
@@ -162,7 +180,7 @@ class AdminController extends Controller
             $user->user_id = $user_id;
             $user->department_id = $request->department;
             $user->time_limit = $request->date;
-            $user->age = $request->age;
+            $user->age = $year;
             $user->password = $password;
 
             $user->save();
@@ -179,10 +197,10 @@ class AdminController extends Controller
             'Content-Type' => 'text/plain',
             'Cache-control' => 'no-store' //キャッシュを残さないように
         ];
-        $path = 'user_info/'.$file_name; //ファイルのパス
-// dd(Storage::download($path, $file_name, $headers));
+        $path = Storage::path('user_info/' . $file_name); //ファイルのパス
+        // dd(Storage::download($path, $file_name, $headers));
         // dd(Storage::files('user_info'));
-        return Storage::download($path, $file_name, $headers);
+        return response()->download($path, $file_name, $headers)->deleteFileAfterSend(); //ファイルをダウンロードと同時に削除
         // return redirect()->route('admin');
     }
 
@@ -208,61 +226,64 @@ class AdminController extends Controller
     }
 
     //検索機能
-    public function userSearch(Request $request){ //userを検索
+    public function userSearch(Request $request)
+    { //userを検索
         // dd($request);
         $search = $request->input('search'); //検索したい文字列
 
-        if(isset($search)){
+        if (isset($search)) {
             $users = User::where('user_name', 'like', '%' . $search . '%')->get();
             // dd($users);
-        }else{
-            $users = User::select('id', 'user_id', 'email', 'role', 'created_at', 'updated_at')->sortable();//検索されていない場合
+        } else {
+            $users = User::select('id', 'user_id', 'email', 'role', 'created_at', 'updated_at')->sortable(); //検索されていない場合
         }
         return view('admin_user', compact('users'));
     }
 
-    public function articleSearch(Request $request){// 記事を検索
+    public function articleSearch(Request $request)
+    { // 記事を検索
         $search = $request->input('search');
-        if(isset($search)){
-            if($request->search_list == 1){ //ユーザー名で検索
+        if (isset($search)) {
+            if ($request->search_list == 1) { //ユーザー名で検索
                 $articles = Article::whereHas('user', function ($query) use ($search) {  //whereHasでuserの条件一致を探す;
                     $query->where('user_name', 'like', '%' . $search . '%');
                 })->paginate();
                 // dd($articles);
-            }else{//記事のタイトルで検索
+            } else { //記事のタイトルで検索
                 $articles = Article::where('title', 'like', '%' . $search . '%')->get();
             }
-        }else{
+        } else {
             $articles = Article::all();
         }
 
         return view('admin_article', compact('articles'));
     }
 
-    public function commentSearch(Request $request){ //コメントを検索
+    public function commentSearch(Request $request)
+    { //コメントを検索
         $search = $request->input('search');
 
-        if(isset($search)){
-            switch($request->search_list){
+        if (isset($search)) {
+            switch ($request->search_list) {
                 case 1: //ユーザー名で検索
                     $comments = Comment::whereHas('user', function ($query) use ($search) {  //whereHasでuserの条件一致を探す
                         $query->where('user_name', 'like', '%' . $search . '%');
                     })->paginate();
 
-                break;
+                    break;
                 case 2: //記事タイトルで検索
                     $comments = Comment::whereHas('article', function ($query) use ($search) {  //whereHasでuserの条件一致を探す
                         $query->where('title', 'like', '%' . $search . '%');
                     })->paginate();
                     // dd($comments);
-                break;
+                    break;
                 case 3: //コメント内容で検索
                     $comments = Comment::where('detail', 'like', '%' . $search . '%')->get();
-                break;
+                    break;
                 default:
                     $comments = Comment::All();
             }
-        }else{
+        } else {
             $comments = Comment::All();
         }
         return view('admin_comment', compact('comments'));

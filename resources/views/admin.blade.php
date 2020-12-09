@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', '管理者ページ')
 @section('content')
     {{-- ユーザーの情報↓ --}}
     <a href="{{ route('generate_page') }}">アカウント生成</a>

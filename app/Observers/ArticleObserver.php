@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Article;
 use App\Post;
+use App\User;
 
 class ArticleObserver
 {
@@ -16,6 +17,11 @@ class ArticleObserver
     public function created(Article $article)
     {
         //
+        $update_user = User::find($article->user_id);
+
+        $update_user->article_count += 1;
+
+        $update_user->save();
     }
 
     /**
@@ -40,6 +46,11 @@ class ArticleObserver
     }
     public function deleted(Article $article)
     {
+        $update_user = User::find($article->user_id);
+
+        $update_user->article_count -= 1;
+
+        $update_user->save();
     }
 
     /**
