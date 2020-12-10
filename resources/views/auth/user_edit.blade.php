@@ -6,6 +6,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('ユーザー情報編集') }}</div>
+
                     <div class="card-body">
                         <form method="POST" action="{{ route('user_update') }}" enctype="multipart/form-data" multiple>
                             @csrf
@@ -22,7 +23,7 @@
 
                             <div class="form-group row">
                                 <label for="user_name"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('ニックネーム（表示される名前です）') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('ユーザー名') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="user_name" type="text" value="{{ $user->user_name }}"
@@ -44,7 +45,7 @@
                                 <div class="col-md-6">
                                     <input id="email" type="email" value="{{ $user->email }}"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}" autocomplete="email" placeholder="登録すると通知が来るようになります">
+                                        value="{{ old('email') }}" autocomplete="email">
 
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
