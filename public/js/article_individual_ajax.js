@@ -1,6 +1,6 @@
 'use strict';
 
-/***
+/*** 機能の説明
 *** お気に入りとコメントを切り替える
 ***/
 let fav_article = document.getElementById('fav_article');
@@ -28,7 +28,7 @@ function choiceButtonSwitch(e){
 choice.addEventListener("click", function(e){choiceButtonSwitch(e)}, true);
 
 
-/***
+/*** 機能の説明
 *** ページ読み込み時に、article_listのアスペクト比を整える
 *** 窓の大きさを変えたときにリサイズする
 ***/
@@ -62,7 +62,7 @@ window.addEventListener("resize", article_listAspect, true);
 
 
 
-/***
+/*** 機能の説明
 *** a_l_detailをクリックしたら、モーダルを出す
 ***/
 let a_l_detail = document.getElementsByClassName("a_l_detail");
@@ -104,7 +104,7 @@ function hideModal(){
 
 
 
-/**
+/** 機能の説明
  * ajax
  */
 function article_individualAjax(articleID){

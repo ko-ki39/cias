@@ -1,35 +1,51 @@
 .main {
-  width: 800px;
-  margin: 10px auto;
-  border-radius: 10px;
-  background-color: #fff !important;
+  width: 97%;
+  background-color: #fcfcfc;
+  margin: auto;
 }
 
 .main .content {
-  width: 550px;
-  margin: 10px auto;
+  width: 100%;
 }
 
-.main .content .title {
-  text-align: center;
-}
-
-.main .content .hash {
-  text-align: center;
+.main .content .post_inputs {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .main .content .post_inputs .p_i_input_img {
-  width: 550px;
-  height: 400px;
+  width: 96%;
+  height: 150px;
+  margin: auto;
+  position: relative;
+}
+
+.main .content .post_inputs .p_i_input_img p {
+  position: absolute;
+  margin: 0;
+  top: calc(100% / 2 - 1em);
+  left: calc(100% / 2 - 2.5em);
 }
 
 .main .content .post_inputs .p_i_input_img .post_file {
-  width: 550px;
-  height: 400px;
+  width: 75%;
+  height: 100px;
   border: solid 1px olivedrab;
   z-index: 10;
   opacity: 0;
   position: absolute;
+  top: calc(50% - 50px);
 }
 
 .main .content .post_inputs .p_i_input_img .post_img {
@@ -39,13 +55,10 @@
   background-size: cover;
   -o-object-fit: contain;
      object-fit: contain;
+  opacity: 0;
 }
 
 .main .content .text {
-  width: 550px;
-  margin: 10px auto;
-}
-
-.main .content #post {
-  float: right;
+  width: 96%;
+  margin: auto;
 }
