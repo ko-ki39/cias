@@ -136,8 +136,8 @@
                             {{-- コメントへのいいね --}}
                             @if (Auth::id())
                                 @if (\App\Good::where('comment_id', $item->id)
-        ->where('user_id', Auth::id())
-        ->exists() != null)
+                                    ->where('user_id', Auth::id())
+                                    ->exists() != null)
                                     {{-- すでにgoodしていた場合 --}}
                                     <a class="c_l_c_o_thums" comment_id="{{ $item->id }}" good_comment="1">
                                         <i id="" class="heart-button-l fa-heart fa-2x tippyLoginFav fas" style="color:#ff0000;"></i>

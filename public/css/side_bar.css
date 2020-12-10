@@ -4,6 +4,8 @@
   margin: auto auto 5rem auto;
   background-color: #f2f2f2;
   border-radius: 0.5rem;
+  -webkit-box-shadow: 0.3px 0.3px 8px #BCBEC1, -0.3px -0.3px 8px #FFFFFF;
+          box-shadow: 0.3px 0.3px 8px #BCBEC1, -0.3px -0.3px 8px #FFFFFF;
 }
 
 .side_bar h2 {
@@ -33,7 +35,7 @@
 .side_bar .latest_article .l_a_img img {
   width: 5rem;
   height: 5rem;
-  border: solid 1.5px black;
+  border: solid 1.5px #b5b5b5;
   background-position: center;
   background-size: contain;
   -o-object-fit: contain;
@@ -123,7 +125,6 @@
   .side_bar .latest_article .l_a_img img {
     width: 5rem;
     height: 5rem;
-    border: solid 1.5px black;
     background-position: center;
     background-size: contain;
     -o-object-fit: contain;

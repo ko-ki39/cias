@@ -129,10 +129,6 @@ html body .header .header_bot .ad {
   margin-right: 8px;
 }
 
-html body .main {
-  background-color: #969696;
-}
-
 html body .clearfix::after {
   content: "";
   display: block;
