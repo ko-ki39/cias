@@ -32,7 +32,7 @@
             <table>
                 <tr>
                     <td>
-                       <p class="depa_search">学科で絞る:</p>
+                        <p class="depa_search">学科で絞る:</p>
                     </td>
                     <td>
                         <div class="depa_search">
@@ -91,7 +91,8 @@
                     <div class="article_userName">
                         <a href="{{ route('individual', ['id' => $article->user_id]) }}" class="top_h_u_img"><img
                                 src="/storage/{{ \App\User::find($article->user_id)->image }}" alt=""></a>
-                        <a href="{{ route('individual', ['id' => \App\User::find($article->user_id)->id]) }}">
+                        <a href="{{ route('individual', ['id' => \App\User::find($article->user_id)->id]) }}"
+                            class="text">
                             {{ \App\User::find($article->user_id)->user_name }}
                             {{-- <img src="/storage/{{ $article->image }}" alt="">
                             --}}
@@ -108,32 +109,61 @@
                     </div>
                 </a>
                 <div class="article_title">
-                    <a href="{{ route('article_detail', ['id' => $article->id]) }}">
+                    <a href="{{ route('article_detail', ['id' => $article->id]) }}" class="text">
                         {{ $article->title }}
                     </a>
                 </div>
-
-                {{--
-                <pre class="article_description text">{{ $article->description }}</pre> --}}
+                <pre class="article_description text">{{ $article->description }}</pre>
                 <div class="ctf_container">
+                    <div class="article_hashs">
+                        @if($article->hash1_id)
+                        <a href="{{ route('hashtag_result', ['hash' => $article->hash1_id]) }}" class="hash">#{{ $article->hash1_id }}</a>&nbsp;&nbsp;
+                        @endif
+
+                        @if($article->hash2_id)
+                        <a href="{{ route('hashtag_result', ['hash' => $article->hash2_id]) }}" class="hash">#{{ $article->hash2_id }}</a>&nbsp;&nbsp;
+                        @endif
+
+                        @if($article->hash3_id)
+                        <a href="{{ route('hashtag_result', ['hash' => $article->hash3_id]) }}" class="hash">#{{ $article->hash3_id }}</a>
+                        @endif
+                    </div>
                     <p class="date">{{ $article->created_at }}</p>
-                    <div class="comment"><a
-                            href="{{ route('articleDetailForcus', ['id' => $article->id . '#comment_area']) }}"><i
-                                class="far fa-comment fa-2x comment-button-l" style="color:#259b25;"></i></a></div>
+
+                    @if ($article->comment_count == 0)
+                        {{-- コメントがない場合 --}}
+                        <div class="comment"><a
+                                href="{{ route('articleDetailForcus', ['id' => $article->id . '#comment_area']) }}"><i
+                                    class="far fa-comment fa-2x comment-button-l" style="color:#259b25;"></i></a>
+                        </div>
+
+                    @else
+                        {{-- コメントがある場合 --}}
+                        <div class="comment"><a
+                                href="{{ route('articleDetailForcus', ['id' => $article->id . '#comment_area']) }}"><i
+                                    class="fas fa-comment fa-2x comment-button-l" style="color:#259b25;"></i></a>
+                            {{ $article->comment_count }}{{-- コメントの数
+                            --}}
+                        </div>
+                    @endif
+
                     <div class="twitter"><a
                             href="http://twitter.com/share?text={{ $article->title }}&url={{ route('article_detail', ['id' => $article->id]) }}&hashtags={{ $article->hash1_id }}"
                             rel="nofollow" target="_blank" rel="noopener noreferrer"><i
                                 class="fab fa-twitter-square fa-2x twitter-button-l" style="color:#1da1f2;"></i></a>
                     </div>
                     @if (\App\Fav::where('article_id', '=', $article->id)
-                        ->where('user_id', '=', Auth::id())
-                        ->exists() != null)
+        ->where('user_id', '=', Auth::id())
+        ->exists() != null)
                         <div class="fav">
                             <i id="" class="heart-button-l fa-heart fa-2x tippyLoginFav fas" style="color:#ff0000;"></i>
                         </div>
                     @else
                         <div class="fav">
                             <i id="" class="heart-button-l fa-heart fa-2x tippyGuestFav far" style="color:#ff0000;"></i>
+                            @if ($article->fav_count != 0)
+                                {{ $article->fav_count }}
+                            @endif
                         </div>
                     @endif
                 </div>

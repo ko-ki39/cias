@@ -346,6 +346,7 @@ class ArticleController extends Controller
 
         // dd(DB::table('articles'));
         if ($article->user_id == Auth::id()) { //本人か確認
+            Post::find($id)->delete();
             Article::find($id)->delete();
         }
         return back(); //直前のページにリダイレクト
