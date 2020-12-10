@@ -66,7 +66,7 @@
                     <div class="article_userName">
                         <a href="{{ route('individual', ['id' => $article->user_id]) }}" class="top_h_u_img"><img
                                 src="/storage/{{ \App\User::find($article->user_id)->image }}" alt=""></a>
-                        <a href="{{ route('individual', ['id' => \App\User::find($article->user_id)->id]) }}">
+                        <a href="{{ route('individual', ['id' => \App\User::find($article->user_id)->id]) }}" class="text">
                             {{ \App\User::find($article->user_id)->user_name }}
                             {{-- <img src="/storage/{{ $article->image }}" alt="">
                             --}}
@@ -83,13 +83,11 @@
                     </div>
                 </a>
                 <div class="article_title">
-                    <a href="{{ route('article_detail', ['id' => $article->id]) }}">
+                    <a href="{{ route('article_detail', ['id' => $article->id]) }}" class="text">
                         {{ $article->title }}
                     </a>
                 </div>
-
-                {{--
-                <pre class="article_description text">{{ $article->description }}</pre> --}}
+                <pre class="article_description text">{{ $article->description }}</pre>
                 <div class="ctf_container">
                     <p class="date">{{ $article->created_at }}</p>
                     <div class="comment"><a

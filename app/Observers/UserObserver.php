@@ -17,7 +17,7 @@ class UserObserver
     public function updating(User $user) //更新前に削除処理
     {
         $user_old = User::find($user->id);
-        if(!empty($user_old->image)){
+        if (!empty($user_old->image)) {
             if ($user->image) {
                 if ($user_old->image != $user->image) { //変更があったら
                     $old_path = "/public/" . $user_old->image; //画像削除処理
@@ -55,22 +55,16 @@ class UserObserver
      * @param  \App\User  $user
      * @return void
      */
-    public function deleted(User $user)
+
+    public function deleting(User $user)
     {
         $user_old = User::find($user->id);
-        if(!empty($user_old->image)){
-            if ($user->image) {
-                if ($user_old->image != $user->image) { //変更があったら
-                    $old_path = "/public/" . $user_old->image; //画像削除処理
-                    // dd($old_path);
-                    Storage::delete($old_path); //画像削除処理
-                }
-            } else {
-                $old_path = "/public/" . $user_old->image; //画像削除処理
-                // dd($old_path);
-                Storage::delete($old_path); //画像削除処理
-            }
-        }
+        $old_path = "/public/" . $user_old->image; //画像削除処理
+        // dd($old_path);
+        Storage::delete($old_path); //画像削除処理
+    }
+    public function deleted(User $user)
+    {
     }
 
     /**

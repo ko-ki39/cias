@@ -5,6 +5,7 @@ namespace App\Observers;
 use App\Article;
 use App\Post;
 use App\User;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleObserver
 {
@@ -32,6 +33,23 @@ class ArticleObserver
      */
 
 
+    public function updating(Article $article) //更新前に削除処理
+    {
+        $article_old = Article::find($article->id);
+        if (!empty($article_old->image)) {
+            if ($article->image) {
+                if ($article_old->image != $article->image) { //変更があったら
+                    $old_path = "/public/" . $article_old->image; //画像削除処理
+                    // dd($old_path);
+                    Storage::delete($old_path); //画像削除処理
+                }
+            } else {
+                $old_path = "/public/" . $article_old->image; //画像削除処理
+                // dd($old_path);
+                Storage::delete($old_path); //画像削除処理
+            }
+        }
+    }
     public function updated(Article $article)
     {
     }
@@ -42,7 +60,13 @@ class ArticleObserver
      * @param  \App\Article  $article
      * @return void
      */
-    public function deleting(Article $article){
+    public function deleting(Article $article)
+    {
+        //画像削除
+        $article_old = Article::find($article->id);
+        $old_path = "/public/" . $article_old->image; //画像削除処理
+        // dd($old_path);
+        Storage::delete($old_path); //画像削除処理
     }
     public function deleted(Article $article)
     {
