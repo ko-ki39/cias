@@ -11,6 +11,13 @@
         <select name="search_list" id="search_list">
             <option value="1">ユーザー名</option>
             <option value="2">タイトル</option>
+            <option value="3">詳細</option>
+            <option value="4">いいね数</option>
+            <option value="5">コメント数</option>
+            <option value="6">ハッシュ</option>
+            <option value="7">作成日</option>
+            <option value="8">更新日</option>
+
         </select>
         <input type="text" name="search" placeholder="検索" id="search">
         <input type="submit" value="検索">

@@ -12,6 +12,8 @@
             <option value="1">ユーザー名</option>
             <option value="2">記事タイトル</option>
             <option value="3">コメント内容</option>
+            <option value="4">good数</option>
+            <option value="5">作成日</option>
         </select>
         <input type="text" placeholder="検索" name="search" id="search">
         <input type="submit" value="検索">

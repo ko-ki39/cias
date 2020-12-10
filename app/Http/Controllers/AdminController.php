@@ -232,7 +232,27 @@ class AdminController extends Controller
         $search = $request->input('search'); //検索したい文字列
 
         if (isset($search)) {
-            $users = User::where('user_name', 'like', '%' . $search . '%')->get();
+            switch($request->search_list){
+                case 1: //ユーザー名で検索
+                    $users = User::where('user_name', 'like', '%' . $search . '%')->get(); //ユーザー名で検索
+                break;
+                case 2: //ログインIDで検索
+                break;
+                case 3: //記事数で検索
+                break;
+                case 4: //コメント数で検索
+                break;
+                case 5: //権限で検索
+                break;
+                case 6: //学科で検索
+                break;
+                case 7: //作成日で検索
+                break;
+                case 8: //更新日で検索
+                break;
+                default:
+                $users = User::all();
+            }
             // dd($users);
         } else {
             $users = User::select('id', 'user_id', 'email', 'role', 'created_at', 'updated_at')->sortable(); //検索されていない場合
@@ -244,13 +264,28 @@ class AdminController extends Controller
     { // 記事を検索
         $search = $request->input('search');
         if (isset($search)) {
-            if ($request->search_list == 1) { //ユーザー名で検索
-                $articles = Article::whereHas('user', function ($query) use ($search) {  //whereHasでuserの条件一致を探す;
-                    $query->where('user_name', 'like', '%' . $search . '%');
-                })->paginate();
-                // dd($articles);
-            } else { //記事のタイトルで検索
-                $articles = Article::where('title', 'like', '%' . $search . '%')->get();
+            switch ($request->search_list) { //ユーザー名で検索
+                case 1:
+                    $articles = Article::whereHas('user', function ($query) use ($search) {  //whereHasでuserの条件一致を探す;
+                        $query->where('user_name', 'like', '%' . $search . '%');
+                    })->paginate();
+                    break;
+                case 2: //記事のタイトルで検索
+                    $articles = Article::where('title', 'like', '%' . $search . '%')->get();
+                    break;
+                case 3: //記事詳細で検索
+                    break;
+                case 4: //いいね数で検索
+                    break;
+                case 5: //コメント数で検索
+                    break;
+                case 6: //ハッシュで検索
+                case 7: //作成日で検索
+                    break;
+                case 8: //更新日で検索
+                    break;
+                    default:
+                    $articles = Article::all();
             }
         } else {
             $articles = Article::all();
@@ -280,6 +315,9 @@ class AdminController extends Controller
                 case 3: //コメント内容で検索
                     $comments = Comment::where('detail', 'like', '%' . $search . '%')->get();
                     break;
+                case 4: //グッド数で検索
+                    break;
+                case 5: //作成日で検索
                 default:
                     $comments = Comment::All();
             }
