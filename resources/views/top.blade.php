@@ -29,33 +29,58 @@
             <input type="submit" value="絞り込む">
         </form> --}}
         <form action="{{ route('search') }}" method="get">
-            <select name="search_department" id="search_department">
-                <option value="0">すべて</option>
-                <option value="1">オフィスビジネス科（前期）</option>
-                <option value="2">オフィスビジネス科（後期）</option>
-                <option value="3">自動車整備科</option>
-                <option value="4">電気システム科</option>
-                <option value="5">メディア・アート科</option>
-                <option value="6">情報システム科</option>
-                <option value="7">造園ガーデニング科</option>
-                <option value="8">総合実務科（知的障がい者対象）</option>
-            </select>
-            <div class="search">
-                <select name="search_condition" id="search_condition">
-                    <option value="1">すべて</option>
-                    <option value="2">タイトル</option>
-                    <option value="3">説明</option>
-                    <option value="4">ユーザー名</option>
-                </select>
-                <i class="fas fa-search"></i>
-                <input type="text" name="search" id="search" placeholder="検索" autocomplete="off">
-                <input type="submit" value="検索">
-                <div id="search_list">
-                    <ul id="search_result">
-
-                    </ul>
-                </div>
-            </div>
+            <table>
+                <tr>
+                    <td>
+                       <p class="depa_search">学科で絞る:</p>
+                    </td>
+                    <td>
+                        <div class="depa_search">
+                            <select name="search_department" id="search_department">
+                                <option value="0">すべて</option>
+                                <option value="1">オフィスビジネス科（前期）</option>
+                                <option value="2">オフィスビジネス科（後期）</option>
+                                <option value="3">自動車整備科</option>
+                                <option value="4">電気システム科</option>
+                                <option value="5">メディア・アート科</option>
+                                <option value="6">情報システム科</option>
+                                <option value="7">造園ガーデニング科</option>
+                                <option value="8">総合実務科（知的障がい者対象）</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="search">記事内容で絞る:</p>
+                    </td>
+                    <td>
+                        <div class="search">
+                            <select name="search_condition" id="search_condition">
+                                <option value="1">すべて</option>
+                                <option value="2">タイトル</option>
+                                <option value="3">説明</option>
+                                <option value="4">ユーザー名</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="fa-search-text">
+                        <i class="fas fa-search"></i>
+                    </td>
+                    <td>
+                        <div class="txt_search">
+                            <input type="text" name="search" id="search" placeholder="検索" autocomplete="off">
+                            <input type="submit" value="検索">
+                            <div id="search_list">
+                                <ul id="search_result">
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
         </form>
 
         @foreach ($articles as $article)
@@ -99,8 +124,8 @@
                                 class="fab fa-twitter-square fa-2x twitter-button-l" style="color:#1da1f2;"></i></a>
                     </div>
                     @if (\App\Fav::where('article_id', '=', $article->id)
-        ->where('user_id', '=', Auth::id())
-        ->exists() != null)
+                        ->where('user_id', '=', Auth::id())
+                        ->exists() != null)
                         <div class="fav">
                             <i id="" class="heart-button-l fa-heart fa-2x tippyLoginFav fas" style="color:#ff0000;"></i>
                         </div>
