@@ -119,6 +119,7 @@
                             <a href="{{ route('individual', ['id' => $item->user_id]) }}"
                                 class="c_l_c_name">{{ \App\User::where('id', '=', $item->user_id)->first()->user_name }}</a>
                         </div>
+
                         <div class="c_l_c_detail">
                             <pre>{{ $item->detail }}</pre>
 
