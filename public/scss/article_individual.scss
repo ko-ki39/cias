@@ -84,61 +84,69 @@ body{
             display: flex;
             justify-content: center;
             align-items: center;
-            width: calc(100% /3);
+            width: calc(100% / 3);
             // background-color: tan;
-            .a_l_detail{
+            a{
                 width: 80%;
                 height: 80%;
-                background-color: white;
-                border-radius: 8px;
-                border: 1px solid rgba(255,255,255,0.20);
-                box-shadow: -6px -6px 26px 0 rgba(225,225,225,0.83);
-                box-shadow: 6px 6px 16px 0 rgba(200,193,190,0.51);
-                transition-duration: 0.5s;
-                .image{
-                    background-color: #ffffff;
+                .a_l_detail{
                     width: 100%;
-                    height: 60%;
-                    background-position: center;
-                    background-size: cover;
-                    object-fit: cover;
-                    border-radius: 8px 8px 0 0;
-                    img{
+                    height: 100%;
+                    background-color: white;
+                    border-radius: 8px;
+                    border: 1px solid rgba(255,255,255,0.20);
+                    box-shadow: -6px -6px 26px 0 rgba(225,225,225,0.83);
+                    box-shadow: 6px 6px 16px 0 rgba(200,193,190,0.51);
+                    transition-duration: 0.5s;
+                    display: flex;
+                    flex-direction: column;
+                    flex-wrap: wrap;
+                    align-items: flex-start;
+                    .image{
+                        background-color: #ffffff;
                         width: 100%;
-                        height: 100%;
+                        height: 60%;
+                        background-position: center;
+                        background-size: cover;
+                        object-fit: cover;
                         border-radius: 8px 8px 0 0;
+                        img{
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 8px 8px 0 0;
+                        }
+                    }
+                    .a_l_d_title{
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 2;
+                        overflow: hidden;
+                        p{
+                            margin: 3px 0 0 3px;
+                            font-size: 0.65rem;
+                        }
                     }
                 }
-                .a_l_d_title{
-                    display: -webkit-box;
-                    -webkit-box-orient: vertical;
-                    -webkit-line-clamp: 2;
-                    overflow: hidden;
-                    p{
-                        margin: 3px 0 0 3px;
-                        font-size: 0.65rem;
-                    }
-                }
-            }
-            .a_l_detail:hover{
-                box-shadow: inset -6px -6px 26px 0 rgba(225,225,225,0.83);
-                box-shadow: inset 6px 6px 16px 0 rgba(200,193,190,0.51);
-                transition-duration: 0.5s;
-                .image{
-                    opacity: 0.4;
-                    img{
+                .a_l_detail:hover{
+                    box-shadow: inset -6px -6px 26px 0 rgba(225,225,225,0.83);
+                    box-shadow: inset 6px 6px 16px 0 rgba(200,193,190,0.51);
+                    transition-duration: 0.5s;
+                    .image{
                         opacity: 0.4;
+                        img{
+                            opacity: 0.4;
+                        }
                     }
                 }
-            }
-            .a_l_detail:active{
-                box-shadow: inset -6px -6px 26px 0 rgba(225,225,225,0.83);
-                box-shadow: inset 6px 6px 16px 0 rgba(200,193,190,0.51);
-                transition-duration: 0.5s;
-                .image{
-                    opacity: 0.4;
-                    img{
+                .a_l_detail:active{
+                    box-shadow: inset -6px -6px 26px 0 rgba(225,225,225,0.83);
+                    box-shadow: inset 6px 6px 16px 0 rgba(200,193,190,0.51);
+                    transition-duration: 0.5s;
+                    .image{
                         opacity: 0.4;
+                        img{
+                            opacity: 0.4;
+                        }
                     }
                 }
             }

@@ -29,8 +29,10 @@
                 <div class="post_inputs">
                     <div class="p_i_input_img">
                         {{-- name="image1" name="image2" name="image3" ... "image6" --}}
-                        <p>画像を挿入</p>
-                        <input type="file" class="post_file" name="image1" value="画像を入れる（必須）" required>
+                        <div class="p_i_p">
+                            <p>画像を挿入</p>
+                            <input type="file" class="post_file" name="image1" value="画像を入れる（必須）" required>
+                        </div>
                         <img src="" alt="" class="post_img">
                     </div>
                     <textarea name="text1" id="" cols="30" rows="10" class="text"  placeholder="見出しとなる部分です（必須）" required></textarea>
@@ -40,6 +42,6 @@
             </form>
         </div>
     </div>
-<script src="/js/registerUserImage.js"></script>
+{{-- <script src="/js/registerUserImage.js"></script> --}}
 <script src="/js/post_page.js"></script>
 @endsection

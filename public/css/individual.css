@@ -130,7 +130,7 @@ body div.main {
           flex-direction: row;
   height: 140px;
   width: 96%;
-  margin: -1 auto 20px auto;
+  margin: -1px auto 20px auto;
   border: solid 1px #9b9b9b;
   background-color: #f9f9f9;
 }
@@ -298,7 +298,6 @@ body div.main {
 .main #main_right #ajax_commentList .a_c_details {
   margin-top: 12px;
   padding: 5px;
-  border: solid 1px #9b9b9b;
 }
 
 .main #main_right #ajax_commentList .a_c_details .a_c_d_userInfo {
