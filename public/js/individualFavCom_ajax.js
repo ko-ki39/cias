@@ -53,8 +53,9 @@ function exclusionController(buttonType, select){
         $("#main_right").fadeIn("1000");
         $("#pop_background").fadeIn("300");
 
-        let modal_centering_width = (pop_background.offsetWidth - main_right.offsetWidth)/2;
-        let modal_centering_height = (pop_background.offsetHeight - main_right.offsetHeight)/2;
+        let pop_background = document.getElementById("pop_background");
+        let modal_centering_width = (pop_background.getBoundingClientRect().width - main_right.getBoundingClientRect().width) / 2 + "px";
+        let modal_centering_height = (pop_background.getBoundingClientRect().height - main_right.getBoundingClientRect().height) / 2 + "px";
         main_right.style.left = modal_centering_width;
         main_right.style.top = modal_centering_height;
     }

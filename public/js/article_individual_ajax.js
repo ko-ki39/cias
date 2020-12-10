@@ -1,6 +1,6 @@
 'use strict';
 
-/***
+/*** 機能の説明
 *** お気に入りとコメントを切り替える
 ***/
 let fav_article = document.getElementById('fav_article');
@@ -28,27 +28,26 @@ function choiceButtonSwitch(e){
 choice.addEventListener("click", function(e){choiceButtonSwitch(e)}, true);
 
 
-/***
+/*** 機能の説明
 *** ページ読み込み時に、article_listのアスペクト比を整える
 *** 窓の大きさを変えたときにリサイズする
 ***/
 let article_list = document.getElementsByClassName("article_list");
-let www = article_list[0].getBoundingClientRect().width;
 let wwwAFTER;
 let wwwFLAG = 0;
 
 function article_listAspect(){
     switch(wwwFLAG){
         case 0:
-            wwwAFTER = article_list[0].clientWidth;
-            console.log(wwwAFTER, www);
+            wwwAFTER = article_list[0].getBoundingClientRect().width + "px";
+            console.log(wwwAFTER);
             for(let i=0; i<article_list.length; i++){
-                article_list[i].style.height = www;
+                article_list[i].style.height = wwwAFTER;
             }
             wwwFLAG = 1;
             break;
         case 1:
-            wwwAFTER = article_list[0].clientWidth;
+            wwwAFTER = article_list[0].getBoundingClientRect().width + "px";
             for(let i=0; i<article_list.length; i++){
                 article_list[i].style.height = wwwAFTER;
             }
@@ -62,7 +61,7 @@ window.addEventListener("resize", article_listAspect, true);
 
 
 
-/***
+/*** 機能の説明
 *** a_l_detailをクリックしたら、モーダルを出す
 ***/
 let a_l_detail = document.getElementsByClassName("a_l_detail");
@@ -84,8 +83,8 @@ function displayModal(article_num){
     $("#pop_background").fadeIn("300");
     $("#main_modal").fadeIn("1000");
 
-    let modal_centering_width = (pop_background.offsetWidth - main_modal.offsetWidth)/2;
-    let modal_centering_height = (pop_background.offsetHeight - main_modal.offsetHeight)/2;
+    let modal_centering_width = (pop_background.getBoundingClientRect().width - main_modal.getBoundingClientRect().width) / 2 + "px";
+    let modal_centering_height = (pop_background.getBoundingClientRect().height - main_modal.getBoundingClientRect().height) / 2 + "px";
     main_modal.style.left = modal_centering_width;
     main_modal.style.top = modal_centering_height;
 
@@ -104,7 +103,7 @@ function hideModal(){
 
 
 
-/**
+/** 機能の説明
  * ajax
  */
 function article_individualAjax(articleID){
