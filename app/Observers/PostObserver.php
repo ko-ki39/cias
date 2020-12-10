@@ -91,11 +91,9 @@ class PostObserver
         ];
 
         for ($i = 0; $i < 6; $i++) {
-            if ($old_image_path[$i] != $image_path[$i]) {
                 $old_path = "/public/" . $old_image_path[$i]; //画像削除処理
                 // dd($old_path);
                 Storage::delete($old_path); //画像削除処理
-            }
         }
     }
     public function deleted(Post $post)
