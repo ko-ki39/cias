@@ -50,6 +50,7 @@ class ArticleController extends Controller
             $storagePath = '/app/public/';
             for ($i = 0; $i < 6; $i++) {
                 if ($image_file[$i] != null) {
+                    // $path = $image_file[$i]->store('public');
                     $fileName = time() . "_" . $image_file[$i]->getClientOriginalName();
                     $resizeImage = InterventionImage::make($image_file[$i])
                         ->resize(350, 350, function ($constraint) {
@@ -67,6 +68,7 @@ class ArticleController extends Controller
                     //         $resizeImage->save(storage_path($storagePath . $fileName), $quality);
                     //     }while($resizeImage->filesize() > 20000);
                     // }
+                    // dd($fileName);
                     $resizeImage->save(storage_path($storagePath . $fileName), $quality);
                     $image_path[$i] = basename($fileName); //画像名のみ保存
                 } else {
