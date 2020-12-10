@@ -128,7 +128,7 @@
                         <a href="{{ route('hashtag_result', ['hash' => $article->hash3_id]) }}" class="hash">#{{ $article->hash3_id }}</a>
                         @endif
                     </div>
-                    <p class="date">{{ $article->created_at }}</p>
+                    <p class="date">{{ $article->article_at() }}</p>
 
                     @if ($article->comment_count == 0)
                         {{-- コメントがない場合 --}}

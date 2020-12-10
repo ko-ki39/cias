@@ -23,10 +23,17 @@ class Article extends Model
     // ];
 
     //ゲッター↓
-    public function getCreatedAtAttribute($date)
-    {
-        return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y-m-d(D)');//created_atの取得時のフォーマット変更
+    // public function getCreatedAtAttribute($date)
+    // {
+    //     return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y-m-d(D)');//created_atの取得時のフォーマット変更
+    // }
+
+    public function article_at(){
+        $date = $this->created_at;
+        // dd($date);
+         return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y-m-d(D)');//created_atの取得時のフォーマット変更
     }
+
 
     //リレーション定義↓
     public function user(){
