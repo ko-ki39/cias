@@ -35,7 +35,7 @@
 .side_bar .latest_article .l_a_img img {
   width: 5rem;
   height: 5rem;
-  border: solid 1.5px black;
+  border: solid 1.5px #b5b5b5;
   background-position: center;
   background-size: contain;
   -o-object-fit: contain;
@@ -125,7 +125,6 @@
   .side_bar .latest_article .l_a_img img {
     width: 5rem;
     height: 5rem;
-    border: solid 1.5px black;
     background-position: center;
     background-size: contain;
     -o-object-fit: contain;

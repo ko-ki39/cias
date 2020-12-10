@@ -12,55 +12,68 @@
         // border: dashed 1px #000;
         form {
             width: 100%;
-            height: 120px;
             background-color: #e1e1e1;
             margin: 10px auto auto;
             padding: 0.5em 0;
             border-radius: 6px;
-            box-shadow: 0.3px 0.3px 7px #D1D1D1, -0.3px -0.3px 7px #FFFFFF;
-            .depa_search{
-                height: 1.8rem;
-                margin: 0 auto 0 10px;
-                font-size: 0.8em;
-                #search_department{
-                    height: 1.8rem;
-                }
-            }
-            .search {
-                height: 1.8rem;
-                margin: 6px auto 0 10px;
-                font-size: 0.8em;
-                #search_condition {
-                    height: 1.8rem;
-                }
-                #search_list {
-                    position: relative;
-                    z-index: 3;
-                    margin-left: 255px;
-                    width: 177px;
-                    background-color: #fff;
-                    ul {
-                        padding-left: 0;
-                        margin-top: 0;
-                        list-style: none;
-                        text-align: left;
-                        a {
-                            display: block;
-                            color: #00aaf8;
-                            text-decoration: none;
-                            &:hover {
-                                background-color: #cccccc;
-                                text-decoration: underline;
+            box-shadow: 0.3px 0.3px 7px #b5b5b5, -0.3px -0.3px 7px #d6d6d6;
+            table{
+                tr{
+                    height: 2.3rem;
+                    td{
+                        .depa_search{
+                            margin: auto;
+                            font-size: 0.8em;
+                            #search_department{
+                                height: 1.7rem;
+                            }
+                        }
+                        .search {
+                            margin: auto;
+                            font-size: 0.8em;
+                            #search_condition {
+                                height: 1.7rem;
+                            }
+                            #search_list {
+                                position: relative;
+                                z-index: 3;
+                                margin-left: 255px;
+                                width: 177px;
+                                background-color: #fff;
+                                ul {
+                                    padding-left: 0;
+                                    margin-top: 0;
+                                    list-style: none;
+                                    text-align: left;
+                                    a {
+                                        display: block;
+                                        color: #00aaf8;
+                                        text-decoration: none;
+                                        &:hover {
+                                            background-color: #cccccc;
+                                            text-decoration: underline;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .fa-search{
+                            font-size: 1rem;
+                            margin-right: 0.35em;
+                        }
+                        .txt_search{
+                            margin: auto;
+                            #search{
+                                font-size: 1rem;
+                            }
+                            #search_result{
+                                margin: 0;
                             }
                         }
                     }
-                }
-            }
-            .txt_search{
-                height: 1.5rem;
-                margin: 6px auto 0 10px;
-                #search{
-                    height: 1.5rem;
+                    #fa-search-text{
+                        text-align: right;
+                    }
                 }
             }
         }
@@ -74,8 +87,8 @@
             display: flex;
             justify-content: flex-start;
             flex-direction: column;
-            background-color: #fcfcfc;
-            box-shadow: 0.3px 0.3px 7px #D1D1D1, -0.3px -0.3px 7px #FFFFFF;
+            background-color: #f6f5f4;
+            box-shadow: 0.3px 0.3px 7px #b5b5b5, -0.3px -0.3px 7px #d6d6d6;
             .article_userName {
                 margin-bottom: 0.6rem;
                 text-align: center;
@@ -243,14 +256,13 @@
     .main {
         // width: 1000px;
         width: 100%;
-        padding-top: 0.6rem;
-        padding-bottom: 5rem;
+        padding-bottom: 3rem;
         .side_bar {
             margin-top: 29px;
         }
         .content {
             width: 66%;
-            margin: 20px 0 0 0.625rem;
+            margin: 20px 0 0 10px;
             float: left;
             // border: dashed 1px #000;
             display: flex;
@@ -258,44 +270,10 @@
             justify-content: flex-start;
             flex-wrap: wrap;
             form {
-                width: 90%;
-                background-color: #f2f2f2;
-                margin: 0.625rem auto auto;
-                border-radius: 6px;
-                .search {
-                    padding-top: 0.5rem;
-                    padding-bottom: 0.5rem;
-                    height: 2rem;
-                    text-align: center;
-                    #search_condition {
-                        padding: 0.4rem 0;
-                    }
-                    #search {
-                        height: 1.5rem;
-                    }
-                    #search_list {
-                        position: relative;
-                        z-index: 3;
-                        margin-left: 255px;
-                        width: 177px;
-                        background-color: #fff;
-                        ul {
-                            padding-left: 0;
-                            margin-top: 0;
-                            list-style: none;
-                            text-align: left;
-                            a {
-                                display: block;
-                                color: #00aaf8;
-                                text-decoration: none;
-                                &:hover {
-                                    background-color: #cccccc;
-                                    text-decoration: underline;
-                                }
-                            }
-                        }
-                    }
-                }
+                width: 95%;
+                padding-left: 1em;
+                font-size: 1.2em;
+                font-weight: bold;
             }
             .article {
                 border-radius: 6px;

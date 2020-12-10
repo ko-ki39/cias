@@ -13,36 +13,37 @@
 
 .main .content form {
   width: 100%;
-  height: 120px;
   background-color: #e1e1e1;
   margin: 10px auto auto;
   padding: 0.5em 0;
   border-radius: 6px;
-  -webkit-box-shadow: 0.3px 0.3px 7px #D1D1D1, -0.3px -0.3px 7px #FFFFFF;
-          box-shadow: 0.3px 0.3px 7px #D1D1D1, -0.3px -0.3px 7px #FFFFFF;
+  -webkit-box-shadow: 0.3px 0.3px 7px #b5b5b5, -0.3px -0.3px 7px #d6d6d6;
+          box-shadow: 0.3px 0.3px 7px #b5b5b5, -0.3px -0.3px 7px #d6d6d6;
 }
 
-.main .content form .depa_search {
-  height: 1.8rem;
-  margin: 0 auto 0 10px;
+.main .content form table tr {
+  height: 2.3rem;
+}
+
+.main .content form table tr td .depa_search {
+  margin: auto;
   font-size: 0.8em;
 }
 
-.main .content form .depa_search #search_department {
-  height: 1.8rem;
+.main .content form table tr td .depa_search #search_department {
+  height: 1.7rem;
 }
 
-.main .content form .search {
-  height: 1.8rem;
-  margin: 6px auto 0 10px;
+.main .content form table tr td .search {
+  margin: auto;
   font-size: 0.8em;
 }
 
-.main .content form .search #search_condition {
-  height: 1.8rem;
+.main .content form table tr td .search #search_condition {
+  height: 1.7rem;
 }
 
-.main .content form .search #search_list {
+.main .content form table tr td .search #search_list {
   position: relative;
   z-index: 3;
   margin-left: 255px;
@@ -50,31 +51,43 @@
   background-color: #fff;
 }
 
-.main .content form .search #search_list ul {
+.main .content form table tr td .search #search_list ul {
   padding-left: 0;
   margin-top: 0;
   list-style: none;
   text-align: left;
 }
 
-.main .content form .search #search_list ul a {
+.main .content form table tr td .search #search_list ul a {
   display: block;
   color: #00aaf8;
   text-decoration: none;
 }
 
-.main .content form .search #search_list ul a:hover {
+.main .content form table tr td .search #search_list ul a:hover {
   background-color: #cccccc;
   text-decoration: underline;
 }
 
-.main .content form .txt_search {
-  height: 1.5rem;
-  margin: 6px auto 0 10px;
+.main .content form table tr td .fa-search {
+  font-size: 1rem;
+  margin-right: 0.35em;
 }
 
-.main .content form .txt_search #search {
-  height: 1.5rem;
+.main .content form table tr td .txt_search {
+  margin: auto;
+}
+
+.main .content form table tr td .txt_search #search {
+  font-size: 1rem;
+}
+
+.main .content form table tr td .txt_search #search_result {
+  margin: 0;
+}
+
+.main .content form table tr #fa-search-text {
+  text-align: right;
 }
 
 .main .content .article {
@@ -95,9 +108,9 @@
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  background-color: #fcfcfc;
-  -webkit-box-shadow: 0.3px 0.3px 7px #D1D1D1, -0.3px -0.3px 7px #FFFFFF;
-          box-shadow: 0.3px 0.3px 7px #D1D1D1, -0.3px -0.3px 7px #FFFFFF;
+  background-color: #f6f5f4;
+  -webkit-box-shadow: 0.3px 0.3px 7px #b5b5b5, -0.3px -0.3px 7px #d6d6d6;
+          box-shadow: 0.3px 0.3px 7px #b5b5b5, -0.3px -0.3px 7px #d6d6d6;
 }
 
 .main .content .article .article_userName {
@@ -320,15 +333,14 @@
 @media screen and (min-width: 720px) {
   .main {
     width: 100%;
-    padding-top: 0.6rem;
-    padding-bottom: 5rem;
+    padding-bottom: 3rem;
   }
   .main .side_bar {
     margin-top: 29px;
   }
   .main .content {
     width: 66%;
-    margin: 20px 0 0 0.625rem;
+    margin: 20px 0 0 10px;
     float: left;
     display: -webkit-box;
     display: -webkit-flex;
@@ -348,44 +360,10 @@
             flex-wrap: wrap;
   }
   .main .content form {
-    width: 90%;
-    background-color: #f2f2f2;
-    margin: 0.625rem auto auto;
-    border-radius: 6px;
-  }
-  .main .content form .search {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    height: 2rem;
-    text-align: center;
-  }
-  .main .content form .search #search_condition {
-    padding: 0.4rem 0;
-  }
-  .main .content form .search #search {
-    height: 1.5rem;
-  }
-  .main .content form .search #search_list {
-    position: relative;
-    z-index: 3;
-    margin-left: 255px;
-    width: 177px;
-    background-color: #fff;
-  }
-  .main .content form .search #search_list ul {
-    padding-left: 0;
-    margin-top: 0;
-    list-style: none;
-    text-align: left;
-  }
-  .main .content form .search #search_list ul a {
-    display: block;
-    color: #00aaf8;
-    text-decoration: none;
-  }
-  .main .content form .search #search_list ul a:hover {
-    background-color: #cccccc;
-    text-decoration: underline;
+    width: 95%;
+    padding-left: 1em;
+    font-size: 1.2em;
+    font-weight: bold;
   }
   .main .content .article {
     border-radius: 6px;
