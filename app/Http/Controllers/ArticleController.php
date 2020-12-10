@@ -10,10 +10,14 @@ use App\Fav;
 use App\Good;
 use App\Post;
 use App\Hashtag;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
 use InterventionImage;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\FavMail;
+use App\Mail\CommentMail;
 
 class ArticleController extends Controller
 {
@@ -379,6 +383,15 @@ class ArticleController extends Controller
                     "article_id" => $p_article_id,
                     "user_id" => Auth::id(),
                 ]);
+
+                //↓メール送信用
+                // $user_name = User::find(Auth::id())->user_name;
+                // $article_title = Article::find($p_article_id)->title;
+                // $email = User::find(Article::find($p_article_id)->user_id)->email;
+                // if($email){ //メールが設定されていたら
+                //     Mail::send(new FavMail($user_name, $article_title, $email)); //送信
+                // }
+
                 // responseがdeleteだったら、削除する
             } else if ($p_method == "delete") {
                 $a_d_message = "お気に入りを削除ゾ";
@@ -439,6 +452,18 @@ class ArticleController extends Controller
             "article_id" => $article_id,
             "detail" => $detail,
         ]);
+
+        //↓メール送信用
+        // $user_name = User::find(Auth::id())->user_name; //コメントをしたユーザー
+        // $article_title = Article::find($article_id); //記事のタイトル
+        // $email = User::find(Article::find($article_id)->user_id)->email; //記事を投稿したユーザーのemail
+        // $article_user_id =  User::find(Article::find($article_id)->user_id)->id; //記事のid
+        // if ($email) { //メールが登録されていたら
+        //     if(Auth::id() != $article_user_id){ //自身じゃなかったら
+        //         Mail::send(new CommentMail($user_name, $article_title, $email, $detail)); //メールを送信
+        //     }
+        // }
+
         return redirect()->route('articleDetailForcus', ['id' => $forcus]);
     }
 
@@ -493,7 +518,6 @@ class ArticleController extends Controller
             $articles = null;
             // dd();
         }
-        // dd($articles);
 
         return view('article_individual', compact('articles'));
     }
@@ -524,22 +548,22 @@ class ArticleController extends Controller
                 $comFavGets, $userInfo, $articleTitle
             ]);
     }
-  
+
     public function goodComment(Request $request){
         if ( $request->input('good_comment') == 0) {
             //ステータスが0のときはデータベースに情報を保存
             // $message = '保存';
             Good::create([
                 'comment_id' => $request->input('comment_id'),
-                 'user_id' => Auth::id(),
+                'user_id' => Auth::id(),
             ]);
-           //ステータスが1のときはデータベースに情報を削除
-        } elseif ( $request->input('good_comment')  == 1 ) {
+            //ステータスが1のときはデータベースに情報を削除
+        } elseif ($request->input('good_comment')  == 1) {
             // $message = '削除';
             $good = Good::where('comment_id', $request->input('comment_id'))
-               ->where('user_id', Auth::id())->first();
+                ->where('user_id', Auth::id())->first();
             Good::find($good->id)->delete();
-       }
+        }
         return  $request->input('good_comment');
     }
 }
