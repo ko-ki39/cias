@@ -87,8 +87,8 @@ body{
             width: calc(100% / 3);
             // background-color: tan;
             a{
-                width: 80%;
-                height: 80%;
+                width: 82%;
+                height: 82%;
                 .a_l_detail{
                     width: 100%;
                     height: 100%;
@@ -310,29 +310,14 @@ body{
                 flex-wrap: wrap;
                 // justify-content: space-around;
             }
-            .article_list {
-                display: flex;
-                justify-content: center;
-                align-items: center;
+            .article_list{
                 width: calc(100% / 5);
                 // background-color: tan;
-                .a_l_detail{
-                    width: 80%;
-                    height: 80%;
-                    background-color: white;
-                    .date{
-                        text-align: center;
-                    }
-                    .image{
-                        background-color: #ffffff;
-                        width: 100%;
-                        height: 60%;
-                        img{
-                            width: 100%;
-                            height: 100%;
+                a{
+                    .a_l_detail{
+                        .image{
+                            height: 55%;
                         }
-                    }
-                    .a_l_d_title{
                     }
                 }
             }
@@ -424,23 +409,16 @@ body{
                 align-items: center;
                 width: calc(100% /7);
                 // background-color: tan;
-                .a_l_detail{
-                    width: 80%;
-                    height: 80%;
-                    background-color: white;
-                    .date{
-                        text-align: center;
-                    }
-                    .image{
-                        background-color: #ffffff;
-                        width: 100%;
-                        height: 60%;
-                        img{
-                            width: 100%;
-                            height: 100%;
+                a{
+                    .a_l_detail{
+                        .date{
                         }
-                    }
-                    .a_l_d_title{
+                        .image{
+                            img{
+                            }
+                        }
+                        .a_l_d_title{
+                        }
                     }
                 }
             }
