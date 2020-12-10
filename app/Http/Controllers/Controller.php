@@ -92,7 +92,6 @@ class Controller extends BaseController
         $user = $article->user()->first();
         $post = $article->post()->first();
 
-
         //↑との比較用
         // $user = DB::table('users')->where('id', $article->user_id)->first();
         // $post = DB::table('posts')->where('id', $id)->first();

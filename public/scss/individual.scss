@@ -63,7 +63,7 @@ body{
                 div{
                     padding: 4px 4px 0 4px;
                     border: solid 1px #9b9b9b;
-                    border-bottom: solid 1px #f2f2f2;
+                    border-bottom: solid 1px #fcf0f0;
                     background-color: #f9f9f9;
                     a{
                         margin: 3px 8px;
@@ -97,6 +97,9 @@ body{
                             border: solid 1px #9b9b9b;
                             height: 98.5%;
                             width: 100%;
+                            background-position: center;
+                            background-size: cover;
+                            object-fit: cover;
                         }
                     }
                 }
@@ -160,8 +163,6 @@ body{
         border: solid 1px #9b9b9b;
         border-radius: 12px;
         position: fixed;
-        top: 11%;
-        left: 4.3%;
         background-color: #ffffff;
         z-index: 667;
         overflow-y: scroll;
@@ -220,6 +221,9 @@ body{
                             height: 42px;
                             border: solid 1px black;
                             border-radius: 50%;
+                            background-position: center;
+                            background-size: cover;
+                            object-fit: cover;
                         }
                     }
                     a:nth-child(2){

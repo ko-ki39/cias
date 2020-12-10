@@ -32,6 +32,7 @@ for(let j=0; j<article_list.length; j++){
     }, false);
 }
 
+// モーダル消すやつ
 document.getElementById("pop_background").addEventListener("click", function(){
     $("#main_right").fadeOut("700");
     $("#pop_background").fadeOut("300");
@@ -44,12 +45,21 @@ document.getElementById("pop_background").addEventListener("click", function(){
  */
 // 排他制御するためのやつ
 function exclusionController(buttonType, select){
+
+    //窓の大きさ(横)が720以下だったら、モーダルを表示する
     let window_W = document.documentElement.clientWidth;
     let window_H =document.documentElement.clientHeight;
     if(window_W <= 720){
         $("#main_right").fadeIn("1000");
         $("#pop_background").fadeIn("300");
+
+        let modal_centering_width = (pop_background.offsetWidth - main_right.offsetWidth)/2;
+        let modal_centering_height = (pop_background.offsetHeight - main_right.offsetHeight)/2;
+        main_right.style.left = modal_centering_width;
+        main_right.style.top = modal_centering_height;
     }
+
+    //最初にクリックした場合
     if(EX_firstAction == true){
         EX_firstAction = false;
         document.getElementById("ajax_default").style.display = "none";
@@ -68,8 +78,11 @@ function exclusionController(buttonType, select){
                 break;
         }
     }else{
+
+        //同じところをクリックしたら、returnする
         if(EX_arg == select && EX_actionType == buttonType){
             return;
+
         }else{
             switch(buttonType){
                 case "comment":
@@ -133,7 +146,7 @@ function displayFavList(buttonType, select){
     individualAjax("favs", articleID);
 }
 
-//非同期でContollerに通信する
+//Controllerに通信する
 function individualAjax(buttonType, articleID){
     $.ajaxSetup({
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
@@ -147,6 +160,8 @@ function individualAjax(buttonType, articleID){
         }
     }).done(function(data){
         console.log(data);
+
+        //commentアイコンをクリックしてたら、モーダルにコメント一覧を表示する
         if(buttonType == "comments"){
             if(document.getElementsByClassName("a_c_details") != null){
                 $(".a_c_details").remove();
@@ -174,6 +189,8 @@ function individualAjax(buttonType, articleID){
                               + `</div>`
             }
             document.getElementsByClassName("a_c_title")[0].insertAdjacentHTML("afterend", pushComments);
+
+        //favアイコンをクリックしてたら、モーダルにコメント一覧を表示する
         }else if(buttonType == "favs"){
             if(document.getElementsByClassName("a_f_details") != null){
                 $(".a_f_details").remove();
