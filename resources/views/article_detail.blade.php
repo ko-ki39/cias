@@ -57,38 +57,9 @@
                     <div class="fav">
                         <i id="" class="heart-button-l fa-heart fa-2x tippyLoginFav fas" style="color:#ff0000;"></i>
                     </div>
-                    <div id="tac_container">
-                        <div class="title">
-                            <h2>{{ $article->title }}</h2>
-                        </div>
-                        <div class="article_hashs">
-                            @if($article->hash1_id)
-                            <a href="{{ route('hashtag_result', ['hash' => $article->hash1_id]) }}" class="hash">#{{ $article->hash1_id }}</a>&nbsp;&nbsp;
-                            @endif
-
-                            @if($article->hash2_id)
-                            <a href="{{ route('hashtag_result', ['hash' => $article->hash2_id]) }}" class="hash">#{{ $article->hash2_id }}</a>&nbsp;&nbsp;
-                            @endif
-
-                            @if($article->hash3_id)
-                            <a href="{{ route('hashtag_result', ['hash' => $article->hash3_id]) }}" class="hash">#{{ $article->hash3_id }}</a>
-                            @endif
-                        </div>
-                        <div class="ctf_container">
-                            <div class="comment"><a href="#comment_area"><i class="far fa-comment fa-2x comment-button-l" style="color:#259b25;"></i></a></div>
-                            <div class="twitter"><a href="http://twitter.com/share?text={{ $article->title }}&url={{ route('article_detail', ['id' => $article->id]) }}&hashtags={{ $article->hash1_id }}" rel="nofollow" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter-square fa-2x twitter-button-l" style="color:#1da1f2;"></i></a></div>
-                            @if (Illuminate\Support\Facades\DB::table("favs")
-                                    ->where("article_id", "=", $article->id)
-                                    ->where("user_id", "=", Auth::id())->exists() != null)
-                            <div class="fav">
-                                <i id="" class="heart-button-l fa-heart fa-2x tippyLoginFav fas" style="color:#ff0000;"></i>
-                            </div>
-                            @else
-                                <div class="fav">
-                                    <i id="" class="heart-button-l fa-heart fa-2x tippyGuestFav far" style="color:#ff0000;"></i>
-                                </div>
-                            @endif
-                        </div>
+                @else
+                    <div class="fav">
+                        <i id="" class="heart-button-l fa-heart fa-2x tippyGuestFav far" style="color:#ff0000;"></i>
                     </div>
                 @endif
             </div>
@@ -134,12 +105,13 @@
                     </div>
                 </form>
             </div>
-            @endguest
-            <div id="comment_list">
-                <h2>コメント一覧</h2>
-                @if (!$commentNullCheck)
-                    <div class="c_l_noComment">まだコメントがありません m(__)m</div>
-                @else
+        @endguest
+        <div id="comment_list">
+            <h2>コメント一覧</h2>
+            <div class="h2_underLine"></div>
+            @if (!$commentNullCheck)
+                <div class="c_l_noComment">まだコメントがありません m(__)m</div>
+            @else
                 @foreach ($comments as $item)
                     @if (!$loop->first)
                         <hr>
@@ -221,4 +193,5 @@
         この記事に、コメントを書く！
     </div>
 @endguest
-    <script src="/js/fav.js"></script>
+
+@endsection
