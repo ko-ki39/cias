@@ -258,6 +258,9 @@ class AdminController extends Controller
                 case 8: //更新日で検索
                     $users = User::where('updated_at', 'like', '%' . $search . '%')->sortable()->get();
                     break;
+                    case 9: //期限で検索
+                        $users = User::where('time_limit', 'like', '%' . $search . '%')->sortable()->get();
+                    break;
                 default:
                     $users = User::sortable()->get();
             }
