@@ -1,34 +1,65 @@
 .main {
-  width: 800px;
-  margin: 10px auto;
-  border-radius: 10px;
-  background-color: #fff !important;
+  width: 97%;
+  background-color: #fcfcfc;
+  margin: auto;
 }
 
 .main .content {
-  width: 550px;
-  margin: 10px auto;
+  width: 100%;
 }
 
-.main .content .title {
-  text-align: center;
-}
-
-.main .content .hash {
-  text-align: center;
+.main .content .post_inputs {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .main .content .post_inputs .p_i_input_img {
-  width: 550px;
-  height: 400px;
+  width: 96%;
+  height: 200px;
+  margin: auto;
+  position: relative;
 }
 
-.main .content .post_inputs .p_i_input_img .post_file {
-  width: 550px;
-  height: 400px;
-  border: solid 1px olivedrab;
+.main .content .post_inputs .p_i_input_img .p_i_p {
+  width: 70%;
+  height: 70%;
+  position: absolute;
+  background-color: #0033ff52;
+  border: solid 1px #6b9ad6;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main .content .post_inputs .p_i_input_img .p_i_p p {
+  margin: 0;
+}
+
+.main .content .post_inputs .p_i_input_img .p_i_p .post_file {
   z-index: 10;
   opacity: 0;
+  width: 100%;
+  height: 100%;
   position: absolute;
 }
 
@@ -36,16 +67,13 @@
   width: 100%;
   height: 100%;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
   -o-object-fit: contain;
      object-fit: contain;
+  opacity: 0;
 }
 
 .main .content .text {
-  width: 550px;
-  margin: 10px auto;
-}
-
-.main .content #post {
-  float: right;
+  width: 96%;
+  margin: auto;
 }
