@@ -1,14 +1,43 @@
+html body {
+  background-color: #f5f5f5;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.5em;
+  margin: 1.5em;
+}
+
 .main {
-  width: 97%;
+  width: 96%;
   background-color: #fcfcfc;
   margin: auto;
+  -webkit-box-shadow: 0.3px 0.3px 7px #b5b5b5, -0.3px -0.3px 7px #d6d6d6;
+          box-shadow: 0.3px 0.3px 7px #b5b5b5, -0.3px -0.3px 7px #d6d6d6;
 }
 
 .main .content {
   width: 100%;
 }
 
+.main .content .title {
+  margin-left: 1em;
+}
+
+.main .content .title h3 {
+  margin-bottom: 0.15em;
+}
+
+.main .content .hash {
+  margin-left: 1em;
+}
+
+.main .content .hash h3 {
+  margin-bottom: 0.15em;
+}
+
 .main .content .post_inputs {
+  margin-top: 1.5em;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -27,7 +56,7 @@
 .main .content .post_inputs .p_i_input_img {
   width: 96%;
   height: 200px;
-  margin: auto;
+  margin: auto auto 1em auto;
   position: relative;
 }
 
@@ -74,6 +103,6 @@
 }
 
 .main .content .text {
-  width: 96%;
+  width: 92%;
   margin: auto;
 }

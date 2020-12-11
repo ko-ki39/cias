@@ -157,7 +157,7 @@
                         </div>
                     </div>
                 @endforeach
-
+                @endif
         </div>
     </div>
     {{-- @component('components.side-bar') --}}
