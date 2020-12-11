@@ -9,9 +9,12 @@
 
     <form action="{{ route('admin_comment_search') }}">
         <select name="search_list" id="search_list">
-            <option value="1">ユーザー名</option>
-            <option value="2">記事タイトル</option>
-            <option value="3">コメント内容</option>
+            <option value="1">コメントしたユーザー名</option>
+            <option value="2">コメントしたユーザーID</option>
+            <option value="3">記事タイトル</option>
+            <option value="4">コメント内容</option>
+            <option value="5">good数</option>
+            <option value="6">作成日</option>
         </select>
         <input type="text" placeholder="検索" name="search" id="search">
         <input type="submit" value="検索">
@@ -23,8 +26,9 @@
         <input type="submit" value="まとめて削除">
         <table border="1">
             <th>@sortablelink('id', 'ID')</th>
-            <th>@sortablelink('user_id', 'ユーザーId')</th>
-            <th>ユーザー名</th>
+            <th>@sortablelink('user_id', 'コメントしたユーザーI
+            D')</th>
+            <th>コメントしたユーザー名</th>
             <th>@sortablelink('article_id', '記事ID')</th>
             <th>記事タイトル</th>
             <th>コメント内容</th>
@@ -33,7 +37,7 @@
             @foreach ($comments as $key => $comment)
                 <tr>
                     <td>{{ $comment->id }}</td>
-                    <td>{{ $comment->user_id }}</td>
+                    <td>{{ \App\User::find($comment->user_id)->user_id }}</td>
                     <td>{{ \App\User::find($comment->user_id)->user_name }}</td>
                     <td>{{ $comment->article_id }}</td>
                     <td>{{ \App\Article::find($comment->article_id)->title }}</td>
