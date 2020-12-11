@@ -20,13 +20,19 @@ h1{
         .title{
             margin-left: 1em;
             h3{
-                margin-bottom: 0.15em;
+                margin-bottom: 0;
+            }
+            input{
+                width: 80%;
             }
         }
         .hash{
             margin-left: 1em;
             h3{
-                margin-bottom: 0.15em;
+                margin-bottom: 0;
+            }
+            input{
+                width: 80%;
             }
         }
         .post_inputs{
@@ -76,4 +82,11 @@ h1{
         #post{
         }
     }
+}
+
+@media screen and (min-width: 481px) {
+    /* 481px以上に適用されるCSS（タブレット用） */
+}
+
+@media screen and (min-width: 720px) {
 }

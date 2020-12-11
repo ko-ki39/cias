@@ -50,9 +50,9 @@
                                     class="fab fa-twitter-square fa-2x twitter-button-l" style="color:#1da1f2;"></i></a>
                         </div>
                         @if (Illuminate\Support\Facades\DB::table('favs')
-        ->where('article_id', '=', $article->id)
-        ->where('user_id', '=', Auth::id())
-        ->exists() != null)
+                            ->where('article_id', '=', $article->id)
+                            ->where('user_id', '=', Auth::id())
+                            ->exists() != null)
                             <div class="fav">
                                 <i id="" class="heart-button-l fa-heart fa-2x tippyLoginFav fas"
                                     style="color:#ff0000;"></i>
@@ -143,8 +143,8 @@
                             {{-- コメントへのいいね --}}
                             @if (Auth::id())
                                 @if (\App\Good::where('comment_id', $item->id)
-        ->where('user_id', Auth::id())
-        ->exists() != null)
+                                    ->where('user_id', Auth::id())
+                                    ->exists() != null)
                                     {{-- すでにgoodしていた場合 --}}
                                     <a class="c_l_c_o_thums" comment_id="{{ $item->id }}" good_comment="1">
                                         <i id="" class="heart-button-l fa-heart fa-2x tippyLoginFav fas"

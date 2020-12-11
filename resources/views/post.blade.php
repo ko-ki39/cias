@@ -18,12 +18,14 @@
                 <div class="title">
                     <h3 id="title">タイトル</h3>
                     <input type="text" name="title"  placeholder="タイトルを入力（必須）" required>
+                    <a href="#" id="title_clearButton" onclick="event.preventDefault()" style="color:black; text-decoration:none; font-weight:bold; font-size:1.3em;">×</a>
                 </div>
 
                 <div class="hash">
                     <h3>ハッシュタグ</h3>
                     {{-- name="hash1" name="hash2" name="hash3 --}}
                     <input type="text" name="hash1" placeholder="ハッシュタグを入力">
+                    <a href="#" class="hash_clearButton" onclick="event.preventDefault()" style="color:black; text-decoration:none; font-weight:bold; font-size:1.3em;">×</a>
                 </div>
 
                 <div class="post_inputs">

@@ -20,7 +20,7 @@ function p_i_pCentering(num){
 
 
 
-/** 昨日の説明
+/** 機能の説明
  * 画像を表示する
  */
 // let post_file = document.getElementsByClassName("post_file");
@@ -41,4 +41,24 @@ for(let i=0; i<post_file.length; i++)
             post_img[i].src = dataUri;
         }
     });
+}
+
+
+
+/** 機能の説明
+ * 「×」を押したら、入力した文字を削除する
+ */
+let title_clearButton = document.getElementById("title_clearButton");
+let hash_clearButton = document.getElementsByClassName("hash_clearButton");
+
+title_clearButton.addEventListener("click", function(e){textClear(e.target)}, true);
+
+for(let i=0; i<hash_clearButton.length; i++){
+    hash_clearButton[i].addEventListener("click", function(e){textClear(e.target)}, true);
+}
+
+function textClear(e){
+    let prevInput = e.previousElementSibling;
+    console.log(prevInput.value);
+    prevInput.value = "";
 }
