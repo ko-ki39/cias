@@ -23,9 +23,20 @@
 
                 <div class="hash">
                     <h3>ハッシュタグ</h3>
-                    {{-- name="hash1" name="hash2" name="hash3 --}}
                     <input type="text" name="hash1" placeholder="ハッシュタグを入力">
                     <a href="#" class="hash_clearButton" onclick="event.preventDefault()" style="color:black; text-decoration:none; font-weight:bold; font-size:1.3em;">×</a>
+                </div>
+                <div class="hash_none" style="display: none">
+                    <input type="text" name="hash2" placeholder="ハッシュタグを入力">
+                    <a href="#" class="hash_clearButton" onclick="event.preventDefault()" style="color:black; text-decoration:none; font-weight:bold; font-size:1.3em;">×</a>
+                </div>
+                <div class="hash_none" style="display: none">
+                    <input type="text" name="hash3" placeholder="ハッシュタグを入力">
+                    <a href="#" class="hash_clearButton" onclick="event.preventDefault()" style="color:black; text-decoration:none; font-weight:bold; font-size:1.3em;">×</a>
+                </div>
+
+                <div id="more_hash">
+                    <p>さらにハッシュタグを追加する<span></span></p>
                 </div>
 
                 <div class="post_inputs">
