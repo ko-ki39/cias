@@ -3,6 +3,7 @@
 /*** 機能の説明
 *** お気に入りとコメントを切り替える
 ***/
+let article = document.getElementsByClassName("article")[0];
 let fav_article = document.getElementById('fav_article');
 let comment_article = document.getElementById('comment_article');
 let choice = document.getElementsByClassName("choice")[0];
@@ -14,14 +15,16 @@ function choiceButtonSwitch(e){
         EX_choiceStatus = 0;
         fav_article.style.display = "flex";
         comment_article.style.display = "none";
-        fav_button.style.backgroundColor = "#f8f8f8";
-        comment_button.style.backgroundColor = "#c7c7c7";
+        fav_button.style.backgroundColor = "#F7E0E0";
+        comment_button.style.backgroundColor = "#d3d3d3";
+        article.style.backgroundColor = "#F7E0E0"
     }else{
         EX_choiceStatus = 1;
         fav_article.style.display = "none";
         comment_article.style.display = "flex";
-        fav_button.style.backgroundColor = "#c7c7c7";
-        comment_button.style.backgroundColor = "#f8f8f8";
+        fav_button.style.backgroundColor = "#d3d3d3";
+        comment_button.style.backgroundColor = "#DAF0D6";
+        article.style.backgroundColor = "#DAF0D6"
     }
 }
 
