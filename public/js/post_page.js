@@ -18,7 +18,27 @@ function p_i_pCentering(num){
     p_i_p[num].style.top = centering_height;
 }
 
-function post_fileCentering(num){
-    let centering_width = (outerWidth - innerWidth) / 2 + "px";
-    post_file[num].style.left = centering_width;
+
+
+/** 昨日の説明
+ * 画像を表示する
+ */
+// let post_file = document.getElementsByClassName("post_file");
+let post_img = document.getElementsByClassName("post_img");
+
+for(let i=0; i<post_file.length; i++)
+{
+    post_file[i].addEventListener("change", function(e)
+    {
+        let file = e.target.files[0];
+        let fileReader = new FileReader();
+        
+        fileReader.readAsDataURL(file);
+        
+        fileReader.onload = function()
+        {
+            let dataUri = this.result;
+            post_img[i].src = dataUri;
+        }
+    });
 }

@@ -57,14 +57,17 @@ body div.main {
   -webkit-justify-content: space-around;
       -ms-flex-pack: distribute;
           justify-content: space-around;
-  background-color: #f8f8f8;
   font-weight: bold;
   text-align: center;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }
 
 .main .choice #fav_button {
   width: 50%;
   padding: 12px 0;
+  background-color: #F7E0E0;
 }
 
 .main .choice #comment_button {
@@ -74,13 +77,13 @@ body div.main {
 }
 
 .main .article {
-  background-color: #f8f8f8;
-  width: 95%;
+  background-color: #F7E0E0;
+  width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin: 15px auto 40px auto;
+  padding: 15px 0 40px 0;
 }
 
 .main .article #fav_article {
@@ -413,7 +416,6 @@ body div.main {
     -webkit-justify-content: space-around;
         -ms-flex-pack: distribute;
             justify-content: space-around;
-    background-color: #f8f8f8;
     font-weight: bold;
     text-align: center;
   }
@@ -424,11 +426,8 @@ body div.main {
   .main .choice #comment_button {
     width: 50%;
     padding: 12px 0;
-    background-color: #d3d3d3;
   }
   .main .article {
-    background-color: #f8f8f8;
-    width: 95%;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -527,7 +526,6 @@ body div.main {
     -webkit-justify-content: space-around;
         -ms-flex-pack: distribute;
             justify-content: space-around;
-    background-color: #f8f8f8;
     font-weight: bold;
     text-align: center;
   }
@@ -538,11 +536,8 @@ body div.main {
   .main .choice #comment_button {
     width: 50%;
     padding: 12px 0;
-    background-color: #d3d3d3;
   }
   .main .article {
-    background-color: #f8f8f8;
-    width: 95%;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;

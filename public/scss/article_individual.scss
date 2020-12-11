@@ -40,12 +40,14 @@ body{
         width: 100%;
         display: flex;
         justify-content: space-around;
-        background-color: #f8f8f8;
         font-weight: bold;
         text-align: center;
+        position: sticky;
+        top: 0;
         #fav_button{
             width: 50%;
             padding: 12px 0;
+            background-color: #F7E0E0;
         }
         #comment_button{
             width: 50%;
@@ -55,15 +57,16 @@ body{
     }
     .article{
         // border: black solid 1px;
-        background-color: #f8f8f8;
-        width: 95%;
+        background-color: #F7E0E0;
+        width: 100%;
         display: flex;
-        margin: 15px auto 40px auto;
+        padding: 15px 0 40px 0;
         #fav_article{
             width: 100%;
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
+            // background-color: #F7E0E0;
             // justify-content: space-around;
             a{
                 text-decoration: none;
@@ -278,7 +281,6 @@ body{
             width: 100%;
             display: flex;
             justify-content: space-around;
-            background-color: #f8f8f8;
             font-weight: bold;
             text-align: center;
             #fav_button{
@@ -288,13 +290,9 @@ body{
             #comment_button{
                 width: 50%;
                 padding: 12px 0;
-                background-color: #d3d3d3;
             }
         }
         .article {
-            // border: black solid 1px;
-            background-color: #f8f8f8;
-            width: 95%;
             display: flex;
             #fav_article {
                 width: 100%;
@@ -371,7 +369,6 @@ body{
             width: 100%;
             display: flex;
             justify-content: space-around;
-            background-color: #f8f8f8;
             font-weight: bold;
             text-align: center;
             #fav_button{
@@ -381,13 +378,9 @@ body{
             #comment_button{
                 width: 50%;
                 padding: 12px 0;
-                background-color: #d3d3d3;
             }
         }
         .article {
-            // border: black solid 1px;
-            background-color: #f8f8f8;
-            width: 95%;
             display: flex;
             #fav_article {
                 width: 100%;
