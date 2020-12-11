@@ -6,8 +6,8 @@
 @endsection
 @section('content')
     {{-- ユーザーの情報↓ --}}
-    <a href="{{ route('generate_page') }}" class="generate">アカウント生成</a>
     <a href="{{ route('auto_admin_change') }}" class="auto_admin">有効期限が過ぎたユーザーの権限変更</a>
+    <a href="{{ route('generate_page') }}" class="generate">アカウント生成</a>
     <a href="{{ route('admin_user') }}" class="admin_user">ユーザー情報</a>
     <a href="{{ route('admin_comment') }}" class="admin_comment">コメント情報</a>
     {{-- 記事の情報↓ --}}
@@ -29,7 +29,7 @@
     </form>
     <form action="{{ route('article_delete') }}" method="post" onsubmit="return article_delete()">
         @csrf
-        <input type="submit" value="まとめて削除する" class="delete">
+        <input type="submit" value="まとめて削除" id="delete">
         <table border="1">
             <th>@sortablelink('id', 'ID')</th>
             <th>@sortablelink('user_id', 'ユーザーID')</th>
@@ -43,6 +43,7 @@
             <th>ハッシュ３</th>
             <th>@sortablelink('created_at', '作成日')</th>
             <th>@sortablelink('updated_at', '更新日')</th>
+            <th>削除</th>
             @foreach ($articles as $key => $article)
                 <tr>
                     <td>{{ $article->id }}</td>
@@ -56,11 +57,12 @@
                     <td>{{ $article->hash2_id }}</td>
                     <td>{{ $article->hash3_id }}</td>
                     <td>{{ $article->created_at }}</td>
-                    <td>{{ $article->updated_at }}
+                    <td>{{ $article->updated_at }}</td>
+                    <td>
                         <input type="checkbox" name="delete[]" value="{{ $article->id }}" class="checkbox">
+                    </td>
                 </tr>
             @endforeach
-
+        </table>
     </form>
-    </table>
 @endsection

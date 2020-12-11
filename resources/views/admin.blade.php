@@ -6,8 +6,8 @@
 @endsection
 @section('content')
     {{-- ユーザーの情報↓ --}}
-    <a href="{{ route('generate_page') }}" class="generate">アカウント生成</a>
     <a href="{{ route('auto_admin_change') }}" class="auto_admin">有効期限が過ぎたユーザーの権限変更</a>
+    <a href="{{ route('generate_page') }}" class="generate">アカウント生成</a>
     <a href="{{ route('admin_user') }}" class="admin_user">ユーザー情報</a>
     <a href="{{ route('admin_comment') }}" class="admin_comment">コメント情報</a>
     <a href="{{ route('admin_article') }}" class="admin_article">記事情報</a>

@@ -7,9 +7,9 @@
 @section('content')
     {{-- ユーザーの情報↓ --}}
     {{-- ユーザーの情報↓ --}}
-    <a href="{{ route('generate_page') }}" class="generate">アカウント生成</a>
     <a href="{{ route('auto_admin_change') }}" class="auto_admin">有効期限が過ぎたユーザーの権限変更</a>
-    <a href="{{ route('admin_article') }}" class="admin_article">ユーザー情報</a>
+    <a href="{{ route('generate_page') }}" class="generate">アカウント生成</a>
+    <a href="{{ route('admin_article') }}" class="admin_article">記事情報</a>
     <a href="{{ route('admin_comment') }}" class="admin_comment">コメント情報</a>
 
     <form action="{{ route('admin_user_search') }}">
@@ -22,7 +22,7 @@
             <option value="6">学科</option>
             <option value="7">作成日</option>
             <option value="8">更新日</option>
-
+            <option value="9">期限</option>
         </select>
         <input type="text" name="search" placeholder="検索" id="search">
         <input type="submit" value="検索">
@@ -42,6 +42,8 @@
             <th>@sortablelink('department_id', '学科ID')</th>
             <th>@sortablelink('created_at', '作成日')</th>
             <th>@sortablelink('updated_at', '更新日')</th>
+            <th>@sortablelink('time_limit', '期限')</th>
+            <th>削除</th>
             @foreach ($users as $key => $user)
                 <tr>
                     <td>{{ $user->id }}</td>
@@ -72,6 +74,10 @@
                     <td>{{ $user->department_id }}</td>
                     <td>{{ $user->created_at }}</td>
                     <td>{{ $user->updated_at }}
+
+                    </td>
+                    <td>{{ $user->time_limit }}</td>
+                    <td>
                         @if ($user->id != 1)
                             <input type="checkbox" name="delete[]" value="{{ $user->id }}" class="checkbox">
                         @endif
@@ -79,7 +85,5 @@
                 </tr>
             @endforeach
         </table>
-
     </form>
-    </table>
 @endsection
