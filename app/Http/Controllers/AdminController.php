@@ -232,30 +232,38 @@ class AdminController extends Controller
         $search = $request->input('search'); //検索したい文字列
 
         if (isset($search)) {
-            switch($request->search_list){
+            // dd($search);
+            switch ($request->search_list) {
                 case 1: //ユーザー名で検索
-                    $users = User::where('user_name', 'like', '%' . $search . '%')->get(); //ユーザー名で検索
-                break;
+                    $users = User::where('user_name', 'like', '%' . $search . '%')->sortable()->get(); //ユーザー名で検索
+                    break;
                 case 2: //ログインIDで検索
-                break;
+                    $users = User::where('user_id', 'like', '%' . $search . '%')->sortable()->get();
+                    break;
                 case 3: //記事数で検索
-                break;
+                    $users = User::where('article_count', 'like', '%' . $search . '%')->sortable()->get();
+                    break;
                 case 4: //コメント数で検索
-                break;
+                    $users = User::where('comment_count', 'like', '%' . $search . '%')->sortable()->get();
+                    break;
                 case 5: //権限で検索
-                break;
+                    $users = User::where('role', 'like', '%' . $search . '%')->sortable()->get();
+                    break;
                 case 6: //学科で検索
-                break;
+                    $users = User::where('department_id', 'like', '%' . $search . '%')->sortable()->get();
+                    break;
                 case 7: //作成日で検索
-                break;
+                    $users = User::where('created_at', 'like', '%' . $search . '%')->sortable()->get();
+                    break;
                 case 8: //更新日で検索
-                break;
+                    $users = User::where('updated_at', 'like', '%' . $search . '%')->sortable()->get();
+                    break;
                 default:
-                $users = User::all();
+                    $users = User::sortable()->get();
             }
             // dd($users);
         } else {
-            $users = User::select('id', 'user_id', 'email', 'role', 'created_at', 'updated_at')->sortable(); //検索されていない場合
+            $users = User::sortable()->get(); //検索されていない場合
         }
         return view('admin_user', compact('users'));
     }
@@ -268,27 +276,39 @@ class AdminController extends Controller
                 case 1:
                     $articles = Article::whereHas('user', function ($query) use ($search) {  //whereHasでuserの条件一致を探す;
                         $query->where('user_name', 'like', '%' . $search . '%');
-                    })->paginate();
+                    })->sortable()->get();
                     break;
-                case 2: //記事のタイトルで検索
-                    $articles = Article::where('title', 'like', '%' . $search . '%')->get();
+                case 2: //ユーザーのIDで検索
+                    $articles = Article::whereHas('user', function ($query) use ($search) {  //whereHasでuserの条件一致を探す;
+                        $query->where('user_id', 'like', '%' . $search . '%');
+                    })->sortable()->get();
                     break;
-                case 3: //記事詳細で検索
+                case 3: //記事のタイトルで検索
+                    $articles = Article::where('title', 'like', '%' . $search . '%')->sortable()->get();
                     break;
-                case 4: //いいね数で検索
+                case 4: //記事詳細で検索
+                    $articles = Article::where('description', 'like', '%' . $search . '%')->sortable()->get();
                     break;
-                case 5: //コメント数で検索
+                case 5: //いいね数で検索
+                    $articles = Article::where('fav_count', 'like', '%' . $search . '%')->sortable()->get();
                     break;
-                case 6: //ハッシュで検索
-                case 7: //作成日で検索
+                case 6: //コメント数で検索
+                    $articles = Article::where('comment_count', 'like', '%' . $search . '%')->sortable()->get();
                     break;
-                case 8: //更新日で検索
+                case 7: //ハッシュで検索
+                    $articles = Article::where('hash1_id', 'like', '%' . $search . '%')->orWhere('hash2_id', 'like', '%' . $search . '%')->orWhere('hash3_id', 'like', '%' . $search . '%')->sortable()->get();
                     break;
-                    default:
-                    $articles = Article::all();
+                case 8: //作成日で検索
+                    $articles = Article::where('created_at', 'like', '%' . $search . '%')->sortable()->get();
+                    break;
+                case 9: //更新日で検索
+                    $articles = Article::where('updated_at', 'like', '%' . $search . '%')->sortable()->get();
+                    break;
+                default:
+                    $articles = Article::sortable()->get();
             }
         } else {
-            $articles = Article::all();
+            $articles = Article::sortable()->get();
         }
 
         return view('admin_article', compact('articles'));
@@ -303,26 +323,35 @@ class AdminController extends Controller
                 case 1: //ユーザー名で検索
                     $comments = Comment::whereHas('user', function ($query) use ($search) {  //whereHasでuserの条件一致を探す
                         $query->where('user_name', 'like', '%' . $search . '%');
-                    })->paginate();
+                    })->sortable()->get();
 
                     break;
-                case 2: //記事タイトルで検索
+                case 2: //ユーザーIDで検索
+                    $comments = Comment::whereHas('user', function ($query) use ($search) {  //whereHasでuserの条件一致を探す
+                        $query->where('user_id', 'like', '%' . $search . '%');
+                    })->sortable()->get();
+
+                    break;
+                case 3: //記事タイトルで検索
                     $comments = Comment::whereHas('article', function ($query) use ($search) {  //whereHasでuserの条件一致を探す
                         $query->where('title', 'like', '%' . $search . '%');
-                    })->paginate();
+                    })->sortable()->get();
                     // dd($comments);
                     break;
-                case 3: //コメント内容で検索
-                    $comments = Comment::where('detail', 'like', '%' . $search . '%')->get();
+                case 4: //コメント内容で検索
+                    $comments = Comment::where('detail', 'like', '%' . $search . '%')->sortable()->get();
                     break;
-                case 4: //グッド数で検索
+                case 5: //グッド数で検索
+                    $comments = Comment::where('good_count', 'like', '%' . $search . '%')->sortable()->get();
                     break;
-                case 5: //作成日で検索
+                case 6: //作成日で検索
+                    $comments = Comment::where('created_at', 'like', '%' . $search . '%')->sortable()->get();
+                break;
                 default:
-                    $comments = Comment::All();
+                    $comments = Comment::sortable()->get();
             }
         } else {
-            $comments = Comment::All();
+            $comments = Comment::sortable()->get();
         }
         return view('admin_comment', compact('comments'));
     }

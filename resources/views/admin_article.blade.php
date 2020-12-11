@@ -10,13 +10,14 @@
     <form action="{{ route('admin_article_search') }}">
         <select name="search_list" id="search_list">
             <option value="1">ユーザー名</option>
-            <option value="2">タイトル</option>
-            <option value="3">詳細</option>
-            <option value="4">いいね数</option>
-            <option value="5">コメント数</option>
-            <option value="6">ハッシュ</option>
-            <option value="7">作成日</option>
-            <option value="8">更新日</option>
+            <option value="2">ユーザーID</option>
+            <option value="3">タイトル</option>
+            <option value="4">詳細</option>
+            <option value="5">いいね数</option>
+            <option value="6">コメント数</option>
+            <option value="7">ハッシュ</option>
+            <option value="8">作成日</option>
+            <option value="9">更新日</option>
 
         </select>
         <input type="text" name="search" placeholder="検索" id="search">
@@ -41,7 +42,7 @@
             @foreach ($articles as $key => $article)
                 <tr>
                     <td>{{ $article->id }}</td>
-                    <td>{{ $article->user_id }}</td>
+                    <td>{{ \App\User::find($article->user_id)->user_id }}</td>
                     <td>{{ \App\User::find($article->user_id)->user_name }}</td>
                     <td>{{ $article->title }}</td>
                     <td>{{ $article->description }}</td>
