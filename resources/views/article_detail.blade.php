@@ -13,22 +13,17 @@
     {{ $article->title }}
 @endsection
 
-{{-- この下からbodyの中身を書き始める --}}
-<div class="main">
-    <div class="article">
-        <input type="hidden" name="article-id" value="{{ $article->id }}" class="article_ajax_id">
-        <div id="a_article">
-            <div class="sub">
-                <div class="user">
-                    <a href="{{ route('individual', ['id' => $user->id]) }}" class="u_image"><img
-                            src="/storage/{{ $user->image }}" alt=""></a>
-                    <!-- <a href="{{ route('post', ['id' => $user->id]) }}"> -->
-                    <a href="{{ route('individual', ['id' => $user->id]) }}" class="u_name">{{ $user->user_name }}</a>
-                    <p class="u_date">投稿した日 : {{ $article->created_at }}</p>
-                </div>
-                <div id="tac_container">
-                    <div class="title">
-                        <h2>{{ $article->title }}</h2>
+    {{-- この下からbodyの中身を書き始める --}}
+    <div class="main">
+        <div class="article">
+            <input type="hidden" name="article-id" value="{{ $article->id }}" class="article_ajax_id">
+            <div id="a_article">
+                <div class="sub">
+                    <div class="user">
+                        <a href="{{ route('individual', ['id' => $user->id]) }}" class="u_image"><img src="/storage/{{ $user->image }}" alt=""></a>
+                        <!-- <a href="{{ route('post', ['id' => $user->id]) }}"> -->
+                        <a href="{{ route('individual', ['id' => $user->id]) }}" class="u_name">{{ $user->user_name }}</a>
+                        <p class="u_date">投稿した日 : {{ $article->article_at() }}</p>
                     </div>
                     <div class="article_hashs">
                         @if ($article->hash1_id)
@@ -166,7 +161,7 @@
                                 @endif
                                 <pre>{{ $item->good_count }}</pre>
                             @endif
-                            <time datetime="{{ $item->created_at }}">{{ $item->created_at }}</time>
+                            <time datetime="{{ $item->comment_at() }}">{{ $item->comment_at() }}</time>
                         </div>
                     </div>
                 @endforeach

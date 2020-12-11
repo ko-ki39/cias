@@ -18,10 +18,15 @@ class Comment extends Model
     ];
 
     //ゲッター↓
-    public function getCreatedAtAttribute($date)
-    {
-        // dd($date);
+    // public function getCreatedAtAttribute($date)
+    // {
+    //     // dd($date);
 
+    //     return Carbon::parse($date)->format('Y年m月d日 H時i分');//created_atの取得時のフォーマット変更
+    // }
+
+    public function comment_at(){
+        $date = $this->created_at;
         return Carbon::parse($date)->format('Y年m月d日 H時i分');//created_atの取得時のフォーマット変更
     }
 

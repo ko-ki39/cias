@@ -25,7 +25,7 @@
                 <a href="{{ route('individual', ['id' => \App\User::find($article_ranking->user_id)->id]) }}">
                     投稿者：{{ \App\User::find($article_ranking->user_id)->user_name }}
                 </a>
-                <p>投稿日時&nbsp;{{ $article_ranking->created_at }}</p>
+                <p>投稿日時&nbsp;{{ $article_ranking->article_at() }}</p>
             </div>
         </div>
 

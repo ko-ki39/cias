@@ -8,7 +8,18 @@
     <a href="{{ route('admin_article') }}">記事情報</a>
     <a href="{{ route('admin_comment') }}">コメント情報</a>
     <form action="{{ route('admin_user_search') }}">
-        <input type="text" name="search" placeholder="ユーザー名で検索" id="search">
+        <select name="search_list" id="search_list">
+            <option value="1">ユーザー名</option>
+            <option value="2">ログインID</option>
+            <option value="3">記事数</option>
+            <option value="4">コメント数</option>
+            <option value="5">権限</option>
+            <option value="6">学科</option>
+            <option value="7">作成日</option>
+            <option value="8">更新日</option>
+
+        </select>
+        <input type="text" name="search" placeholder="検索" id="search">
         <input type="submit" value="検索">
     </form>
     <form action="{{ route('user_delete') }}" method="post" onsubmit="return user_delete()">
@@ -21,9 +32,9 @@
             <th>@sortablelink('comment_count', 'コメント数')</th>
             <th>E-mail</th>
             <th>@sortablelink('role', '権限')</th>
+            <th>権限変更</th>
             <th>学科</th>
             <th>@sortablelink('department_id', '学科ID')</th>
-            <th>権限変更</th>
             <th>@sortablelink('created_at', '作成日')</th>
             <th>@sortablelink('updated_at', '更新日')</th>
             @foreach ($users as $key => $user)
@@ -35,8 +46,6 @@
                     <td>{{ $user->comment_count }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->role }}</td>
-                    <td>{{ \App\Department::find($user->department_id)->department }}</td>
-                    <td>{{ $user->department_id }}</td>
                     <td>
                         {{-- 管理者が一人もいなくなったらまずいからuser_idが1のユーザーは変更できなくする
                         --}}
@@ -54,6 +63,8 @@
                         @endif
 
                     </td>
+                    <td>{{ \App\Department::find($user->department_id)->department }}</td>
+                    <td>{{ $user->department_id }}</td>
                     <td>{{ $user->created_at }}</td>
                     <td>{{ $user->updated_at }}
                         @if ($user->id != 1)
