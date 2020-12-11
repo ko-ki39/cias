@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
 
         $param = [
             'id' => 1,
-            'user_name' => 'root',
+            'user_name' => 'administrator',
             'user_id' => '123456789',
             'department_id' =>'1',
             'age' => '1',

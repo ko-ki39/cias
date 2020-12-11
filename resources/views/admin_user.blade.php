@@ -56,7 +56,8 @@
                     <td>
                         {{-- 管理者が一人もいなくなったらまずいからuser_idが1のユーザーは変更できなくする
                         --}}
-                        @if ($user->id != 1)
+                        {{-- {{ dd($user->role != 1 || \App\User::where('role', 1)->count() > 1) }} --}}
+                        @if ($user->role != 1 || \App\User::where('role', 1)->count() > 1)
                             <form action="{{ route('admin_change', ['id' => $user->id]) }}" method="get"
                                 enctype='multipart/form-data'>
                                 @csrf
@@ -78,7 +79,7 @@
                     </td>
                     <td>{{ $user->time_limit }}</td>
                     <td>
-                        @if ($user->id != 1)
+                        @if ($user->role != 1)
                             <input type="checkbox" name="delete[]" value="{{ $user->id }}" class="checkbox">
                         @endif
                     </td>
