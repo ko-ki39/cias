@@ -47,5 +47,9 @@ class DepartmentSeeder extends Seeder
         ];
         DB::table('departments')->insert($param);
 
+        $param = [
+            'department' => '管理者',
+        ];
+        DB::table('departments')->insert($param);
     }
 }

@@ -22,6 +22,7 @@
                         <option value="6">情報システム科</option>
                         <option value="7">造園ガーデニング科</option>
                         <option value="8">総合実務科（知的障がい者対象）</option>
+                        <option value="9">管理者用アカウント</option>
                     </select>
                 </td>
                 <td><select name="age">

@@ -133,7 +133,10 @@ class AdminController extends Controller
             case 8:
                 $department = "so";
                 $department_name = "総合実務科（知的障がい者対象）";
-
+                break;
+            case 9:
+                $department = "admin_" . Str::random(5);
+                $department_name = "管理者";
                 break;
         }
         if ($request->age == 2) { //2年だったら去年の年を出す
@@ -176,6 +179,9 @@ class AdminController extends Controller
             mb_convert_variables('SJIS-win', 'UTF-8', $csv); //文字化け対策
             fputcsv($file, $csv); //ファイルに追記する
 
+            if($request->department == 9){ //管理者を生成しようとした場合
+                $user->role = 1;
+            }
             $password = bcrypt($password);
             $user->user_id = $user_id;
             $user->department_id = $request->department;
@@ -210,14 +216,16 @@ class AdminController extends Controller
         $now = new Carbon();
         $now = Carbon::now('Asia/Tokyo'); //日本時間の日付取得
         foreach ($users as $key => $user) {
-            if ($user->time_limit) { //期限が存在する
-                if ($now->gte($user->time_limit)) { //期限が過ぎた人
-                    if (!Article::where('user_id', $user->id)->first() && !Comment::where('user_id', $user->id)->first()) { // 記事やコメントがないユーザの削除
-                        $user->delete();
-                    } else {  //権限を3にする
-                        $user->time_limit = null;
-                        $user->role = 3;
-                        $user->update();
+            if ($user->role == 2) { //ユーザーの権限が2
+                if ($user->time_limit) { //期限が存在する
+                    if ($now->gte($user->time_limit)) { //期限が過ぎた人
+                        if (!Article::where('user_id', $user->id)->first() && !Comment::where('user_id', $user->id)->first()) { // 記事やコメントがないユーザの削除
+                            $user->delete();
+                        } else {  //権限を3にする
+                            $user->time_limit = null;
+                            $user->role = 3;
+                            $user->update();
+                        }
                     }
                 }
             }
@@ -258,8 +266,8 @@ class AdminController extends Controller
                 case 8: //更新日で検索
                     $users = User::where('updated_at', 'like', '%' . $search . '%')->sortable()->get();
                     break;
-                    case 9: //期限で検索
-                        $users = User::where('time_limit', 'like', '%' . $search . '%')->sortable()->get();
+                case 9: //期限で検索
+                    $users = User::where('time_limit', 'like', '%' . $search . '%')->sortable()->get();
                     break;
                 default:
                     $users = User::sortable()->get();
@@ -349,7 +357,7 @@ class AdminController extends Controller
                     break;
                 case 6: //作成日で検索
                     $comments = Comment::where('created_at', 'like', '%' . $search . '%')->sortable()->get();
-                break;
+                    break;
                 default:
                     $comments = Comment::sortable()->get();
             }

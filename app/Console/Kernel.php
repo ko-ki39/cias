@@ -40,19 +40,21 @@ class Kernel extends ConsoleKernel
         //     Log::error('エラー');
         // })->everyMinute();
 
-        $schedule->call(function(){
+        $schedule->call(function () {
             $users = User::all();
             $now = new Carbon();
             $now = Carbon::now('Asia/Tokyo'); //日本時間の日付取得
             foreach ($users as $key => $user) {
-                if($user->time_limit){//期限が存在する
-                    if ($now->gte($user->time_limit)) { //期限が過ぎた人
-                        if(!Article::where('user_id', $user->id)->first() && !Comment::where('user_id', $user->id)->first()){ // 記事やコメントがないユーザの削除
-                            $user->delete();
-                        }else{  //権限を3にする
-                            $user->time_limit = null;
-                            $user->role = 3;
-                            $user->update();
+                if ($user->role == 2) {
+                    if ($user->time_limit) { //期限が存在する
+                        if ($now->gte($user->time_limit)) { //期限が過ぎた人
+                            if (!Article::where('user_id', $user->id)->first() && !Comment::where('user_id', $user->id)->first()) { // 記事やコメントがないユーザの削除
+                                $user->delete();
+                            } else {  //権限を3にする
+                                $user->time_limit = null;
+                                $user->role = 3;
+                                $user->update();
+                            }
                         }
                     }
                 }
@@ -68,7 +70,7 @@ class Kernel extends ConsoleKernel
      */
     protected function commands()
     {
-        $this->load(__DIR__.'/Commands');
+        $this->load(__DIR__ . '/Commands');
 
         require base_path('routes/console.php');
     }
