@@ -166,9 +166,9 @@ class AdminController extends Controller
 
         fputcsv($file, $columns); //1行目の情報を追記
 
-        for ($i = 1; $request->num >= $i; $i++) {
+        if ($request->department == 9) { //管理者を生成する時
             $user = new User(); //forの中でnewしないとダメ
-            $user_id = $user_id_join . $i;
+            $user_id = $user_id_join;
             $password = Str::random(16); //ランダムな16文字生成
 
             $csv = [ //csvで出力する情報
@@ -179,18 +179,40 @@ class AdminController extends Controller
             mb_convert_variables('SJIS-win', 'UTF-8', $csv); //文字化け対策
             fputcsv($file, $csv); //ファイルに追記する
 
-            if($request->department == 9){ //管理者を生成しようとした場合
-                $user->role = 1;
-            }
+
             $password = bcrypt($password);
             $user->user_id = $user_id;
             $user->department_id = $request->department;
-            $user->time_limit = $request->date;
+            $user->time_limit = null;
             $user->age = $year;
             $user->password = $password;
+            $user->role = 1;
 
             $user->save();
+        }else{
+            for ($i = 1; $request->num >= $i; $i++) {
+                $user = new User(); //forの中でnewしないとダメ
+                $user_id = $user_id_join . $i;
+                $password = Str::random(16); //ランダムな16文字生成
+
+                $csv = [ //csvで出力する情報
+                    $user_id,
+                    $password,
+                    $request->date,
+                ];
+                mb_convert_variables('SJIS-win', 'UTF-8', $csv); //文字化け対策
+                fputcsv($file, $csv); //ファイルに追記する
+                $password = bcrypt($password);
+                $user->user_id = $user_id;
+                $user->department_id = $request->department;
+                $user->time_limit = $request->date;
+                $user->age = $year;
+                $user->password = $password;
+
+                $user->save();
+            }
         }
+
 
         fclose($file); //ファイルを閉じる
 
