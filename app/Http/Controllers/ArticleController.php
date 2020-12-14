@@ -260,6 +260,7 @@ class ArticleController extends Controller
                         // }
                         $resizeImage->save(storage_path($storagePath . $fileName), $quality);
                         $image_path[$i] = basename($fileName); //画像名のみ保存
+                        // dd("成功");
                     } else {
                         $image_path[$i] = null; //nullを入れないと空になる
                     }
