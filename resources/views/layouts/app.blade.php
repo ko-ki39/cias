@@ -93,6 +93,7 @@
 
         </main>
     </div>
+    @yield('js')
     <script src="/js/hamburger.js"></script>
     <script src="/js/ztextPlay.js"></script>
 </body>
