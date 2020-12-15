@@ -14,7 +14,7 @@
         <th class="department_c">学科</th>
         <th class="age">学年</th>
         <th class="num">人数</th>
-        <th class="date">期限</th>
+        <th class="date">有効期限</th>
         <tr>
             <form action="{{ route('generate') }}" onsubmit="return user_create()">
                 <td><select name="department" id="department" class="department_c">

@@ -59,7 +59,6 @@ class Kernel extends ConsoleKernel
                     }
                 }
             }
-            Log::info('毎分実行');
         })->everyMinute();
     }
 

@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="/css/admin.css" type="text/css">
 @endsection
 @section('content')
-    {{-- ユーザーの情報↓ --}}
+    <h3>ユーザー詳細情報一覧</h3>
     {{-- ユーザーの情報↓ --}}
     <a href="{{ route('auto_admin_change') }}" class="auto_admin">有効期限が過ぎたユーザーの権限変更</a>
     <a href="{{ route('generate_page') }}" class="generate">アカウント生成</a>
@@ -22,7 +22,7 @@
             <option value="6">学科</option>
             <option value="7">作成日</option>
             <option value="8">更新日</option>
-            <option value="9">期限</option>
+            <option value="9">有効期限</option>
         </select>
         <input type="text" name="search" placeholder="検索" id="search">
         <input type="submit" value="検索">
@@ -56,7 +56,9 @@
                     <td>
                         {{-- 管理者が一人もいなくなったらまずいからuser_idが1のユーザーは変更できなくする
                         --}}
-                        {{-- {{ dd($user->role != 1 || \App\User::where('role', 1)->count() > 1) }} --}}
+                        {{--
+                        {{ dd($user->role != 1 || \App\User::where('role', 1)->count() > 1) }}
+                        --}}
                         @if ($user->role != 1 || \App\User::where('role', 1)->count() > 1)
                             <form action="{{ route('admin_change', ['id' => $user->id]) }}" method="get"
                                 enctype='multipart/form-data'>

@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/css/admin.css" type="text/css">
 @endsection
 @section('content')
+    <h3>記事詳細情報一覧</h3>
     {{-- ユーザーの情報↓ --}}
     <a href="{{ route('auto_admin_change') }}" class="auto_admin">有効期限が過ぎたユーザーの権限変更</a>
     <a href="{{ route('generate_page') }}" class="generate">アカウント生成</a>
