@@ -12,7 +12,7 @@
                             @csrf
 
                             <div class="form-group u_i_parent">
-                                <p>ユーザー画像を入れ給えッッッ</p>
+                                <p>アイコンに使う画像を入れてください</p>
                                 <div class="u_i_display_area">
                                     <input type="file" name="u_i_input" class="u_i_input">
                                     <input type="hidden" name="current_image" value="{{ $user->image }}">
