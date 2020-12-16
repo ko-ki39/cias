@@ -4,6 +4,7 @@
     {{-- css等の読み込み場所 --}}
 
     <link rel="stylesheet" href="/css/post_page.css" type="text/css">
+    <link rel="stylesheet" href="/css/previewButton.css" type="text/css">
 @endsection
 
 @section('title', '記事投稿ページ')
@@ -36,7 +37,7 @@
                 </div>
 
                 <div id="more_hash">
-                    <p>さらにハッシュタグを追加する<span></span></p>
+                    <p>さらにハッシュタグを追加する(あと<span id="m_h_counter"> 2 </span>つ)<span class="v_text"></span></p>
                 </div>
 
                 <div class="post_inputs">
@@ -51,7 +52,14 @@
                     <textarea name="text1" id="" cols="30" rows="10" class="text"  placeholder="見出しとなる部分です（必須）" required></textarea>
                 </div>
 
-                <input type="submit" value="投稿する" id="post">
+                <div id="more_inputs">
+                    <p>さらに記事内容を追加する(あと<span id="m_i_counter"> 5 </span>つ)<span class="v_text"></span></p>
+                </div>
+
+                {{-- <input type="submit" value="投稿する" id="post"> --}}
+                <div id="preview_button">
+                    <a class="btn btn-border" style=""><span>プレビューを見る</span></a>
+                </div>
             </form>
         </div>
     </div>

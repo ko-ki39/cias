@@ -39,11 +39,14 @@ h1{
             }
         }
         #more_hash{
-            margin: auto 3em auto auto;
-            text-align: center;
+            margin: auto auto auto 1.5em;
+            // text-align: center;
             font-size: 0.8em;
             color: #00a0da;
-            span:before{
+            #m_h_counter{
+                font-weight: bold;
+            }
+            .v_text:before{
                 content: '\f078';
                 display: inline-block;
                 font-family: FontAwesome;
@@ -93,6 +96,25 @@ h1{
                     object-fit: contain;
                     opacity: 0;
                 }
+            }
+        }
+        #more_inputs{
+            margin: auto;
+            text-align: center;
+            font-size: 0.8em;
+            color: #00a0da;
+            #m_i_counter{
+                font-weight: bold;
+            }
+            .v_text:before{
+                content: '\f078';
+                display: inline-block;
+                font-family: FontAwesome;
+                font-weight: normal;
+                font-size: inherit;
+                text-rendering: auto;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
             }
         }
         .text{

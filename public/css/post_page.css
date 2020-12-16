@@ -49,13 +49,16 @@ h1 {
 }
 
 .main .content #more_hash {
-  margin: auto 3em auto auto;
-  text-align: center;
+  margin: auto auto auto 1.5em;
   font-size: 0.8em;
   color: #00a0da;
 }
 
-.main .content #more_hash span:before {
+.main .content #more_hash #m_h_counter {
+  font-weight: bold;
+}
+
+.main .content #more_hash .v_text:before {
   content: '\f078';
   display: inline-block;
   font-family: FontAwesome;
@@ -131,6 +134,28 @@ h1 {
   -o-object-fit: contain;
      object-fit: contain;
   opacity: 0;
+}
+
+.main .content #more_inputs {
+  margin: auto;
+  text-align: center;
+  font-size: 0.8em;
+  color: #00a0da;
+}
+
+.main .content #more_inputs #m_i_counter {
+  font-weight: bold;
+}
+
+.main .content #more_inputs .v_text:before {
+  content: '\f078';
+  display: inline-block;
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .main .content .text {
