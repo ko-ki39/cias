@@ -290,6 +290,7 @@
 </script>
 <script src="/js/hash.js"></script>
 <script src="/js/fav.js"></script>
+<script src="/js/top.js"></script>
 <style>
     .pagination {
         font-weight: bold;
