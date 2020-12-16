@@ -47,6 +47,10 @@ class Controller extends BaseController
         // $article = DB::table('articles')->where('id', $id)->first();
         $article = Article::find($id);
 
+        if($article == null){
+            return redirect("errors.404");
+        }
+
         // $articles = DB::table('articles')->get();
         $sorts = $article->comments()->latest()->get();
         foreach ($sorts as $sort) { //多次元配列にデータを用意
