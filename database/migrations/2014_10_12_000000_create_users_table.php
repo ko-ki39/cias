@@ -19,6 +19,9 @@ class CreateUsersTable extends Migration
             $table->string('user_name')->unique()->nullable();
             $table->string('image')->nullable();
             $table->string('email')->unique()->nullable();
+            $table->string('occupation')->nullable();
+            $table->string('area')->nullable();
+            $table->string('capacity')->nullable();
             $table->foreignId('department_id')->constrained('departments')->onDelete('cascade');
             $table->tinyInteger('age');
             $table->text('introduction')->nullable();
