@@ -40,12 +40,13 @@
                     <p>さらにハッシュタグを追加する(あと<span id="m_h_counter"> 2 </span>つ)<span class="v_text"></span></p>
                 </div>
 
+                {{-- name="image1" name="image2" name="image3" ... "image6" --}}
+                {{-- name="text1" name="text2" name="text3" ... "text6" --}}
                 <div class="post_inputs">
                     <div class="p_i_input_img">
-                        {{-- name="image1" name="image2" name="image3" ... "image6" --}}
                         <div class="p_i_p">
                             <p>画像を挿入</p>
-                            <input type="file" class="post_file" name="image1" value="画像を入れる（必須）" required>
+                            <input type="file" class="post_file" onclick="imageChange(0, this)" name="image1" value="画像を入れる（必須）" required>
                         </div>
                         <img src="" alt="" class="post_img">
                     </div>
@@ -56,10 +57,10 @@
                     <p>さらに記事内容を追加する(あと<span id="m_i_counter"> 5 </span>つ)<span class="v_text"></span></p>
                 </div>
 
-                {{-- <input type="submit" value="投稿する" id="post"> --}}
                 <div id="preview_button">
                     <a class="btn btn-border" style=""><span>プレビューを見る</span></a>
                 </div>
+                {{-- <input type="submit" value="投稿する" id="post"> --}}
             </form>
         </div>
     </div>

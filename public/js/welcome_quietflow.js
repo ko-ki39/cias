@@ -1,4 +1,5 @@
 $("body").quietflow({
     theme : "starfield",
-    speed : 125
+    starSize : 1.25,
+    speed : 60
 });

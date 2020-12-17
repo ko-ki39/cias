@@ -8,6 +8,7 @@ h1{
     text-align: center;
     font-size: 1.5em;
     margin: 1.5em;
+    color: white;
 }
 .main {
     width: 96%;
@@ -95,6 +96,28 @@ h1{
                     background-size: contain;
                     object-fit: contain;
                     opacity: 0;
+                }
+            }
+            .p_i_delete{
+                text-align: center;
+                margin: auto 0.2em -1.3em auto;
+                height: 34px;
+                width: 34px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+                background-color: #949494;
+                border: solid 1px #949494;
+                border-radius: 50%;
+                .p_i_d_span{
+                    display: inline-block;
+                    height: 100%;
+                    width: 100%;
+                    color: #ffffff;
+                    border-radius: 50%;
+                    font-size: 1.5em;
+                    font-weight: 900;
                 }
             }
         }

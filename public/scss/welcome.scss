@@ -2,17 +2,13 @@
 body{
     // margin: auto;
     width: 100%;
-    background-color: black;
     .welcome_header{
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
         align-items: center;
         height: 3.2rem;
-        p{
-            margin-right: 32%;
-        }
-        a:nth-child(2){
+        a:nth-child(1){
             display: none;
             color: whitesmoke;
             text-decoration: none;
@@ -20,7 +16,7 @@ body{
             border: none;
             margin-right: 3%;
         }
-        a:nth-child(3){
+        a:nth-child(2){
             margin-right: 0.5rem;
             width: 2.5rem;
             height: 2.5rem;
@@ -36,9 +32,8 @@ body{
         }
     }
     .ztext-head{
-        // position: absolute;
-        // top: 5px;
-        // left: 47%;
+        position: absolute;
+        left: -32%;
         font-size: 0.86em;
         line-height: 1em;
         color: whitesmoke;
@@ -52,12 +47,11 @@ body{
     //     height: 100vh;
     //     width: 1000px;
     // }
-    .welcome_section{
+    #welcome_section{
         margin: 0;
     }
     .header_band{
         height: 77px;
-        background: black;
     }
     .welcome_image{
         // border: dashed 1px yellow;
@@ -118,7 +112,6 @@ body{
     body{
         // margin: auto;
         width: 100%;
-        background-color: black;
         .welcome_header{
             display: flex;
             flex-direction: row;
@@ -127,13 +120,12 @@ body{
             height: 3.8rem;
             padding: 1rem;
             p{
-                position: absolute !important;
-                // right: 49%;
+                position: absolute;
                 left: 48%;
                 font-size: 1.2em;
                 line-height: 1.2rem;
             }
-            a:nth-child(2){
+            a:nth-child(1){
                 display: block;
                 color: whitesmoke;
                 text-decoration: none;
@@ -141,7 +133,7 @@ body{
                 border: none;
                 margin-right: 1rem;
             }
-            a:nth-child(3){
+            a:nth-child(2){
                 display: block;
                 height: 3.2rem;
                 width: 3.2rem;
@@ -174,7 +166,7 @@ body{
     //     height: 100vh;
     //     width: 1000px;
     // }
-    .welcome_section{
+    #welcome_section{
         margin: 0;
     }
     .header_band{

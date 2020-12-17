@@ -2,7 +2,6 @@
 /* モバイルファーストでCSSを構築していく */
 body {
   width: 100%;
-  background-color: black;
 }
 
 body .welcome_header {
@@ -26,11 +25,7 @@ body .welcome_header {
   height: 3.2rem;
 }
 
-body .welcome_header p {
-  margin-right: 32%;
-}
-
-body .welcome_header a:nth-child(2) {
+body .welcome_header a:nth-child(1) {
   display: none;
   color: whitesmoke;
   text-decoration: none;
@@ -38,13 +33,13 @@ body .welcome_header a:nth-child(2) {
   margin-right: 3%;
 }
 
-body .welcome_header a:nth-child(3) {
+body .welcome_header a:nth-child(2) {
   margin-right: 0.5rem;
   width: 2.5rem;
   height: 2.5rem;
 }
 
-body .welcome_header a:nth-child(3) img {
+body .welcome_header a:nth-child(2) img {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
@@ -55,6 +50,8 @@ body .welcome_header a:nth-child(3) img {
 }
 
 body .ztext-head {
+  position: absolute;
+  left: -32%;
   font-size: 0.86em;
   line-height: 1em;
   color: whitesmoke;
@@ -64,13 +61,12 @@ body .z-layer:not(:first-child) {
   color: red;
 }
 
-body .welcome_section {
+body #welcome_section {
   margin: 0;
 }
 
 body .header_band {
   height: 77px;
-  background: black;
 }
 
 body .welcome_image {
@@ -135,7 +131,6 @@ body #main div a {
 @media screen and (min-width: 720px) {
   body {
     width: 100%;
-    background-color: black;
   }
   body .welcome_header {
     display: -webkit-box;
@@ -159,12 +154,12 @@ body #main div a {
     padding: 1rem;
   }
   body .welcome_header p {
-    position: absolute !important;
+    position: absolute;
     left: 48%;
     font-size: 1.2em;
     line-height: 1.2rem;
   }
-  body .welcome_header a:nth-child(2) {
+  body .welcome_header a:nth-child(1) {
     display: block;
     color: whitesmoke;
     text-decoration: none;
@@ -172,13 +167,13 @@ body #main div a {
     border: none;
     margin-right: 1rem;
   }
-  body .welcome_header a:nth-child(3) {
+  body .welcome_header a:nth-child(2) {
     display: block;
     height: 3.2rem;
     width: 3.2rem;
     margin-bottom: 0.5rem;
   }
-  body .welcome_header a:nth-child(3) img {
+  body .welcome_header a:nth-child(2) img {
     height: 3.2rem;
     width: 3.2rem;
     text-decoration: none;
@@ -196,7 +191,7 @@ body #main div a {
   .z-layer:not(:first-child) {
     color: red;
   }
-  .welcome_section {
+  #welcome_section {
     margin: 0;
   }
   .header_band {

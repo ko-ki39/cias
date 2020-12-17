@@ -17,12 +17,12 @@
         <link rel="stylesheet" href="/css/hamburger.css" type="text/css"> --}}
     </head>
 
-    <body style="background-color:black;">
+    <body>
         @guest
-        <p class="ztext ztext-head" style="margin:1.2rem auto auto auto;">具志川<br>訓練校</p>
+        <div class="welcome_header">
+        </div>
         @else
         <div class="welcome_header">
-            <p class="ztext ztext-head" style="">具志川<br>訓練校</p>
             <a href="{{ route('individual', ['id' => Auth::id()]) }}">{{ Auth::user()->user_name }}</a>
             <a href="{{ route('individual', ['id' => Auth::id()]) }}"><img src="/storage/{{ Auth::user()->image }}" alt="{{ Auth::user()->image }}"></a>
         </div>

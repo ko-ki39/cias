@@ -1,7 +1,8 @@
 function hoge(){
     $("body").quietflow({
         theme : "starfield",
-        speed : 125,
+        starSize : 1.2,
+        speed : 60
     });
 }
 
