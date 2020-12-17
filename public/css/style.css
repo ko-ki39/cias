@@ -13,12 +13,11 @@ html body {
       -ms-flex-flow: column;
           flex-flow: column;
   width: 100%;
-  background-color: #e3e3e3;
 }
 
 html body .header {
   width: 100%;
-  background-color: #dfdfdf;
+  background-color: rgba(0, 0, 0, 0.25);
 }
 
 html body .header .top {
@@ -39,7 +38,6 @@ html body .header .top {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #000000;
   height: 3.2rem;
 }
 
@@ -88,45 +86,6 @@ html body .header .top .ztext {
 
 html body .header .top .z-layer:not(:first-child) {
   color: red;
-}
-
-html body .header .header_bot {
-  display: none;
-  width: 1000px;
-}
-
-html body .header .header_bot .tp_intro {
-  margin: 10px 0 0 10px;
-  float: left;
-}
-
-html body .header .header_bot .tp_intro .header_image {
-  width: 600px;
-}
-
-html body .header .header_bot .tp_intro a {
-  color: red;
-  float: left;
-  margin-right: auto;
-}
-
-html body .header .header_bot .tp_intro h2 {
-  width: 600px;
-}
-
-html body .header .header_bot .tp_intro .title {
-  font-size: 30px;
-  text-align: center;
-  margin: 0;
-}
-
-html body .header .header_bot .ad {
-  width: 300px;
-  height: 250px;
-  float: right;
-  border: #000 dashed 2px;
-  margin-top: 8px;
-  margin-right: 8px;
 }
 
 html body .clearfix::after {
@@ -225,11 +184,9 @@ iframe {
         -ms-flex-flow: column;
             flex-flow: column;
     width: 100%;
-    background-color: #e3e3e3;
   }
   html body .header {
     width: 100%;
-    background-color: #dfdfdf;
   }
   html body .header .top {
     display: -webkit-box;
@@ -249,7 +206,6 @@ iframe {
     -webkit-align-items: center;
         -ms-flex-align: center;
             align-items: center;
-    background-color: #000000;
     height: 5rem;
   }
   html body .header .top a {

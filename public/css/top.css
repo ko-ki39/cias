@@ -3,7 +3,7 @@
 .main {
   width: 100%;
   padding-top: 0.6rem;
-  background-color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.301);
 }
 
 .main .content {
@@ -13,12 +13,16 @@
 
 .main .content form {
   width: 100%;
-  background-color: #e1e1e1;
+  background-color: #ffffff;
   margin: 10px auto auto;
   padding: 0.5em 0;
   border-radius: 6px;
   -webkit-box-shadow: 0.3px 0.3px 7px #b5b5b5, -0.3px -0.3px 7px #d6d6d6;
           box-shadow: 0.3px 0.3px 7px #b5b5b5, -0.3px -0.3px 7px #d6d6d6;
+}
+
+.main .content form table {
+  margin-left: 0.75em;
 }
 
 .main .content form table tr {
@@ -108,7 +112,7 @@
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  background-color: #fdfdfd;
+  background-color: #ffffff;
   -webkit-box-shadow: 0.3px 0.3px 7px #b5b5b5, -0.3px -0.3px 7px #d6d6d6;
           box-shadow: 0.3px 0.3px 7px #b5b5b5, -0.3px -0.3px 7px #d6d6d6;
 }
@@ -383,6 +387,9 @@
     margin-right: 15px;
     font-size: 1.2em;
     font-weight: bold;
+  }
+  .main .content form table {
+    margin-left: 1em;
   }
   .main .content .article {
     border-radius: 6px;

@@ -10,6 +10,7 @@
         <link href="{{ asset('/css/welcome.css') }}" rel="stylesheet">
         <link href="{{ asset('/css/hamburger.css') }}" rel="stylesheet">
         <script src="/js/fontawesome0853445863.js" crossorigin="anonymous"></script>
+        <script src="/js/jquery-3.5.1.min.js"></script>
         <script src="/js/ztext.min.js"></script>
         {{-- <script src="{{ asset('/js/jquery-3.5.1.min.js') }}"></script> --}}
         {{-- <link rel="stylesheet" href="/css/welcome.css" type="text/css">
@@ -31,8 +32,8 @@
         @include('common_view.footer')
         <script src="{{ asset('/js/hamburgerWelcome.js') }}"></script>
         <script src="/js/ztextPlay.js"></script>
-        {{-- <script src="{{ asset('/js/quietflow.js') }}"></script> --}}
-        {{-- <script src="{{ asset('/js/backgroundAnimation.js') }}"></script> --}}
+        <script src="{{ asset('/js/quietflow.min.js') }}"></script>
+        <script src="{{ asset('/js/welcome_quietflow.js') }}"></script>
     </body>
 
 </html>
