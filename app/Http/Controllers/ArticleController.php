@@ -507,11 +507,14 @@ class ArticleController extends Controller
         $articleID = $_GET["articleID"];
         // $articleID = "4";
 
-        $comFavGets = DB::table("comments")
-            ->where("article_id", "=", $articleID)
+        $comFavGets =  DB::table("comments")->where("article_id", "=", $articleID)
             ->where("user_id", "=", $user_id)
             ->orderByDesc("created_at")
             ->get();
+
+        // $comFavGets = Comment::where("article_id", "=", $articleID)
+        // ->where("user_id", "=", $user_id)
+        // ->orderByDesc("created_at")->comment_at()->get();
 
         //やり方が分からないので、DB::tableで記述しておきます
         $userInfo = DB::table("users")

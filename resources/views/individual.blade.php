@@ -49,6 +49,7 @@
                 </div>
             </div>
             @endforeach
+            {{ $articles->links() }}
         </div>
         <div id="pop_background"></div>
         <div id="main_right">

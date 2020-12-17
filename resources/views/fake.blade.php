@@ -60,6 +60,7 @@
                 </div>
 
             @endforeach
+            {{ $articles->links() }}
         </div>
         {{-- @component('components.side-bar') --}}
             {{-- ここはサイドバーです --}}

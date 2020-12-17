@@ -111,7 +111,7 @@ class Controller extends BaseController
     { //マイページ
         // $user = DB::table('users')->where('id', $id)->first();
         $user = User::find($id);
-        $articles = Article::where('user_id', $id)->get();
+        $articles = Article::where('user_id', $id)->latest()->paginate(10);
         // $articles = DB::table('articles')->where('user_id', $id)->get();
 
         if (Auth::id() == $id) {
