@@ -154,7 +154,7 @@ h1 {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  z-index: 1000;
+  z-index: 10;
   background-color: #949494;
   border: solid 1px #949494;
   border-radius: 50%;
@@ -195,6 +195,30 @@ h1 {
 .main .content .text {
   width: 92%;
   margin: auto;
+}
+
+#pop_background {
+  display: none;
+  position: fixed;
+  top: 0;
+  background-color: gray;
+  opacity: 0.75;
+  width: 100%;
+  height: 100%;
+  z-index: 666;
+}
+
+#main_modal {
+  display: none;
+  position: fixed;
+  width: 93%;
+  height: 82%;
+  padding: 0.3em;
+  border-radius: 6px;
+  background-color: #ffffff;
+  z-index: 667;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 @media screen and (min-width: 481px) {

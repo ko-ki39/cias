@@ -4,7 +4,7 @@
 }
 
 .main .article {
-  width: 99.9%;
+  width: 98%;
   margin: 2rem auto;
   display: -webkit-box;
   display: -webkit-flex;
@@ -199,7 +199,7 @@
   background-color: #fafbfc;
   border-radius: 6px;
   width: 100%;
-  margin: 2rem auto 0 auto;
+  margin: 4rem auto 0 auto;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -280,7 +280,7 @@
   background-color: #fafbfc;
   border-radius: 6px;
   width: 100%;
-  margin: 2rem auto 0 auto;
+  margin: 4rem auto 0 auto;
 }
 
 .main .article #comment_list h2 {
@@ -555,7 +555,7 @@
     background-color: #fafbfc;
     border-radius: 6px;
     width: 100%;
-    margin: 20px auto 0 auto;
+    margin: 4em auto 0 auto;
   }
   .main .article #comment_area h2 {
     margin: 10px auto 10px auto;
@@ -619,7 +619,7 @@
     background-color: #fafbfc;
     border-radius: 6px;
     width: 100%;
-    margin: 20px auto 0 auto;
+    margin: 4em auto 0 auto;
   }
   .main .article #comment_list .c_l_contents {
     border-radius: 3px;

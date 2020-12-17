@@ -24,15 +24,15 @@
 
                 <div class="hash">
                     <h3>ハッシュタグ</h3>
-                    <input type="text" name="hash1" placeholder="ハッシュタグを入力">
+                    <input type="text" name="hash1" class="hash_text" placeholder="ハッシュタグを入力">
                     <a href="#" class="hash_clearButton" onclick="event.preventDefault()" style="color:black; text-decoration:none; font-weight:bold; font-size:1.3em;">×</a>
                 </div>
                 <div class="hash_none" style="display: none">
-                    <input type="text" name="hash2" placeholder="ハッシュタグを入力">
+                    <input type="text" name="hash2" class="hash_text" placeholder="ハッシュタグを入力">
                     <a href="#" class="hash_clearButton" onclick="event.preventDefault()" style="color:black; text-decoration:none; font-weight:bold; font-size:1.3em;">×</a>
                 </div>
                 <div class="hash_none" style="display: none">
-                    <input type="text" name="hash3" placeholder="ハッシュタグを入力">
+                    <input type="text" name="hash3" class="hash_text" placeholder="ハッシュタグを入力">
                     <a href="#" class="hash_clearButton" onclick="event.preventDefault()" style="color:black; text-decoration:none; font-weight:bold; font-size:1.3em;">×</a>
                 </div>
 
@@ -61,6 +61,8 @@
                     <a class="btn btn-border" style=""><span>プレビューを見る</span></a>
                 </div>
                 {{-- <input type="submit" value="投稿する" id="post"> --}}
+                <div id="pop_background"></div>
+                <div id="main_modal"></div>
             </form>
         </div>
     </div>

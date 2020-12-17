@@ -149,7 +149,7 @@ function imageChange(i, e)
 {
     document.getElementsByClassName("post_file")[i].addEventListener("change", function(e)
     {
-        console.log(e);
+        // console.log(e);
         let file = e.target.files[0];
         let fileReader = new FileReader();
         
@@ -162,7 +162,7 @@ function imageChange(i, e)
 
             post_img[i].style.opacity = 1;
             p_i_p[i].style.opacity = 0;
-            console.log(document.getElementsByClassName("post_inputs").length);
+            // console.log(document.getElementsByClassName("post_inputs").length);
         }
     });
 }
@@ -173,9 +173,74 @@ function imageChange(i, e)
  * プレビューを表示する
  */
 let btn_border = document.getElementsByClassName("btn-border")[0];
+let pop_background = document.getElementById("pop_background");
+let main_modal = document.getElementById("main_modal");
+let hash_arr = [];
+
+let img_and_text = [
+    {image: "", text: ""},
+    {image: "", text: ""},
+    {image: "", text: ""},
+    {image: "", text: ""},
+    {image: "", text: ""},
+    {image: "", text: ""}
+];
 
 btn_border.addEventListener("click", displayPreview, true);
+pop_background.addEventListener("click", hideModal, true);
 
 function displayPreview(){
-    window.alert("great.");
+
+    hash_arr.splice(0);
+    let hash = document.getElementsByClassName("hash");
+    let hash_text = document.getElementsByClassName("hash_text");
+    let post_img = document.getElementsByClassName("post_img");
+    let text = document.getElementsByClassName("text");
+    // console.log(post_img);
+    // console.log(hash_text);
+
+    //ハッシュを配列にpush
+    for(let i=0; i<hash.length; i++){
+        if(!hash_text[i].value || !hash_text[i].value.match(/\S/g)){
+
+        }else{
+            hash_arr.push(hash_text[i].value);
+        }
+    }
+
+    //画像を配列にpush
+    for(let i=0; i<post_inputs.length; i++){
+        if(post_img[i].src != "http://localhost/top/post"){
+            img_and_text[i].image = post_img[i].src;
+        }else{
+            img_and_text[i].image = "";
+        }
+
+        //<textarea>が空だったら
+        if(!text[i].value || !text[i].value.match(/\S/g)){
+            img_and_text[i].text = "";
+        }else{
+            img_and_text[i].text = text[i].value;
+        }
+    }
+
+    console.log(hash_arr);
+    console.log(img_and_text);
+
+    let pushPreview = ``;
+    pushPreview += ``
+
+    $("#pop_background").fadeIn("300");
+    $("#main_modal").fadeIn("1000");
+
+    let modal_centering_width = (pop_background.getBoundingClientRect().width - main_modal.getBoundingClientRect().width) / 2 + "px";
+    let modal_centering_height = (pop_background.getBoundingClientRect().height - main_modal.getBoundingClientRect().height) / 2 + "px";
+    main_modal.style.left = modal_centering_width;
+    main_modal.style.top = modal_centering_height;
+}
+
+function hideModal(){
+    $("#main_modal").children().remove();
+    $("#pop_background").fadeOut("300");
+    $("#main_modal").fadeOut("700");
 }
