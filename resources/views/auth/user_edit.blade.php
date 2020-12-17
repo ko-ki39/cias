@@ -27,7 +27,7 @@
 
                                 <div class="col-md-6">
                                     <input id="user_name" type="text" value="{{ $user->user_name }}"
-                                    placeholder="※20文字以内"
+                                    placeholder="20文字以内（※必須）"
                                     maxlength="20"
                                         class="form-control @error('user_name') is-invalid @enderror" name="user_name"
                                         value="{{ old('user_name') }}" required autocomplete="5user_name" autofocus>
@@ -46,7 +46,7 @@
 
                                 <div class="col-md-6">
                                     <input id="occupation" type="text" value="{{ $user->occupation }}"
-                                    placeholder="※30文字以内"
+                                    placeholder="30文字以内"
                                     maxlength="30"
                                         class="form-control @error('occupation') is-invalid @enderror" name="occupation"
                                         value="{{ old('occupation') }}" autocomplete="occupation" autofocus>
@@ -64,7 +64,7 @@
 
                                 <div class="col-md-6">
                                     <input id="area" type="text" value="{{ $user->area }}"
-                                    placeholder="※30文字以内"
+                                    placeholder="30文字以内"
                                     maxlength="30"
                                         class="form-control @error('area') is-invalid @enderror" name="area"
                                         value="{{ old('area') }}" autocomplete="area" autofocus>
@@ -83,7 +83,7 @@
 
                                 <div class="col-md-6">
                                     <textarea id="capacity"
-                                    placeholder="※450文字以内"
+                                    placeholder="450文字以内"
                                         class="form-control @error('capacity') is-invalid @enderror" name="capacity"
                                         value="{{ old('capacity') }}"
                                         maxlength="100" autocomplete="capacity" autofocus>
@@ -105,7 +105,7 @@
 
                                 <div class="col-md-6">
                                     <textarea id="introduction"
-                                    placeholder="※450文字以内"
+                                    placeholder="450文字以内"
                                         class="form-control @error('introduction') is-invalid @enderror" name="introduction"
                                         value="{{ old('introduction') }}" autocomplete="introduction"
                                         maxlength="450"
