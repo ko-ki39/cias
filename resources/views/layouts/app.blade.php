@@ -14,7 +14,8 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/registerUserImage.js') }}" defer></script>
     <script src="/js/search.js"></script>
-
+    <script src="/js/jquery-3.5.1.min.js"></script>
+    <script src="/js/ztext.min.js"></script>
     <script src=></script>
 
     <!-- Fonts -->
@@ -24,10 +25,14 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/hamburger.css" type="text/css">
+    @yield('import')
+
 </head>
 
 <body>
-    <div id="app">
+    {{-- <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/top') }}">我思う故に訳アリ</a>
@@ -79,13 +84,18 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> --}}
+        <x-hamburger />
+        @include('common_view.header')
 
         <main class="py-4">
             @yield('content')
 
         </main>
     </div>
+    @yield('js')
+    <script src="/js/hamburger.js"></script>
+    <script src="/js/ztextPlay.js"></script>
 </body>
 
 </html>

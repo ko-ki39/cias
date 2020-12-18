@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Article;
 use App\Comment;
+use App\User;
 use App\Fav;
 use App\Good;
 use App\Post;
@@ -260,6 +261,7 @@ class ArticleController extends Controller
                         // }
                         $resizeImage->save(storage_path($storagePath . $fileName), $quality);
                         $image_path[$i] = basename($fileName); //画像名のみ保存
+                        // dd("成功");
                     } else {
                         $image_path[$i] = null; //nullを入れないと空になる
                     }
@@ -501,48 +503,60 @@ class ArticleController extends Controller
         return view('article_individual', compact('articles'));
     }
 
-    public function a_i_commentFavAjax(){
+    public function a_i_commentFavAjax()
+    {
         $user_id = Auth::id();
         $articleID = $_GET["articleID"];
         // $articleID = "4";
 
-        $comFavGets = DB::table("comments")
-            ->where("article_id", "=", $articleID)
+        $comFavGets =  Comment::where("article_id", "=", $articleID)
             ->where("user_id", "=", $user_id)
             ->orderByDesc("created_at")
             ->get();
 
+        $comments_at = Comment::where("article_id", "=", $articleID)
+            ->where("user_id", "=", $user_id)
+            ->orderByDesc("created_at")
+            ->get();
+
+        $comments_created_at = [];
+        foreach ($comments_at as $key => $comment_at) {
+            $comments_created_at[$key] = $comment_at->comment_at();
+        }
+        // $comFavGets = Comment::where("article_id", "=", $articleID)
+        // ->where("user_id", "=", $user_id)
+        // ->orderByDesc("created_at")->comment_at()->get();
+
         //やり方が分からないので、DB::tableで記述しておきます
-        $userInfo = DB::table("users")
-            ->select("user_name", "image")
+        $userInfo = User::select("user_name", "image")
             ->where("id", "=", $user_id)
             ->first();
 
-        $articleTitle = DB::table("articles")
-            ->select("title")
+        $articleTitle = Article::select("title")
             ->where("id", "=", $articleID)
             ->first();
 
         return response()->json([
-                $comFavGets, $userInfo, $articleTitle
-            ]);
+            $comFavGets, $userInfo, $articleTitle, $comments_created_at
+        ]);
     }
 
-    public function goodComment(Request $request){
-        if ( $request->input('good_comment') == 0) {
+    public function goodComment(Request $request)
+    {
+        if ($request->input('good_comment') == 0) {
             //ステータスが0のときはデータベースに情報を保存
             // $message = '保存';
             Good::create([
                 'comment_id' => $request->input('comment_id'),
-                 'user_id' => Auth::id(),
+                'user_id' => Auth::id(),
             ]);
-           //ステータスが1のときはデータベースに情報を削除
-        } elseif ( $request->input('good_comment')  == 1 ) {
+            //ステータスが1のときはデータベースに情報を削除
+        } elseif ($request->input('good_comment')  == 1) {
             // $message = '削除';
             $good = Good::where('comment_id', $request->input('comment_id'))
-               ->where('user_id', Auth::id())->first();
+                ->where('user_id', Auth::id())->first();
             Good::find($good->id)->delete();
-       }
+        }
         return  $request->input('good_comment');
     }
 }

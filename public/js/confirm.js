@@ -5,8 +5,22 @@ function user_create() {
     message = confirm("ユーザーアカウントを生成します");
 
     if (message) {
-        // console.log("si");
-        // location.replace("http://localhost/admin");
+        document.getElementById("back").style.display = ""; //戻るボタンを出す
+
+        var age = document.getElementsByClassName("age");
+        var num = document.getElementsByClassName("num");
+        var date = document.getElementsByClassName("date");
+        var department_c = document.getElementsByClassName("department_c");
+        var generate = document.getElementById("generate");
+
+        for (var i = 0; i < 2; i++) { //学年、人数、期限を表示する
+            age[i].style.display = "none";
+            num[i].style.display = "none";
+            date[i].style.display = "none";
+            department_c[i].style.display = "none";
+        }
+
+        generate.style.display = "none";
         return true;
     } else {
 

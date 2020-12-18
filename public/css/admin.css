@@ -1,0 +1,17 @@
+main {
+  margin-left: 50px;
+}
+
+main a {
+  padding: 10px;
+}
+
+main .auto_admin {
+  position: absolute;
+  bottom: 0;
+  float: left;
+}
+
+main #delete {
+  float: right;
+}

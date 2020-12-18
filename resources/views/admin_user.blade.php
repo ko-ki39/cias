@@ -1,12 +1,17 @@
 @extends('layouts.app')
 @section('title', 'ユーザー情報ページ')
-
+@section('import')
+    {{-- css等の読み込み場所 --}}
+    <link rel="stylesheet" href="/css/admin.css" type="text/css">
+@endsection
 @section('content')
+    <h3>ユーザー詳細情報一覧</h3>
     {{-- ユーザーの情報↓ --}}
-    <a href="{{ route('generate_page') }}">アカウント生成</a>
-    <a href="{{ route('auto_admin_change') }}">有効期限が過ぎたユーザーの権限変更</a>
-    <a href="{{ route('admin_article') }}">記事情報</a>
-    <a href="{{ route('admin_comment') }}">コメント情報</a>
+    {{-- <a href="{{ route('auto_admin_change') }}" class="auto_admin">有効期限が過ぎたユーザーの権限変更</a> --}}
+    <a href="{{ route('generate_page') }}" class="generate">アカウント生成</a>
+    <a href="{{ route('admin_article') }}" class="admin_article">記事情報</a>
+    <a href="{{ route('admin_comment') }}" class="admin_comment">コメント情報</a>
+
     <form action="{{ route('admin_user_search') }}">
         <select name="search_list" id="search_list">
             <option value="1">ユーザー名</option>
@@ -17,13 +22,13 @@
             <option value="6">学科</option>
             <option value="7">作成日</option>
             <option value="8">更新日</option>
-
+            <option value="9">有効期限</option>
         </select>
         <input type="text" name="search" placeholder="検索" id="search">
         <input type="submit" value="検索">
     </form>
     <form action="{{ route('user_delete') }}" method="post" onsubmit="return user_delete()">
-        <input type="submit" value="まとめて削除">
+        <input type="submit" value="まとめて削除" id="delete">
         <table border="1">
             <th>@sortablelink('id', 'ID')</th>
             <th>ログインID</th>
@@ -37,6 +42,8 @@
             <th>@sortablelink('department_id', '学科ID')</th>
             <th>@sortablelink('created_at', '作成日')</th>
             <th>@sortablelink('updated_at', '更新日')</th>
+            <th>@sortablelink('time_limit', '期限')</th>
+            <th>削除</th>
             @foreach ($users as $key => $user)
                 <tr>
                     <td>{{ $user->id }}</td>
@@ -49,7 +56,10 @@
                     <td>
                         {{-- 管理者が一人もいなくなったらまずいからuser_idが1のユーザーは変更できなくする
                         --}}
-                        @if ($user->id != 1)
+                        {{--
+                        {{ dd($user->role != 1 || \App\User::where('role', 1)->count() > 1) }}
+                        --}}
+                        @if ($user->role != 1 || \App\User::where('role', 1)->count() > 1)
                             <form action="{{ route('admin_change', ['id' => $user->id]) }}" method="get"
                                 enctype='multipart/form-data'>
                                 @csrf
@@ -67,14 +77,16 @@
                     <td>{{ $user->department_id }}</td>
                     <td>{{ $user->created_at }}</td>
                     <td>{{ $user->updated_at }}
-                        @if ($user->id != 1)
-                            <input type="checkbox" name="delete[]" value="{{ $user->id }}">
+
+                    </td>
+                    <td>{{ $user->time_limit }}</td>
+                    <td>
+                        @if ($user->role != 1)
+                            <input type="checkbox" name="delete[]" value="{{ $user->id }}" class="checkbox">
                         @endif
                     </td>
                 </tr>
             @endforeach
         </table>
-
     </form>
-    </table>
 @endsection

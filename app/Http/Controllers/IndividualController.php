@@ -22,7 +22,7 @@ class IndividualController extends Controller
             ->where("article_id", "=", $articleID)
             ->whereNotIn("user_id", [$user_id])
             ->orderByDesc("created_at")
-            ->get();
+            ->limit(25)->get();
 
         $userImage = [];
         $userName = [];

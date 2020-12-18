@@ -17,36 +17,36 @@ class UserSeeder extends Seeder
 
         $param = [
             'id' => 1,
-            'user_name' => 'root',
-            'user_id' => '123456789',
-            'department_id' =>'1',
+            'user_name' => 'administrator',
+            'user_id' => '2020_admin_bRQ4i_',
+            'department_id' =>'9',
             'age' => '1',
             'password' => bcrypt('password'),
             'role' => 1,
         ];
         DB::table('users')->insert($param);
 
-        $param = [
-            'id' => 2,
-            'user_name' => 'ユーザー2',
-            'user_id' => '12345678',
-            'department_id' =>'1',
-            'age' => '1',
-            'password' => bcrypt('password'),
-            'role' => 2,
-        ];
-        DB::table('users')->insert($param);
+        // $param = [
+        //     'id' => 2,
+        //     'user_name' => 'ユーザー2',
+        //     'user_id' => '12345678',
+        //     'department_id' =>'1',
+        //     'age' => '1',
+        //     'password' => bcrypt('password'),
+        //     'role' => 2,
+        // ];
+        // DB::table('users')->insert($param);
 
-        $param = [
-            'id' => 3,
-            'user_name' => 'ユーザー3',
-            'user_id' => '1234567',
-            'department_id' =>'1',
-            'age' => '1',
-            'password' => bcrypt('password'),
+        // $param = [
+        //     'id' => 3,
+        //     'user_name' => 'ユーザー3',
+        //     'user_id' => '1234567',
+        //     'department_id' =>'1',
+        //     'age' => '1',
+        //     'password' => bcrypt('password'),
 
-        ];
-        DB::table('users')->insert($param);
+        // ];
+        // DB::table('users')->insert($param);
 
         $param = [
             'id' => 4,
@@ -69,8 +69,8 @@ class UserSeeder extends Seeder
             'password' => bcrypt('1234567890'),
             'role' => 2,
 
-        ];
-        DB::table('users')->insert($param);
+        // ];
+        // DB::table('users')->insert($param);
 
         $param = [
             'id' => 6,

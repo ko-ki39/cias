@@ -31,7 +31,7 @@ class User extends Authenticatable
     ];
 
     //ソートに使うよう
-    public $sortable = ['id','user_id', 'user_name', 'role', 'article_count', 'comment_count', 'department_id', 'created_at', 'updated_at'];
+    public $sortable = ['id','user_id', 'user_name', 'time_limit','role', 'article_count', 'comment_count', 'department_id', 'created_at', 'updated_at'];
 
     /**
      * The attributes that should be hidden for arrays.
