@@ -33,7 +33,7 @@ class CommentArticle extends Component
         }
         if(!empty($a_comments)){
 
-            // $a_comments = array_unique($a_comments); //重複した記事を削除
+            $a_comments = array_unique($a_comments); //重複した記事を削除
             foreach ($a_comments as $key => $a_comment) {
                 $articles[$key] = Article::find($a_comment);
             }

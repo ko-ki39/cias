@@ -174,7 +174,7 @@
             {{-- 検索結果がなかった場合のメッセージ --}}
             <p id="message">{!! $message !!}</p>
         @endif
-        {{ $articles->links() }}
+        {{ $articles->appends(request()->input())->links() }}
     </div>
 
     {{-- @component('components.side-bar') --}}

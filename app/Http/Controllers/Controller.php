@@ -47,6 +47,10 @@ class Controller extends BaseController
         // $article = DB::table('articles')->where('id', $id)->first();
         $article = Article::find($id);
 
+        if($article == null){
+            return redirect("errors.404");
+        }
+
         // $articles = DB::table('articles')->get();
         $sorts = $article->comments()->latest()->get();
         foreach ($sorts as $sort) { //多次元配列にデータを用意
@@ -107,7 +111,7 @@ class Controller extends BaseController
     { //マイページ
         // $user = DB::table('users')->where('id', $id)->first();
         $user = User::find($id);
-        $articles = Article::where('user_id', $id)->get();
+        $articles = Article::where('user_id', $id)->latest()->paginate(10);
         // $articles = DB::table('articles')->where('user_id', $id)->get();
 
         if (Auth::id() == $id) {
@@ -132,34 +136,30 @@ class Controller extends BaseController
         if ($request->isMethod('post')) {
             // $user = DB::table('users')->where('id', Auth::id())->first();
             $user = User::find(Auth::id());
-            if ($request->user_name == $user->user_name && $request->email == $user->email) {
-                // バリデーション
+            // if ($request->user_name == $user->user_name && $request->email == $user->email) {
+            //     // バリデーション
+            //     $request->validate([
+            //         // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
+            //         'now_password' => 'required|now_password',
+            //         'u_i_input' => 'file|image',
+            //         'user_name' => 'required|string|max:10',
+            //         'email' => 'nullable|string|email|max:255',
+            //         // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
+            //         // 'secret_answer' => 'required|string|max:50',
+            //     ]);
+            if ($request->user_name == $user->user_name) {
+
                 $request->validate([
                     // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
                     'now_password' => 'required|now_password',
                     'u_i_input' => 'file|image',
-                    'user_name' => 'required|string|max:10',
-                    'email' => 'nullable|string|email|max:255',
-                    // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
-                    // 'secret_answer' => 'required|string|max:50',
-                ]);
-            } else if ($request->user_name == $user->user_name) {
-                $request->validate([
-                    // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
-                    'now_password' => 'required|now_password',
-                    'u_i_input' => 'file|image',
-                    'user_name' => 'required|string|max:10',
-                    'email' => 'nullable|string|email|max:255|unique:users',
-                    // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
-                    // 'secret_answer' => 'required|string|max:50',
-                ]);
-            } else if ($request->email == $user->email) {
-                $request->validate([
-                    // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
-                    'now_password' => 'required|now_password',
-                    'u_i_input' => 'file|image',
-                    'user_name' => 'required|string|max:10|unique:users',
-                    'email' => 'nullable|string|email|max:255|unique:users',
+                    'user_name' => 'required|string|max:20',
+                    'occupation' => 'string|max:30|nullable',
+                    'area' => 'string|max:30|nullable',
+                    'capacity' => 'string|max:100|nullable',
+                    'introduction' => 'string|max:450|nullable',
+
+                    // 'email' => 'nullable|string|email|max:255|unique:users',
                     // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
                     // 'secret_answer' => 'required|string|max:50',
                 ]);
@@ -168,12 +168,26 @@ class Controller extends BaseController
                     // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
                     'now_password' => 'required|now_password',
                     'u_i_input' => 'file|image',
-                    'user_name' => 'required|string|max:10|unique:users',
-                    'email' => 'nullable|string|email|max:255|unique:users',
+                    'user_name' => 'required|string|max:20|unique:users',
+                    'occupation' => 'string|max:30|nullable',
+                    'area' => 'string|max:30|nullable',
+                    'capacity' => 'string|max:100|nullable',
+                    'introduction' => 'string|max:450|nullable',
+                    // 'email' => 'nullable|string|email|max:255|unique:users',
                     // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
                     // 'secret_answer' => 'required|string|max:50',
                 ]);
             }
+            // } else if ($request->email == $user->email) {
+            //     $request->validate([
+            //         // 'file|image|mimes:jpeg,jpg,png,gif|max:2048' などなど
+            //         'now_password' => 'required|now_password',
+            //         'u_i_input' => 'file|image',
+            //         'user_name' => 'required|string|max:10|unique:users',
+            //         'email' => 'nullable|string|email|max:255|unique:users',
+            //         // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
+            //         // 'secret_answer' => 'required|string|max:50',
+            //     ]);
             $quality = 90;
             $storagePath = '/app/public/';
             if ($request->u_i_input != null) {
@@ -213,7 +227,12 @@ class Controller extends BaseController
             $update_user = User::find(Auth::id());
             $update_user->user_name = $request->user_name;
             $update_user->image = $image_path;
-            $update_user->email = $request->email;
+            // $update_user->email = $request->email;
+            $update_user->occupation = $request->occupation;
+            $update_user->area = $request->area;
+            $update_user->capacity = $request->capacity;
+            $update_user->introduction = $request->introduction;
+
             // $update_user->secret_question_id = $request->secret_question_id;
             // $update_user->secret_answer = $request->secret_answer;
 
