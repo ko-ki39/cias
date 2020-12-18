@@ -23,7 +23,7 @@ class HamburgerNotice
             ->whereNotIn('user_id', [$user_id])
             ->union($favUnion)
             ->orderByDesc('created_at')
-            ->get();
+            ->limit(10)->get();
 
         // dd($user_id, $comUnionExe);
 

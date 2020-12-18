@@ -8,7 +8,7 @@
             <p>興味が湧いた方は、<br>社会人、学生問わず、<br><br><br>どうぞ、<br>楽しんでいってください。</p>
         </div>
         <div id="main">
-            <div><a href="#">訓練生はこちらから</a></div>
+            <div><a href="{{ route('login') }}">訓練生はこちらから</a></div>
             <div><a href="/top">トップページへ</a></div>
         </div>
     </section>

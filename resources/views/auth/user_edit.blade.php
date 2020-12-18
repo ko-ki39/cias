@@ -83,10 +83,10 @@
 
                                 <div class="col-md-6">
                                     <textarea id="capacity"
-                                    placeholder="450文字以内"
+                                    placeholder="250文字以内"
                                         class="form-control @error('capacity') is-invalid @enderror" name="capacity"
                                         value="{{ old('capacity') }}"
-                                        maxlength="100" autocomplete="capacity" autofocus>
+                                        maxlength="250" autocomplete="capacity" autofocus>
                                         {{ $user->capacity }}
                                                 </textarea>
 
