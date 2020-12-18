@@ -46,13 +46,13 @@
                             @if($hamburger->detail == null)
                                 <ul>
                                     <li>
-                                        {{ Illuminate\Support\Facades\DB::table('users')->where('id', '=', $hamburger->user_id)->first()->user_name }}&nbsp;が、
+                                        {{ App/User::where('id', '=', $hamburger->user_id)->first()->user_name }}&nbsp;が、
                                         お気に入り
                                         <i id="" class="fa-heart fas" style="color:#ff0000;"></i>
                                         しました！
                                     </li>
                                     <li>
-                                        <a href="{{ route('article_detail', ['id' => $hamburger->article_id]) }}">{{ Illuminate\Support\Facades\DB::table('articles')->where('id', '=', $hamburger->article_id)->first()->title }}</a>
+                                        <a href="{{ route('article_detail', ['id' => $hamburger->article_id]) }}">{{ App/Article::where('id', '=', $hamburger->article_id)->first()->title }}</a>
                                     </li>
                                     <li>
                                         {{ $hamburger->created_at }}
@@ -61,13 +61,13 @@
                             @else
                                 <ul>
                                     <li>
-                                        {{ Illuminate\Support\Facades\DB::table('users')->where('id', '=', $hamburger->user_id)->first()->user_name }}&nbsp;から、
+                                        {{ App/User::where('id', '=', $hamburger->user_id)->first()->user_name }}&nbsp;から、
                                         コメント
                                         <i class="fas fa-comment" style="color:#71f371;"></i>
                                         が来ています！
                                     </li>
                                     <li>
-                                        <a href="{{ route('article_detail', ['id' => $hamburger->article_id]) }}">{{ Illuminate\Support\Facades\DB::table('articles')->where('id', '=', $hamburger->article_id)->first()->title }}</a>
+                                        <a href="{{ route('article_detail', ['id' => $hamburger->article_id]) }}">{{ App/Article::where('id', '=', $hamburger->article_id)->first()->title }}</a>
                                     </li>
                                     <li>
                                         {{ $hamburger->created_at }}

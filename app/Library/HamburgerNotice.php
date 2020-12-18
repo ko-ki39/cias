@@ -2,6 +2,8 @@
 
 namespace app\Library;
 
+use App\Comment;
+use App\Fav;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -12,13 +14,11 @@ class HamburgerNotice
     {
         $user_id = Auth::id();
 
-        $favUnion = DB::table("favs")
-            ->select('article_id', 'user_id', DB::raw('null as type'), 'created_at')
+        $favUnion = Fav::select('article_id', 'user_id', DB::raw('null as type'), 'created_at')
             ->whereRaw('(SELECT id FROM articles WHERE user_id = ?)', [$user_id])
             ->whereNotIn('user_id', [$user_id]);
 
-        $comUnionExe = DB::table("comments")
-            ->select('article_id', 'user_id', 'detail', 'created_at')
+        $comUnionExe = Comment::select('article_id', 'user_id', 'detail', 'created_at')
             ->whereRaw('(SELECT id FROM articles WHERE user_id = ?)', [$user_id])
             ->whereNotIn('user_id', [$user_id])
             ->union($favUnion)
