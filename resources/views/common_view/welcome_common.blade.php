@@ -25,6 +25,9 @@
         <div class="welcome_header">
             <a href="{{ route('individual', ['id' => Auth::id()]) }}">{{ Auth::user()->user_name }}</a>
             <a href="{{ route('individual', ['id' => Auth::id()]) }}"><img src="/storage/{{ Auth::user()->image }}" alt="{{ Auth::user()->image }}"></a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
         </div>
         @endguest
         <x-hamburger />
