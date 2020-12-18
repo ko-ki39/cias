@@ -175,8 +175,9 @@ function imageChange(i, e)
 let btn_border = document.getElementsByClassName("btn-border")[0];
 let pop_background = document.getElementById("pop_background");
 let main_modal = document.getElementById("main_modal");
-let hash_arr = [];
 
+let title;
+let hash_arr = [];
 let img_and_text = [
     {image: "", text: ""},
     {image: "", text: ""},
@@ -199,7 +200,10 @@ function displayPreview(){
     // console.log(post_img);
     // console.log(hash_text);
 
-    //ハッシュを配列にpush
+    //タイトルを配列に入れる
+    title = document.getElementsByName("title")[0].value;
+
+    //ハッシュを配列に入れる
     for(let i=0; i<hash.length; i++){
         if(!hash_text[i].value || !hash_text[i].value.match(/\S/g)){
 
@@ -208,7 +212,7 @@ function displayPreview(){
         }
     }
 
-    //画像を配列にpush
+    //画像を配列に入れる
     for(let i=0; i<post_inputs.length; i++){
         if(post_img[i].src != "http://localhost/top/post"){
             img_and_text[i].image = post_img[i].src;
@@ -216,6 +220,7 @@ function displayPreview(){
             img_and_text[i].image = "";
         }
 
+        //説明を配列に入れる
         //<textarea>が空だったら
         if(!text[i].value || !text[i].value.match(/\S/g)){
             img_and_text[i].text = "";
@@ -224,11 +229,28 @@ function displayPreview(){
         }
     }
 
+    console.log(title);
     console.log(hash_arr);
     console.log(img_and_text);
 
     let pushPreview = ``;
-    pushPreview += ``
+    pushPreview += `<div id="previewArticle">`
+                    + `<div id="pa_userInfo">`
+                    + `</div>`
+                    + `<div id="thc_container">`
+                        + `<div id="thc_c_title">`
+                        + `</div>`
+                        + `<div id="thc_c_hashs">`
+                        + `</div>`
+                        + `<div id="thc_c_ctf">`
+                            + `<div id="ctf_comment"><i class="far fa-comment" style="color:#259b25;"></i></div>`
+                            + `<div id="ctf_twitter"><i class="fab fa-twitter-squarel" style="color:#1da1f2;"></i></div>`
+                            + `<div id="ctf_fav"><i id="" class="fa-heart far" style="color:#ff0000;"></i></div>`
+                        + `</div>`
+                    + `</div>`
+                    + `<div id="pa_detail">`
+                    + `</div>`
+                +  `</div>`
 
     $("#pop_background").fadeIn("300");
     $("#main_modal").fadeIn("1000");
@@ -244,3 +266,33 @@ function hideModal(){
     $("#pop_background").fadeOut("300");
     $("#main_modal").fadeOut("700");
 }
+
+{/* <div id="previewArticle">
+    <div id="pa_userInfo">
+        <img src="" alt="">
+        <p></p>
+    </div>
+    <div id="thc_container">
+        <div id="thc_c_title">
+            <h2></h2>
+        </div>
+        <div id="thc_c_hashs">
+            <p></p>
+        </div>
+        <div id="thc_c_ctf">
+            <div id="ctf_comment">
+                <i class="far fa-comment" style="color:#259b25;"></i>
+            </div>
+            <div id="ctf_twitter">
+                <i class="fab fa-twitter-squarel" style="color:#1da1f2;"></i>
+            </div>
+            <div id="ctf_fav">
+                <i id="" class="fa-heart far" style="color:#ff0000;"></i>
+            </div>
+        </div>
+    </div>
+    <div id="pa_detail">
+        <img src="" alt="">
+        <pre></pre>
+    </div>
+</div> */}
