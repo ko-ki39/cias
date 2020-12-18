@@ -15,16 +15,14 @@ function choiceButtonSwitch(e) {
         EX_choiceStatus = 0;
         fav_article.style.display = "flex";
         comment_article.style.display = "none";
-        fav_button.style.backgroundColor = "#F7E0E0";
+        fav_button.style.backgroundColor = "#fdfdfd";
         comment_button.style.backgroundColor = "#d3d3d3";
-        article.style.backgroundColor = "#F7E0E0"
-    } else {
+    }else{
         EX_choiceStatus = 1;
         fav_article.style.display = "none";
         comment_article.style.display = "flex";
         fav_button.style.backgroundColor = "#d3d3d3";
-        comment_button.style.backgroundColor = "#DAF0D6";
-        article.style.backgroundColor = "#DAF0D6"
+        comment_button.style.backgroundColor = "#fdfdfd";
     }
 }
 

@@ -2,7 +2,7 @@
 .side_bar {
   width: 90%;
   margin: auto auto 5rem auto;
-  background-color: #f2f2f2;
+  background-color: #ffffff;
   border-radius: 0.5rem;
   -webkit-box-shadow: 0.3px 0.3px 8px #BCBEC1, -0.3px -0.3px 8px #FFFFFF;
           box-shadow: 0.3px 0.3px 8px #BCBEC1, -0.3px -0.3px 8px #FFFFFF;
@@ -15,7 +15,7 @@
   padding-top: 10px;
   padding-bottom: 10px;
   text-align: center;
-  background-color: #bfc79d;
+  background-color: #85e24f;
 }
 
 .side_bar .latest_article {
@@ -95,10 +95,12 @@
 
 @media screen and (min-width: 720px) {
   .side_bar {
-    width: 31.5%;
+    width: 300px;
     margin: 0.625rem 0.625rem auto auto;
-    background-color: #f2f2f2;
     border-radius: 0.5rem;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 3em;
   }
   .side_bar h2 {
     border-radius: 0.5rem 0.5rem 0 0;
@@ -107,7 +109,6 @@
     padding-top: 10px;
     padding-bottom: 10px;
     text-align: center;
-    background-color: #bfc79d;
   }
   .side_bar .latest_article {
     height: 5.2rem;

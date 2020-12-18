@@ -1,17 +1,20 @@
+@charset "UTF-8";
 html body {
-  background-color: #f5f5f5;
+  background-color: #fcfcfc;
 }
 
 h1 {
   text-align: center;
   font-size: 1.5em;
   margin: 1.5em;
+  color: white;
 }
 
 .main {
   width: 96%;
   background-color: #fcfcfc;
   margin: auto;
+  border-radius: 6px;
   -webkit-box-shadow: 0.3px 0.3px 7px #b5b5b5, -0.3px -0.3px 7px #d6d6d6;
           box-shadow: 0.3px 0.3px 7px #b5b5b5, -0.3px -0.3px 7px #d6d6d6;
 }
@@ -25,15 +28,46 @@ h1 {
 }
 
 .main .content .title h3 {
-  margin-bottom: 0.15em;
+  margin-bottom: 0;
+}
+
+.main .content .title input {
+  width: 80%;
 }
 
 .main .content .hash {
   margin-left: 1em;
+  margin-top: 0.75em;
 }
 
 .main .content .hash h3 {
-  margin-bottom: 0.15em;
+  margin-top: 1.5em;
+  margin-bottom: 0;
+}
+
+.main .content .hash input {
+  width: 80%;
+}
+
+.main .content #more_hash {
+  margin: auto auto auto 1.5em;
+  font-size: 0.8em;
+  color: #00a0da;
+}
+
+.main .content #more_hash #m_h_counter {
+  font-weight: bold;
+}
+
+.main .content #more_hash .v_text:before {
+  content: '\f078';
+  display: inline-block;
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .main .content .post_inputs {
@@ -58,6 +92,7 @@ h1 {
   height: 200px;
   margin: auto auto 1em auto;
   position: relative;
+  border: solid 1px #d6d6d6;
 }
 
 .main .content .post_inputs .p_i_input_img .p_i_p {
@@ -102,7 +137,90 @@ h1 {
   opacity: 0;
 }
 
+.main .content .post_inputs .p_i_delete {
+  text-align: center;
+  margin: auto 0.2em -1.3em auto;
+  height: 34px;
+  width: 34px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 10;
+  background-color: #949494;
+  border: solid 1px #949494;
+  border-radius: 50%;
+}
+
+.main .content .post_inputs .p_i_delete .p_i_d_span {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  color: #ffffff;
+  border-radius: 50%;
+  font-size: 1.5em;
+  font-weight: 900;
+}
+
+.main .content #more_inputs {
+  margin: auto;
+  text-align: center;
+  font-size: 0.8em;
+  color: #00a0da;
+}
+
+.main .content #more_inputs #m_i_counter {
+  font-weight: bold;
+}
+
+.main .content #more_inputs .v_text:before {
+  content: '\f078';
+  display: inline-block;
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .main .content .text {
   width: 92%;
   margin: auto;
+}
+
+#pop_background {
+  display: none;
+  position: fixed;
+  top: 0;
+  background-color: gray;
+  opacity: 0.75;
+  width: 100%;
+  height: 100%;
+  z-index: 666;
+}
+
+#main_modal {
+  display: none;
+  position: fixed;
+  width: 93%;
+  height: 82%;
+  padding: 0.3em;
+  border-radius: 6px;
+  background-color: #ffffff;
+  z-index: 667;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media screen and (min-width: 481px) {
+  /* 481px以上に適用されるCSS（タブレット用） */
 }

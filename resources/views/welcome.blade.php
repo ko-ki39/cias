@@ -2,10 +2,6 @@
 
 @section('content')
     <section id="welcome_section">
-        {{-- <div class="header_band"></div> --}}
-        <div id='stars'></div>
-        <div id='stars2'></div>
-        <div id='stars3'></div>
         <div class="welcome_image">
             <p>ようこそ、<br>キャリア情報代替サイトへ</p>
             <p>本サイトは、<br>具志川職業能力開発校の<br>生徒たちの活動記録を<br>載せていくサイトです</p>
