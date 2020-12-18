@@ -23,7 +23,7 @@
                         <a href="{{ route('individual', ['id' => $user->id]) }}" class="u_image"><img src="/storage/{{ $user->image }}" alt=""></a>
                         <!-- <a href="{{ route('post', ['id' => $user->id]) }}"> -->
                         <a href="{{ route('individual', ['id' => $user->id]) }}" class="u_name">{{ $user->user_name }}</a>
-                        <p class="u_date">投稿した日 : {{ $article->created_at }}</p>
+                        <p class="u_date">投稿した日 : {{ $article->article_at() }}</p>
                     </div>
                     <div id="tac_container">
                         <div class="title">
