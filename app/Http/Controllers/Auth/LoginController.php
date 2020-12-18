@@ -59,9 +59,7 @@ class LoginController extends Controller
 
     protected function loggedOut(Request $request)
     {
-
-        // dd($request);
-        return redirect("/top");
+        return back();
     }
 
     // public function authenticate(Request $request)

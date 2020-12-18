@@ -156,7 +156,7 @@ class Controller extends BaseController
                     'user_name' => 'required|string|max:20',
                     'occupation' => 'string|max:30|nullable',
                     'area' => 'string|max:30|nullable',
-                    'capacity' => 'string|max:100|nullable',
+                    'capacity' => 'string|max:250|nullable',
                     'introduction' => 'string|max:450|nullable',
 
                     // 'email' => 'nullable|string|email|max:255|unique:users',
@@ -171,7 +171,7 @@ class Controller extends BaseController
                     'user_name' => 'required|string|max:20|unique:users',
                     'occupation' => 'string|max:30|nullable',
                     'area' => 'string|max:30|nullable',
-                    'capacity' => 'string|max:100|nullable',
+                    'capacity' => 'string|max:250|nullable',
                     'introduction' => 'string|max:450|nullable',
                     // 'email' => 'nullable|string|email|max:255|unique:users',
                     // 'secret_question_id' => 'required|regex:/1|2|3|4|5|6/',
