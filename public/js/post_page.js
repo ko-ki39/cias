@@ -192,8 +192,8 @@ let img_and_text = [
 btn_border.addEventListener("click", displayPreview, true);
 pop_background.addEventListener("click", hideModal, true);
 
-function displayPreview(){
-
+function displayPreview()
+{
     hash_arr.splice(0);
     let hash = document.getElementsByClassName("hash");
     let hash_text = document.getElementsByClassName("hash_text");
@@ -203,6 +203,18 @@ function displayPreview(){
     let userInfo_name = document.getElementsByClassName("h_u_img")[0].previousElementSibling.textContent;
     console.log(userInfo_image);
     console.log(userInfo_name);
+
+    //入力必須の項目に、未入力が存在した場合
+    if(!document.getElementsByName("title")[0].value || !document.getElementsByName("title")[0].value.match(/\S/g)){
+        alert("タイトルが入力されていません");
+        return;
+    }else if(document.getElementsByClassName("post_img")[0].src == window.location.href){
+        alert("見出しとなる画像が入力されていません");
+        return;
+    }else if(!document.getElementsByClassName("text")[0].value || !document.getElementsByClassName("text")[0].value.match(/\S/g)){
+        alert("見出しとなる説明文が入力されていません");
+        return;
+    }
 
     //タイトルを配列に入れる
     title = document.getElementsByName("title")[0].value;
@@ -222,7 +234,7 @@ function displayPreview(){
     let pushPreview_imageAndText = ``;
 
     for(let i=0; i<post_inputs.length; i++){
-        if(post_img[i].src != "http://localhost/top/post"){
+        if(post_img[i].src != window.location.href){
             img_and_text[i].image = post_img[i].src;
             pushPreview_imageAndText += `<img src="${img_and_text[i].image}" alt="">`;
         }else{

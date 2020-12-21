@@ -23,19 +23,19 @@
                 </div>
 
                 <div class="hash">
-                    <h3>ハッシュタグ</h3>
+                    <h3>ハッシュタグ</h3><br>
                     <span class="hash_span">#</span>
-                    <input type="text" name="hash1" class="hash_text" placeholder="&quot;#&quot;は自動で付与されます">
+                    <input type="text" name="hash1" class="hash_text" placeholder="">
                     <a href="#" class="hash_clearButton" onclick="event.preventDefault()" style="color:black; text-decoration:none; font-weight:bold; font-size:1.3em;">×</a>
                 </div>
                 <div class="hash_none" style="display: none">
                     <span class="hash_span">#</span>
-                    <input type="text" name="hash2" class="hash_text" placeholder="&quot;#&quot;は自動で付与されます">
+                    <input type="text" name="hash2" class="hash_text" placeholder="">
                     <a href="#" class="hash_clearButton" onclick="event.preventDefault()" style="color:black; text-decoration:none; font-weight:bold; font-size:1.3em;">×</a>
                 </div>
                 <div class="hash_none" style="display: none">
                     <span class="hash_span">#</span>
-                    <input type="text" name="hash3" class="hash_text" placeholder="&quot;#&quot;は自動で付与されます">
+                    <input type="text" name="hash3" class="hash_text" placeholder="">
                     <a href="#" class="hash_clearButton" onclick="event.preventDefault()" style="color:black; text-decoration:none; font-weight:bold; font-size:1.3em;">×</a>
                 </div>
 

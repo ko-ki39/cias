@@ -30,25 +30,32 @@ h1{
             }
         }
         .hash{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: center;
             margin-left: 1em;
-            margin-top: 0.75em;
+            h3{
+                width: 100%;
+                margin: 1.5em auto auto auto;
+            }
             span{
-                display: inline-block;
                 width: 1.5em;
                 border: solid 1px black;
-                color: #ffffff;
-                background-color: #1bb2cc;
-                z-index: 10;
+                color: #008cff;
+                background-color: #ffffff;
                 text-align: center;
-            }
-            h3{
-                margin-top: 1.5em;
-                margin-bottom: 0;
+                border-right: none;
             }
             input{
-                width: 73%;
+                width: 74%;
                 height: 1.5em;
-                margin-left: -0.4em;
+                border: solid 1px #000000;
+                border-left: none;
+                height: 22px;
+                background-color: #ffffff !important;
+                color: #008cff !important;
             }
         }
         #more_hash{
@@ -251,6 +258,8 @@ h1{
             align-items: center;
             background-color: rgba(0, 0, 0, 0.23);
             padding: 1em 0;
+            margin-left: -0.7em;
+            margin-right: -0.7em;
             #pa_b_submit{
                 font-size: 1.25em;
                 font-weight: 600;
