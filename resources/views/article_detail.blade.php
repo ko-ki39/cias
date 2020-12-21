@@ -64,7 +64,7 @@
                     {{-- {{ dd($image) }} --}}
                         @if ($image[$i] != null)
                             <img src="/storage/{{ $image[$i] }}" class="big_image">
-                            <p>{{ $text[$i] }}</p>
+                            <p>{!! nl2br(e($text[$i])) !!}</p> {{-- 改行させる --}}
                         @endif
                     @endfor
                 </div>
