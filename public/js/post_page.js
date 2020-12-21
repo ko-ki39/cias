@@ -20,6 +20,7 @@ function p_i_pCentering(num)
     p_i_p[num].style.left = centering_width;
     p_i_p[num].style.top = centering_height;
     preview_button.firstElementChild.style.left = centering_previewButton;
+    // hash_spanBringLeft();
 }
 
 
@@ -289,3 +290,27 @@ function hideModal(){
     $("#pop_background").fadeOut("300");
     $("#main_modal").fadeOut("700");
 }
+
+
+
+/** 機能の説明
+ * 「#」を左に寄せる
+ */
+// function hash_spanBringLeft()
+// {
+//     let hash = document.getElementsByClassName("hash");
+//     let hash_span = document.getElementsByClassName("hash_span");
+//     let hash_text = document.getElementsByClassName("hash_text");
+    
+//     console.log(hash[0].getBoundingClientRect().top)
+
+//     for(let i=0; i<hash_span.length; i++){
+//         // let hashTop = hash[i].getBoundingClientRect().top;
+//         let hash_textHeight = hash_text[i].getBoundingClientRect().height;
+//         hash_span[i].style.left = (hash[i].getBoundingClientRect().left + 1.5) + "px";
+//         // hash_span[i].style.top = hashTop + "px";
+//         hash_span[i].style.marginTop = "0.35em";
+//         hash_span[i].style.height = (hash_textHeight - 4) + "px";
+//         hash_span[i].style.width = "1em";
+//     }
+// }

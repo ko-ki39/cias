@@ -33,11 +33,22 @@ h1 {
 
 .main .content .title input {
   width: 80%;
+  height: 1.5em;
 }
 
 .main .content .hash {
   margin-left: 1em;
   margin-top: 0.75em;
+}
+
+.main .content .hash span {
+  display: inline-block;
+  width: 1.5em;
+  border: solid 1px black;
+  color: #ffffff;
+  background-color: #1bb2cc;
+  z-index: 10;
+  text-align: center;
 }
 
 .main .content .hash h3 {
@@ -46,7 +57,9 @@ h1 {
 }
 
 .main .content .hash input {
-  width: 80%;
+  width: 73%;
+  height: 1.5em;
+  margin-left: -0.4em;
 }
 
 .main .content #more_hash {
@@ -106,6 +119,7 @@ h1 {
 
 .main .content .post_inputs .p_i_input_img .p_i_p p {
   margin: 0;
+  font-size: 0.85em;
 }
 
 .main .content .post_inputs .p_i_input_img .p_i_p .post_file {
@@ -196,7 +210,7 @@ h1 {
   position: fixed;
   width: 93%;
   height: 82%;
-  padding: 0.7em;
+  padding: 0.7em 0.7em 0 0.7em;
   border-radius: 6px;
   background-color: #ffffff;
   z-index: 667;
@@ -326,13 +340,17 @@ h1 {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-shadow: 0.3px 0.3px 8px #BCBEC1, -0.3px -0.3px 8px #FFFFFF;
           box-shadow: 0.3px 0.3px 8px #BCBEC1, -0.3px -0.3px 8px #FFFFFF;
   margin: 1.5em 0 1.5em 0;
 }
 
 #main_modal #previewArticle #pa_detail img {
-  width: 100%;
+  width: 95%;
   max-height: 200px;
   margin-top: 1.5em;
   background-position: center;
@@ -342,8 +360,10 @@ h1 {
 }
 
 #main_modal #previewArticle #pa_detail pre {
+  width: 95%;
+  height: 100%;
+  margin: 0.75em 0.5em;
   white-space: pre-wrap;
-  margin: 1em 0.5em;
 }
 
 #main_modal #previewArticle #pa_buttons {
@@ -361,6 +381,8 @@ h1 {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
+  background-color: rgba(0, 0, 0, 0.23);
+  padding: 1em 0;
 }
 
 #main_modal #previewArticle #pa_buttons #pa_b_submit {
@@ -428,7 +450,7 @@ h1 {
     margin-bottom: 0;
   }
   .main .content .hash input {
-    width: 60%;
+    width: 56%;
   }
   .main .content #more_hash {
     margin: auto auto auto 1.5em;

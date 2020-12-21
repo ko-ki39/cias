@@ -24,15 +24,18 @@
 
                 <div class="hash">
                     <h3>ハッシュタグ</h3>
-                    <input type="text" name="hash1" class="hash_text" placeholder="ハッシュタグを入力">
+                    <span class="hash_span">#</span>
+                    <input type="text" name="hash1" class="hash_text" placeholder="&quot;#&quot;は自動で付与されます">
                     <a href="#" class="hash_clearButton" onclick="event.preventDefault()" style="color:black; text-decoration:none; font-weight:bold; font-size:1.3em;">×</a>
                 </div>
                 <div class="hash_none" style="display: none">
-                    <input type="text" name="hash2" class="hash_text" placeholder="ハッシュタグを入力">
+                    <span class="hash_span">#</span>
+                    <input type="text" name="hash2" class="hash_text" placeholder="&quot;#&quot;は自動で付与されます">
                     <a href="#" class="hash_clearButton" onclick="event.preventDefault()" style="color:black; text-decoration:none; font-weight:bold; font-size:1.3em;">×</a>
                 </div>
                 <div class="hash_none" style="display: none">
-                    <input type="text" name="hash3" class="hash_text" placeholder="ハッシュタグを入力">
+                    <span class="hash_span">#</span>
+                    <input type="text" name="hash3" class="hash_text" placeholder="&quot;#&quot;は自動で付与されます">
                     <a href="#" class="hash_clearButton" onclick="event.preventDefault()" style="color:black; text-decoration:none; font-weight:bold; font-size:1.3em;">×</a>
                 </div>
 
@@ -45,12 +48,12 @@
                 <div class="post_inputs">
                     <div class="p_i_input_img">
                         <div class="p_i_p">
-                            <p>画像を挿入</p>
+                            <p>画像を挿入（１枚目は必須です）</p>
                             <input type="file" class="post_file" onclick="imageChange(0, this)" name="image1" value="画像を入れる（必須）" required>
                         </div>
                         <img src="" alt="" class="post_img">
                     </div>
-                    <textarea name="text1" id="" cols="30" rows="10" class="text"  placeholder="見出しとなる部分です（必須）" required></textarea>
+                    <textarea name="text1" id="" cols="30" rows="10" class="text"  placeholder="説明文を入力してください。見出しとなる部分です（見出しは必須です）" required></textarea>
                 </div>
 
                 <div id="more_inputs">

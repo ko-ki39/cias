@@ -64,7 +64,7 @@
                     {{-- {{ dd($image) }} --}}
                         @if ($image[$i] != null)
                             <img src="/storage/{{ $image[$i] }}" class="big_image">
-                            <p>{{ $text[$i] }}</p>
+                            <pre>{{ $text[$i] }}</pre>
                         @endif
                     @endfor
                 </div>
@@ -189,4 +189,5 @@
     </div>
 @endguest
     <script src="/js/fav.js"></script>
+    <script src="/js/article_detail.js"></script>
 @endsection
