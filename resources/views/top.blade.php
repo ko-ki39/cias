@@ -157,6 +157,9 @@
         ->exists() != null)
                         <div class="fav">
                             <i id="" class="heart-button-l fa-heart fa-2x tippyLoginFav fas" style="color:#ff0000;"></i>
+                            @if ($article->fav_count != 0)
+                                {{ $article->fav_count }}
+                            @endif
                         </div>
                     @else
                         <div class="fav">
