@@ -152,7 +152,7 @@
         この記事を、マイページに<br>保存することが出来ます！<br><small style="font-size: 0.7rem;">( Sorry... m(__)m <br>訓練生のみが使える機能です )</small>
     </div>
     <div class="tippy_template" style="display:none;">
-        この記事を、Twitterに<br>晒すことが出来ます！<br><small style="font-size: 0.7rem;">( Sorry... m(__)m <br>訓練生のみが使える機能です )</small>
+        この記事を、Twitterに<br>晒すことが出来ます！
     </div>
     <div class="tippy_template" style="display:none;">
         この記事に、コメントを<br>書くことが出来ます！<br><small style="font-size: 0.7rem;">( Sorry... m(__)m <br>訓練生のみが使える機能です )</small>

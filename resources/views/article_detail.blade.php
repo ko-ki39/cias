@@ -166,7 +166,7 @@
         この記事を、マイページに<br>保存することが出来ます！<br>(ログインが必要です)
     </div>
     <div class="tippy_template" style="display:none;">
-        この記事を、Twitterに<br>晒すことが出来ます！<br>(ログインが必要です)
+        この記事を、Twitterに<br>晒すことが出来ます！
     </div>
     <div class="tippy_template" style="display:none;">
         この記事に、コメントを<br>書くことが出来ます！<br>(ログインが必要です)
