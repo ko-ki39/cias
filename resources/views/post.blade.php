@@ -37,7 +37,7 @@
                 </div>
 
                 <div id="more_hash">
-                    <p>さらにハッシュタグを追加する(あと<span id="m_h_counter"> 2 </span>つ)<span class="v_text"></span></p>
+                    <p>さらにハッシュタグを追加する(あと<span id="m_h_counter"> 2 </span>つ)<i class="fas fa-chevron-down"></i></p>
                 </div>
 
                 {{-- name="image1" name="image2" name="image3" ... "image6" --}}
@@ -54,13 +54,12 @@
                 </div>
 
                 <div id="more_inputs">
-                    <p>さらに記事内容を追加する(あと<span id="m_i_counter"> 5 </span>つ)<span class="v_text"></span></p>
+                    <p>さらに記事内容を追加する(あと<span id="m_i_counter"> 5 </span>つ)<i class="fas fa-chevron-down"></i></p>
                 </div>
 
                 <div id="preview_button">
                     <a class="btn btn-border" style=""><span>プレビューを見る</span></a>
                 </div>
-                {{-- <input type="submit" value="投稿する" id="post"> --}}
                 <div id="pop_background"></div>
                 <div id="main_modal"></div>
             </form>
