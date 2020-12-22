@@ -16,7 +16,7 @@ use App\Observers\UserObserver;
 use App\User;
 use App\Post;
 use Illuminate\Support\ServiceProvider;
-
+use Illuminate\Support\Facades\Schema;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -36,6 +36,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Schema::defaultStringLength(191);
         User::observe(UserObserver::class);
         Article::observe(ArticleObserver::class);
         Comment::observe(CommentObserver::class);
