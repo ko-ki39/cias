@@ -6,9 +6,9 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
         <title>訓練校キャリア情報</title>
-        <link href="/css/style.css" rel="stylesheet">
-        <link href="/css/welcome.css'" rel="stylesheet">
-        <link href="/css/hamburger.css" rel="stylesheet">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/welcome.css">
+        <link rel="stylesheet" href="/css/hamburger.css">
         <script src="/js/fontawesome0853445863.js" crossorigin="anonymous"></script>
         <script src="/js/jquery-3.5.1.min.js"></script>
         <script src="/js/ztext.min.js"></script>
@@ -37,7 +37,7 @@
         <script src="/js/hamburgerWelcome.js"></script>
         <script src="/js/ztextPlay.js"></script>
         <script src="/js/quietflow.min.js"></script>
-        <script src="{/js/welcome_quietflow.js"></script>
+        <script src="/js/welcome_quietflow.js"></script>
     </body>
 
 </html>
