@@ -34,7 +34,7 @@
                     document.getElementById('logout-form').submit();">
                     {{ __('ログアウト') }}
                 </a> --}}
-        <form action="{{ route('search') }}" method="get">
+        <form action="{{ route('search') }}" method="get" id="topForm">
             <table>
                 <tr>
                     <td>
