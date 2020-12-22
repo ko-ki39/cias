@@ -50,6 +50,7 @@ if(nowURL.substring(0, 40) == "https://" + nowHost + "/top/article_detail" ||
             // console.log(e.target.classList);
             // console.log(buttons[i].classList);
 
+            console.log("きた");
             // 塗り潰しされてない(favされてない、またはログインしていない)
             if(buttons[i].classList[4] == "far"){
                 fav(i, "create");
