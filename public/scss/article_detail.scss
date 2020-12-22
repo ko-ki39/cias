@@ -67,6 +67,10 @@
                         flex-direction: row;
                         flex-wrap: wrap;
                         font-size: 0.7em;
+                        a{
+                            color: #2422a7;
+                            text-decoration: none;
+                        }
                     }
                     .ctf_container{
                         margin: 0 0.5em 0.5em 0;
@@ -93,6 +97,7 @@
                 width: 95%;
                 display: flex;
                 flex-direction: column;
+                justify-content: center;
                 box-shadow: 0.3px 0.3px 8px #BCBEC1, -0.3px -0.3px 8px #FFFFFF;
                 hr{
                     width: 95%;
@@ -105,10 +110,10 @@
                     background-size: contain;
                     object-fit: contain;
                 }
-                p{
-                    margin-bottom: 1rem;
-                    padding: 1em;
-                    word-wrap: break-word;
+                pre{
+                    width: 95%;
+                    margin: 0.5em 0.75em;
+                    white-space: pre-wrap;
                 }
             }
         }
@@ -245,8 +250,7 @@
             margin-top: 39px;
         }
         .article{
-            width: 64%;
-            margin: 30px auto 40px 10px;
+            margin: 40px 20px 40px 10px;
             padding-bottom: 66px;
             // border: dashed 1px #000;
             float: left;
@@ -347,9 +351,9 @@
                         background-size: contain;
                         object-fit: contain;
                     }
-                    p{
-                        margin: 0 0 30px 0;
-                        word-wrap: break-word;
+                    pre{
+                        width: 95%;
+                        white-space: pre-wrap;
                     }
                 }
             }

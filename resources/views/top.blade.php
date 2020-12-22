@@ -8,6 +8,7 @@
     {{-- css等の読み込み場所 --}}
     <link rel="stylesheet" href="/css/side_bar.css" type="text/css">
     <link rel="stylesheet" href="/css/top.css" type="text/css">
+    <link rel="stylesheet" href="/css/searchButton.css" type="text/css">
 @endsection
 
 
@@ -77,12 +78,17 @@
                     <td>
                         <div class="txt_search">
                             <input type="text" name="search" id="search" placeholder="検索" autocomplete="off">
-                            <input type="submit" value="検索">
                             <div id="search_list">
                                 <ul id="search_result">
                                 </ul>
                             </div>
                         </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td id="searchButton">
+                        <a href="javascript:topForm.submit()" class="btn btn-border" style=""><span>検索</span></a>
                     </td>
                 </tr>
             </table>

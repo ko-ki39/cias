@@ -20,6 +20,7 @@ function p_i_pCentering(num)
     p_i_p[num].style.left = centering_width;
     p_i_p[num].style.top = centering_height;
     preview_button.firstElementChild.style.left = centering_previewButton;
+    // hash_spanBringLeft();
 }
 
 
@@ -87,7 +88,7 @@ function inputs_displayMore()
     if(post_inputs.length < 6){
         let pushInputs = ``;
         pushInputs += `<div class="post_inputs post_inputs_none" style="display:none;">`
-                        + `<div class="p_i_delete" onclick="post_inputs_delete(this)"><span class="p_i_d_span">×</span></div>`
+                        + `<div class="p_i_delete" onclick="post_inputs_delete(this)"><span class="p_i_d_count">追加：${post_inputs.length}</span><span class="p_i_d_span">×</span></div>`
                         + `<div class="p_i_input_img">`
                             + `<div class="p_i_p">`
                                 + `<p>画像を挿入</p>`
@@ -130,6 +131,7 @@ function post_inputs_delete(e){
         for(let i=0; i<document.getElementsByClassName("text").length; i++){
             document.getElementsByClassName("post_file")[i].name = "image" + (i + 1);
             document.getElementsByClassName("text")[i].name = "text" + (i + 1);
+            document.getElementsByClassName("p_i_d_count")[i].textContent = "追加：" + (i + 1);
         }
     }else{
         return;
@@ -190,42 +192,64 @@ let img_and_text = [
 btn_border.addEventListener("click", displayPreview, true);
 pop_background.addEventListener("click", hideModal, true);
 
-function displayPreview(){
-
+function displayPreview()
+{
     hash_arr.splice(0);
     let hash = document.getElementsByClassName("hash");
     let hash_text = document.getElementsByClassName("hash_text");
     let post_img = document.getElementsByClassName("post_img");
     let text = document.getElementsByClassName("text");
-    // console.log(post_img);
-    // console.log(hash_text);
+    let userInfo_image = document.getElementsByClassName("h_u_img")[0].firstChild.src;
+    let userInfo_name = document.getElementsByClassName("h_u_img")[0].previousElementSibling.textContent;
+    console.log(userInfo_image);
+    console.log(userInfo_name);
+
+    //入力必須の項目に、未入力が存在した場合
+    if(!document.getElementsByName("title")[0].value || !document.getElementsByName("title")[0].value.match(/\S/g)){
+        alert("タイトルが入力されていません");
+        return;
+    }else if(document.getElementsByClassName("post_img")[0].src == window.location.href){
+        alert("見出しとなる画像が入力されていません");
+        return;
+    }else if(!document.getElementsByClassName("text")[0].value || !document.getElementsByClassName("text")[0].value.match(/\S/g)){
+        alert("見出しとなる説明文が入力されていません");
+        return;
+    }
 
     //タイトルを配列に入れる
     title = document.getElementsByName("title")[0].value;
 
     //ハッシュを配列に入れる
+    let pushPreview_hash = ``;
+
     for(let i=0; i<hash.length; i++){
         if(!hash_text[i].value || !hash_text[i].value.match(/\S/g)){
-
         }else{
             hash_arr.push(hash_text[i].value);
+            pushPreview_hash += `<p>#${hash_arr[i]}</p>`;
         }
     }
-
+    
     //画像を配列に入れる
+    let pushPreview_imageAndText = ``;
+
     for(let i=0; i<post_inputs.length; i++){
-        if(post_img[i].src != "http://localhost/top/post"){
+        if(post_img[i].src != window.location.href){
             img_and_text[i].image = post_img[i].src;
+            pushPreview_imageAndText += `<img src="${img_and_text[i].image}" alt="">`;
         }else{
             img_and_text[i].image = "";
+            pushPreview_imageAndText += `<img src="" alt="">`;
         }
 
         //説明を配列に入れる
         //<textarea>が空だったら
         if(!text[i].value || !text[i].value.match(/\S/g)){
             img_and_text[i].text = "";
+            pushPreview_imageAndText += `<pre></pre>`;
         }else{
             img_and_text[i].text = text[i].value;
+            pushPreview_imageAndText += `<pre>${img_and_text[i].text}</pre>`;
         }
     }
 
@@ -236,9 +260,12 @@ function displayPreview(){
     let pushPreview = ``;
     pushPreview += `<div id="previewArticle">`
                     + `<div id="pa_userInfo">`
+                        + `<img src="${userInfo_image}" alt="">`
+                        + `<p>${userInfo_name}</p>`
                     + `</div>`
                     + `<div id="thc_container">`
                         + `<div id="thc_c_title">`
+                            + `<h2>${title}</h2>`
                         + `</div>`
                         + `<div id="thc_c_hashs">`
                         + `</div>`
@@ -250,7 +277,16 @@ function displayPreview(){
                     + `</div>`
                     + `<div id="pa_detail">`
                     + `</div>`
+                    + `<div id="pa_buttons">`
+                        + `<a href="#" id="pa_b_back" onclick="event.preventDefault(); hideModal();">やり直す</a>`
+                        + `<input type="submit" value="投稿する" id="pa_b_submit">`
+                    + `</div>`
                 +  `</div>`
+
+    main_modal.insertAdjacentHTML("afterbegin", pushPreview);
+    document.getElementById("thc_c_hashs").insertAdjacentHTML("afterbegin", pushPreview_hash);
+    document.getElementById("pa_detail").insertAdjacentHTML("afterbegin", pushPreview_imageAndText);
+    pa_b_back = document.getElementById("pa_b_back");
 
     $("#pop_background").fadeIn("300");
     $("#main_modal").fadeIn("1000");
@@ -267,32 +303,26 @@ function hideModal(){
     $("#main_modal").fadeOut("700");
 }
 
-{/* <div id="previewArticle">
-    <div id="pa_userInfo">
-        <img src="" alt="">
-        <p></p>
-    </div>
-    <div id="thc_container">
-        <div id="thc_c_title">
-            <h2></h2>
-        </div>
-        <div id="thc_c_hashs">
-            <p></p>
-        </div>
-        <div id="thc_c_ctf">
-            <div id="ctf_comment">
-                <i class="far fa-comment" style="color:#259b25;"></i>
-            </div>
-            <div id="ctf_twitter">
-                <i class="fab fa-twitter-squarel" style="color:#1da1f2;"></i>
-            </div>
-            <div id="ctf_fav">
-                <i id="" class="fa-heart far" style="color:#ff0000;"></i>
-            </div>
-        </div>
-    </div>
-    <div id="pa_detail">
-        <img src="" alt="">
-        <pre></pre>
-    </div>
-</div> */}
+
+
+/** 機能の説明
+ * 「#」を左に寄せる
+ */
+// function hash_spanBringLeft()
+// {
+//     let hash = document.getElementsByClassName("hash");
+//     let hash_span = document.getElementsByClassName("hash_span");
+//     let hash_text = document.getElementsByClassName("hash_text");
+    
+//     console.log(hash[0].getBoundingClientRect().top)
+
+//     for(let i=0; i<hash_span.length; i++){
+//         // let hashTop = hash[i].getBoundingClientRect().top;
+//         let hash_textHeight = hash_text[i].getBoundingClientRect().height;
+//         hash_span[i].style.left = (hash[i].getBoundingClientRect().left + 1.5) + "px";
+//         // hash_span[i].style.top = hashTop + "px";
+//         hash_span[i].style.marginTop = "0.35em";
+//         hash_span[i].style.height = (hash_textHeight - 4) + "px";
+//         hash_span[i].style.width = "1em";
+//     }
+// }

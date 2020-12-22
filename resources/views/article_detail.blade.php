@@ -60,11 +60,10 @@
                     @if ($image[$i] != null)
                         <a href="/storage/{{ $image[$i] }}" data-lightbox="image">
                             <img src="/storage/{{ $image[$i] }}" class="big_image">
-                        </a>
-                        <p>{!! nl2br(e($text[$i])) !!}</p> {{-- 改行させる
-                        --}}
-                    @endif
-                @endfor
+                            <pre>{{ $text[$i] }}</pre>
+                        @endif
+                    @endfor
+                </div>
             </div>
         </div>
         @guest
@@ -187,5 +186,6 @@
         この記事に、コメントを書く！
     </div>
 @endguest
-<script src="/js/fav.js"></script>
+    <script src="/js/fav.js"></script>
+    <script src="/js/article_detail.js"></script>
 @endsection

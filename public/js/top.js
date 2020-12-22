@@ -11,6 +11,11 @@ window.addEventListener("resize", resizeContent, true);
 
 function resizeContent()
 {
+    let search_departmentWidth = document.getElementById("search_department").getBoundingClientRect().width;
+    let search = document.getElementById("search");
+
+    search.style.width = (search_departmentWidth - 8) + "px";
+
     let windowWidth = document.documentElement.clientWidth;
 
     if(windowWidth > 720){
