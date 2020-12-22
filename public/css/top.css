@@ -138,6 +138,9 @@
   margin: 0;
   height: 3rem;
   width: 3rem;
+  border-radius: 50%;
+  -webkit-box-shadow: inset 6.01px 6.01px 14px #BDBDBD, inset -6.01px -6.01px 14px #FFFFFF;
+          box-shadow: inset 6.01px 6.01px 14px #BDBDBD, inset -6.01px -6.01px 14px #FFFFFF;
 }
 
 .main .content .article .article_userName .top_h_u_img img {
@@ -149,6 +152,9 @@
   background-size: cover;
   -o-object-fit: cover;
      object-fit: cover;
+  border: solid 1px #9c9c9c;
+  -webkit-box-shadow: inset 6.01px 6.01px 14px #BDBDBD, inset -6.01px -6.01px 14px #FFFFFF;
+          box-shadow: inset 6.01px 6.01px 14px #BDBDBD, inset -6.01px -6.01px 14px #FFFFFF;
 }
 
 .main .content .article .article_userName a {
@@ -238,6 +244,7 @@
 }
 
 .main .content .article .ctf_container {
+  margin-top: auto;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -279,16 +286,63 @@
 
 .main .content .article .ctf_container .comment {
   margin-right: 0.8em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+}
+
+.main .content .article .ctf_container .comment p {
+  display: inline-block;
+  font-size: 0.7em;
+  margin: -0.3em 0 0 0;
 }
 
 .main .content .article .ctf_container .twitter {
   margin-right: 0.8em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+}
+
+.main .content .article .ctf_container .twitter p {
+  display: inline-block;
+  font-size: 0.7em;
+  margin: -0.3em 0 0 0;
 }
 
 .main .content .article .ctf_container .fav {
   margin-right: 0.8em;
-  color: #135f13;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
   cursor: pointer;
+}
+
+.main .content .article .ctf_container .fav p {
+  display: inline-block;
+  font-size: 0.7em;
+  margin: -0.3em 0 0 0;
 }
 
 .main .content #message {

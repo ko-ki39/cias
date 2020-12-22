@@ -1,8 +1,4 @@
 @charset "UTF-8";
-body div.main {
-  background-color: #d8d8d8;
-}
-
 #me {
   width: 100%;
   display: -webkit-box;
@@ -454,9 +450,6 @@ body div.main {
 }
 
 @media screen and (min-width: 720px) {
-  body div.main {
-    background-color: #d8d8d8;
-  }
   .main {
     display: -webkit-box;
     display: -webkit-flex;

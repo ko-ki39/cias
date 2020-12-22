@@ -1,35 +1,39 @@
-.main {
-    width: 1000px;
-    .content {
-        width: 620px;
-        margin: 20px 0 0 10px;
-        border-radius: 6px;
-        background-color: #ccc;
-        .me {
-            margin-top: 10px;
-            margin-left: 10px;
-            width: 555px;
-            height: 70px;
-            margin: auto;
-            border-radius: 6px;
-            background-color: #fff;
-            .me_image {
-                height: 60px;
-                width: 60px;
-                margin: 5px;
-                float: left;
-                border-radius: 50%;
-            }
-            p {
-                // margin-top: 30px;
-                padding-left: 10px;
-                line-height: 70px;
-                font-size: 20px;
-            }
+.main{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    .me {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        background-color: #575757;
+        padding: 1em 0;
+        .me_image {
+            margin-left: 1em;
+            height: 120px;
+            width: 120px;
+            border-radius: 50%;
         }
+        p{
+            margin: auto;
+            margin-left: 1em;
+            color: #ffffff;
+            font-size: 1.5em;
+        }
+        #me_name{
+            margin-right: auto;
+        }
+    }
+    #carrier{
+        margin-left: 1em;
+        color: #ffffff;
+        font-size: 1.5em;
+    }
+    .content {
+        width: 100%;
         .article {
-            width: 555px;
-            height: 150px;
+            height: 95%;
             margin: 10px auto;
             // border: dashed 1px #f00;
             border-radius: 6px;
@@ -133,4 +137,11 @@
             // }
         }
     }
+}
+
+@media screen and (min-width: 481px){
+    /* 481px以上に適用されるCSS（タブレット用） */
+}
+
+@media screen and (min-width: 720px){
 }

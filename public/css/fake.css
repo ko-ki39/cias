@@ -1,41 +1,66 @@
+@charset "UTF-8";
 .main {
-  width: 1000px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.main .content {
-  width: 620px;
-  margin: 20px 0 0 10px;
-  border-radius: 6px;
-  background-color: #ccc;
+.main .me {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  background-color: #575757;
+  padding: 1em 0;
 }
 
-.main .content .me {
-  margin-top: 10px;
-  margin-left: 10px;
-  width: 555px;
-  height: 70px;
-  margin: auto;
-  border-radius: 6px;
-  background-color: #fff;
-}
-
-.main .content .me .me_image {
-  height: 60px;
-  width: 60px;
-  margin: 5px;
-  float: left;
+.main .me .me_image {
+  margin-left: 1em;
+  height: 120px;
+  width: 120px;
   border-radius: 50%;
 }
 
-.main .content .me p {
-  padding-left: 10px;
-  line-height: 70px;
-  font-size: 20px;
+.main .me p {
+  margin: auto;
+  margin-left: 1em;
+  color: #ffffff;
+  font-size: 1.5em;
+}
+
+.main .me #me_name {
+  margin-right: auto;
+}
+
+.main #carrier {
+  margin-left: 1em;
+  color: #ffffff;
+  font-size: 1.5em;
+}
+
+.main .content {
+  width: 100%;
 }
 
 .main .content .article {
-  width: 555px;
-  height: 150px;
+  height: 95%;
   margin: 10px auto;
   border-radius: 6px;
   background-color: #fff;
@@ -139,4 +164,8 @@
   margin-right: 0;
   color: #135f13;
   cursor: pointer;
+}
+
+@media screen and (min-width: 481px) {
+  /* 481px以上に適用されるCSS（タブレット用） */
 }

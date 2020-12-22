@@ -106,6 +106,8 @@
                     margin: 0;
                     height: 3rem;
                     width: 3rem;
+                    border-radius: 50%;
+                    box-shadow: inset 6.01px 6.01px 14px #BDBDBD, inset -6.01px -6.01px 14px #FFFFFF;
                     img {
                         height: 3rem;
                         width: 3rem;
@@ -114,6 +116,8 @@
                         background-position: center;
                         background-size: cover;
                         object-fit: cover;
+                        border: solid 1px #9c9c9c;
+                        box-shadow: inset 6.01px 6.01px 14px #BDBDBD, inset -6.01px -6.01px 14px #FFFFFF;
                     }
                 }
                 a {
@@ -196,6 +200,7 @@
                 white-space: pre-wrap;
             }
             .ctf_container {
+                margin-top: auto;
                 display: flex;
                 flex-direction: row;
                 align-items: flex-end;
@@ -217,14 +222,37 @@
                 }
                 .comment {
                     margin-right: 0.8em;
+                    display: flex;
+                    flex-direction: column;
+                    text-align: center;
+                    p{
+                        display: inline-block;
+                        font-size: 0.7em;
+                        margin: -0.3em 0 0 0;
+                    }
                 }
                 .twitter {
                     margin-right: 0.8em;
+                    display: flex;
+                    flex-direction: column;
+                    text-align: center;
+                    p{
+                        display: inline-block;
+                        font-size: 0.7em;
+                        margin: -0.3em 0 0 0;
+                    }
                 }
                 .fav {
                     margin-right: 0.8em;
-                    color: #135f13;
+                    display: flex;
+                    flex-direction: column;
+                    text-align: center;
                     cursor: pointer;
+                    p{
+                        display: inline-block;
+                        font-size: 0.7em;
+                        margin: -0.3em 0 0 0;
+                    }
                 }
             }
         }

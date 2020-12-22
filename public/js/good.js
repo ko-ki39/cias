@@ -22,7 +22,7 @@ $(function() {
                         //クリックしたタグのステータスを変更
                         click_button.attr("good_comment", "1");
                         //クリックしたタグの子の要素を変更(表示されているハートの模様を書き換える)
-                        click_button.children().attr("class", "heart-button-l fa-heart fa-2x tippyLoginFav fas");
+                        click_button.children().attr("class", "fas fa-thumbs-up");
                     }
                     if (data == 1) {
                         //クリックしたタグのステータスを変更
@@ -30,7 +30,7 @@ $(function() {
                         //クリックしたタグの子の要素を変更(表示されているハートの模様を書き換える)
 
 
-                        click_button.children().attr("class", "heart-button-l fa-heart fa-2x tippyGuestFav far");
+                        click_button.children().attr("class", "far fa-thumbs-up");
                     }
                 })
             ////正常に処理が完了しなかった場合

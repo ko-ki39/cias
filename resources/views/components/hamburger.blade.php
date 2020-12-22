@@ -17,6 +17,12 @@
     @else
     <nav class="nav fadein" id="nav_f">
         <ul>
+            <li class="li_pro_articleEdit">
+                <p>ユーザー情報を編集→</p>
+                <a href="{{ route('user_edit') }}">
+                    <i class="fas fa-pencil-alt fa" style="color:#ffffff;"></i>
+                </a>
+            </li>
             <li class="li_pro_img">
                 <a href="{{ route('individual', ['id' => Auth::id()]) }}"><img src="/storage/{{ Auth::user()->image }}" alt=""></a>
             </li>
@@ -33,9 +39,12 @@
                     {{ __('ログアウト') }}
                 </a>
             </li>
+            <li class="li_pro_post">
+                <a href="{{ route('post') }}">記事を投稿する</a>
+            </li>
             <hr>
             <ul class="li_pro_comment_fav">
-                <p style="color:whitesmoke;">通知ですよー<span style="font-size:3em; color:whitesmoke;">✌</span>^o^<span style="font-size:3em; color:whitesmoke;">✌</span></p>
+                <p style="color:whitesmoke;">通知機能は一時的に停止しています</p>
                 {{-- @if (!isset($hamburgerNotice[0]))
                     <ul>
                         <li>通知はありません</li>

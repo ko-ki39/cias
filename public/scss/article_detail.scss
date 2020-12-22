@@ -80,13 +80,38 @@
                         justify-content: flex-end;
                         // border-radius: 0 0 6px 6px;
                         .comment{
-                            margin-right: 15px;
+                            margin-right: 1em;
+                            display: flex;
+                            flex-direction: column;
+                            text-align: center;
+                            p{
+                                display: inline-block;
+                                font-size: 0.8em;
+                                margin: 0;
+                            }
                         }
                         .twitter{
-                            margin-right: 15px;
+                            margin-right: 1em;
+                            display: flex;
+                            flex-direction: column;
+                            text-align: center;
+                            p{
+                                display: inline-block;
+                                font-size: 0.8em;
+                                margin: 0;
+                            }
                         }
                         .fav{
                             cursor: pointer;
+                            margin-right: 1em;
+                            display: flex;
+                            flex-direction: column;
+                            text-align: center;
+                            p{
+                                display: inline-block;
+                                font-size: 0.8em;
+                                margin: 0;
+                            }
                         }
                     }
                 }
@@ -211,6 +236,23 @@
                         text-decoration: none;
                         color: rgb(36, 35, 35);
                     }
+                    div{
+                        margin-left: auto;
+                        margin-right: 1em;
+                        margin-top: -1em;
+                        cursor: pointer;
+                        .comment_deleteMenu{
+                            display: none;
+                            form{
+                                margin-top: 1em;
+                                margin-right: -1em;
+                                input{
+                                    background-color: #ff0000ad;
+                                    border-radius: 6px;
+                                }
+                            }
+                        }
+                    }
                 }
             }
             hr{
@@ -229,6 +271,17 @@
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
+                align-items: center;
+                .c_l_c_o_thums{
+                    font-size: 1.5em;
+                    margin-left: 1em;
+                }
+                p{
+                    display: inline-block;
+                    margin: 0 0 0 0.4em;
+                    font-size: 0.8em;
+                    color: #38a9ff;
+                }
                 time{
                     margin-left: auto;
                     margin-right: 0.5em;
@@ -318,7 +371,6 @@
                             font-size: 0.8em;
                         }
                         .ctf_container{
-                            padding: 10px 15px;
                             background-color: #fafbfc;
                             display: flex;
                             flex-direction: row;
@@ -449,9 +501,23 @@
                         white-space: pre-wrap;
                     }
                 }
-                .c_l_c_other{
+                .c_l_c_other {
                     display: flex;
+                    flex-direction: row;
                     justify-content: space-between;
+                    align-items: center;
+                    .c_l_c_o_thums{
+                        font-size: 1.5em;
+                        margin-left: 1em;
+                    }
+                    p{
+                        display: inline-block;
+                    }
+                    time{
+                        margin-left: auto;
+                        margin-right: 0.5em;
+                        font-size: 0.75rem;
+                    }
                 }
             }
         }

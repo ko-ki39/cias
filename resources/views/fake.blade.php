@@ -14,11 +14,12 @@
 @section('content')
     {{-- この下からbodyの中身を書き始める --}}
     <div class="main">
+        <div class="me">
+            <img src="/storage/{{ $user->image }}" alt="" class="me_image">
+            <p id="me_name">{{ $user->user_name }}<br>のページ</p>
+        </div>
+        <p id="carrier">ここにキャリア情報が入ります</p>
         <div class="content">
-            <div class="me">
-                <img src="/storage/{{ $user->image }}" alt="" class="me_image">
-                <p>{{ $user->user_name }}さんが投稿した記事</p>
-            </div>
             @foreach ($articles as $article)
 
                 <div class="article">

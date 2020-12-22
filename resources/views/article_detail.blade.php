@@ -113,6 +113,16 @@
                                     alt=""></a>
                             <a href="{{ route('individual', ['id' => $item->user_id]) }}"
                                 class="c_l_c_name">{{ \App\User::where('id', '=', $item->user_id)->first()->user_name }}</a>
+                            <div>
+                                <i class="fas fa-bars" onclick="commentDeleteMenu({{ $loop->index }})"></i>
+                                <div class="comment_deleteMenu">
+                                    <form action="{{ route('detail_comment_delete') }}">
+                                        <input type="hidden" value="{{ $article->id }}" name="article_id">
+                                        <input type="hidden" value="{{ $item->id }}" name="comment_id">
+                                        <input type="submit" value="削除" class="c_dm_submit" onclick="return commentDeleteMenu_confirm(this)">
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                         <div class="c_l_c_detail">
                             <pre>{{ $item->detail }}</pre>
@@ -120,11 +130,6 @@
                             @if (Illuminate\Support\Facades\Auth::id() == $item->user_id)
                                 {{-- コメントを投稿したユーザーと同一人物だったら
                                 --}}
-                                <form action="{{ route('detail_comment_delete') }}">
-                                    <input type="hidden" value="{{ $article->id }}" name="article_id">
-                                    <input type="hidden" value="{{ $item->id }}" name="comment_id">
-                                    <input type="submit" value="削除">
-                                </form>
                             @endif
                         </div>
                         <div class="c_l_c_other">
@@ -135,19 +140,15 @@
         ->exists() != null)
                                     {{-- すでにgoodしていた場合 --}}
                                     <a class="c_l_c_o_thums" comment_id="{{ $item->id }}" good_comment="1">
-                                        <i id="" class="heart-button-l fa-heart fa-2x tippyLoginFav fas"
-                                            style="color:#ff0000;"></i>
+                                        <i class="fas fa-thumbs-up" style="color:#38a9ff;"></i>
                                     </a>
                                 @else
                                     {{-- goodされていない場合 --}}
                                     <a class="c_l_c_o_thums" comment_id="{{ $item->id }}" good_comment="0">
-
-                                        <i id="" class="heart-button-l fa-heart fa-2x tippyGuestFav far"
-                                            style="color:#ff0000;"></i>
-
+                                        <i class="far fa-thumbs-up"></i>
                                     </a>
                                 @endif
-                                <pre>{{ $item->good_count }}</pre>
+                                <p>{{ $item->good_count }}</p>
                             @endif
                             <time datetime="{{ $item->created_at }}">{{ $item->created_at }}</time>
                         </div>
