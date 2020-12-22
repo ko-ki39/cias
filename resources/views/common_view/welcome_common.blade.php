@@ -30,7 +30,7 @@
             </form>
         </div>
         @endguest
-        <x-hamburger />
+        {{-- <x-hamburger /> --}}
         @yield('content')
         @include('common_view.footer')
         <script src="{{ asset('/js/hamburgerWelcome.js') }}"></script>
