@@ -1,5 +1,5 @@
 function hoge() {
-    $("body").quietflow({
+    $("html").quietflow({
         theme: "starfield",
         starSize: 1.2,
         speed: 60
@@ -7,5 +7,5 @@ function hoge() {
 }
 
 window.onload = hoge();
-document.body.addEventListener("resize", hoge);
-document.body.addEventListener("scroll", hoge);
+window.addEventListener("resize", hoge);
+window.addEventListener("scroll", hoge);
