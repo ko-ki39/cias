@@ -29,11 +29,11 @@
             </select>
             <input type="submit" value="絞り込む">
         </form> --}}
-        <a href="{{ route('logout') }}"
+        {{-- <a href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                     {{ __('ログアウト') }}
-                </a>
+                </a> --}}
         <form action="{{ route('search') }}" method="get">
             <table>
                 <tr>
