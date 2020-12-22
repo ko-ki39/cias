@@ -31,7 +31,7 @@
         <div id="quietflowOnBody"></div>
         <script src="/js/hamburger.js"></script>
         <script src="/js/ztextPlay.js"></script>
-        <script src="{{ asset('/js/quietflow.min.js') }}"></script>
-        <script src="{{ asset('/js/common_quietflow.js') }}"></script>
+        <script src="/js/quietflow.min.js"></script>
+        <script src="/js/common_quietflow.js"></script>
     </body>
 </html>
