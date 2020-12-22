@@ -28,6 +28,7 @@
 
         @yield('content')
         @include('common_view.footer')
+        <div id="quietflowOnBody"></div>
         <script src="/js/hamburger.js"></script>
         <script src="/js/ztextPlay.js"></script>
         <script src="{{ asset('/js/quietflow.min.js') }}"></script>
