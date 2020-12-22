@@ -96,7 +96,7 @@ function fav(select, m_string) {
         headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
     })
     $.ajax({
-            url: "/top/fav/" + article_id,
+            url: "/top/fav/",
             method: "post",
             data: formData,
             // data: {"p_article_id": article_id, "p_method": _method},
