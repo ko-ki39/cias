@@ -6,6 +6,20 @@ html {
         display: flex;
         flex-flow: column;
         width: 100%;
+        font-family: "ヒラギノ角ゴ Pro W3",
+                     "Hiragino Kaku Gothic Pro",
+                     "メイリオ",
+                     Meiryo,
+                     Osaka;
+        pre,
+        p,
+        a{
+            font-family: "ヒラギノ角ゴ Pro W3",
+            "Hiragino Kaku Gothic Pro",
+            "メイリオ",
+            Meiryo,
+            Osaka;
+        }
         .header {
             // height: 300px;
             // padding-bottom: 10px;

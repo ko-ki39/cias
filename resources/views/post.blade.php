@@ -23,21 +23,24 @@
                 </div>
 
                 <div class="hash">
-                    <h3>ハッシュタグ</h3>
-                    <input type="text" name="hash1" class="hash_text" placeholder="ハッシュタグを入力">
+                    <h3>ハッシュタグ</h3><br>
+                    <span class="hash_span">#</span>
+                    <input type="text" name="hash1" class="hash_text" placeholder="">
                     <a href="#" class="hash_clearButton" onclick="event.preventDefault()" style="color:black; text-decoration:none; font-weight:bold; font-size:1.3em;">×</a>
                 </div>
                 <div class="hash_none" style="display: none">
-                    <input type="text" name="hash2" class="hash_text" placeholder="ハッシュタグを入力">
+                    <span class="hash_span">#</span>
+                    <input type="text" name="hash2" class="hash_text" placeholder="">
                     <a href="#" class="hash_clearButton" onclick="event.preventDefault()" style="color:black; text-decoration:none; font-weight:bold; font-size:1.3em;">×</a>
                 </div>
                 <div class="hash_none" style="display: none">
-                    <input type="text" name="hash3" class="hash_text" placeholder="ハッシュタグを入力">
+                    <span class="hash_span">#</span>
+                    <input type="text" name="hash3" class="hash_text" placeholder="">
                     <a href="#" class="hash_clearButton" onclick="event.preventDefault()" style="color:black; text-decoration:none; font-weight:bold; font-size:1.3em;">×</a>
                 </div>
 
                 <div id="more_hash">
-                    <p>さらにハッシュタグを追加する(あと<span id="m_h_counter"> 2 </span>つ)<span class="v_text"></span></p>
+                    <p>さらにハッシュタグを追加する(あと<span id="m_h_counter"> 2 </span>つ)<i class="fas fa-chevron-down"></i></p>
                 </div>
 
                 {{-- name="image1" name="image2" name="image3" ... "image6" --}}
@@ -45,22 +48,21 @@
                 <div class="post_inputs">
                     <div class="p_i_input_img">
                         <div class="p_i_p">
-                            <p>画像を挿入</p>
+                            <p>画像を挿入（１枚目は必須です）</p>
                             <input type="file" class="post_file" onclick="imageChange(0, this)" name="image1" value="画像を入れる（必須）" required>
                         </div>
                         <img src="" alt="" class="post_img">
                     </div>
-                    <textarea name="text1" id="" cols="30" rows="10" class="text"  placeholder="見出しとなる部分です（必須）" required></textarea>
+                    <textarea name="text1" id="" cols="30" rows="10" class="text"  placeholder="説明文を入力してください。見出しとなる部分です（見出しは必須です）" required></textarea>
                 </div>
 
                 <div id="more_inputs">
-                    <p>さらに記事内容を追加する(あと<span id="m_i_counter"> 5 </span>つ)<span class="v_text"></span></p>
+                    <p>さらに記事内容を追加する(あと<span id="m_i_counter"> 5 </span>つ)<i class="fas fa-chevron-down"></i></p>
                 </div>
 
                 <div id="preview_button">
                     <a class="btn btn-border" style=""><span>プレビューを見る</span></a>
                 </div>
-                {{-- <input type="submit" value="投稿する" id="post"> --}}
                 <div id="pop_background"></div>
                 <div id="main_modal"></div>
             </form>

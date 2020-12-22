@@ -13,6 +13,13 @@ html body {
       -ms-flex-flow: column;
           flex-flow: column;
   width: 100%;
+  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka;
+}
+
+html body pre,
+html body p,
+html body a {
+  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka;
 }
 
 html body .header {
