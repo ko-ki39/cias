@@ -14,7 +14,6 @@
         {{-- <link href="/css/fontawesome_v561.css" rel="stylesheet"> --}}
         <script src="/js/fontawesome0853445863.js" crossorigin="anonymous"></script>
         <script src="/js/jquery-3.5.1.min.js"></script>
-        <script src="/js/ztext.min.js"></script>
         <script src="/js/popper.min.js"></script>
         <script src="/js/tippy-bundle.umd.js"></script>
         <script src="/js/confirm.js"></script>
@@ -27,7 +26,7 @@
 
         @yield('content')
         @include('common_view.footer')
-        <script src="/js/hamburger.js"></script>
+        {{-- <script src="/js/hamburger.js"></script> --}}
         <script src="/js/ztextPlay.js"></script>
         <script src="{{ asset('/js/quietflow.min.js') }}"></script>
         <script src="{{ asset('/js/common_quietflow.js') }}"></script>
