@@ -12,22 +12,23 @@
         <link rel="stylesheet" href="/css/hamburger.css" type="text/css">
         <link rel="stylesheet" href="/css/css_tippy/shift-toward-extreme.css">
         {{-- <link href="/css/fontawesome_v561.css" rel="stylesheet"> --}}
-        {{-- <script src="/js/fontawesome0853445863.js" crossorigin="anonymous"></script> --}}
-        <script defer src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" integrity="sha384-9/D4ECZvKMVEJ9Bhr3ZnUAF+Ahlagp1cyPC7h5yDlZdXs4DQ/vRftzfd+2uFUuqS" crossorigin="anonymous"></script>
+        <script src="/js/fontawesome0853445863.js" crossorigin="anonymous"></script>
+        {{-- <script defer src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" integrity="sha384-9/D4ECZvKMVEJ9Bhr3ZnUAF+Ahlagp1cyPC7h5yDlZdXs4DQ/vRftzfd+2uFUuqS" crossorigin="anonymous"></script> --}}
         <script src="/js/jquery-3.5.1.min.js"></script>
         <script src="/js/popper.min.js"></script>
         <script src="/js/tippy-bundle.umd.js"></script>
         <script src="/js/confirm.js"></script>
+        <script src="/js/ztext.min.js"></script>
         @yield('import')
         {{-- <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script> --}}
     </head>
     <body>
-        {{-- <x-hamburger /> --}}
+        <x-hamburger />
         @include('common_view.header')
 
         @yield('content')
         @include('common_view.footer')
-        {{-- <script src="/js/hamburger.js"></script> --}}
+        <script src="/js/hamburger.js"></script>
         <script src="/js/ztextPlay.js"></script>
         <script src="{{ asset('/js/quietflow.min.js') }}"></script>
         <script src="{{ asset('/js/common_quietflow.js') }}"></script>
