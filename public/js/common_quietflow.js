@@ -7,4 +7,5 @@ function hoge() {
 }
 
 window.onload = hoge();
-// window.addEventListener("resize", hoge, true);
+document.body.addEventListener("resize", hoge);
+document.body.addEventListener("scroll", hoge);
