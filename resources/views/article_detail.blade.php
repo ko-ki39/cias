@@ -6,6 +6,8 @@
     {{-- css等の読み込み場所 --}}
     <link rel="stylesheet" href="/css/side_bar.css" type="text/css">
     <link rel="stylesheet" href="/css/article_detail.css" type="text/css">
+<script src="/js/lightbox.js" type="text/javascript"></script>
+    <link href="/css/lightbox.css" rel="stylesheet">
     <script src="/js/good.js"></script>
 @endsection
 
@@ -47,7 +49,8 @@
                         @endif
                     </div>
                     <div class="ctf_container">
-                        <x-sub-function :article="$article"/> {{-- いいねやツイッターなどの処理 --}}
+                        <x-sub-function :article="$article" /> {{-- いいねやツイッターなどの処理
+                        --}}
                     </div>
                 </div>
             </div>
@@ -55,7 +58,9 @@
                 @for ($i = 0; $i < 6; $i++)
                     {{-- {{ dd($image) }} --}}
                     @if ($image[$i] != null)
-                        <img src="/storage/{{ $image[$i] }}" class="big_image">
+                        <a href="/storage/{{ $image[$i] }}" data-lightbox="image">
+                            <img src="/storage/{{ $image[$i] }}" class="big_image">
+                        </a>
                         <p>{!! nl2br(e($text[$i])) !!}</p> {{-- 改行させる
                         --}}
                     @endif
