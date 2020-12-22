@@ -22,7 +22,7 @@
         {{-- <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script> --}}
     </head>
     <body>
-        <x-hamburger />
+        {{-- <x-hamburger /> --}}
         @include('common_view.header')
 
         @yield('content')
