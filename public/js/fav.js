@@ -25,10 +25,8 @@ let nowHostOrigin = location.origin;
 console.log(nowURL.substring(0, 40));
 console.log("http://" + nowHost + "/top");
 console.log(nowHostOrigin + "/top");
-if(nowURL.substring(0, 40) == "https://" + nowHost + "/top/article_detail" ||
-    nowURL.substring(0, 40) == "http://" + nowHost + "/top/article_detail" ||
-    nowURL.substring(0, 40) == nowHostOrigin + "/top/article_detail" ||
-    nowURL.substring(0, 40) == nowHostOrigin + "/top/article_detail"){
+if(nowURL.substring(0, 40) == "https://http:/cias-gushi.herokuapp.com/top/article_detail" ||
+    nowURL.substring(0, 40) == "https://http:/cias-gushi.herokuapp.com/top/article_detail"){
     buttons[0].addEventListener("click", function(e) {
 
         console.lop("読み込めてない！");
@@ -41,10 +39,8 @@ if(nowURL.substring(0, 40) == "https://" + nowHost + "/top/article_detail" ||
             fav(0, "delete");
         }
     }, true);
-}else if(nowURL.substring(0, 25) == "https://" + nowHost + "/top" ||
-        nowURL.substring(0, 25) == "https://" + nowHost + "/top" ||
-        nowURL.substring(0, 25) == nowHostOrigin + "/top" ||
-        nowURL.substring(0, 25) == nowHostOrigin + "/top"){
+}else if(nowURL.substring(0, 25) == "https://http:/cias-gushi.herokuapp.com/top" ||
+        nowURL.substring(0, 25) == "https://http:/cias-gushi.herokuapp.com/top"){
     for (let i = 0; i < article.length; i++){
         buttons[i].addEventListener("click", function(e){
             // console.log(e.target.classList);
