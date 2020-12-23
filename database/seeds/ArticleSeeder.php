@@ -26,6 +26,54 @@ class ArticleSeeder extends Seeder
         ];
         DB::table('articles')->insert($param);
 
+        $param = [
+            'user_id' => 2,
+            'title' => '記事投稿テスト',
+            'description' => 'デプロイ後の投稿テストです。',
+            'image' => 'rhetw46j',
+            'hash1_id' => 'ハッシュ1',
+            'hash2_id' => 'ハッシュ2',
+            'hash3_id' => 'ハッシュ3',
+            'created_at' => '2020-10-16 06:28:50',
+        ];
+        DB::table('articles')->insert($param);
+
+        $param = [
+            'user_id' => 3,
+            'title' => '記事投稿テスト',
+            'description' => 'デプロイ後の投稿テストです。',
+            'image' => 'rhetw46j',
+            'hash1_id' => 'ハッシュ1',
+            'hash2_id' => 'ハッシュ2',
+            'hash3_id' => 'ハッシュ3',
+            'created_at' => '2020-10-16 06:28:50',
+        ];
+        DB::table('articles')->insert($param);
+
+        $param = [
+            'user_id' => 4,
+            'title' => '記事投稿テスト',
+            'description' => 'デプロイ後の投稿テストです。',
+            'image' => 'rhetw46j',
+            'hash1_id' => 'ハッシュ1',
+            'hash2_id' => 'ハッシュ2',
+            'hash3_id' => 'ハッシュ3',
+            'created_at' => '2020-10-16 06:28:50',
+        ];
+        DB::table('articles')->insert($param);
+
+        $param = [
+            'user_id' => 5,
+            'title' => '記事投稿テスト',
+            'description' => 'デプロイ後の投稿テストです。',
+            'image' => 'rhetw46j',
+            'hash1_id' => 'ハッシュ1',
+            'hash2_id' => 'ハッシュ2',
+            'hash3_id' => 'ハッシュ3',
+            'created_at' => '2020-10-16 06:28:50',
+        ];
+        DB::table('articles')->insert($param);
+
         // $param = [
         //     'user_id' => 1,
         //     'title' => '【Unity】コルーチンの使い方を５つの例で紹介！',
