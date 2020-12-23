@@ -21,7 +21,8 @@
         "maatwebsite/excel": "^3.1",
         "nesbot/carbon": "^2.42",
         "panique/laravel-sass": "master",
-        "sukohi/fluent-csv": "3.*"
+        "sukohi/fluent-csv": "3.*",
+        "gd": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
