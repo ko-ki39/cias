@@ -52,11 +52,11 @@ class ArticleController extends Controller
             for ($i = 0; $i < 6; $i++) {
                 if ($image_file[$i] != null) {
                     // $path = $image_file[$i]->store('public');
-                    $fileName = time() . "_" . $image_file[$i]->getClientOriginalName();
-                    $resizeImage = InterventionImage::make($image_file[$i])
-                        ->resize(350, 350, function ($constraint) {
-                            $constraint->aspectRatio();
-                        });
+                    // $fileName = time() . "_" . $image_file[$i]->getClientOriginalName();
+                    // $resizeImage = InterventionImage::make($image_file[$i])
+                    //     ->resize(350, 350, function ($constraint) {
+                    //         $constraint->aspectRatio();
+                    //     });
 
                     // 20KB未満まで圧縮する。
                     // if($resizeImage->filesize() > 20000){
@@ -70,8 +70,11 @@ class ArticleController extends Controller
                     //     }while($resizeImage->filesize() > 20000);
                     // }
                     // dd($fileName);
-                    $resizeImage->save(storage_path($storagePath . $fileName), $quality);
-                    $image_path[$i] = basename($fileName); //画像名のみ保存
+                    // $resizeImage->save(storage_path($storagePath . $fileName), $quality);
+
+
+                    // dd($resizeImage);
+                    $image_path[$i] = base64_encode(file_get_contents($image_file[$i])); //画像名のみ保存
                 } else {
                     $image_path[$i] = null; //nullを入れないと空になる
                 }
@@ -242,11 +245,11 @@ class ArticleController extends Controller
             for ($i = 0; $i < 6; $i++) {
                 if ($image_file[$i] != null) {
                     if ($image_file[$i] != null) {
-                        $fileName = time() . "_" . $image_file[$i]->getClientOriginalName();
-                        $resizeImage = InterventionImage::make($image_file[$i])
-                            ->resize(350, 350, function ($constraint) {
-                                $constraint->aspectRatio();
-                            });
+                        // $fileName = time() . "_" . $image_file[$i]->getClientOriginalName();
+                        // $resizeImage = InterventionImage::make($image_file[$i])
+                        //     ->resize(350, 350, function ($constraint) {
+                        //         $constraint->aspectRatio();
+                        //     });
 
                         // 20KB未満まで圧縮する。
                         // if($resizeImage->filesize() > 20000){
@@ -259,8 +262,10 @@ class ArticleController extends Controller
                         //         $resizeImage->save(storage_path($storagePath . $fileName), $quality);
                         //     }while($resizeImage->filesize() > 20000);
                         // }
-                        $resizeImage->save(storage_path($storagePath . $fileName), $quality);
-                        $image_path[$i] = basename($fileName); //画像名のみ保存
+                        // $resizeImage->save(storage_path($storagePath . $fileName), $quality);
+                        // $image_path[$i] = basename($fileName); //画像名のみ保存
+                    $image_path[$i] = base64_encode(file_get_contents($image_file[$i])); //画像名のみ保存
+
                         // dd("成功");
                     } else {
                         $image_path[$i] = null; //nullを入れないと空になる
