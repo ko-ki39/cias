@@ -45,7 +45,7 @@
             <hr>
             <ul class="li_pro_comment_fav">
                 <p style="color:whitesmoke;">通知機能は一時的に停止しています</p>
-                {{-- @if (!isset($hamburgerNotice[0]))
+                @if (!isset($hamburgerNotice[0]))
                     <ul>
                         <li>通知はありません</li>
                     </ul>
@@ -85,7 +85,7 @@
                             @endif
                         @endif
                     @endforeach
-                @endif --}}
+                @endif
             </ul>
             <li class="li_pro_ad">このサイトについて<br>プライバシーポリシー<br>開発者紹介</li>
         </ul>
