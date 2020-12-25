@@ -1,9 +1,4 @@
 
-body{
-    div.main{
-        background-color: #d8d8d8;
-    }
-}
 #me{
     width: 100%;
     display: flex;
@@ -311,11 +306,6 @@ body{
 }
 
 @media screen and (min-width: 720px){
-    body{
-        div.main{
-            background-color: #d8d8d8;
-        }
-    }
     .main{
         display: flex;
         flex-direction: row;

@@ -20,3 +20,38 @@ function resizeArticle()
         main_article.style.width = calc_main_articletWidth + "px";
     }
 }
+
+
+
+/** 機能の説明
+ * 削除メニュー
+ */
+let fa_bars = document.getElementsByClassName("fa-bars");
+let comment_deleteMenu = document.getElementsByClassName("comment_deleteMenu");
+let c_dm_submit = document.getElementsByClassName("c_dm_submit");
+
+// document.body.addEventListener("click", function(e){
+//     if(e.target == fa_bars || e.target == comment_deleteMenu){
+//         return;
+//     }else{
+//         $(".comment_deleteMenu").slideUp("fast");
+//     }
+//     console.log(e.target);
+// });
+
+function commentDeleteMenu(i)
+{
+    $(".comment_deleteMenu").eq(i).slideDown("slow");
+    fa_bars[i].style.display = "none";
+    // comment_deleteMenu[i].style.display = "block";
+}
+
+function commentDeleteMenu_confirm(elem){
+    let con = confirm(`選択したコメントを削除しますか？¥n${elem.target}`);
+    if(con == true){
+        alert("コメントを削除しました");
+        return true;
+    }else{
+        return false;
+    }
+}
