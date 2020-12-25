@@ -101,7 +101,7 @@
                 <a href="article_detail">
                     <div class="article_userName">
                         <a href="{{ route('individual', ['id' => $article->user_id]) }}" class="top_h_u_img"><img
-                                src="data:image/png;base64,{{ \App\User::find($article->user_id)->image }}" alt=""></a>
+                            src="/storage/{{ \App\User::find($article->user_id)->image }}" alt=""></a>
                         <a href="{{ route('individual', ['id' => \App\User::find($article->user_id)->id]) }}"
                             class="text">
                             {{ \App\User::find($article->user_id)->user_name }}
@@ -110,7 +110,7 @@
                         </a>
                     </div>
                     <div class="article_image">
-                        <img src="data:image/png;base64,{{ $article->image }}" alt="">
+                        <img src="/storage/{{ $article->image }}" alt="">
                         {{-- <img src="/storage/{{ $article->image }}">
                         --}}
                         {{-- route('名前', ['クエリパラメータ' => 渡したい値])

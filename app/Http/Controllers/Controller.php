@@ -210,7 +210,6 @@ class Controller extends BaseController
                 //     }while($resizeImage->filesize() > 20000);
                 // }
                 $resizeImage->save(storage_path($storagePath . $fileName), $quality);
-
                 $image_path = basename($fileName); //画像名のみ保存
             } else {
                 $image_path = $request->current_image;

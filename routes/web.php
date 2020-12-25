@@ -120,7 +120,7 @@ Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
 
 // お気に入り
-Route::post("/top/fav{id}", "ArticleController@favOperation");
+Route::post("/top/fav/{id}", "ArticleController@favOperation");
 
 //検索機能↓
 Route::get("/top/search", "Controller@search")->name('search');
