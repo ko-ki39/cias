@@ -25,34 +25,35 @@ let nowHostOrigin = location.origin;
 console.log(nowURL.substring(0, 40));
 console.log("http://" + nowHost + "/top");
 console.log(nowHostOrigin + "/top");
-if(nowURL.substring(0, 40) == "https://http:/cias-gushi.herokuapp.com/top/article_detail" ||
-    nowURL.substring(0, 40) == "https://http:/cias-gushi.herokuapp.com/top/article_detail"){
+if (nowURL.substring(0, 57) == nowHostOrigin + "/top/article_detail" ||
+    nowURL.substring(0, 56) == nowHostOrigin + "/top/article_detail" ||
+    nowURL.substring(0, 36) == nowHostOrigin + "/top/article_detail" ||
+    nowURL.substring(0, 35) == nowHostOrigin + "/top/article_detail") {
     buttons[0].addEventListener("click", function(e) {
-
         console.lop("読み込めてない！");
         // 塗り潰しされてない(favされてない、またはログインしていない)
-        if(buttons[0].classList[4] == "far"){
+        if (buttons[0].classList[4] == "far") {
             fav(0, "create");
-
             // 塗り潰しされてる(過去にお気に入りした)
-        }else if(buttons[0].classList[4] == "fas"){
+        } else if (buttons[0].classList[4] == "fas") {
             fav(0, "delete");
         }
     }, true);
-}else if(nowURL.substring(0, 25) == "https://http:/cias-gushi.herokuapp.com/top" ||
-        nowURL.substring(0, 25) == "https://http:/cias-gushi.herokuapp.com/top"){
-    for (let i = 0; i < article.length; i++){
-        buttons[i].addEventListener("click", function(e){
+} else if (nowURL.substring(0, 42) == nowHostOrigin + "/top" ||
+    nowURL.substring(0, 41) == nowHostOrigin + "/top" ||
+    nowURL.substring(0, 21) == nowHostOrigin + "/top" ||
+    nowURL.substring(0, 20) == nowHostOrigin + "/top") {
+    for (let i = 0; i < article.length; i++) {
+        buttons[i].addEventListener("click", function(e) {
             // console.log(e.target.classList);
             // console.log(buttons[i].classList);
-
             console.log("きた");
             // 塗り潰しされてない(favされてない、またはログインしていない)
-            if(buttons[i].classList[4] == "far"){
+            if (buttons[i].classList[4] == "far") {
                 fav(i, "create");
                 // requestTest();
                 // 塗り潰しされてる(過去にお気に入りした)
-            }else if(buttons[i].classList[4] == "fas"){
+            } else if (buttons[i].classList[4] == "fas") {
                 fav(i, "delete");
             }
         }, true);
@@ -103,7 +104,7 @@ function fav(select, m_string) {
         headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
     })
     $.ajax({
-            url: "/top/fav/",
+            url: "/top/fav/" + article_id,
             method: "post",
             data: formData,
             // data: {"p_article_id": article_id, "p_method": _method},

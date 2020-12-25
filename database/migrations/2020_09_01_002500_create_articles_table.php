@@ -18,7 +18,7 @@ class CreateArticlesTable extends Migration
             $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade'); //外部キー
             $table->text('title');
             $table->text('description');
-            $table->longText('image');
+            $table->string('image');
             $table->string('hash1_id')->nullable();
             $table->string('hash2_id')->nullable();
             $table->string('hash3_id')->nullable();
