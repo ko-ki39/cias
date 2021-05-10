@@ -59,6 +59,7 @@
                     {{-- {{ dd($image) }} --}}
                     @if ($image[$i] != null)
                         <img src="/storage/{{ $image[$i] }}" class="big_image">
+                        {{-- <img src="data:image/png;base64,{{ $image[$i] }}" class="big_image"> --}}
                         <pre>{{ $text[$i] }}</pre>
                     @endif
                 @endfor

@@ -94,11 +94,14 @@ for (let j = 0; j < article.length; j++) {
 function fav(select, m_string) {
     let article_id = document.getElementsByClassName("article_ajax_id")[select].value;
     let _method = m_string;
+    console.log(article_id, _method)
 
     // JSONでリクエストしても、Controller側でnullになってしまうので、FormData使ってます
     let formData = new FormData();
     formData.append("p_article_id", article_id);
     formData.append("p_method", _method)
+    console.log(formData)
+    console.log(article_id, _method)
 
     $.ajaxSetup({
         headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }

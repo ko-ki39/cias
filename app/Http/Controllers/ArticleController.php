@@ -72,6 +72,7 @@ class ArticleController extends Controller
                     // dd($fileName);
                     $resizeImage->save(storage_path($storagePath . $fileName), $quality);
                     $image_path[$i] = basename($fileName); //画像名のみ保存
+                    // $image_path[$i] = base64_encode(file_get_contents($image_file[$i])); //画像名のみ保存
                 } else {
                     $image_path[$i] = null; //nullを入れないと空になる
                 }
@@ -262,6 +263,7 @@ class ArticleController extends Controller
                         $resizeImage->save(storage_path($storagePath . $fileName), $quality);
                         $image_path[$i] = basename($fileName); //画像名のみ保存
                         // dd("成功");
+                        // $image_path[$i] = base64_encode(file_get_contents($image_file[$i])); //画像名のみ保存
                     } else {
                         $image_path[$i] = null; //nullを入れないと空になる
                     }
@@ -352,6 +354,18 @@ class ArticleController extends Controller
             Article::find($id)->delete();
         }
         return back(); //直前のページにリダイレクト
+    }
+
+
+
+    /**
+     * お気に入りしたときに500エラーが起きるので、下記の記事を参考に修正してみました
+     * https://qiita.com/miiitaka/items/a7b793d312e20916e7f6
+     * フレームワーク内の Controller.php をオーバーライドしています
+     */
+    public function callAction($method, $parameters)
+    {
+        return call_user_func_array([$this, $method], array_values($parameters));
     }
 
     public function favOperation(Request $request)

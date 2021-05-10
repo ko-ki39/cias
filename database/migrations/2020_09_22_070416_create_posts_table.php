@@ -22,6 +22,12 @@ class CreatePostsTable extends Migration
             $table->string('image4')->nullable();
             $table->string('image5')->nullable();
             $table->string('image6')->nullable();
+            // $table->longText('image1');
+            // $table->longText('image2')->nullable();
+            // $table->longText('image3')->nullable();
+            // $table->longText('image4')->nullable();
+            // $table->longText('image5')->nullable();
+            // $table->longText('image6')->nullable();
 
             $table->text('text1');
             $table->text('text2')->nullable();

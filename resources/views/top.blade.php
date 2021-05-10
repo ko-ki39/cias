@@ -102,6 +102,8 @@
                     <div class="article_userName">
                         <a href="{{ route('individual', ['id' => $article->user_id]) }}" class="top_h_u_img"><img
                             src="/storage/{{ \App\User::find($article->user_id)->image }}" alt=""></a>
+                        {{-- <a href="{{ route('individual', ['id' => $article->user_id]) }}" class="top_h_u_img"><img
+                            src="data:image/png;base64,{{ \App\User::find($article->user_id)->image }}" alt=""></a> --}}
                         <a href="{{ route('individual', ['id' => \App\User::find($article->user_id)->id]) }}"
                             class="text">
                             {{ \App\User::find($article->user_id)->user_name }}
@@ -111,6 +113,7 @@
                     </div>
                     <div class="article_image">
                         <img src="/storage/{{ $article->image }}" alt="">
+                        {{-- <img src="data:image/png;base64,{{ $article->image }}" alt=""> --}}
                         {{-- <img src="/storage/{{ $article->image }}">
                         --}}
                         {{-- route('名前', ['クエリパラメータ' => 渡したい値])
@@ -181,17 +184,14 @@
 @endguest
 <script>
     'use strict';
-
     const sourceClass = document.getElementsByClassName("text");
     var searchText = getParam('search'); //クエリパラメータ取得する関数
     var searchList = getParam('search_condition'); //選択し取得
     var searchDepartment = getParam('search_department'); //学科
     var regExp = new RegExp(searchText, "g"); //検索したい文字を変換するためお関数
     ;
-
     //↓絞り込みの条件保持
     var search = document.getElementById('search_department');
-
     switch (searchDepartment) {
         case '1':
             search.options[1].selected = true;
@@ -221,12 +221,9 @@
             search.options[0].selected = true;
             break;
     }
-
     //↓検索条件の保持
     document.getElementById('search').value = searchText;
-
     var select = document.getElementById('search_condition');
-
     switch (searchList) { //選択を保持する処理
         case '1':
             select.options[0].selected = true;
@@ -244,15 +241,12 @@
             select.options[0].selected = true;
             break;
     }
-
     for (var i = 0; i < sourceClass.length; i++) {
         const sourceText = sourceClass[i].innerHTML;
         var text = `<span style='background:yellow'>${searchText}</span>`; //変換後の文字列
         var changeText = sourceText.replace(regExp, text); //特定の文字列のみ変換
-
         document.getElementsByClassName("text")[i].innerHTML = changeText; //入れ替える
     }
-
     function getParam(name, url) {
         if (!url) url = window.location.href;
         name = name.replace(/[\[\]]/g, "\\$&");
@@ -262,7 +256,6 @@
         if (!results[2]) return '';
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
-
 </script>
 <script src="/js/hash.js"></script>
 <script src="/js/fav.js"></script>
@@ -271,6 +264,5 @@
     .pagination {
         font-weight: bold;
     }
-
 </style>
 @endsection
